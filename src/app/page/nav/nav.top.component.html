@@ -12,13 +12,42 @@
         <li class="nav-item active">
             <a class="nav-link" href="#">
                 <i class="fa fa-home"></i>
+                <span>杭州</span>
             </a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="#"><i class="fa fa-bell"></i></a>
+            <a [nglPopover]="tip1" (click)="tipChange('bottom')" class="nav-link dropdown-toggle"  [nglPopover]="tip1" [nglPopoverPlacement]="placement" [nglOpen]="tipOpen"><i class="fa fa-bell"></i><span class="caret"></span></a>
+            <template #tip1>
+                <i>infoTips</i>
+            </template>
         </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="#"><i class="fa fa-gear"></i></a>
+        <li class="nav-item active dropdown">
+            <a [nglPopover]="tip" (click)="settingChange('bottom')" class="nav-link dropdown-toggle"  [nglPopover]="tip" [nglPopoverPlacement]="placement" [nglOpen]="settingOpen"><i class="fa fa-gear"></i><span class="caret"></span></a>
+            <template #tip>
+                <ul class="setting-tip">
+                    <li (click)="openModifyPassword()">修改密码</li>
+                    <li (click)="logout()">退出</li>
+                </ul>
+            </template>
         </li>
     </ul>
 </nav>
+
+<!--修改密码模态-->
+<ngl-modal [header]="noHeader ? '' : '修改密码'" [(open)]="opened" [directional]="directional" class="small-modal">
+    <div body>
+        <ngl-form-element label="原始密码" [error]="hasError ? error : null" class="slds-m-top--small">
+            <input nglFormControl type="text" placeholder="原始密码" [required]="required">
+        </ngl-form-element>
+        <ngl-form-element label="新密码" [error]="hasError ? error : null" class="slds-m-top--small">
+            <input nglFormControl type="text" placeholder="新密码">
+        </ngl-form-element>
+        <ngl-form-element label="确认密码" [error]="hasError ? error : null" class="slds-m-top--small">
+            <input nglFormControl type="text" placeholder="确认密码">
+        </ngl-form-element>
+    </div>
+    <template ngl-modal-footer *ngIf="!noFooter">
+        <button class="slds-button slds-button--neutral" (click)="cancel()">取消</button>
+        <button class="slds-button slds-button--brand">保存</button>
+    </template>
+</ngl-modal>

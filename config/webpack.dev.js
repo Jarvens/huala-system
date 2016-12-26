@@ -13,6 +13,14 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 
+/***
+ * Api const
+ *
+ */
+
+const ApiUrlTest = '//apitest.huala.com';
+const ApiUrl = '//localhost:8111/xiaopai';
+const ImgUrl = '//wxtest.huala.com/hlman-pic'
 /**
  * Webpack Constants
  */
@@ -24,7 +32,9 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   host: HOST,
   port: PORT,
   ENV: ENV,
-  HMR: HMR
+  HMR: HMR,
+  ApiUrl:ApiUrl,
+  ImgUrl:ImgUrl
 });
 
 /**
@@ -103,6 +113,8 @@ module.exports = function (options) {
           'ENV': JSON.stringify(METADATA.ENV),
           'NODE_ENV': JSON.stringify(METADATA.ENV),
           'HMR': METADATA.HMR,
+          'ApiUrl':JSON.stringify(METADATA.ApiUrl),
+          "ImgUrl":JSON.stringify(METADATA.ImgUrl)
         }
       }),
 

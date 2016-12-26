@@ -2,8 +2,6 @@
  * Angular 2 decorators and services
  */
 import { Component, ViewEncapsulation } from '@angular/core';
-
-import { AppState } from './app.service';
 import {INglDatatableSort, INglDatatableRowClick} from 'ng-lightning/ng-lightning';
 const DATA = [
   { rank: 1, name: 'Kareem', surname: 'Abdul-Jabbar', points: 38387 },
@@ -29,12 +27,12 @@ export class AppComponent {
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
 
-  constructor(public appState: AppState) {
+  constructor() {
 
   }
 
   ngOnInit() {
-    console.log('Initial App State', this.appState.state);
+
   }
   data = DATA;
 

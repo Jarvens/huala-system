@@ -1,13 +1,13 @@
 {
-  "name": "angular2-webpack-starter",
-  "version": "5.1.1",
-  "description": "An Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
+  "name": "huala-system",
+  "version": "2.0.0",
+  "description": "花啦生活管理系统",
   "keywords": [
     "angular2",
     "webpack",
     "typescript"
   ],
-  "author": "Patrick Stapleton <patrick@angularclass.com>",
+  "author": "",
   "homepage": "https://github.com/angularclass/angular2-webpack-starter",
   "license": "MIT",
   "scripts": {
@@ -72,15 +72,18 @@
     "@angularclass/conventions-loader": "^1.0.2",
     "@angularclass/hmr": "~1.2.2",
     "@angularclass/hmr-loader": "~3.0.2",
+    "@salesforce-ux/design-system": "^2.1.4",
+    "angular2-baidu-map": "^2.5.2",
     "assets-webpack-plugin": "^3.4.0",
     "core-js": "^2.4.1",
     "http-server": "^0.9.0",
     "ie-shim": "^0.1.0",
+    "jquery": "^3.1.1",
+    "ng-lightning": "^1.2.0",
     "rxjs": "5.0.0-beta.12",
-    "zone.js": "~0.6.26",
-    "ng-lightning":"^1.2.0",
     "toastr": "^2.1.2",
-    "jquery": "^3.1.1"
+    "ts-md5": "^1.2.0",
+    "zone.js": "~0.6.26"
   },
   "devDependencies": {
     "@types/hammerjs": "^2.0.33",

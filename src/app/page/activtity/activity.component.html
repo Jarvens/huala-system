@@ -1,25 +1,25 @@
-<ngl-icon icon="connected_apps" type="default"></ngl-icon>
-<ngl-icon icon="warning" type="warning" alt="Warning"></ngl-icon>
-<ngl-icon icon="close" type="error"></ngl-icon>
 <button type="button" nglButton="neutral" (click)="open()" class="slds-m-bottom--large">新增活动</button>
-<button type="button" nglButton="neutral" (click)="loading = !loading" class="slds-m-bottom--large">Toggle Loading</button>
 <button type="button" nglButton="neutral" (click)="toggleData()" class="slds-m-bottom--large">Clear/Set data</button>
 
 <table ngl-datatable [data]="data" trackByKey="rank" [loading]="loading" [(sort)]="sort" (sortChange)="onSort($event)"
        (onRowClick)="onRowClick($event)" class="slds-max-medium-table--stacked-horizontal">
     <ngl-datatable-column heading="ID" key="rank" sortable></ngl-datatable-column>
-    <ngl-datatable-column heading="活动名称" key="name" *ngIf="!hideName" cellClass="slds-truncate" sortable></ngl-datatable-column>
+    <ngl-datatable-column heading="活动名称" key="name" *ngIf="!hideName" cellClass="slds-truncate"
+                          sortable></ngl-datatable-column>
     <ngl-datatable-column heading="活动类型" key="surname" cellClass="slds-truncate" sortable>
         <template nglDatatableCell let-row="row"><b>{{row.surname}}</b></template>
     </ngl-datatable-column>
     <ngl-datatable-column heading="时间" key="points">
-        <template nglDatatableCell let-value><ngl-badge>{{value | number}}</ngl-badge></template>
+        <template nglDatatableCell let-value>
+            <ngl-badge>{{value | number}}</ngl-badge>
+        </template>
     </ngl-datatable-column>
     <ngl-datatable-column heading="操作" key="">
         <template nglDatatableCell let-row="row">
             <ngl-badge type="info" (click)="open()"><i class="fa fa-info"></i>详情</ngl-badge>
-            <ngl-badge type="success" (click)="open()"><i class="fa fa-edit"></i>编辑</ngl-badge>
-            <ngl-badge type="error" (click)="open()"><i class="fa fa-times"></i>删除</ngl-badge>
+            <ngl-badge type="success" (click)="open()"><i class="fa fa-pencil"></i>编辑</ngl-badge>
+            <ngl-badge type="info" (click)="show()"><i class="fa fa-plus"></i>活动商品</ngl-badge>
+            <ngl-badge type="error" (click)="show()"><i class="fa fa-times"></i>删除</ngl-badge>
         </template>
     </ngl-datatable-column>
 
@@ -30,18 +30,61 @@
     </template>
 
     <!-- No rows overlay -->
-    <template nglNoRowsOverlay>No data available in table!</template>
+    <template nglNoRowsOverlay>暂无数据</template>
 </table>
 
 <!--新增活动模态-->
-<ngl-modal [header]="noHeader ? '' : 'Modal Header'" [(open)]="opened" [size]="size" [directional]="directional">
+<ngl-modal [header]="noHeader ? '' : '新增活动'" [(open)]="opened" [size]="size" [directional]="directional">
     <div body>
-        <p>Sit nulla est ex deserunt exercitation anim occaecat. Tempor cupidatat consequat elit dolor adipisicing.</p>
-        <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia.</p>
-        <p>Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
+        <ngl-form-element label="活动名称" [error]="hasError ? error : null" class="slds-m-top--small">
+            <input nglFormControl type="text"  [required]="required">
+        </ngl-form-element>
+        <ngl-form-element label="活动图标" [error]="hasError ? error : null" class="slds-m-top--small">
+            <input nglFormControl type="text" >
+        </ngl-form-element>
+        <ngl-form-element label="活动类型" [error]="hasError ? error : null" class="slds-m-top--small">
+            <select nglFormControl class="slds-select" [required]="required">
+                <option>折扣</option>
+                <option>热卖</option>
+            </select>
+        </ngl-form-element>
+        <div class="row">
+            <div class="col-md-6">
+                <!--活动开始时间-->
+                <ngl-form-element label="开始时间" [error]="hasError ? error : null" class="slds-m-top--small">
+                    <input nglFormControl type="text"  [required]="required" [(ngModel)]="startDate"
+                           (click)="showStartDate=!showStartDate">
+                </ngl-form-element>
+                <ngl-datepicker [monthNames]="monthNames" [dayNamesShort]="dayNamesShort" [(date)]="startDate"
+                                class="slds-box slds-box--x-small" *ngIf="showStartDate"
+                                style="width: 310px" (dateChange)="startDateChange($event)"></ngl-datepicker>
+            </div>
+            <div class="col-md-6">
+                <!--活动结束时间-->
+                <ngl-form-element label="结束时间" [error]="hasError ? error : null" class="slds-m-top--small">
+                    <input nglFormControl type="text"  [required]="required" [(ngModel)]="endDate"
+                           (click)="showEndDate=!showEndDate">
+                </ngl-form-element>
+                <ngl-datepicker [(date)]="endDate" [monthNames]="monthNames" [dayNamesShort]="dayNamesShort" (dateChange)="endDateChange($event)"
+                                class="slds-box slds-box--x-small" style="width: 310px"
+                                *ngIf="showEndDate"></ngl-datepicker>
+            </div>
+        </div>
+        <ngl-form-element [error]="hasError ? error : null" class="slds-m-top--small">
+            <template nglFormLabel>活动说明</template>
+            <textarea nglFormControl  [required]="required"></textarea>
+        </ngl-form-element>
     </div>
     <template ngl-modal-footer *ngIf="!noFooter">
-        <button class="slds-button slds-button--neutral" (click)="cancel()">Cancel</button>
-        <button class="slds-button slds-button--brand">Save</button>
+        <button class="slds-button slds-button--neutral" (click)="cancel()">取消</button>
+        <button class="slds-button slds-button--brand">保存</button>
     </template>
 </ngl-modal>
+
+<!--Toast提示-->
+<div class="slds-notify_container">
+    <ngl-notification *ngIf="showAlert" type="alert" severity="error" (nglNotificationClose)="onClose($event)"
+                      timeout="5000" class="slds-theme--alert-texture">
+        <h2>您的权限不足,请联系管理员~</h2>
+    </ngl-notification>
+</div>

@@ -208,7 +208,6 @@ module.exports = function (options) {
        */
       new CopyWebpackPlugin([
         { from: 'src/assets', to: 'assets' },
-        { from: 'src/meta'}
       ]),
 
 
@@ -296,6 +295,11 @@ module.exports = function (options) {
       new CopyWebpackPlugin([
         { from: path.resolve(__dirname, '../node_modules/@salesforce-ux/design-system/assets'), to: 'assets' }
       ]),
+        new webpack.ProvidePlugin({
+          jQuery: 'jquery',
+          $: 'jquery',
+          jquery: 'jquery'
+        }),
     ],
 
     /*

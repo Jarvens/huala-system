@@ -1,17 +1,22 @@
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/catch'
 import {Injectable} from '@angular/core';
 import {Http, RequestOptionsArgs, RequestOptions, Response, Headers, URLSearchParams} from '@angular/http';
 import {Router} from '@angular/router';
 import * as toastr from "toastr";
+declare  var $;
+import * as querystring from 'querystring'
 const mergeAuthToken = (options: RequestOptionsArgs)=> {
 	let newOptions = new RequestOptions({}).merge(options);
 	let newHeaders = new Headers(newOptions.headers);
 	newHeaders.set('Content-Type', 'application/json');
 	newHeaders.set('token', localStorage.getItem('hl-token'));
-	newHeaders.set('city', localStorage.getItem("cityForHuala"));
-	if(!localStorage.getItem("cityForHuala")) {
-		toastr.warning('请选择城市');
-	}
+	//newHeaders.set('city', localStorage.getItem("cityForHuala"));
+	newHeaders.set('city',"330100");
+	//if(!localStorage.getItem("cityForHuala")) {
+	//	toastr.warning('请选择城市');
+	//}
 	newOptions.headers = newHeaders;
 	return newOptions;
 }
@@ -41,7 +46,7 @@ export class MyHttp {
 			let body = error.json();
 			if(error.status == 401 || error.status == 402) {
 				window.localStorage.removeItem("hl-token");
-				route.navigate(["user", "login"]);
+				route.navigate(["login"]);
 			}
 			$('body .httpOverlay').remove();
 			return Observable.throw(error);
@@ -61,7 +66,7 @@ export class MyHttp {
 			let body = error.json();
 			if(error.status == 401 || error.status == 402) {
 				window.localStorage.removeItem("hl-token");
-				route.navigate(["user", "login"]);
+				route.navigate(["login"]);
 			}
 			$('body .httpOverlay').remove();
 			return Observable.throw(error);
