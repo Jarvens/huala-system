@@ -51,9 +51,22 @@
         <button type="button" nglButton="neutral" (click)="change()">选择图片</button>
         <ngl-form-element class="slds-m-top--small">
             <input nglFormControl type="text" hidden>
-            <button type="button" nglButton="neutral" (click)="change()">保存</button>
+            <button type="info" nglButton="neutral" (click)="change()">保存</button>
         </ngl-form-element>
 
     </div>
     <div class="col-md-2"></div>
 </div>
+
+<!--图片选择模态-->
+<ngl-modal [header]="noHeader ? '' : 'Modal Header'" [(open)]="opened" [size]="size" [directional]="directional">
+    <div body>
+        <p>Sit nulla est ex deserunt exercitation anim occaecat. Tempor cupidatat consequat elit dolor adipisicing.</p>
+        <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia.</p>
+        <p>Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
+    </div>
+    <template ngl-modal-footer *ngIf="!noFooter">
+        <button class="slds-button slds-button--neutral" (click)="cancel()">Cancel</button>
+        <button class="slds-button slds-button--brand">Save</button>
+    </template>
+</ngl-modal>

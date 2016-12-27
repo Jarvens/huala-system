@@ -5,7 +5,9 @@ import {Component} from '@angular/core';
 })
 
 export class BannerEntryComponent {
+	//错误提示显示状态
 	required: boolean = true;
+	//
 	showStartDate: boolean = false;
 	showEndDate: boolean = false;
 	startDate: Date = new Date();
@@ -23,12 +25,12 @@ export class BannerEntryComponent {
 		this.showEndDate = !this.showEndDate;
 	}
 
-	parseDate (date: Date) {
-		let year = date.getFullYear();
-		let month = date.getMonth() + 1;
-		month = month < 10 ? '0' + month : month;
-		let day = date.getDate();
-		day = day < 10 ? ('0' + day) : day;
-		return year + '-' + month + '-' + day;
-	}
+	//parseDate (date: Date) {
+	//	let year = date.getFullYear();
+	//	let month = date.getMonth() + 1;
+	//	month = month < 10 ? '0' + month : month;
+	//	let day = date.getDate();
+	//	day = day < 10 ? ('0' + day) : day;
+	//	return year + '-' + month + '-' + day;
+	//}
 }

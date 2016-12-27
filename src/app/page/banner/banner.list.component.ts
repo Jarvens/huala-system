@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {INglDatatableSort, INglDatatableRowClick} from 'ng-lightning/ng-lightning';
 import {BannerService} from '../../service/banner.service';
+import {Observable} from 'rxjs/Observable';
 @Component({
 	selector: 'banner-list-component',
 	templateUrl: 'banner.list.component.html'
