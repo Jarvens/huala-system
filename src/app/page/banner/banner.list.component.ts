@@ -51,8 +51,10 @@ export class BannerListComponent implements OnInit {
 	}
 
 	//搜索方法
-	lookupAsync () {
-		console.log("搜索关键字：" + this.searchKey);
+	lookupAsync = (query: string): Observable<any[]> => {
+		if(!query) {
+			return null;
+		}
+		console.log("搜索关键字：" + query);
 	}
-
 }
