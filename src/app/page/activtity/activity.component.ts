@@ -14,11 +14,7 @@ const DATA = [
 })
 
 export class ActivityComponent implements OnInit {
-
-	constructor (private activityService: ActivityService) {
-
-	}
-
+	constructor (private activityService: ActivityService) {}
 	showAlert = false;
 	required: boolean = true;
 	startDate: Date = new Date();

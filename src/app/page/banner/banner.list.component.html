@@ -1,7 +1,9 @@
 <div class="row" style="margin: 20px 30px;">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-        <ngl-lookup label="" [lookup]="lookup" [(pick)]="superhero" debounce="0" placeholder="banner名称"></ngl-lookup>
+        <ngl-lookup [(value)]="value" [lookup]="lookupAsync" field="bannerName" >
+            <div nglLookupHeader class="slds-text-body--small">Most relevant cities</div>
+        </ngl-lookup>
     </div>
     <div class="col-md-3"></div>
 </div>
@@ -10,12 +12,15 @@
            (sortChange)="onSort($event)"
            (onRowClick)="onRowClick($event)" class="slds-max-medium-table--stacked-horizontal">
         <ngl-datatable-column heading="名称" key="bannerName" sortable></ngl-datatable-column>
-        <ngl-datatable-column heading="图片" key="">
-            <template nglDatatableCell let-row="row">
-                <ngl-avatar src="assets/images/avatar1.jpg" alt="avatar 1"></ngl-avatar>
+        <ngl-datatable-column heading="图片" key="imgUrl">
+            <template nglDatatableCell let-value>
+                <img [src]="commonImgUrl+value" width="100" height="100" class="img-thumbnail" alt="">
             </template>
         </ngl-datatable-column>
-        <ngl-datatable-column heading="作用范围" key="scopeSeller" cellClass="slds-truncate" sortable>
+        <ngl-datatable-column heading="作用范围" key="scopeSeller">
+            <template nglDatatableCell let-value>
+                <span>{{value}}</span>
+            </template>
         </ngl-datatable-column>
         <ngl-datatable-column heading="类型" key="bannerType"></ngl-datatable-column>
         <ngl-datatable-column heading="所属区域" key="city"></ngl-datatable-column>

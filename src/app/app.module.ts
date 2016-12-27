@@ -21,7 +21,9 @@ import {IndexComponent} from './page/index/inde.component';
 import {ActivityComponent} from './page/activtity/activity.component';
 import {ChartComponent} from './page/chart/chart.component';
 import {MapComponent} from './page/map/map.component';
-import {BannerComponent} from './page/banner/banner.component';
+import {BannerMainComponent} from './page/banner/banner.main.component';
+import {BannerListComponent} from './page/banner/banner.list.component';
+import {BannerEntryComponent} from './page/banner/banner.entry.component';
 import {CardComponent} from './page/card/card.component';
 
 //业务service
@@ -42,7 +44,9 @@ import {BannerService} from './service/banner.service';
 		ChartComponent,
 		MapComponent,
 		BaiduMap,
-		BannerComponent,
+		BannerMainComponent,
+		BannerListComponent,
+		BannerEntryComponent,
 		CardComponent
 	],
 	imports: [

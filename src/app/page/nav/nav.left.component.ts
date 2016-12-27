@@ -13,7 +13,6 @@ export class NavLeftComponent implements OnInit {
 	ngOnInit (): void {
 		this.menuService.menuList().subscribe(res=> {
 			this.menuList = res.json();
-			console.log(res.json());
 		});
 	}
 
@@ -22,7 +21,6 @@ export class NavLeftComponent implements OnInit {
 
 	openMenuChild (menu: any) {
 		this.currentMenuId = menu.id;
-		console.log(this.currentMenuId);
 	}
 
 }

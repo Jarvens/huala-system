@@ -5,7 +5,7 @@ import {LoginComponent} from '../page/login/login.component';
 import {IndexComponent} from '../page/index/inde.component';
 import {ActivityComponent} from '../page/activtity/activity.component';
 import {ChartComponent} from '../page/chart/chart.component';
-import {BannerComponent} from '../page/banner/banner.component';
+import {BannerMainComponent} from '../page/banner/banner.main.component';
 import {CardComponent} from '../page/card/card.component';
 const routes: Routes = [
 	{path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -15,7 +15,7 @@ const routes: Routes = [
 		children: [
 			{path: 'act-list', component: ActivityComponent},
 			{path: 'chart', component: ChartComponent},
-			{path: 'banner-main', component: BannerComponent},
+			{path: 'banner-main', component: BannerMainComponent},
 			{path: 'card-list', component: CardComponent}
 		]
 	},

@@ -20,7 +20,7 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 
 const ApiUrlTest = '//apitest.huala.com';
 const ApiUrl = '//localhost:8111/xiaopai';
-const ImgUrl = '//wxtest.huala.com/hlman-pic'
+const ImgUrl = '//wxtest.huala.com/hlman-pic';
 /**
  * Webpack Constants
  */

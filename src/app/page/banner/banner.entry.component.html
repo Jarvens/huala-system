@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <ngl-form-element label="名称" [error]="hasError ? error : null" class="slds-m-top--small">
+            <input nglFormControl type="text" [required]="required">
+        </ngl-form-element>
+        <ngl-form-element label="类型" [error]="hasError ? error : null" class="slds-m-top--small">
+            <select nglFormControl class="slds-select" [required]="required">
+                <option>用户端</option>
+                <option>商户端</option>
+            </select>
+        </ngl-form-element>
+
+        <fieldset ngl-form-group label="商家范围" [required]="required" [error]="hasError ? error : null"
+                  class="slds-m-top--small">
+            <div class="row">
+                <div class="col-md-3">
+                    <ngl-form-group-element label="全部商家"><input nglFormControl type="radio"/></ngl-form-group-element>
+                </div>
+                <div class="col-md-3">
+                    <ngl-form-group-element label="部分商家"><input nglFormControl type="radio"/></ngl-form-group-element>
+                </div>
+            </div>
+        </fieldset>
+        <div class="row">
+            <div class="col-md-6">
+                <ngl-form-element label="开始时间" [error]="hasError ? error : null" class="slds-m-top--small">
+                    <input nglFormControl type="text" [required]="required" (click)="showStartDate=!showStartDate"
+                           [(ngModel)]="startDate">
+                    <ngl-datepicker [monthNames]="monthNames" [dayNamesShort]="dayNamesShort" [(date)]="startDate"
+                                    class="slds-box slds-box--x-small" *ngIf="showStartDate"
+                                    style="width: 310px" (dateChange)="startDateChange($event)"></ngl-datepicker>
+                </ngl-form-element>
+            </div>
+            <div class="col-md-6">
+                <ngl-form-element label="结束时间" [error]="hasError ? error : null" class="slds-m-top--small">
+                    <input nglFormControl type="text" [required]="required" [(ngModel)]="endDate"
+                           (click)="showEndDate=!showEndDate">
+                    <ngl-datepicker [(date)]="endDate" [monthNames]="monthNames" [dayNamesShort]="dayNamesShort"
+                                    (dateChange)="endDateChange($event)"
+                                    class="slds-box slds-box--x-small" style="width: 310px"
+                                    *ngIf="showEndDate"></ngl-datepicker>
+                </ngl-form-element>
+            </div>
+        </div>
+        <ngl-form-element label="图片" [error]="hasError ? error : null" class="slds-m-top--small">
+            <input nglFormControl type="text" [required]="required" hidden>
+            <div style="border: 1px dashed #ccc; width: 100%;height: 100px;">
+            </div>
+        </ngl-form-element>
+        <button type="button" nglButton="neutral" (click)="change()">选择图片</button>
+        <ngl-form-element class="slds-m-top--small">
+            <input nglFormControl type="text" hidden>
+            <button type="button" nglButton="neutral" (click)="change()">保存</button>
+        </ngl-form-element>
+
+    </div>
+    <div class="col-md-2"></div>
+</div>
