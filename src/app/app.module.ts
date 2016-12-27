@@ -36,6 +36,7 @@ import {ActivityService} from './service/activity.service';
 import {LoginService} from './service/login.service';
 import {MenuService} from './service/menu.service';
 import {BannerService} from './service/banner.service';
+import {ChartService} from './service/chart.service';
 @NgModule({
 	bootstrap: [AppComponent],
 	declarations: [
@@ -70,7 +71,8 @@ import {BannerService} from './service/banner.service';
 		ActivityService,
 		LoginService,
 		MenuService,
-		BannerService
+		BannerService,
+		ChartService
 	]
 })
 export class AppModule {

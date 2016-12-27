@@ -43,18 +43,16 @@ export class BannerListComponent implements OnInit {
 
 	//Table点击事件
 	onRowClick ($event: INglDatatableRowClick) {
-		console.log('clicked row', $event.data);
 	}
 
 	//关闭Toast
 	onClose (reason: string) {
-		console.log(`Alert closed by ${reason}`);
 		this.showAlert = false;
 	}
 
 	//搜索方法
 	lookupAsync () {
-		console.log("搜索关键字："+this.searchKey);
+		console.log("搜索关键字：" + this.searchKey);
 	}
 
 }

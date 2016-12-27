@@ -22,3 +22,10 @@
     <!-- No rows overlay -->
     <template nglNoRowsOverlay>暂无数据!</template>
 </table>
+
+<div class="slds-notify_container">
+    <ngl-notification *ngIf="showAlert" type="alert" severity="error" (nglNotificationClose)="onClose($event)"
+                      timeout="5000" class="slds-theme--alert-texture">
+        <h2>您的权限不足,请联系管理员~</h2>
+    </ngl-notification>
+</div>
