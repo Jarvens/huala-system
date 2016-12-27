@@ -29,11 +29,23 @@ import {SellerMainComponent} from './page/seller/seller.main.component';
 import {SellerListComponent} from './page/seller/seller.list.component';
 import {SellerDetailComponent} from './page/seller/seller.detail.component';
 
+/**
+ *
+ * 共用组件
+ */
+//搜索
+import {SearchComponent} from './page/component/search.component';
 //Directive
 
-//Pipe
+/**
+ * 自定义管道
+ */
+//三元表达式管道
 import {ThreeElementExpression} from './pipe/three.element.expression';
-//业务service
+/**
+ * 业务Service
+ */
+//活动
 import {ActivityService} from './service/activity.service';
 import {LoginService} from './service/login.service';
 import {MenuService} from './service/menu.service';
@@ -60,7 +72,8 @@ import {SellerService} from './service/seller.service';
 		SellerMainComponent,
 		SellerListComponent,
 		SellerDetailComponent,
-		ThreeElementExpression
+		ThreeElementExpression,
+		SearchComponent
 	],
 	imports: [
 		BrowserModule,

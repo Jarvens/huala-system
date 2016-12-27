@@ -1,12 +1,6 @@
-<div class="row" style="margin: 20px 30px;">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-        <ngl-lookup [(value)]="value" debounce="2000" [lookup]="lookupAsync" field="bannerName" >
-            <div nglLookupHeader class="slds-text-body--small">Most relevant cities</div>
-        </ngl-lookup>
-    </div>
-    <div class="col-md-3"></div>
-</div>
+<!--搜索-->
+<search-component (searchKey)="searchByCondition($event)"></search-component>
+<!--数据列表-->
 <div class="row">
     <table ngl-datatable [data]="bannerList.rows" trackByKey="rank" [loading]="loading" [(sort)]="sort"
            (sortChange)="onSort($event)"

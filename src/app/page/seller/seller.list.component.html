@@ -1,4 +1,4 @@
-
+<search-component (searchKey)="searchByCondition($event)"></search-component>
 <table ngl-datatable [data]="data" trackByKey="rank" [loading]="loading" [(sort)]="sort" (sortChange)="onSort($event)"
        (onRowClick)="onRowClick($event)" class="slds-max-medium-table--stacked-horizontal">
     <ngl-datatable-column heading="ID" key="rank" sortable></ngl-datatable-column>
@@ -16,7 +16,6 @@
         <template nglDatatableCell let-row="row"><b>{{row.surname}}</b></template>
     </ngl-datatable-column>
     <ngl-datatable-column heading="电话" key="points">
-        <template nglDatatableHeading><strong>Points</strong></template>
         <template nglDatatableCell let-value><ngl-badge>{{value | number}}</ngl-badge></template>
     </ngl-datatable-column>
     <!-- No rows overlay -->
