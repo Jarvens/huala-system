@@ -25,6 +25,9 @@ import {BannerMainComponent} from './page/banner/banner.main.component';
 import {BannerListComponent} from './page/banner/banner.list.component';
 import {BannerEntryComponent} from './page/banner/banner.entry.component';
 import {CardComponent} from './page/card/card.component';
+import {SellerMainComponent} from './page/seller/seller.main.component';
+import {SellerListComponent} from './page/seller/seller.list.component';
+import {SellerDetailComponent} from './page/seller/seller.detail.component';
 
 //业务service
 import {ActivityService} from './service/activity.service';
@@ -47,7 +50,10 @@ import {BannerService} from './service/banner.service';
 		BannerMainComponent,
 		BannerListComponent,
 		BannerEntryComponent,
-		CardComponent
+		CardComponent,
+		SellerMainComponent,
+		SellerListComponent,
+		SellerDetailComponent
 	],
 	imports: [
 		BrowserModule,

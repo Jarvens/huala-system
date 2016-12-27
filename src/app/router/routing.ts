@@ -7,6 +7,7 @@ import {ActivityComponent} from '../page/activtity/activity.component';
 import {ChartComponent} from '../page/chart/chart.component';
 import {BannerMainComponent} from '../page/banner/banner.main.component';
 import {CardComponent} from '../page/card/card.component';
+import {SellerMainComponent} from '../page/seller/seller.main.component';
 const routes: Routes = [
 	{path: '', redirectTo: '/login', pathMatch: 'full'},
 	{path: 'login', component: LoginComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
 			{path: 'act-list', component: ActivityComponent},
 			{path: 'chart', component: ChartComponent},
 			{path: 'banner-main', component: BannerMainComponent},
-			{path: 'card-list', component: CardComponent}
+			{path: 'card-list', component: CardComponent},
+			{path: 'seller-info',component:SellerMainComponent}
 		]
 	},
 
