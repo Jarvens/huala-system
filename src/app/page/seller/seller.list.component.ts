@@ -9,4 +9,5 @@ export class SellerListComponent implements OnInit {
 
 	constructor () {
 	}
+
 }

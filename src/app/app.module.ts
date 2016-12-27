@@ -29,6 +29,8 @@ import {SellerMainComponent} from './page/seller/seller.main.component';
 import {SellerListComponent} from './page/seller/seller.list.component';
 import {SellerDetailComponent} from './page/seller/seller.detail.component';
 
+//Directive
+
 //业务service
 import {ActivityService} from './service/activity.service';
 import {LoginService} from './service/login.service';

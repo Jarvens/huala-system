@@ -8,6 +8,7 @@ import {
 } from '../../../../node_modules/angular2-baidu-map/src/index';
 
 @Component({
+	moduleId: "baiduMap",
 	selector: 'hl-Map',
 	template: `
         <baidu-map ak="KzRNpmieQlo6olkTGaKXzNCQ&" [options]="opts" [offline]="offlineOpts" (onMapLoaded)="loadMap($event)" (onMarkerClicked)="clickMarker($event)"></baidu-map>
@@ -19,6 +20,7 @@ import {
         }
     `]
 })
+
 export class MapComponent implements OnInit {
 
 	constructor(){}
