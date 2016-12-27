@@ -31,6 +31,8 @@ import {SellerDetailComponent} from './page/seller/seller.detail.component';
 
 //Directive
 
+//Pipe
+import {ThreeElementExpression} from './pipe/three.element.expression';
 //业务service
 import {ActivityService} from './service/activity.service';
 import {LoginService} from './service/login.service';
@@ -56,7 +58,8 @@ import {ChartService} from './service/chart.service';
 		CardComponent,
 		SellerMainComponent,
 		SellerListComponent,
-		SellerDetailComponent
+		SellerDetailComponent,
+		ThreeElementExpression
 	],
 	imports: [
 		BrowserModule,

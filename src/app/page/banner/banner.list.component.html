@@ -19,10 +19,14 @@
         </ngl-datatable-column>
         <ngl-datatable-column heading="作用范围" key="scopeSeller">
             <template nglDatatableCell let-value>
-                <span>{{value}}</span>
+                <span>{{value=='all'|threeElementExpression:'全部;部分'}}</span>
             </template>
         </ngl-datatable-column>
-        <ngl-datatable-column heading="类型" key="bannerType"></ngl-datatable-column>
+        <ngl-datatable-column heading="类型" key="bannerType">
+            <template nglDatatableCell let-value>
+                <span>{{value=='seller'|threeElementExpression:'商户端;用户端'}}</span>
+            </template>
+        </ngl-datatable-column>
         <ngl-datatable-column heading="所属区域" key="city"></ngl-datatable-column>
         <ngl-datatable-column heading="开始时间" key="startTime"></ngl-datatable-column>
         <ngl-datatable-column heading="结束时间" key="endTime"></ngl-datatable-column>
