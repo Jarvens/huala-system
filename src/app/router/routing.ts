@@ -8,6 +8,7 @@ import {ChartComponent} from '../page/chart/chart.component';
 import {BannerMainComponent} from '../page/banner/banner.main.component';
 import {CardComponent} from '../page/card/card.component';
 import {SellerMainComponent} from '../page/seller/seller.main.component';
+import {PictureComponent} from '../page/system/picture/picture.component';
 const routes: Routes = [
 	{path: '', redirectTo: '/login', pathMatch: 'full'},
 	{path: 'login', component: LoginComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
 			{path: 'chart', component: ChartComponent},
 			{path: 'banner-main', component: BannerMainComponent},
 			{path: 'card-list', component: CardComponent},
-			{path: 'seller-info',component:SellerMainComponent}
+			{path: 'seller-info', component: SellerMainComponent},
+			{path: 'system-img-manage', component: PictureComponent}
 		]
 	},
 

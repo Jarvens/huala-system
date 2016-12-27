@@ -12,3 +12,7 @@ span.active {
 .slds-badge {
   cursor: pointer;
 }
+.large > svg{
+  width: 80px;
+  height: 80px;
+}

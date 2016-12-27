@@ -28,6 +28,7 @@ import {CardComponent} from './page/card/card.component';
 import {SellerMainComponent} from './page/seller/seller.main.component';
 import {SellerListComponent} from './page/seller/seller.list.component';
 import {SellerDetailComponent} from './page/seller/seller.detail.component';
+import {PictureComponent} from './page/system/picture/picture.component';
 
 /**
  *
@@ -53,6 +54,7 @@ import {MenuService} from './service/menu.service';
 import {BannerService} from './service/banner.service';
 import {ChartService} from './service/chart.service';
 import {SellerService} from './service/seller.service';
+import {PictureService} from './service/picture.service';
 @NgModule({
 	bootstrap: [AppComponent],
 	declarations: [
@@ -75,7 +77,8 @@ import {SellerService} from './service/seller.service';
 		SellerDetailComponent,
 		ThreeElementExpression,
 		SearchComponent,
-		ImgUploadComponent
+		ImgUploadComponent,
+		PictureComponent
 	],
 	imports: [
 		BrowserModule,
@@ -92,7 +95,8 @@ import {SellerService} from './service/seller.service';
 		MenuService,
 		BannerService,
 		ChartService,
-		SellerService
+		SellerService,
+		PictureService
 	]
 })
 export class AppModule {
