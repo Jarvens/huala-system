@@ -31,10 +31,11 @@ import {SellerDetailComponent} from './page/seller/seller.detail.component';
 
 /**
  *
- * 共用组件
+ * 公用组件
  */
 //搜索
 import {SearchComponent} from './page/component/search.component';
+import {ImgUploadComponent} from './page/component/img.upload.component';
 //Directive
 
 /**
@@ -73,7 +74,8 @@ import {SellerService} from './service/seller.service';
 		SellerListComponent,
 		SellerDetailComponent,
 		ThreeElementExpression,
-		SearchComponent
+		SearchComponent,
+		ImgUploadComponent
 	],
 	imports: [
 		BrowserModule,

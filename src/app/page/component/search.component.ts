@@ -3,6 +3,7 @@ import {Observable} from 'rxjs/Observable';
 /**
  *
  * 搜索栏
+ * V1.0
  *
  */
 @Component({

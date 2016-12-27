@@ -28,7 +28,7 @@ export class SellerListComponent implements OnInit {
 
 	//Table点击事件
 	onRowClick ($event: INglDatatableRowClick) {
-
+		console.log($event);
 	}
 
 	//关闭Toast

@@ -18,6 +18,11 @@
     <ngl-datatable-column heading="电话" key="points">
         <template nglDatatableCell let-value><ngl-badge>{{value | number}}</ngl-badge></template>
     </ngl-datatable-column>
+    <ngl-datatable-column heading="操作" key="">
+        <template nglDatatableCell let-row="row">
+            <ngl-badge type="error" (click)="show()"><i class="fa fa-times"></i>删除</ngl-badge>
+        </template>
+    </ngl-datatable-column>
     <!-- No rows overlay -->
     <template nglNoRowsOverlay>暂无数据!</template>
 </table>
