@@ -1,4 +1,4 @@
-import {NgModule, ApplicationRef} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
@@ -30,6 +30,10 @@ import {SellerListComponent} from './page/seller/seller.list.component';
 import {SellerDetailComponent} from './page/seller/seller.detail.component';
 import {PictureComponent} from './page/system/picture/picture.component';
 import {AppVersionComponent} from './page/system/app/app.version.component';
+//订单管理
+import {OrderComponent} from './page/order/order.component';
+import {OrderService} from './service/order.service';
+
 /**
  *
  * 公用组件
@@ -58,55 +62,58 @@ import {SellerService} from './service/seller.service';
 import {PictureService} from './service/picture.service';
 import {AppService} from './service/app.service';
 @NgModule({
-	bootstrap: [AppComponent],
-	declarations: [
-		AppComponent,
-		NavTopComponent,
-		NavLeftComponent,
-		FooterComponent,
-		LoginComponent,
-		IndexComponent,
-		ActivityComponent,
-		ChartComponent,
-		MapComponent,
-		BaiduMap,
-		BannerMainComponent,
-		BannerListComponent,
-		BannerEntryComponent,
-		CardComponent,
-		SellerMainComponent,
-		SellerListComponent,
-		SellerDetailComponent,
-		ThreeElementExpression,
-		SearchComponent,
-		ImgUploadComponent,
-		PictureComponent,
-		AppVersionComponent,
-		BreadCrumbsComponent
-	],
-	imports: [
-		BrowserModule,
-		FormsModule,
-		HttpModule,
-		AppRoutingModule,
-		NglModule.forRoot()
-	],
-	providers: [
-		ENV_PROVIDERS,
-		MyHttp,
-		ActivityService,
-		LoginService,
-		MenuService,
-		BannerService,
-		ChartService,
-		SellerService,
-		PictureService,
-		AppService
-	]
+  bootstrap: [AppComponent],
+  declarations: [
+    AppComponent,
+    NavTopComponent,
+    NavLeftComponent,
+    FooterComponent,
+    LoginComponent,
+    IndexComponent,
+    ActivityComponent,
+    ChartComponent,
+    MapComponent,
+    BaiduMap,
+    BannerMainComponent,
+    BannerListComponent,
+    BannerEntryComponent,
+    CardComponent,
+    SellerMainComponent,
+    SellerListComponent,
+    SellerDetailComponent,
+    ThreeElementExpression,
+    SearchComponent,
+    ImgUploadComponent,
+    PictureComponent,
+    AppVersionComponent,
+    BreadCrumbsComponent,
+    PictureComponent,
+    OrderComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    AppRoutingModule,
+    NglModule.forRoot()
+  ],
+  providers: [
+    ENV_PROVIDERS,
+    MyHttp,
+    ActivityService,
+    LoginService,
+    MenuService,
+    BannerService,
+    ChartService,
+    SellerService,
+    PictureService,
+    AppService,
+    OrderService
+  ]
 })
 export class AppModule {
-	constructor () {
-	}
+  constructor() {
+  }
 
 }
 

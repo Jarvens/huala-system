@@ -7,10 +7,12 @@ import {MenuService} from '../../service/menu.service';
 })
 
 export class NavLeftComponent implements OnInit {
-    @Output() currentMenuNameOut = new EventEmitter<Array<any>>();
+    //父节点菜单
+    @Output() parentMenu = new EventEmitter<string>();
+    //子节点菜单
+    @Output() childrenMenu: string = '';
     menuList: Array<any> = [];
     currentMenuId: string = '';
-    currentMenuArray: Array<string> = [];
 
     ngOnInit(): void {
         this.menuService.menuList().subscribe(res=> {
@@ -27,8 +29,9 @@ export class NavLeftComponent implements OnInit {
         } else {
             this.currentMenuId = menu.id;
         }
-        this.currentMenuArray = [];
-        this.currentMenuArray.push(menu.name);
-        this.currentMenuNameOut.emit(this.currentMenuArray);
+        //向上溢出父级菜单
+        this.parentMenu.emit(menu.name);
+        console.log("向上传递");
+        console.log(menu.name);
     }
 }

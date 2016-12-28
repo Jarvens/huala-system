@@ -10,17 +10,17 @@ import {Component, Input, OnChanges} from '@angular/core';
  */
 export class BreadCrumbsComponent implements OnChanges {
 
-    @Input() currentMenuName: Array<string> = [];
-    menuList: Array<string> = [];
+    //默认菜单
+    defaultMenu: string = '首页';
+    //父级菜单
+    @Input() parentMenu: string = '';
+    //子菜单
+    @Input() childrenMenu: string = '';
 
     ngOnChanges(changes): void {
-        let chng = changes['currentMenuName'];
-        console.log(chng);
+        let chng = changes['parentMenu'];
         if (chng.currentValue != chng.previousValue) {
-            this.menuList =['首页','活动管理'];
-            let newMenu: Array<string> = this.menuList.concat(this.currentMenuName);
-            this.menuList = newMenu;
-            console.log(this.menuList);
+            this.parentMenu = chng.currentValue;
         }
     }
 

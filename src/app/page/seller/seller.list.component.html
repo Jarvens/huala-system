@@ -1,23 +1,21 @@
-<search-component (selectScope)="selectScope($event)" [debounce]="2000" [placeHolder]="placeholder"  (searchKey)="searchByCondition($event)"></search-component>
-<table ngl-datatable [data]="sellerList.rows" trackByKey="rank" [loading]="loading" [(sort)]="sort" (sortChange)="onSort($event)"
-       (onRowClick)="onRowClick($event)" class="slds-max-medium-table--stacked-horizontal">
+<search-component (selectScope)="selectScope($event)" [debounce]="2000" [placeHolder]="placeholder"
+                  (searchKey)="searchByCondition($event)"></search-component>
+<table ngl-datatable [data]="sellerList.rows" trackByKey="rank" [loading]="loading" [(sort)]="sort"
+       (sortChange)="onSort($event)" (onRowClick)="onRowClick($event)"
+       class="slds-max-medium-table--stacked-horizontal">
     <ngl-datatable-column heading="ID" key="id" sortable></ngl-datatable-column>
-    <ngl-datatable-column heading="名称" key="name" *ngIf="!hideName" cellClass="slds-truncate" sortable></ngl-datatable-column>
-    <ngl-datatable-column heading="地址" key="address" cellClass="slds-truncate" sortable>
-        <template nglDatatableCell let-row="row"><b>{{row.address}}</b></template>
+    <ngl-datatable-column heading="名称" key="name" cellClass="slds-truncate"></ngl-datatable-column>
+    <ngl-datatable-column heading="地址" key="address" cellClass="slds-truncate"></ngl-datatable-column>
+    <ngl-datatable-column heading="店铺状态" key="isDelete" cellClass="slds-truncate"></ngl-datatable-column>
+    <ngl-datatable-column heading="店铺类型" key="sellerType" cellClass="slds-truncate">
+        <template nglDatatableCell let-row="row"><b>{{row.sellerType=='1'|threeElementExpression:'烟店;超市'}}</b>
+        </template>
     </ngl-datatable-column>
-    <ngl-datatable-column heading="店铺状态" key="isDelete" cellClass="slds-truncate" sortable>
-        <template nglDatatableCell let-row="row"><b>{{row.isDelete}}</b></template>
-    </ngl-datatable-column>
-    <ngl-datatable-column heading="店铺类型" key="sellerType" cellClass="slds-truncate" sortable>
-        <template nglDatatableCell let-row="row"><b>{{row.sellerType=='1'|threeElementExpression:'烟店;超市'}}</b></template>
-    </ngl-datatable-column>
-    <ngl-datatable-column heading="电话" key="phone">
-        <template nglDatatableCell let-value>{{value}}</template>
-    </ngl-datatable-column>
+    <ngl-datatable-column heading="电话" key="phone"></ngl-datatable-column>
     <ngl-datatable-column heading="操作" key="">
         <template nglDatatableCell let-row="row">
             <ngl-badge type="error" (click)="show()"><i class="fa fa-times"></i>删除</ngl-badge>
+            <ngl-badge type="info" (click)="show()"><i class="fa fa-info"></i>详情</ngl-badge>
         </template>
     </ngl-datatable-column>
     <!-- No rows overlay -->

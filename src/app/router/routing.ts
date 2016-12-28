@@ -10,26 +10,27 @@ import {CardComponent} from '../page/card/card.component';
 import {SellerMainComponent} from '../page/seller/seller.main.component';
 import {PictureComponent} from '../page/system/picture/picture.component';
 import {AppVersionComponent} from '../page/system/app/app.version.component';
+import {OrderComponent} from '../page/order/order.component';
 const routes: Routes = [
-	{path: '', redirectTo: '/login', pathMatch: 'full'},
-	{path: 'login', component: LoginComponent},
-	{
-		path: 'index', component: IndexComponent,
-		children: [
-			{path: 'act-list', component: ActivityComponent},
-			{path: 'chart', component: ChartComponent},
-			{path: 'banner-main', component: BannerMainComponent},
-			{path: 'card-list', component: CardComponent},
-			{path: 'seller-info', component: SellerMainComponent},
-			{path: 'system-img-manage', component: PictureComponent},
-			{path: 'app/app-version-index',component: AppVersionComponent}
-		]
-	},
-
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
+  {
+    path: 'index', component: IndexComponent,
+    children: [
+      {path: 'act-list', component: ActivityComponent},
+      {path: 'chart', component: ChartComponent},
+      {path: 'banner-main', component: BannerMainComponent},
+      {path: 'card-list', component: CardComponent},
+      {path: 'seller-info', component: SellerMainComponent},
+      {path: 'system-img-manage', component: PictureComponent},
+      {path: 'app/app-version-index',component: AppVersionComponent},
+      {path: 'order', component: OrderComponent}
+    ]
+  },
 ];
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
-	exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 
 export class AppRoutingModule {
