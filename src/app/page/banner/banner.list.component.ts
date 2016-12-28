@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import {INglDatatableSort, INglDatatableRowClick} from 'ng-lightning/ng-lightning';
 import {BannerService} from '../../service/banner.service';
 import {Observable} from 'rxjs/Observable';
@@ -19,21 +19,26 @@ export class BannerListComponent implements OnInit {
 	//是否展示提示信息
 	showAlert: boolean = false;
 	value: string;
+	placeholder: string = '搜索    名称';
 
-	ngOnInit (): void {
-		this.bannerService.getBannerList(null, this.searchKey).subscribe(res=> {
-			this.bannerList = res.json();
-		});
+	constructor (private bannerService: BannerService, private cdr: ChangeDetectorRef) {
 	}
 
-	constructor (private bannerService: BannerService) {
+	ngOnInit (): void {
+		this.getBannerList(null, this.searchKey);
 	}
 
 	//分页事件
 	pageChange (event) {
 		this.pageOpts.page = event;
-		this.bannerService.getBannerList(this.pageOpts, this.searchKey).subscribe(res=> {
+		this.getBannerList(this.pageOpts, this.searchKey);
+	}
+
+	//获取banner列表
+	getBannerList (page: any, searchKey: string) {
+		this.bannerService.getBannerList(page, searchKey).subscribe(res=> {
 			this.bannerList = res.json();
+			this.cdr.detectChanges();
 		});
 	}
 
@@ -52,7 +57,8 @@ export class BannerListComponent implements OnInit {
 	}
 
 	//搜索方法
-	searchByCondition(event){
-		console.log("搜索关键字:"+event);
+	searchByCondition (event) {
+		this.searchKey = event;
+		this.getBannerList(this.pageOpts, this.searchKey);
 	}
 }
