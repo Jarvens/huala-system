@@ -9,6 +9,7 @@ import {BannerMainComponent} from '../page/banner/banner.main.component';
 import {CardComponent} from '../page/card/card.component';
 import {SellerMainComponent} from '../page/seller/seller.main.component';
 import {PictureComponent} from '../page/system/picture/picture.component';
+import {AppVersionComponent} from '../page/system/app/app.version.component';
 const routes: Routes = [
 	{path: '', redirectTo: '/login', pathMatch: 'full'},
 	{path: 'login', component: LoginComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
 			{path: 'banner-main', component: BannerMainComponent},
 			{path: 'card-list', component: CardComponent},
 			{path: 'seller-info', component: SellerMainComponent},
-			{path: 'system-img-manage', component: PictureComponent}
+			{path: 'system-img-manage', component: PictureComponent},
+			{path: 'app/app-version-index',component: AppVersionComponent}
 		]
 	},
 

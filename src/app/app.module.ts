@@ -29,7 +29,7 @@ import {SellerMainComponent} from './page/seller/seller.main.component';
 import {SellerListComponent} from './page/seller/seller.list.component';
 import {SellerDetailComponent} from './page/seller/seller.detail.component';
 import {PictureComponent} from './page/system/picture/picture.component';
-
+import {AppVersionComponent} from './page/system/app/app.version.component';
 /**
  *
  * 公用组件
@@ -37,6 +37,7 @@ import {PictureComponent} from './page/system/picture/picture.component';
 //搜索
 import {SearchComponent} from './page/component/search.component';
 import {ImgUploadComponent} from './page/component/img.upload.component';
+import {BreadCrumbsComponent} from './page/component/breadcrumbs/bread.crumbs.component';
 //Directive
 
 /**
@@ -55,6 +56,7 @@ import {BannerService} from './service/banner.service';
 import {ChartService} from './service/chart.service';
 import {SellerService} from './service/seller.service';
 import {PictureService} from './service/picture.service';
+import {AppService} from './service/app.service';
 @NgModule({
 	bootstrap: [AppComponent],
 	declarations: [
@@ -78,7 +80,9 @@ import {PictureService} from './service/picture.service';
 		ThreeElementExpression,
 		SearchComponent,
 		ImgUploadComponent,
-		PictureComponent
+		PictureComponent,
+		AppVersionComponent,
+		BreadCrumbsComponent
 	],
 	imports: [
 		BrowserModule,
@@ -96,7 +100,8 @@ import {PictureService} from './service/picture.service';
 		BannerService,
 		ChartService,
 		SellerService,
-		PictureService
+		PictureService,
+		AppService
 	]
 })
 export class AppModule {

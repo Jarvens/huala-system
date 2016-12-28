@@ -20,20 +20,20 @@ export class BannerListComponent implements OnInit {
     showAlert: boolean = false;
     value: string;
     placeholder: string = '搜索    名称';
-    
+
     constructor(private bannerService: BannerService, private cdr: ChangeDetectorRef) {
     }
-    
+
     ngOnInit(): void {
         this.getBannerList(null, this.searchKey);
     }
-    
+
     //分页事件
     pageChange(event) {
         this.pageOpts.page = event;
         this.getBannerList(this.pageOpts, this.searchKey);
     }
-    
+
     //获取banner列表
     getBannerList(page: any, searchKey: string) {
         this.bannerService.getBannerList(page, searchKey).subscribe(res=> {
@@ -41,21 +41,21 @@ export class BannerListComponent implements OnInit {
             this.cdr.detectChanges();
         });
     }
-    
+
     //打开Toasth
     show() {
         this.showAlert = true;
     }
-    
+
     //Table点击事件
     onRowClick($event: INglDatatableRowClick) {
     }
-    
+
     //关闭Toast
     onClose(reason: string) {
         this.showAlert = false;
     }
-    
+
     //搜索方法
     searchByCondition(event) {
         this.searchKey = event;
