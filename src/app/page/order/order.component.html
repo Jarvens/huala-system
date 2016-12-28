@@ -16,3 +16,5 @@
     <ngl-datatable-column heading="订单状态" key="orderStatusStr"></ngl-datatable-column>
     <ngl-datatable-column heading="操作"></ngl-datatable-column>
 </table>
+<ngl-pagination [(page)]="pageOpts.page" [total]="pageOpts.total" [perPage]="pageOpts.perPage" [limit]="pageOpts.limit"
+                boundaryNumbers="1" #pagination (pageChange)="pageChange($event)"></ngl-pagination>
