@@ -19,6 +19,8 @@ export class OrderComponent implements OnInit {
     startTime: "",
     endTime: ""
   };
+  //搜索提示
+  placeholder:string='这是搜索提示信息';
   public orderList:any = [];
   constructor(public orderService: OrderService){}
 

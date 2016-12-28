@@ -1,20 +1,18 @@
-<div class="container">
-  <h1 class="slds-text-heading--large">订单管理</h1>
-  <div class="row">
-    <table ngl-datatable [data]="orderList" class="slds-max-medium-table--stacked-horizontal">
-      <ngl-datatable-column heading="#" key="rank"></ngl-datatable-column>
-      <ngl-datatable-column heading="订单编号" key="orderSn"></ngl-datatable-column>
-      <ngl-datatable-column heading="店铺名称" key="sellerName"></ngl-datatable-column>
-      <ngl-datatable-column heading="收货人信息" key="address"></ngl-datatable-column>
-      <ngl-datatable-column heading="商品金额" key="goodAmount"></ngl-datatable-column>
-      <ngl-datatable-column heading="运费金额" key="shippingAmount"></ngl-datatable-column>
-      <ngl-datatable-column heading="优惠金额" key="discountAmount"></ngl-datatable-column>
-      <ngl-datatable-column heading="订单金额" key="orderAmount"></ngl-datatable-column>
-      <ngl-datatable-column heading="支付金额" key="payAmount"></ngl-datatable-column>
-      <ngl-datatable-column heading="付款日期" key="payTime"></ngl-datatable-column>
-      <ngl-datatable-column heading="完成日期" key="shippingTime"></ngl-datatable-column>
-      <ngl-datatable-column heading="订单状态" key="orderStatusStr"></ngl-datatable-column>
-      <ngl-datatable-column heading="操作"></ngl-datatable-column>
-    </table>
-  </div>
-</div>
+<h1 class="slds-text-heading--large">订单管理</h1>
+<search-component (selectScope)="selectScope($event)" [showIcon]="false" [debounce]="2000" [placeHolder]="placeholder"
+                  (searchKey)="searchByCondition($event)"></search-component>
+<table ngl-datatable [data]="orderList" class="slds-max-medium-table--stacked-horizontal">
+    <ngl-datatable-column heading="#" key="rank"></ngl-datatable-column>
+    <ngl-datatable-column heading="订单编号" key="orderSn"></ngl-datatable-column>
+    <ngl-datatable-column heading="店铺名称" key="sellerName"></ngl-datatable-column>
+    <ngl-datatable-column heading="收货人信息" key="address"></ngl-datatable-column>
+    <ngl-datatable-column heading="商品金额" key="goodAmount"></ngl-datatable-column>
+    <ngl-datatable-column heading="运费金额" key="shippingAmount"></ngl-datatable-column>
+    <ngl-datatable-column heading="优惠金额" key="discountAmount"></ngl-datatable-column>
+    <ngl-datatable-column heading="订单金额" key="orderAmount"></ngl-datatable-column>
+    <ngl-datatable-column heading="支付金额" key="payAmount"></ngl-datatable-column>
+    <ngl-datatable-column heading="付款日期" key="payTime"></ngl-datatable-column>
+    <ngl-datatable-column heading="完成日期" key="shippingTime"></ngl-datatable-column>
+    <ngl-datatable-column heading="订单状态" key="orderStatusStr"></ngl-datatable-column>
+    <ngl-datatable-column heading="操作"></ngl-datatable-column>
+</table>
