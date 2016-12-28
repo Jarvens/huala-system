@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Output, Input} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 /**
  *
@@ -11,11 +11,19 @@ import {Observable} from 'rxjs/Observable';
 	templateUrl: './search.component.html'
 })
 export class SearchComponent {
+	//搜索关键字
 	@Output() searchKey = new EventEmitter<string>();
-	//延迟时间 2000毫秒
-	debounce: number = 2000;
+	//搜索范围
+	@Output() selectScope = new EventEmitter<any>();
 	//是否显示搜索icon
-	showIcon: boolean = true;
+	@Input() showIcon: boolean = true;
+	//延迟时间 2000毫秒
+	@Input() debounce: number;
+	value: string = '';
+	//条件过滤数组
+	scopes = [{value: '全部', icon: 'groups',type:'all'}, {value: '所属人', icon: 'user',type:'user'}];
+	//默认选项
+	scope = this.scopes[0];
 	//搜索方法
 	lookupAsync = (query: string): Observable<any[]> => {
 		if(!query) {
@@ -23,5 +31,10 @@ export class SearchComponent {
 		}
 		//向上溢出
 		this.searchKey.emit(query);
+	}
+
+	//选项改变事件
+	scopeChange (event) {
+		this.selectScope.emit(event);
 	}
 }

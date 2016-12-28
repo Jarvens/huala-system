@@ -294,3 +294,6 @@ html { height: 100%;}
     background-color: rgba(250,250,250,.8);
     z-index: 1;
 }
+.dropdown-menu{
+    font-size:12px !important;
+}

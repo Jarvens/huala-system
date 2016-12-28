@@ -1,5 +1,5 @@
 <!--搜索-->
-<search-component (searchKey)="searchByCondition($event)"></search-component>
+<search-component [showIcon]="false" [debounce]="2000" (searchKey)="searchByCondition($event)"></search-component>
 <!--数据列表-->
 <div class="row">
     <table ngl-datatable [data]="bannerList.rows" trackByKey="rank" [loading]="loading" [(sort)]="sort"

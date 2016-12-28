@@ -2,7 +2,8 @@ import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import {PictureService} from '../../../service/picture.service';
 @Component({
 	selector: 'picture-component',
-	templateUrl: './picture.component.html'
+	templateUrl: './picture.component.html',
+	styleUrls:['./picture.component.css']
 })
 
 export class PictureComponent implements OnInit {

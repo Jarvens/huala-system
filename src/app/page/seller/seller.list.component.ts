@@ -14,6 +14,8 @@ export class SellerListComponent implements OnInit {
 	showAlert: boolean = false;
 	//搜索关键字
 	searchKey: string = '';
+	//全部   所属人
+	keyType: string = '';
 
 	ngOnInit (): void {
 	}
@@ -38,7 +40,14 @@ export class SellerListComponent implements OnInit {
 	}
 
 	//搜索方法
-	searchByCondition(event){
-		console.log("搜索关键字:"+event);
+	searchByCondition (event) {
+		console.log("搜索关键字:" + event);
+	}
+
+	//下拉选项参数
+	selectScope (event:any) {
+
+		console.log("打印选项");
+		console.log(event.type);
 	}
 }
