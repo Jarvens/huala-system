@@ -19,16 +19,17 @@ export class SearchComponent {
 	@Input() showIcon: boolean = true;
 	//延迟时间 2000毫秒
 	@Input() debounce: number;
+	@Input() placeHolder: string = '';
 	value: string = '';
 	//条件过滤数组
-	scopes = [{value: '全部', icon: 'groups',type:'all'}, {value: '所属人', icon: 'user',type:'user'}];
+	scopes = [{value: '全部', icon: 'groups', type: '0'}, {value: '所属人', icon: 'user', type: '1'}];
 	//默认选项
 	scope = this.scopes[0];
 	//搜索方法
 	lookupAsync = (query: string): Observable<any[]> => {
-		if(!query) {
-			return null;
-		}
+		//if(!query) {
+		//	return null;
+		//}
 		//向上溢出
 		this.searchKey.emit(query);
 	}

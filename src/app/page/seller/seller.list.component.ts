@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import {SellerService} from '../../service/seller.service';
 import {INglDatatableSort, INglDatatableRowClick} from 'ng-lightning/ng-lightning';
 @Component({
@@ -14,13 +14,15 @@ export class SellerListComponent implements OnInit {
 	showAlert: boolean = false;
 	//搜索关键字
 	searchKey: string = '';
-	//全部   所属人
-	keyType: string = '';
+	//全部:0   所属人:1
+	keyType: string = '0';
+	placeholder:string = '搜索  ID  名称 手机号';
 
-	ngOnInit (): void {
+	constructor (private sellerService: SellerService, private cdr: ChangeDetectorRef) {
 	}
 
-	constructor (private sellerService: SellerService) {
+	ngOnInit (): void {
+		this.getSellerList(null, this.searchKey, '', this.keyType);
 	}
 
 	//打开Toast
@@ -35,19 +37,31 @@ export class SellerListComponent implements OnInit {
 
 	//关闭Toast
 	onClose (reason: string) {
-
 		this.showAlert = false;
 	}
 
 	//搜索方法
 	searchByCondition (event) {
-		console.log("搜索关键字:" + event);
+		this.searchKey = event;
+		this.getSellerList(this.pageOpts, this.searchKey, '', this.keyType);
 	}
 
 	//下拉选项参数
-	selectScope (event:any) {
+	selectScope (event: any) {
+		this.keyType = event.type;
+	}
 
-		console.log("打印选项");
-		console.log(event.type);
+	//分页事件
+	pageChange (event) {
+		this.pageOpts.page = event;
+		this.getSellerList(this.pageOpts, this.searchKey, '', this.keyType);
+	}
+
+	//获取店铺列表
+	getSellerList (page: any, searchKey: string, status: string, keyType: string) {
+		this.sellerService.getSellerList(page, searchKey, status, keyType).subscribe(res=> {
+			this.sellerList = res.json();
+			this.cdr.detectChanges();
+		});
 	}
 }
