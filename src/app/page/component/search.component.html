@@ -6,7 +6,8 @@
                  <svg nglIconCategory="standard" [nglIcon]="scope.icon" [ngClass]="'slds-icon-standard-' + scope.icon"
                       class="slds-icon slds-icon--small"></svg>
             </span>
-            <template *ngIf="showIcon==true" nglPolymorphicItem [scopes]="scopes" (scopeChange)="scopeChange($event)" let-item>
+            <template *ngIf="showIcon==true" nglPolymorphicItem [scopes]="scopes" (scopeChange)="scopeChange($event)"
+                      let-item>
                 <p class="slds-truncate">
                     <svg nglIconCategory="standard" [nglIcon]="item.icon" [ngClass]="'slds-icon-standard-' + item.icon"
                          class="slds-icon slds-icon--small slds-m-right--small"></svg>
