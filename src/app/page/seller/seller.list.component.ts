@@ -77,9 +77,8 @@ export class SellerListComponent implements OnInit {
      */
   }
 
-  //店铺详情
+  //店铺详情 向上传递对象
   sellerDetailInfo(value) {
-    console.log("点击了");
     this.sellerDetail.emit(value);
   }
 }

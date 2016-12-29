@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges} from '@angular/core';
+import {Component, OnChanges} from '@angular/core';
 @Component({
   selector: 'seller-main-component',
   templateUrl: './seller.main.component.html'
