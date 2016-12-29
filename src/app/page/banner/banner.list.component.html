@@ -37,7 +37,7 @@
             </ngl-datatable-column>
             <ngl-datatable-column heading="操作" key="">
                 <template nglDatatableCell let-row="row">
-                    <ngl-badge type="error" (click)="show()"><i class="fa fa-times"></i>删除</ngl-badge>
+                    <ngl-badge type="error" (click)="delConfirm()"><i class="fa fa-times"></i>删除</ngl-badge>
                 </template>
             </ngl-datatable-column>
             <template nglNoRowsOverlay>暂无数据!</template>

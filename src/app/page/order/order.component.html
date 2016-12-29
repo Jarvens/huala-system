@@ -1,41 +1,57 @@
 <h1 class="slds-text-heading--large">订单管理</h1>
-<search-component (selectScope)="selectScope($event)" [showIcon]="false" [debounce]="2000" [placeHolder]="placeholder"
-                  (searchKey)="searchByCondition($event)"></search-component>
-<table ngl-datatable [data]="orderList" class="slds-max-medium-table--stacked-horizontal" style="margin-bottom: 10px">
-    <ngl-datatable-column heading="#" key="rank"></ngl-datatable-column>
-    <ngl-datatable-column heading="订单编号" key="orderSn">
-      <template nglDatatableCell let-row="row">
-        <b>{{row.orderSn}}</b>
-        <ngl-badge type="error" *ngIf="row.isFirst == 0">{{row.isFirstStr}}</ngl-badge>
-        <ngl-badge type="success" *ngIf="row.isFirst == 1">{{row.isFirstStr}}</ngl-badge>
-      </template>
-    </ngl-datatable-column>
-    <ngl-datatable-column heading="店铺名称" key="sellerName"></ngl-datatable-column>
-    <ngl-datatable-column heading="收货人信息" key="address">
-      <template nglDatatableCell let-row="row">
-        <b>{{row.consignee}}:</b>
-        <span class="text-color--error">{{row.mobile}}</span>
-        <br>
-        <ngl-badge type="info">{{row.address}}</ngl-badge>
-      </template>
-    </ngl-datatable-column>
-    <ngl-datatable-column heading="商品金额" key="goodAmount"></ngl-datatable-column>
-    <ngl-datatable-column heading="运费金额" key="shippingAmount"></ngl-datatable-column>
-    <ngl-datatable-column heading="优惠金额" key="discountAmount"></ngl-datatable-column>
-    <ngl-datatable-column heading="订单金额" key="orderAmount"></ngl-datatable-column>
-    <ngl-datatable-column heading="支付金额" key="payAmount"></ngl-datatable-column>
-    <ngl-datatable-column heading="付款日期" key="payTime"></ngl-datatable-column>
-    <!--<ngl-datatable-column heading="完成日期" key="shippingTime"></ngl-datatable-column>-->
-    <ngl-datatable-column heading="订单状态" key="orderStatusStr">
-      <template nglDatatableCell let-row="row">
-        <ngl-badge type="success" *ngIf="row.orderStatus == 'have_done'">{{row.orderStatusStr}}</ngl-badge>
-        <ngl-badge type="warning" *ngIf="row.orderStatus != 'have_done'">{{row.orderStatusStr}}</ngl-badge>
-      </template>
-    </ngl-datatable-column>
-    <ngl-datatable-column heading="操作">
-      
-    </ngl-datatable-column>
-</table>
-<ngl-pagination [(page)]="pageOpts.page" [total]="pageOpts.total" [perPage]="pageOpts.perPage" [limit]="pageOpts.limit"
-                boundaryNumbers="1" #pagination (pageChange)="getOrderList($event)"
-                previousText="上一页" nextText="下一页"></ngl-pagination>
+<article class="slds-card">
+    <div class="slds-card__header slds-grid">
+        <header class="slds-media slds-media--center slds-has-flexi-truncate">
+            <div class="col-md-6">
+                <search-component (selectScope)="selectScope($event)" [showIcon]="false" [debounce]="2000"
+                                  [placeHolder]="placeholder"
+                                  (searchKey)="searchByCondition($event)"></search-component>
+            </div>
+        </header>
+    </div>
+    <div class="slds-card__body">
+        <table ngl-datatable [data]="orderList" class="slds-max-medium-table--stacked-horizontal"
+               style="margin-bottom: 10px">
+            <ngl-datatable-column heading="#" key="rank"></ngl-datatable-column>
+            <ngl-datatable-column heading="订单编号" key="orderSn">
+                <template nglDatatableCell let-row="row">
+                    <b>{{row.orderSn}}</b>
+                    <ngl-badge type="error" *ngIf="row.isFirst == 0">{{row.isFirstStr}}</ngl-badge>
+                    <ngl-badge type="success" *ngIf="row.isFirst == 1">{{row.isFirstStr}}</ngl-badge>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="店铺名称" key="sellerName"></ngl-datatable-column>
+            <ngl-datatable-column heading="收货人信息" key="address">
+                <template nglDatatableCell let-row="row">
+                    <b>{{row.consignee}}:</b>
+                    <span class="text-color--error">{{row.mobile}}</span>
+                    <br>
+                    <ngl-badge type="info">{{row.address}}</ngl-badge>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="商品金额" key="goodAmount"></ngl-datatable-column>
+            <ngl-datatable-column heading="运费金额" key="shippingAmount"></ngl-datatable-column>
+            <ngl-datatable-column heading="优惠金额" key="discountAmount"></ngl-datatable-column>
+            <ngl-datatable-column heading="订单金额" key="orderAmount"></ngl-datatable-column>
+            <ngl-datatable-column heading="支付金额" key="payAmount"></ngl-datatable-column>
+            <ngl-datatable-column heading="付款日期" key="payTime"></ngl-datatable-column>
+            <!--<ngl-datatable-column heading="完成日期" key="shippingTime"></ngl-datatable-column>-->
+            <ngl-datatable-column heading="订单状态" key="orderStatusStr">
+                <template nglDatatableCell let-row="row">
+                    <ngl-badge type="success" *ngIf="row.orderStatus == 'have_done'">{{row.orderStatusStr}}</ngl-badge>
+                    <ngl-badge type="warning" *ngIf="row.orderStatus != 'have_done'">{{row.orderStatusStr}}</ngl-badge>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="操作">
+
+            </ngl-datatable-column>
+        </table>
+    </div>
+    <div class="slds-card__footer">
+        <ngl-pagination [(page)]="pageOpts.page" [total]="pageOpts.total" [perPage]="pageOpts.perPage"
+                        [limit]="pageOpts.limit"
+                        boundaryNumbers="1" #pagination (pageChange)="getOrderList($event)"
+                        previousText="上一页" nextText="下一页"></ngl-pagination>
+    </div>
+</article>
+

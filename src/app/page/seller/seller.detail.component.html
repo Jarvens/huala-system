@@ -1,38 +1,261 @@
 <div class="row">
-    <div class="col-md-6">
-        <div class="slds-box slds-theme--shade slds-theme--alert-texture">
-            <div class="row">
-                <ngl-breadcrumbs assistiveText="Breadcrumbs" class="slds-m-top--large">
-                    <a *nglBreadcrumb href="javascript:void(0)">店铺基本信息</a>
-                </ngl-breadcrumbs>
+    <div class="col-md-4">
+        <article class="slds-card slds-card--narrow">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media--center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                        <ngl-icon icon="goals" category="standard"></ngl-icon>
+                    </div>
+                    <div class="slds-media__body slds-truncate">
+                        <h2>
+                            <a href="javascript:void(0);" class="slds-text-link--reset">
+                                <span class="slds-text-heading--small">店铺基本信息</span>
+                            </a>
+                        </h2>
+                    </div>
+                </header>
             </div>
-            <div class="row seller-detail">
-                <div class="col-md-2">
-                    <ngl-avatar size="large" type="circle" [src]="commonImgUrl+detailFromSellerMain.imgUrl"
-                                alt="店铺头像"></ngl-avatar>
-                </div>
-                <div class="col-md-4 seller-title">
-                    <h1 class="slds-text-heading--small">{{detailFromSellerMain.name}}</h1>
+            <div class="slds-card__body">
+                <div class="slds-card__body--inner">
+                    <div class="slds-tile">
+                        <div class="slds-tile__detail slds-text-body--small">
+                            <dl class="slds-dl--horizontal">
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Date">店铺头像:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <ngl-avatar class="seller-head-img" size="large" [src]="commonImgUrl+detailFromSellerMain.imgUrl"
+                                                alt="店铺头像"></ngl-avatar>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="slds-tile">
+                        <div class="slds-tile__detail slds-text-body--small">
+                            <dl class="slds-dl--horizontal">
+
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Date">店铺名称:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <h3><span class="slds-truncate" title="Visit">{{detailFromSellerMain.name}}</span>
+                                    </h3>
+                                </dd>
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Date">联系方式:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <span class="slds-truncate"
+                                          title="1/31/15 3:45PM">{{detailFromSellerMain.phone}}</span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="slds-tile">
+                        <div class="slds-tile__detail slds-text-body--small">
+                            <dl class="slds-dl--horizontal">
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Date">店铺地址:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <span class="slds-truncate"
+                                          title="1/31/15 3:45PM">{{detailFromSellerMain.address}}</span>
+                                </dd>
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Date">营业时间:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <span class="slds-truncate" title="1/31/15 3:45PM">{{detailFromSellerMain.openTime}}--{{detailFromSellerMain.endTime}}</span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="slds-tile">
+                        <div class="slds-tile__detail slds-text-body--small">
+                            <dl class="slds-dl--horizontal">
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Date">审核时间:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <span class="slds-truncate" title="1/31/15 3:45PM">{{detailFromSellerMain.enterTime}}</span>
+                                </dd>
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Date">经纬度:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <span class="slds-truncate" title="1/31/15 3:45PM">{{detailFromSellerMain.lng}}E,{{detailFromSellerMain.lat}}N</span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="slds-text-title--caps slds-text-align--center">店铺类型:</div>
-                </div>
-                <div class="col-md-2">
-                    <div class="slds-text-title--caps slds-text-align--center">营业状态:</div>
-                    <ngl-badge>已上线</ngl-badge>
-                </div>
+            <div class="slds-card__footer"><a href="javascript:void(0);"><span class="slds-assistive-text"></span></a>
             </div>
-        </div>
+        </article>
     </div>
-    <div class="col-md-6">
-        <div class="slds-box slds-theme--shade slds-theme--alert-texture">
-            <div class="row">
-                <ngl-breadcrumbs assistiveText="Breadcrumbs" class="slds-m-top--large">
-                    <a *nglBreadcrumb href="javascript:void(0)">店铺附加信息</a>
-                </ngl-breadcrumbs>
+    <div class="col-md-4">
+        <article class="slds-card slds-card--narrow">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media--center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                        <ngl-icon icon="goals" category="standard"></ngl-icon>
+                    </div>
+                    <div class="slds-media__body slds-truncate">
+                        <h2>
+                            <a href="javascript:void(0);" class="slds-text-link--reset">
+                                <span class="slds-text-heading--small">店铺附加信息</span>
+                            </a>
+                        </h2>
+                    </div>
+                </header>
             </div>
-        </div>
+            <div class="slds-card__body">
+                <div class="slds-card__body--inner">
+                    <div class="slds-tile">
+                        <div class="slds-tile__detail slds-text-body--small">
+                            <dl class="slds-dl--horizontal">
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Type">Type:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <span class="slds-truncate" title="Visit">Visit</span>
+                                </dd>
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Date">Date:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <span class="slds-truncate" title="1/31/15 3:45PM">1/31/15 3:45PM</span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="slds-tile">
+                        <h3 class="slds-truncate" title="Related Record Title 2"><a href="javascript:void(0);">Related
+                            Record Title 2</a></h3>
+                        <div class="slds-tile__detail slds-text-body--small">
+                            <dl class="slds-dl--horizontal">
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Type">Type:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <span class="slds-truncate" title="Visit">Visit</span>
+                                </dd>
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Date">Date:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <span class="slds-truncate" title="1/31/15 3:45PM">1/31/15 3:45PM</span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="slds-tile">
+                        <h3 class="slds-truncate" title="Related Record Title 3"><a href="javascript:void(0);">Related
+                            Record Title 3</a></h3>
+                        <div class="slds-tile__detail slds-text-body--small">
+                            <dl class="slds-dl--horizontal">
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Type">Type:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <span class="slds-truncate" title="Visit">Visit</span>
+                                </dd>
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Date">Date:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <span class="slds-truncate" title="1/31/15 3:45PM">1/31/15 3:45PM</span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-card__footer"><a href="javascript:void(0);">View All <span class="slds-assistive-text">entity type</span></a>
+            </div>
+        </article>
     </div>
+    <div class="col-md-4">
+        <article class="slds-card slds-card--narrow">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media--center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                        <ngl-icon icon="goals" category="standard"></ngl-icon>
+                    </div>
+                    <div class="slds-media__body slds-truncate">
+                        <h2>
+                            <a href="javascript:void(0);" class="slds-text-link--reset">
+                                <span class="slds-text-heading--small">店铺银行信息</span>
+                            </a>
+                        </h2>
+                    </div>
+                </header>
+            </div>
+            <div class="slds-card__body">
+                <div class="slds-card__body--inner">
+                    <div class="slds-tile">
+                        <div class="slds-tile__detail slds-text-body--small">
+                            <dl class="slds-dl--horizontal">
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Type">开户行支行:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <span class="slds-truncate" title="Visit">123456</span>
+                                </dd>
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Date">营业执照号:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <span class="slds-truncate" title="1/31/15 3:45PM">1234567890</span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="slds-tile">
+                        <div class="slds-tile__detail slds-text-body--small">
+                            <dl class="slds-dl--horizontal">
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Type">银行卡号:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <span class="slds-truncate" title="Visit">Visit</span>
+                                </dd>
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Date">开户行:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <span class="slds-truncate" title="1/31/15 3:45PM">1/31/15 3:45PM</span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="slds-tile">
+                        <div class="slds-tile__detail slds-text-body--small">
+                            <dl class="slds-dl--horizontal">
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Type">身份证号:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <span class="slds-truncate" title="Visit">320382199018762345</span>
+                                </dd>
+                                <dt class="slds-dl--horizontal__label">
+                                    <span class="slds-truncate" title="Date">姓名:</span>
+                                </dt>
+                                <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                                    <span class="slds-truncate" title="1/31/15 3:45PM">张三</span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-card__footer"><a href="javascript:void(0);">编辑 <span class="slds-assistive-text">entity type</span></a>
+            </div>
+        </article>
+    </div>
+</div>
+
+<div class="row">
+
 </div>

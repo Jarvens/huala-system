@@ -1,13 +1,16 @@
-.seller-detail{
+.seller-detail {
     margin-top: 20px;
 }
-.seller-detail .seller-title > h1{
+
+.seller-detail .seller-title > h1 {
     line-height: 40px;
 }
-/**
-暂时未用到。如果不指定的话。当店铺头像高度不够的情况下
-默认样式为height:auto
-**/
- .seller-detail .slds-avatar img{
-    height: 50px !important;
+
+.seller-head-img {
+    width: 5rem !important;
+    height: 5rem !important;
+}
+
+.seller-head-img:hover {
+    cursor: pointer;
 }
