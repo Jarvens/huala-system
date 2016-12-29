@@ -3,7 +3,6 @@
  */
 import {Component, OnInit} from "@angular/core";
 import {OrderService} from "../../service/order.service";
-
 @Component({
   moduleId: "OrderManage",
   selector: "order",

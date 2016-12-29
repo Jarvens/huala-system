@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
+import {Component, OnInit, ChangeDetectorRef, EventEmitter, Output} from '@angular/core';
 import {SellerService} from '../../service/seller.service';
 import {INglDatatableSort, INglDatatableRowClick} from 'ng-lightning/ng-lightning';
 @Component({
@@ -17,6 +17,7 @@ export class SellerListComponent implements OnInit {
   //全部:0   所属人:1
   keyType: string = '0';
   placeholder: string = '搜索  ID  名称 手机号';
+  @Output() sellerDetail = new EventEmitter<any>();
 
   constructor(private sellerService: SellerService, private cdr: ChangeDetectorRef) {
   }
@@ -30,9 +31,9 @@ export class SellerListComponent implements OnInit {
     this.showAlert = true;
   }
 
-  //Table点击事件
+  //Table点击事件  并且向上传递seller对象
   onRowClick($event: INglDatatableRowClick) {
-    console.log($event);
+    this.currentSeller = $event.data;
   }
 
   //关闭Toast
@@ -66,7 +67,7 @@ export class SellerListComponent implements OnInit {
   }
 
   //数据排序
-  onSort(event) {
+  onSort(event: INglDatatableSort) {
 
     /**
      *
@@ -74,5 +75,11 @@ export class SellerListComponent implements OnInit {
      * key:排序关键字
      * order:排序
      */
+  }
+
+  //店铺详情
+  sellerDetailInfo(value) {
+    console.log("点击了");
+    this.sellerDetail.emit(value);
   }
 }

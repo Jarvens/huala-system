@@ -34,7 +34,7 @@
         <template nglNoRowsOverlay>暂无数据!</template>
     </table>
     <ngl-pagination [(page)]="page" [total]="bannerList.total" [perPage]="bannerList.size" [limit]="pageOpts.limit"
-                    boundaryNumbers="1" #pagination (pageChange)="pageChange($event)"></ngl-pagination>
+                    boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页" nextText="下一页"></ngl-pagination>
 </div>
 
 <!--提示信息-->

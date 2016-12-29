@@ -15,14 +15,14 @@
     <ngl-datatable-column heading="操作" key="">
         <template nglDatatableCell let-row="row">
             <ngl-badge type="error" (click)="show()"><i class="fa fa-times"></i>删除</ngl-badge>
-            <ngl-badge type="info" (click)="show()"><i class="fa fa-info"></i>详情</ngl-badge>
+            <ngl-badge type="info" (click)="sellerDetailInfo(row)"><i class="fa fa-info"></i>详情</ngl-badge>
         </template>
     </ngl-datatable-column>
     <!-- No rows overlay -->
     <template nglNoRowsOverlay>暂无数据!</template>
 </table>
 <ngl-pagination [(page)]="pageOpts.page" [total]="sellerList.total" [perPage]="sellerList.size" [limit]="pageOpts.limit"
-                boundaryNumbers="1" #pagination (pageChange)="pageChange($event)"></ngl-pagination>
+                boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页" nextText="下一页"></ngl-pagination>
 
 <div class="slds-notify_container">
     <ngl-notification *ngIf="showAlert" type="alert" severity="error" (nglNotificationClose)="onClose($event)"

@@ -31,7 +31,5 @@ export class NavLeftComponent implements OnInit {
         }
         //向上溢出父级菜单
         this.parentMenu.emit(menu.name);
-        console.log("向上传递");
-        console.log(menu.name);
     }
 }
