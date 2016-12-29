@@ -12,7 +12,6 @@ export class SellerMainComponent implements OnChanges {
 
   }
 
-
   //通过seller-list页面传递值 自动切换tab页
   switchTabs(event) {
     this.detailFromSellerList = event;

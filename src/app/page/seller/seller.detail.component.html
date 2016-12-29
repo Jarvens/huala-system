@@ -1,16 +1,37 @@
 <div class="row">
     <div class="col-md-6">
-        <div class="card">
-            <div class="card-block">
-                店铺基本信息
+        <div class="slds-box slds-theme--shade slds-theme--alert-texture">
+            <div class="row">
+                <ngl-breadcrumbs assistiveText="Breadcrumbs" class="slds-m-top--large">
+                    <a *nglBreadcrumb href="javascript:void(0)">店铺基本信息</a>
+                </ngl-breadcrumbs>
+            </div>
+            <div class="row seller-detail">
+                <div class="col-md-2">
+                    <ngl-avatar size="large" type="circle" [src]="commonImgUrl+detailFromSellerMain.imgUrl"
+                                alt="店铺头像"></ngl-avatar>
+                </div>
+                <div class="col-md-4 seller-title">
+                    <h1 class="slds-text-heading--small">{{detailFromSellerMain.name}}</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="slds-text-title--caps slds-text-align--center">店铺类型:</div>
+                </div>
+                <div class="col-md-2">
+                    <div class="slds-text-title--caps slds-text-align--center">营业状态:</div>
+                    <ngl-badge>已上线</ngl-badge>
+                </div>
             </div>
         </div>
     </div>
     <div class="col-md-6">
-        <div class="card">
-
-            <div class="card-block">
-                店铺附加信息
+        <div class="slds-box slds-theme--shade slds-theme--alert-texture">
+            <div class="row">
+                <ngl-breadcrumbs assistiveText="Breadcrumbs" class="slds-m-top--large">
+                    <a *nglBreadcrumb href="javascript:void(0)">店铺附加信息</a>
+                </ngl-breadcrumbs>
             </div>
         </div>
     </div>
