@@ -10,12 +10,10 @@ export class SellerDetailComponent implements OnChanges {
 
   ngOnChanges(changes): void {
     let change = changes['detailFromSellerMain'];
-    if (!change) {
+    if (!change.currentValue.id) {
       return;
     }
     if (change.currentValue != change.previousValue) {
-      console.log("改变了");
-      console.log(change);
       console.log("调用根据店铺id查询方法");
     }
   }
