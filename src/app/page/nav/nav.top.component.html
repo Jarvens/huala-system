@@ -37,13 +37,13 @@
 <ngl-modal [header]="noHeader ? '' : '修改密码'" [(open)]="opened" [directional]="directional" class="small-modal">
     <div body>
         <ngl-form-element label="原始密码" [error]="hasError ? error : null" class="slds-m-top--small">
-            <input nglFormControl type="text" placeholder="原始密码" [required]="required">
+            <input nglFormControl type="text" [required]="required">
         </ngl-form-element>
         <ngl-form-element label="新密码" [error]="hasError ? error : null" class="slds-m-top--small">
-            <input nglFormControl type="text" placeholder="新密码" [required]="required">
+            <input nglFormControl type="text" [required]="required">
         </ngl-form-element>
         <ngl-form-element label="确认密码" [error]="hasError ? error : null" class="slds-m-top--small">
-            <input nglFormControl type="text" placeholder="确认密码" [required]="required">
+            <input nglFormControl type="text" [required]="required">
         </ngl-form-element>
     </div>
     <template ngl-modal-footer *ngIf="!noFooter">
