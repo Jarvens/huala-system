@@ -1,5 +1,5 @@
 import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
-import {INglDatatableSort, INglDatatableRowClick,} from 'ng-lightning/ng-lightning';
+import {INglDatatableSort, INglDatatableRowClick} from 'ng-lightning/ng-lightning';
 import {BannerService} from '../../service/banner.service';
 import {Observable} from 'rxjs/Observable';
 @Component({
