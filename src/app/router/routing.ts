@@ -11,6 +11,7 @@ import {SellerMainComponent} from '../page/seller/seller.main.component';
 import {PictureComponent} from '../page/system/picture/picture.component';
 import {AppVersionComponent} from '../page/system/app/app.version.component';
 import {OrderComponent} from '../page/order/order.component';
+import {UserComponent} from '../page/system/user/user.component';
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
@@ -23,8 +24,9 @@ const routes: Routes = [
       {path: 'card-list', component: CardComponent},
       {path: 'seller-info', component: SellerMainComponent},
       {path: 'system-img-manage', component: PictureComponent},
-      {path: 'app/app-version-index',component: AppVersionComponent},
-      {path: 'order', component: OrderComponent}
+      {path: 'app/app-version-index', component: AppVersionComponent},
+      {path: 'order', component: OrderComponent},
+      {path: 'system-user-manage', component: UserComponent}
     ]
   },
 ];

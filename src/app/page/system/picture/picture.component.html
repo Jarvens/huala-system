@@ -4,9 +4,26 @@
             <div class="row">
                 <div class="col-md-2"
                      *ngFor="let picture of pictureList.children">
+                    <!--展示文件夹-->
                     <ngl-icon *ngIf="picture.hasChildren==true" icon="image" category="doctype" size="large"
                               class="large"></ngl-icon>
                     <br>
+                    <!--展示图片-->
+                    <!--<figure class="slds-image slds-image&#45;&#45;card">-->
+                        <!--<a href="javascript:void(0);" class="slds-image__crop slds-image__crop&#45;&#45;16-by-9">-->
+                            <!--<img src="/assets/images/placeholder-img@16x9.jpg" alt="Description of the image">-->
+                        <!--</a>-->
+                        <!--<figcaption class="slds-image__title slds-image__title&#45;&#45;card">-->
+                                <!--<span class="slds-icon_container slds-m-right&#45;&#45;x-small" title="image">-->
+                                        <!--<svg aria-hidden="true" class="slds-icon slds-icon&#45;&#45;x-small">-->
+                                        <!--<use xmlns:xlink="http://www.w3.org/1999/xlink"-->
+                                        <!--xlink:href="/assets/icons/doctype-sprite/svg/symbols.svg#image"></use>-->
+                                        <!--</svg>-->
+                                        <!--<span class="slds-assistive-text">image</span>-->
+                                <!--</span>-->
+                                <!--<span class="slds-image__text slds-truncate" title="Image Title">Image Title</span>-->
+                        <!--</figcaption>-->
+                    <!--</figure>-->
                     <img *ngIf="picture.hasChildren!=true" data-src="{{commonImgUrl}}/{{folder}}{{picture.name}}" alt=""
                          style="height: 80px;width: 80px"><br>
                     <span>{{picture.name}}</span>

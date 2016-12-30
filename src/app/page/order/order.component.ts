@@ -9,7 +9,6 @@ import {OrderService} from "../../service/order.service";
   templateUrl: "./order.component.html"
 })
 export class OrderComponent implements OnInit {
-  //订单查询条件;
   public orderReq: any = {
     keyType: "all",
     orderType: "0",
@@ -17,11 +16,11 @@ export class OrderComponent implements OnInit {
     searchKey: "",
     startTime: "",
     endTime: ""
-  };
-  //搜索提示
-  placeholder: string = '这是搜索提示信息';
-  //分页对象
-  pageOpts: any = {total: 100, limit: 5, perPage: 10, page: 1};
+  }; //订单查询条件;
+  public placeholder: string = '这是搜索提示信息'; //搜索提示
+  public pageOpts: any = {total: 100, limit: 5, perPage: 10, page: 1}; //分页对象
+  public opened:boolean = false; //显示详情的标记位;
+  public curOrder:any; //当前订单;
   public orderList: any = [];
 
   constructor(public orderService: OrderService) {
@@ -31,6 +30,11 @@ export class OrderComponent implements OnInit {
     this.getOrderList(null);
   }
 
+  /*
+   * @description: Get orders list by page number.
+   * @params: Number(pageNum).
+   * @modified date: 2016/12/29/.
+   */
   getOrderList(pageNum: any): void {
     let pData:any = {
       page: 1,
@@ -59,5 +63,15 @@ export class OrderComponent implements OnInit {
         r.payAmount = r.payAmount/100;
       });
     });
+  }
+
+  /*
+   * @description: Show order detail.
+   * @params: orderInfo.
+   * @modified date: 2016/12/30.
+   */
+  showDetail(orderInfo):void {
+    this.opened = true;
+    this.curOrder = orderInfo;
   }
 }

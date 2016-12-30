@@ -30,6 +30,7 @@ import {SellerListComponent} from './page/seller/seller.list.component';
 import {SellerDetailComponent} from './page/seller/seller.detail.component';
 import {PictureComponent} from './page/system/picture/picture.component';
 import {AppVersionComponent} from './page/system/app/app.version.component';
+import {UserComponent} from './page/system/user/user.component';
 //订单管理
 import {OrderComponent} from './page/order/order.component';
 import {OrderService} from './service/order.service';
@@ -52,7 +53,6 @@ import {ThreeElementExpression} from './pipe/three.element.expression';
 /**
  * 业务Service
  */
-//活动
 import {ActivityService} from './service/activity.service';
 import {LoginService} from './service/login.service';
 import {MenuService} from './service/menu.service';
@@ -61,6 +61,7 @@ import {ChartService} from './service/chart.service';
 import {SellerService} from './service/seller.service';
 import {PictureService} from './service/picture.service';
 import {AppService} from './service/app.service';
+import {UserService} from './service/user.service';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -88,7 +89,8 @@ import {AppService} from './service/app.service';
     AppVersionComponent,
     BreadCrumbsComponent,
     PictureComponent,
-    OrderComponent
+    OrderComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -108,7 +110,8 @@ import {AppService} from './service/app.service';
     SellerService,
     PictureService,
     AppService,
-    OrderService
+    OrderService,
+    UserService
   ]
 })
 export class AppModule {

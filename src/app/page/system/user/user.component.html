@@ -1,1 +1,113 @@
-这是用户管理
+<h1 class="slds-text-heading--large">用户管理</h1>
+<article class="slds-card">
+    <div class="slds-card__header slds-grid">
+        <header class="slds-media slds-media--center slds-has-flexi-truncate">
+            <div class="col-md-6">
+                <search-component [showIcon]="false" [debounce]="2000" (selectScope)="selectScope($event)"
+                                  [placeHolder]="placeholder"
+                                  (searchKey)="searchByCondition($event)"></search-component>
+            </div>
+        </header>
+        <div class="slds-no-flex">
+            <button class="slds-button slds-button--neutral" (click)="openModal()">创建</button>
+        </div>
+    </div>
+    <div class="slds-card__body">
+        <table ngl-datatable [data]="userList.rows" trackByKey="rank" [loading]="loading" [(sort)]="sort"
+               (sortChange)="onSort($event)" (onRowClick)="onRowClick($event)"
+               class="slds-max-medium-table--stacked-horizontal">
+            <ngl-datatable-column heading="ID" key="id" cellClass="slds-truncate"></ngl-datatable-column>
+            <ngl-datatable-column heading="姓名" key="name" cellClass="slds-truncate"></ngl-datatable-column>
+            <ngl-datatable-column heading="账号" key="account" cellClass="slds-truncate"></ngl-datatable-column>
+            <ngl-datatable-column heading="手机" key="mobile" cellClass="slds-truncate"></ngl-datatable-column>
+            <ngl-datatable-column heading="邮箱" key="email" cellClass="slds-truncate"></ngl-datatable-column>
+            <ngl-datatable-column heading="性别" key="sex" cellClass="slds-truncate"></ngl-datatable-column>
+            <ngl-datatable-column heading="操作" key="">
+                <template nglDatatableCell let-row="row">
+                    <ngl-badge type="error" (click)="show()"><i class="fa fa-times"></i>删除</ngl-badge>
+                    <ngl-badge type="info" (click)="sellerDetailInfo(row)"><i class="fa fa-info"></i>详情</ngl-badge>
+                </template>
+            </ngl-datatable-column>
+            <!-- No rows overlay -->
+            <template nglNoRowsOverlay>暂无数据!</template>
+        </table>
+    </div>
+    <div class="slds-card__footer">
+        <ngl-pagination [(page)]="page" [total]="userList.total" [perPage]="userList.size" [limit]="pageOpts.limit"
+                        boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                        nextText="下一页"></ngl-pagination>
+    </div>
+</article>
+<!--用户新增模态-->
+<ngl-modal [header]="noHeader ? '' : '新增用户'" [(open)]="opened" [size]="size" [directional]="directional" class =“small-modal”>
+    <div body>
+        <div class="row">
+            <div class="col-md-6">
+                <ngl-form-element label="账号" [error]="hasError ? error : null" class="slds-m-top--small">
+                    <input nglFormControl type="text" placeholder="" [required]="required">
+                </ngl-form-element>
+            </div>
+            <div class="col-md-6">
+                <ngl-form-element label="密码" [error]="hasError ? error : null" class="slds-m-top--small">
+                    <input nglFormControl type="password" placeholder="" [required]="required">
+                </ngl-form-element>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <ngl-form-element label="性别" [error]="hasError ? error : null" class="slds-m-top--small">
+                    <select nglFormControl class="slds-select" [required]="required">
+                        <option>男</option>
+                        <option>女</option>
+                    </select>
+                </ngl-form-element>
+            </div>
+            <div class="col-md-6">
+                <ngl-form-element label="角色" [error]="hasError ? error : null" class="slds-m-top--small">
+                    <select nglFormControl class="slds-select" [required]="required">
+                        <option>角色一</option>
+                        <option>角色二</option>
+                    </select>
+                </ngl-form-element>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <ngl-form-element label="姓名" [error]="hasError ? error : null" class="slds-m-top--small">
+                    <input nglFormControl type="text" placeholder="" [required]="required">
+                </ngl-form-element>
+            </div>
+            <div class="col-md-6">
+                <ngl-form-element label="年龄" [error]="hasError ? error : null" class="slds-m-top--small">
+                    <input nglFormControl type="text" placeholder="" [required]="required">
+                </ngl-form-element>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <ngl-form-element label="手机号码" [error]="hasError ? error : null" class="slds-m-top--small">
+                    <input nglFormControl type="text" placeholder="" [required]="required">
+                </ngl-form-element>
+            </div>
+            <div class="col-md-6">
+                <ngl-form-element label="是否有效" [error]="hasError ? error : null" class="slds-m-top--small">
+                    <select nglFormControl class="slds-select" [required]="required">
+                        <option>有效</option>
+                        <option>无效</option>
+                    </select>
+                </ngl-form-element>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ngl-form-element label="身份证" [error]="hasError ? error : null" class="slds-m-top--small">
+                    <input nglFormControl type="text" placeholder="" [required]="required">
+                </ngl-form-element>
+            </div>
+        </div>
+    </div>
+    <template ngl-modal-footer *ngIf="!noFooter">
+        <button class="slds-button slds-button--neutral" (click)="cancel()">取消</button>
+        <button class="slds-button slds-button--brand">保存</button>
+    </template>
+</ngl-modal>
