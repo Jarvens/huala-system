@@ -33,7 +33,6 @@ export class SellerListComponent implements OnInit {
 
   //Table点击事件  并且向上传递seller对象
   onRowClick($event: INglDatatableRowClick) {
-    this.currentSeller = $event.data;
   }
 
   //关闭Toast

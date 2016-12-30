@@ -1,9 +1,9 @@
-import {Component, OnChanges} from '@angular/core';
+import {Component} from '@angular/core';
 @Component({
   selector: 'seller-main-component',
   templateUrl: './seller.main.component.html'
 })
-export class SellerMainComponent implements OnChanges {
+export class SellerMainComponent {
   selected: string = 'list';
   //seller-list页面传递过来的seller对象
   detailFromSellerList: any = {};
