@@ -12,6 +12,7 @@ import {PictureComponent} from '../page/system/picture/picture.component';
 import {AppVersionComponent} from '../page/system/app/app.version.component';
 import {OrderComponent} from '../page/order/order.component';
 import {UserComponent} from '../page/system/user/user.component';
+import {MessageComponent} from '../page/system/message/message.component';
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
@@ -26,7 +27,8 @@ const routes: Routes = [
       {path: 'system-img-manage', component: PictureComponent},
       {path: 'app/app-version-index', component: AppVersionComponent},
       {path: 'order', component: OrderComponent},
-      {path: 'system-user-manage', component: UserComponent}
+      {path: 'system-user-manage', component: UserComponent},
+      {path: 'system-sms', component: MessageComponent}
     ]
   },
 ];

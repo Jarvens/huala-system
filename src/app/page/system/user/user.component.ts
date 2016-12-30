@@ -30,7 +30,6 @@ export class UserComponent implements OnInit {
   getUserList(page: any, key: string) {
     this.userService.getUserList(page, key).subscribe(res=> {
       this.userList = res.json();
-      console.log(res.json());
     });
   }
 
@@ -50,7 +49,7 @@ export class UserComponent implements OnInit {
     this.getUserList(this.pageOpts, event);
   }
 
-  //分页事件
+  //分页
   pageChange(event) {
     this.pageOpts.page = event;
     this.getUserList(this.pageOpts, this.key);
@@ -59,6 +58,16 @@ export class UserComponent implements OnInit {
   //打开创建用户modal
   openModal() {
     this.opened = !this.opened;
+  }
+
+  //创建用户模态取消事件
+  cancel() {
+    this.opened = !this.opened;
+  }
+
+  //保存用户
+  saveUser(){
+
   }
 
 }

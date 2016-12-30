@@ -31,10 +31,8 @@ import {SellerDetailComponent} from './page/seller/seller.detail.component';
 import {PictureComponent} from './page/system/picture/picture.component';
 import {AppVersionComponent} from './page/system/app/app.version.component';
 import {UserComponent} from './page/system/user/user.component';
-//订单管理
 import {OrderComponent} from './page/order/order.component';
-import {OrderService} from './service/order.service';
-
+import {MessageComponent} from './page/system/message/message.component';
 /**
  *
  * 公用组件
@@ -62,6 +60,7 @@ import {SellerService} from './service/seller.service';
 import {PictureService} from './service/picture.service';
 import {AppService} from './service/app.service';
 import {UserService} from './service/user.service';
+import {OrderService} from './service/order.service';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -90,7 +89,8 @@ import {UserService} from './service/user.service';
     BreadCrumbsComponent,
     PictureComponent,
     OrderComponent,
-    UserComponent
+    UserComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
