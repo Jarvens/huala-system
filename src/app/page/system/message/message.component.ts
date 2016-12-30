@@ -20,6 +20,8 @@ export class MessageComponent implements OnInit {
   smsStatus: string = '';
   //短信类型
   type: string = '';
+  //section打开or关闭
+  open: boolean = false;
 
   ngOnInit(): void {
     this.getMessageList(null, this.key, this.type, this.smsStatus);
@@ -34,7 +36,13 @@ export class MessageComponent implements OnInit {
   getMessageList(page: any, key: string, type: string, status: string) {
     this.messageService.getMessageList(page, key, type, status).subscribe(res=> {
       this.messageList = res.json();
+      console.log(res.json());
     });
+  }
+
+  //分页
+  pageChange(event){
+
   }
 
 }

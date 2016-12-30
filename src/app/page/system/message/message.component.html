@@ -7,9 +7,10 @@
     </div>
     <div class="col-md-4"></div>
 </div>
+
 <article class="slds-card">
     <div class="slds-card__body">
-        <table ngl-datatable [data]="bannerList.rows" trackByKey="rank" [loading]="loading" [(sort)]="sort"
+        <table ngl-datatable [data]="messageList.rows" trackByKey="rank" [loading]="loading" [(sort)]="sort"
                (sortChange)="onSort($event)"
                (onRowClick)="onRowClick($event)" class="slds-max-medium-table--stacked-horizontal">
             <ngl-datatable-column heading="名称" key="bannerName" sortable></ngl-datatable-column>
@@ -42,7 +43,7 @@
         </table>
     </div>
     <div class="slds-card__footer">
-        <ngl-pagination [(page)]="page" [total]="bannerList.total" [perPage]="bannerList.size" [limit]="pageOpts.limit"
+        <ngl-pagination [(page)]="page" [total]="messageList.total" [perPage]="messageList.size" [limit]="pageOpts.limit"
                         boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
                         nextText="下一页"></ngl-pagination>
     </div>

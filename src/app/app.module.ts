@@ -61,6 +61,7 @@ import {PictureService} from './service/picture.service';
 import {AppService} from './service/app.service';
 import {UserService} from './service/user.service';
 import {OrderService} from './service/order.service';
+import {MessageService} from './service/message.service';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -111,7 +112,8 @@ import {OrderService} from './service/order.service';
     PictureService,
     AppService,
     OrderService,
-    UserService
+    UserService,
+    MessageService
   ]
 })
 export class AppModule {
