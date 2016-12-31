@@ -43,17 +43,15 @@
                 </ngl-form-element>
             </div>
         </div>
-        <ngl-form-element label="图片" [error]="hasError ? error : null" class="slds-m-top--small">
-            <input nglFormControl type="text" [required]="required" hidden>
-            <div style="border: 1px dashed #ccc; width: 100%;height: 100px;">
+        <div class="row">
+            <div class="col-md-4">
+                <img-upload-component></img-upload-component>
             </div>
-        </ngl-form-element>
-        <button type="button" nglButton="neutral" (click)="openModal()">选择图片</button>
+        </div>
         <ngl-form-element class="slds-m-top--small">
             <input nglFormControl type="text" hidden>
             <button type="info" nglButton="neutral" (click)="change()">保存</button>
         </ngl-form-element>
-
     </div>
     <div class="col-md-2"></div>
 </div>

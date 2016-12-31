@@ -1,12 +1,17 @@
-<div class="row">
-
-    <div class="col-md-4"></div>
-    <div class="col-md-6">
-        <div style="border: 1px dashed #ccc; width: 100px;height: 100px;">
-            <img src="assets/images/avatar1.jpg" width="100" height="100" alt="">
+<div class="slds-form-element">
+    <span class="slds-form-element__label" id="file-selector-id">图片</span>
+    <div class="slds-form-element__control">
+        <div class="slds-file-selector slds-file-selector--images">
+            <div class="slds-file-selector__dropzone">
+                <input class="slds-file-selector__input slds-assistive-text" accept="image/png" type="file"
+                       id="file-upload-input-01" aria-describedby="file-selector-id"/>
+                <label class="slds-file-selector__body" for="file-upload-input-01">
+          <span class="slds-file-selector__button slds-button slds-button--neutral">
+            <svg aria-hidden="true" class="slds-button__icon slds-button__icon--left">
+              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#upload"></use>
+            </svg>选择图片</span>
+                </label>
+            </div>
         </div>
     </div>
-    <div class="col-md-2"></div>
 </div>
-
-<ngl-badge type="success">选择图片</ngl-badge>

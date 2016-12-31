@@ -13,25 +13,13 @@
         <table ngl-datatable [data]="messageList.rows" trackByKey="rank" [loading]="loading" [(sort)]="sort"
                (sortChange)="onSort($event)"
                (onRowClick)="onRowClick($event)" class="slds-max-medium-table--stacked-horizontal">
-            <ngl-datatable-column heading="名称" key="bannerName" sortable></ngl-datatable-column>
-            <ngl-datatable-column heading="图片" key="imgUrl">
-                <template nglDatatableCell let-value>
-                    <img [src]="commonImgUrl+value" width="100" height="100" class="img-thumbnail" alt="">
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="作用范围" key="scopeSeller">
-                <template nglDatatableCell let-value>
-                    <span>{{value=='all'|threeElementExpression:'全部;部分'}}</span>
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="类型" key="bannerType">
-                <template nglDatatableCell let-value>
-                    <span>{{value=='seller'|threeElementExpression:'商户端;用户端'}}</span>
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="所属区域" key="city"></ngl-datatable-column>
-            <ngl-datatable-column heading="开始时间" key="startTime"></ngl-datatable-column>
-            <ngl-datatable-column heading="结束时间" key="endTime"></ngl-datatable-column>
+            <ngl-datatable-column heading="ID" key="id" sortable></ngl-datatable-column>
+            <ngl-datatable-column heading="手机号" key="mobile"></ngl-datatable-column>
+            <ngl-datatable-column heading="短信类型" key="type"></ngl-datatable-column>
+            <ngl-datatable-column heading="创建时间" key="gmtCreate"></ngl-datatable-column>
+            <ngl-datatable-column heading="发送状态" key="smsStatus"></ngl-datatable-column>
+            <ngl-datatable-column heading="错误编码" key="erroecode"></ngl-datatable-column>
+            <ngl-datatable-column heading="错误信息" key="errormessage"></ngl-datatable-column>
             <ngl-datatable-column heading="创建时间" key="addTime">
             </ngl-datatable-column>
             <ngl-datatable-column heading="操作" key="">

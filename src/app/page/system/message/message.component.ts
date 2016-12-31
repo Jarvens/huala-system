@@ -17,9 +17,9 @@ export class MessageComponent implements OnInit {
   key: string = '';
   placeholder: string = '手机号';
   //短信状态
-  smsStatus: string = '';
+  smsStatus: string = 'all';
   //短信类型
-  type: string = '';
+  type: string = 'all';
   //section打开or关闭
   open: boolean = false;
 
