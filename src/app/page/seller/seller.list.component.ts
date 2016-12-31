@@ -36,7 +36,7 @@ export class SellerListComponent implements OnInit {
   }
 
   //关闭Toast
-  onClose(reason: string) {
+  onClose() {
     this.showAlert = false;
   }
 

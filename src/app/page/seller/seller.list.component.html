@@ -38,7 +38,7 @@
     </div>
 </article>
 <div class="slds-notify_container">
-    <ngl-notification *ngIf="showAlert" type="alert" severity="error" (nglNotificationClose)="onClose($event)"
+    <ngl-notification *ngIf="showAlert" type="alert" severity="error" (nglNotificationClose)="onClose()"
                       timeout="5000" class="slds-theme--alert-texture">
         <h2>您的权限不足,请联系管理员~</h2>
     </ngl-notification>
