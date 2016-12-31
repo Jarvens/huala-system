@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 	}
 
 	//关闭登录Toast
-	onClose (reason: string) {
+	onClose () {
 		this.showAlert = false;
 	}
 

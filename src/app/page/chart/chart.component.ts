@@ -13,8 +13,6 @@ export class ChartComponent implements OnInit {
 	ngOnInit (): void {
 		this.chartService.getChartData().subscribe(res=>{
 			this.chartData = res.json();
-			console.log("chartData");
-			console.log(res.json());
 		});
 	}
 
