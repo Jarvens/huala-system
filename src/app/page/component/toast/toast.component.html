@@ -1,6 +1,6 @@
 <div class="slds-notify_container">
-    <ngl-notification *ngIf="showAlert" type="toast" severity="error" (nglNotificationClose)="onClose()"
-                      timeout="5000" class="slds-theme--alert-texture">
-        <h2>用户名或密码错误,请联系管理员！</h2>
+    <ngl-notification *ngIf="showAlert" type="toast" [severity]="toastType" (nglNotificationClose)="onClose()"
+                      [timeout]="timeOut" class="slds-theme--alert-texture">
+        <h2>{{toastMessage}}</h2>
     </ngl-notification>
 </div>

@@ -13,7 +13,7 @@ export class ToastComponent {
   //toast提示类型  success | error| warning |info
   @Input() toastType: string = 'error';
   //显示|关闭toast
-  showAlert: boolean = false;
+  @Input() showAlert: boolean = false;
   //关闭方法
   onClose() {
     this.showAlert = !this.showAlert;

@@ -20,8 +20,10 @@ export class AppVersionComponent implements OnInit {
   //模态显示
   opened: boolean = false;
   //Toast提示
-  toastOpen: boolean = false;
   toastMessage: string = '';
+  toastType: string = 'error';
+  //显示|关闭toast
+  showAlert: boolean = false;
   //appObj
   appObj: any = {};
 
@@ -54,16 +56,14 @@ export class AppVersionComponent implements OnInit {
       let ret = res.json();
       if (ret.success) {
         this.toastMessage = '保存成功';
-        this.toastOpen = !this.toastOpen;
+        this.showAlert = !this.showAlert;
+        this.toastType = 'success';
       } else {
         this.toastMessage = ret.message;
-        this.toastOpen = !this.toastOpen;
+        this.showAlert = !this.showAlert;
+        this.toastType = 'error';
       }
     });
-  }
-
-  onClose() {
-    this.toastOpen = !this.toastOpen;
   }
 
 }

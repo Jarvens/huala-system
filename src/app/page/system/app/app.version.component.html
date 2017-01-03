@@ -100,8 +100,4 @@
 
 
 <!--Toast-->
-<div class="slds-notify_container">
-    <ngl-notification *ngIf="toastOpen" type="toast" severity="error" (nglNotificationClose)="onClose($event)" timeout="5000" class="slds-theme--alert-texture">
-        <h2>{{toastMessage}}</h2>
-    </ngl-notification>
-</div>
+<toast-component [showAlert]="showAlert" [toastMessage]="toastMessage" [toastType]="toastType" ></toast-component>
