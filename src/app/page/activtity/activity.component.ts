@@ -2,103 +2,105 @@ import {Component, OnInit} from '@angular/core';
 import {INglDatatableSort, INglDatatableRowClick} from 'ng-lightning/ng-lightning';
 import {ActivityService} from '../../service/activity.service';
 const DATA = [
-	{rank: 1, name: 'Kareem', surname: 'Abdul-Jabbar', points: 38387},
-	{rank: 2, name: 'Karl', surname: 'Malone', points: 36928},
-	{rank: 3, name: 'Kobe', surname: 'Bryant', points: 33643},
-	{rank: 4, name: 'Michael', surname: 'Jordan', points: 32292},
-	{rank: 5, name: 'Wilt', surname: 'Chamberlain', points: 31419},
+  {rank: 1, name: 'Kareem', surname: 'Abdul-Jabbar', points: 38387},
+  {rank: 2, name: 'Karl', surname: 'Malone', points: 36928},
+  {rank: 3, name: 'Kobe', surname: 'Bryant', points: 33643},
+  {rank: 4, name: 'Michael', surname: 'Jordan', points: 32292},
+  {rank: 5, name: 'Wilt', surname: 'Chamberlain', points: 31419},
 ];
 @Component({
-	selector: 'activity-component',
-	templateUrl: './activity.component.html'
+  selector: 'activity-component',
+  templateUrl: './activity.component.html'
 })
 
 export class ActivityComponent implements OnInit {
-	constructor (private activityService: ActivityService) {}
-	showAlert = false;
-	required: boolean = true;
-	startDate: Date = new Date();
-	endDate: Date = new Date();
-	showStartDate: boolean = false;
-	showEndDate: boolean = false;
-	monthNames: Array<string> = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
-	dayNamesShort: Array<string> = ['日', '一', '二', '三', '四', '五', '六',];
+  constructor(private activityService: ActivityService) {
+  }
 
-	onClose (reason: string) {
-		console.log(`Alert closed by ${reason}`);
-		this.showAlert = false;
-	}
+  showAlert = false;
+  required: boolean = true;
+  startDate: Date = new Date();
+  endDate: Date = new Date();
+  showStartDate: boolean = false;
+  showEndDate: boolean = false;
+  monthNames: Array<string> = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+  dayNamesShort: Array<string> = ['日', '一', '二', '三', '四', '五', '六',];
 
-	show () {
-		this.showAlert = true;
-	}
+  onClose(reason: string) {
+    console.log(`Alert closed by ${reason}`);
+    this.showAlert = false;
+  }
 
-	card: any = {types: '0'};
-	total = 172;
+  show() {
+    this.showAlert = true;
+  }
 
-	pageDefault: number;
-	pageBoundary: number;
-	page: number;
+  card: any = {types: '0'};
+  total = 172;
 
-	ngOnInit (): void {
-		//
-		//this.activityService.getCardList(null, this.card).subscribe(res=> {
-		//	console.log("请求了");
-		//	console.log(res);
-		//});
-	}
+  pageDefault: number;
+  pageBoundary: number;
+  page: number;
 
-	data = DATA;
+  ngOnInit(): void {
+    //
+    //this.activityService.getCardList(null, this.card).subscribe(res=> {
+    //	console.log("请求了");
+    //	console.log(res);
+    //});
+  }
 
-	// Initial sort
-	sort: INglDatatableSort = {key: 'rank', order: 'asc'};
+  data = DATA;
 
-	// Show loading overlay
-	loading = false;
+  // Initial sort
+  sort: INglDatatableSort = {key: 'rank', order: 'asc'};
 
-	// Toggle name column
-	hideName = false;
+  // Show loading overlay
+  loading = false;
 
-	// Custom sort function
-	onSort ($event: INglDatatableSort) {
-		const {key, order} = $event;
-		this.data.sort((a: any, b: any) => {
-			return (key === 'rank' ? b[key] - a[key] : b[key].localeCompare(a[key])) * (order === 'desc' ? 1 : -1);
-		});
-	}
+  // Toggle name column
+  hideName = false;
 
-	toggleData () {
-		this.data = this.data ? null : DATA;
-	}
+  // Custom sort function
+  onSort($event: INglDatatableSort) {
+    const {key, order} = $event;
+    this.data.sort((a: any, b: any) => {
+      return (key === 'rank' ? b[key] - a[key] : b[key].localeCompare(a[key])) * (order === 'desc' ? 1 : -1);
+    });
+  }
 
-	onRowClick ($event: INglDatatableRowClick) {
-		console.log('clicked row', $event.data);
-	}
+  toggleData() {
+    this.data = this.data ? null : DATA;
+  }
 
-	opened: boolean = false;
-	size: string;
+  onRowClick($event: INglDatatableRowClick) {
+    console.log('clicked row', $event.data);
+  }
 
-	noHeader: boolean = false;
-	noFooter: boolean = false;
-	directional: boolean = false;
+  opened: boolean = false;
+  size: string;
 
-	open (size?: string) {
-		this.size = size;
-		this.opened = !this.opened;
-	}
+  noHeader: boolean = false;
+  noFooter: boolean = false;
+  directional: boolean = false;
 
-	cancel () {
-		this.opened = false;
-	}
+  open(size?: string) {
+    this.size = size;
+    this.opened = !this.opened;
+  }
 
-	//开始时间change事件
-	startDateChange (event: any) {
-		this.showStartDate = !this.showStartDate;
-	}
+  cancel() {
+    this.opened = false;
+  }
 
-	//结束时间change事件
-	endDateChange (event: any) {
-		this.showEndDate = !this.showEndDate;
-	}
+  //开始时间change事件
+  startDateChange(event: any) {
+    this.showStartDate = !this.showStartDate;
+  }
+
+  //结束时间change事件
+  endDateChange(event: any) {
+    this.showEndDate = !this.showEndDate;
+  }
 
 }

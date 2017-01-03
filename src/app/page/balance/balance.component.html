@@ -1,1 +1,44 @@
-结算管理
+<article class="slds-card">
+    <div class="slds-card__header slds-grid">
+        <header class="slds-media slds-media--center slds-has-flexi-truncate">
+
+        </header>
+    </div>
+    <div class="slds-card__body">
+        <table ngl-datatable [data]="balanceList.rows" class="slds-max-medium-table--stacked-horizontal">
+            <ngl-datatable-column heading="日期" key="date">
+                <template nglDatatableCell let-row="row">
+                    <span>{{row.date}}</span>
+                    <span class="text-danger">(共{{row.sellerCount}}家)</span>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="应发金额" key="amount">
+                <template nglDatatableCell let-value>
+                    <ngl-badge type="info">{{value/100|number:'1.2-2'}}</ngl-badge>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="已发金额" key="haveSendAmount">
+                <template nglDatatableCell let-value>
+                    <ngl-badge type="success">{{value/100|number:'1.2-2'}}</ngl-badge>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="未发金额" key="noSendAmount">
+                <template nglDatatableCell let-value>
+                    <ngl-badge type="warning">{{value/100|number:'1.2-2'}}</ngl-badge>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="出错金额" key="failSendAmount">
+                <template nglDatatableCell let-value>
+                    <ngl-badge type="error">{{value/100|number:'1.2-2'}}</ngl-badge>
+                </template>
+            </ngl-datatable-column>
+            <template nglNoRowsOverlay>暂无数据!</template>
+        </table>
+    </div>
+    <div class="slds-card__footer">
+        <ngl-pagination [(page)]="page" [total]="balanceList.total" [perPage]="balanceList.size"
+                        [limit]="pageOpts.limit"
+                        boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                        nextText="下一页"></ngl-pagination>
+    </div>
+</article>
