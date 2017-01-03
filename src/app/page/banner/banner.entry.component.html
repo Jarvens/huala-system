@@ -1,17 +1,17 @@
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-        <ngl-form-element label="名称" [error]="hasError ? error : null" class="slds-m-top--small">
+        <ngl-form-element label="名称" class="slds-m-top--small">
             <input nglFormControl type="text" [required]="required">
         </ngl-form-element>
-        <ngl-form-element label="类型" [error]="hasError ? error : null" class="slds-m-top--small">
+        <ngl-form-element label="类型" class="slds-m-top--small">
             <select nglFormControl class="slds-select" [required]="required">
                 <option>用户端</option>
                 <option>商户端</option>
             </select>
         </ngl-form-element>
 
-        <fieldset ngl-form-group label="商家范围" [required]="required" [error]="hasError ? error : null"
+        <fieldset ngl-form-group label="商家范围" [required]="required"
                   class="slds-m-top--small">
             <div class="row">
                 <div class="col-md-3">
@@ -24,7 +24,7 @@
         </fieldset>
         <div class="row">
             <div class="col-md-6">
-                <ngl-form-element label="开始时间" [error]="hasError ? error : null" class="slds-m-top--small">
+                <ngl-form-element label="开始时间"  class="slds-m-top--small">
                     <input nglFormControl type="text" [required]="required" (click)="showStartDate=!showStartDate"
                            [(ngModel)]="startDate">
                     <ngl-datepicker [monthNames]="monthNames" [dayNamesShort]="dayNamesShort" [(date)]="startDate"
@@ -33,7 +33,7 @@
                 </ngl-form-element>
             </div>
             <div class="col-md-6">
-                <ngl-form-element label="结束时间" [error]="hasError ? error : null" class="slds-m-top--small">
+                <ngl-form-element label="结束时间"  class="slds-m-top--small">
                     <input nglFormControl type="text" [required]="required" [(ngModel)]="endDate"
                            (click)="showEndDate=!showEndDate">
                     <ngl-datepicker [(date)]="endDate" [monthNames]="monthNames" [dayNamesShort]="dayNamesShort"
@@ -56,13 +56,13 @@
     <div class="col-md-2"></div>
 </div>
 
-<!--图片选择模态-->
-<ngl-modal [header]="noHeader ? '' : '图片上传'" [(open)]="opened" [size]="size" [directional]="directional">
-    <div body>
-        <img-upload-component></img-upload-component>
-    </div>
-    <template ngl-modal-footer *ngIf="!noFooter">
-        <button class="slds-button slds-button--neutral" (click)="cancel()">取消</button>
-        <button class="slds-button slds-button--brand">确定</button>
-    </template>
-</ngl-modal>
+<!--&lt;!&ndash;图片选择模态&ndash;&gt;-->
+<!--<ngl-modal [header]="noHeader ? '' : '图片上传'" [(open)]="opened" [size]="size" [directional]="directional">-->
+    <!--<div body>-->
+        <!--<img-upload-component></img-upload-component>-->
+    <!--</div>-->
+    <!--<template ngl-modal-footer *ngIf="!noFooter">-->
+        <!--<button class="slds-button slds-button&#45;&#45;neutral" (click)="cancel()">取消</button>-->
+        <!--<button class="slds-button slds-button&#45;&#45;brand">确定</button>-->
+    <!--</template>-->
+<!--</ngl-modal>-->

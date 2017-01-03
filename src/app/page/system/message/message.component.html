@@ -29,11 +29,6 @@
             <ngl-datatable-column heading="错误信息" key="errormessage"></ngl-datatable-column>
             <ngl-datatable-column heading="创建时间" key="addTime">
             </ngl-datatable-column>
-            <ngl-datatable-column heading="操作" key="">
-                <template nglDatatableCell let-row="row">
-                    <ngl-badge type="error" (click)="delConfirm()"><i class="fa fa-times"></i>删除</ngl-badge>
-                </template>
-            </ngl-datatable-column>
             <template nglNoRowsOverlay>暂无数据!</template>
         </table>
     </div>
