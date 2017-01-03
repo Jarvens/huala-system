@@ -20,6 +20,9 @@ export class AppVersionComponent implements OnInit {
   //模态显示
   opened: boolean = false;
 
+  //appObj
+  appObj: any = {};
+
   getAppVersionList(page: any) {
     this.appVersionService.getAppList(page).subscribe(res=> {
       this.appVersionList = res.json();
@@ -33,7 +36,13 @@ export class AppVersionComponent implements OnInit {
   }
 
   //打开模态
-  open() {
+  open(data) {
+    this.opened = !this.opened;
+    this.appObj = (<any>Object).assign({}, data);
+  }
+
+  //关闭模态
+  cancel() {
     this.opened = !this.opened;
   }
 
