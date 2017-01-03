@@ -13,6 +13,7 @@ import {AppVersionComponent} from '../page/system/app/app.version.component';
 import {OrderComponent} from '../page/order/order.component';
 import {UserComponent} from '../page/system/user/user.component';
 import {MessageComponent} from '../page/system/message/message.component';
+import {BalanceComponent} from '../page/balance/balance.component';
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
@@ -28,7 +29,8 @@ const routes: Routes = [
       {path: 'app/app-version-index', component: AppVersionComponent},
       {path: 'order', component: OrderComponent},
       {path: 'system-user-manage', component: UserComponent},
-      {path: 'system-sms', component: MessageComponent}
+      {path: 'system-sms', component: MessageComponent},
+      {path: 'balance-list', component: BalanceComponent}
     ]
   },
 ];

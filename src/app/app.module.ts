@@ -33,6 +33,7 @@ import {AppVersionComponent} from './page/system/app/app.version.component';
 import {UserComponent} from './page/system/user/user.component';
 import {OrderComponent} from './page/order/order.component';
 import {MessageComponent} from './page/system/message/message.component';
+import {BalanceComponent} from './page/balance/balance.component';
 /**
  *
  * 公用组件
@@ -93,7 +94,8 @@ import {MessageService} from './service/message.service';
     OrderComponent,
     UserComponent,
     MessageComponent,
-    ToastComponent
+    ToastComponent,
+    BalanceComponent
   ],
   imports: [
     BrowserModule,
