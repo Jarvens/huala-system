@@ -1,5 +1,5 @@
 import {Component,ChangeDetectorRef,OnInit} from '@angular/core';
-import {AppService} from '../../../service/app.service';
+import {AppService} from '../../../service/app.version.service';
 @Component({
     selector:'app-component',
     templateUrl:'app.version.component.html'

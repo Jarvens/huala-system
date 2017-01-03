@@ -58,7 +58,7 @@ import {BannerService} from './service/banner.service';
 import {ChartService} from './service/chart.service';
 import {SellerService} from './service/seller.service';
 import {PictureService} from './service/picture.service';
-import {AppService} from './service/app.service';
+import {AppVersionService} from './service/app.version.service';
 import {UserService} from './service/user.service';
 import {OrderService} from './service/order.service';
 import {MessageService} from './service/message.service';
@@ -110,7 +110,7 @@ import {MessageService} from './service/message.service';
     ChartService,
     SellerService,
     PictureService,
-    AppService,
+    AppVersionService,
     OrderService,
     UserService,
     MessageService
