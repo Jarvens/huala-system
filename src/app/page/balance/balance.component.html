@@ -13,23 +13,36 @@
                 </template>
             </ngl-datatable-column>
             <ngl-datatable-column heading="应发金额" key="amount">
-                <template nglDatatableCell let-value>
-                    <ngl-badge type="info">{{value/100|number:'1.2-2'}}</ngl-badge>
+                <template nglDatatableCell let-row="row">
+                    <ngl-badge type="info" (click)="getBalanceDetail(row,'amount','应发金额')">
+                        {{row.amount/100|number:'1.2-2'}}
+                    </ngl-badge>
                 </template>
             </ngl-datatable-column>
             <ngl-datatable-column heading="已发金额" key="haveSendAmount">
-                <template nglDatatableCell let-value>
-                    <ngl-badge type="success">{{value/100|number:'1.2-2'}}</ngl-badge>
+                <template nglDatatableCell let-row="row">
+                    <ngl-badge type="success" (click)="getBalanceDetail(row,'haveSendAmount','已发金额')">
+                        {{row.haveSendAmount/100|number:'1.2-2'}}
+                    </ngl-badge>
                 </template>
             </ngl-datatable-column>
             <ngl-datatable-column heading="未发金额" key="noSendAmount">
-                <template nglDatatableCell let-value>
-                    <ngl-badge type="warning">{{value/100|number:'1.2-2'}}</ngl-badge>
+                <template nglDatatableCell let-row="row">
+                    <ngl-badge type="warning" (click)="getBalanceDetail(row,'noSendAmount','未发金额')">
+                        {{row.noSendAmount/100|number:'1.2-2'}}
+                    </ngl-badge>
                 </template>
             </ngl-datatable-column>
             <ngl-datatable-column heading="出错金额" key="failSendAmount">
-                <template nglDatatableCell let-value>
-                    <ngl-badge type="error">{{value/100|number:'1.2-2'}}</ngl-badge>
+                <template nglDatatableCell let-row="row">
+                    <ngl-badge type="error" (click)="getBalanceDetail(row,'failSendAmount','出错金额')">
+                        {{row.failSendAmount/100|number:'1.2-2'}}
+                    </ngl-badge>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="操作" key="">
+                <template nglDatatableCell let-row="row">
+                    <button type="button" nglButton="neutral" (click)="change()">结算</button>
                 </template>
             </ngl-datatable-column>
             <template nglNoRowsOverlay>暂无数据!</template>
@@ -42,3 +55,46 @@
                         nextText="下一页"></ngl-pagination>
     </div>
 </article>
+<!--结算详情列表模态-->
+<ngl-modal [header]="header" [(open)]="opened" size="large" [directional]="directional">
+    <div body>
+        <search-component [showIcon]="false" [debounce]="2000" placeHolder="店铺ID  店铺名称"
+                          (searchKey)="searchByCondition($event)"></search-component>
+        <table ngl-datatable [data]="balanceDetailList.rows" class="slds-max-medium-table--stacked-horizontal slds-table--fixed-layout">
+            <ngl-datatable-column heading="店铺名称" key="sellerName"></ngl-datatable-column>
+            <ngl-datatable-column heading="金额" key="amount">
+                <template nglDatatableCell let-row="row">
+                    <ngl-badge type="info">
+                        {{row.amount/100|number:'1.2-2'}}
+                    </ngl-badge>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="类型" key="type"></ngl-datatable-column>
+            <ngl-datatable-column heading="操作时间" key="addTime">
+                <template nglDatatableCell let-value>
+                    {{value|date:'short'}}
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="打款时间" key="financeBatchNoTime">
+                <template nglDatatableCell let-value>
+                    {{value|date:'short'}}
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="备注" key="remark"></ngl-datatable-column>
+            <ngl-datatable-column heading="返回信息" key="payResponse"></ngl-datatable-column>
+            <ngl-datatable-column heading="操作" key="">
+                <template nglDatatableCell let-row="row">
+                    <button type="button" nglButton="neutral" (click)="change()">结算</button>
+                </template>
+            </ngl-datatable-column>
+            <template nglNoRowsOverlay>暂无数据!</template>
+        </table>
+    </div>
+    <template ngl-modal-footer *ngIf="!noFooter">
+        <ngl-pagination [(page)]="modalPageOpts.page" [total]="balanceDetailList.total"
+                        [perPage]="balanceDetailList.size"
+                        [limit]="modalPageOpts.limit"
+                        boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                        nextText="下一页"></ngl-pagination>
+    </template>
+</ngl-modal>

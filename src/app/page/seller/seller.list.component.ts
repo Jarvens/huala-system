@@ -18,6 +18,7 @@ export class SellerListComponent implements OnInit {
   keyType: string = '0';
   placeholder: string = '搜索  ID  名称 手机号';
   @Output() sellerDetail = new EventEmitter<any>();
+  @Output() showDetail = new EventEmitter<boolean>();
 
   constructor(private sellerService: SellerService) {
   }
@@ -78,5 +79,6 @@ export class SellerListComponent implements OnInit {
   //店铺详情 向上传递对象
   sellerDetailInfo(value) {
     this.sellerDetail.emit(value);
+    this.showDetail.emit(true);
   }
 }

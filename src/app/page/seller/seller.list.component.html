@@ -1,4 +1,4 @@
-<article class="slds-card">
+<article class="slds-card" style="border:none;">
     <div class="slds-card__header slds-grid">
         <header class="slds-media slds-media--center slds-has-flexi-truncate">
             <div class="col-md-6">
@@ -16,8 +16,7 @@
             <ngl-datatable-column heading="地址" key="address" cellClass="slds-truncate"></ngl-datatable-column>
             <ngl-datatable-column heading="店铺状态" key="isDelete" cellClass="slds-truncate"></ngl-datatable-column>
             <ngl-datatable-column heading="店铺类型" key="sellerType" cellClass="slds-truncate">
-                <template nglDatatableCell let-row="row"><b>{{row.sellerType=='1'|threeElementExpression:'烟店;超市'}}</b>
-                </template>
+              <template nglDatatableCell let-row="row"><b>{{row.sellerType=='1'|threeElementExpression:'烟店;超市'}}</b></template>
             </ngl-datatable-column>
             <ngl-datatable-column heading="电话" key="phone"></ngl-datatable-column>
             <ngl-datatable-column heading="操作" key="">
