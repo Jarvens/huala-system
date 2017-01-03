@@ -1,24 +1,31 @@
-<div class="row" style="padding-top: 20px">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-
-        <search-component [debounce]="2000" [showIcon]="false" [placeHolder]="placeholder"
-                          (searchKey)="searchByCondition($event)"></search-component>
-    </div>
-    <div class="col-md-4"></div>
-</div>
-
 <article class="slds-card">
+    <div class="slds-card__header slds-grid">
+        <header class="slds-media slds-media--center slds-has-flexi-truncate">
+            <search-component [debounce]="2000" [showIcon]="false" [placeHolder]="placeholder"
+                              (searchKey)="searchByCondition($event)"></search-component>
+        </header>
+    </div>
     <div class="slds-card__body">
         <table ngl-datatable [data]="messageList.rows" trackByKey="rank" [loading]="loading" [(sort)]="sort"
                (sortChange)="onSort($event)"
                (onRowClick)="onRowClick($event)" class="slds-max-medium-table--stacked-horizontal">
-            <ngl-datatable-column heading="ID" key="id" sortable></ngl-datatable-column>
-            <ngl-datatable-column heading="手机号" key="mobile"></ngl-datatable-column>
-            <ngl-datatable-column heading="短信类型" key="type"></ngl-datatable-column>
+            <ngl-datatable-column heading="手机号" key="phone"></ngl-datatable-column>
+            <ngl-datatable-column heading="短信类型" key="type">
+                <template nglDatatableCell let-value>
+                    <span *ngIf="value=='1'">用户端</span>
+                    <span *ngIf="value=='2'">采购端</span>
+                    <span *ngIf="value=='3'">配送端</span>
+                </template>
+            </ngl-datatable-column>
             <ngl-datatable-column heading="创建时间" key="gmtCreate"></ngl-datatable-column>
-            <ngl-datatable-column heading="发送状态" key="smsStatus"></ngl-datatable-column>
-            <ngl-datatable-column heading="错误编码" key="erroecode"></ngl-datatable-column>
+            <ngl-datatable-column heading="发送状态" key="smsStatus">
+                <template nglDatatableCell let-value>
+                    <span *ngIf="value=='0'">未验证</span>
+                    <span *ngIf="value=='1'">已验证</span>
+                    <span *ngIf="value=='2'">过期重发</span>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="错误编码" key="errorcode"></ngl-datatable-column>
             <ngl-datatable-column heading="错误信息" key="errormessage"></ngl-datatable-column>
             <ngl-datatable-column heading="创建时间" key="addTime">
             </ngl-datatable-column>
@@ -31,7 +38,8 @@
         </table>
     </div>
     <div class="slds-card__footer">
-        <ngl-pagination [(page)]="page" [total]="messageList.total" [perPage]="messageList.size" [limit]="pageOpts.limit"
+        <ngl-pagination [(page)]="page" [total]="messageList.total" [perPage]="messageList.size"
+                        [limit]="pageOpts.limit"
                         boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
                         nextText="下一页"></ngl-pagination>
     </div>

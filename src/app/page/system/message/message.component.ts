@@ -10,7 +10,7 @@ export class MessageComponent implements OnInit {
   }
 
   //分页对象
-  pageOpts: any = {total: 0, limit: 3, perPage: 10};
+  pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
   //短信列表对象
   messageList: any = {};
   //搜索key
@@ -29,7 +29,7 @@ export class MessageComponent implements OnInit {
 
   //条件搜索
   searchByCondition(event) {
-
+    this.getMessageList(this.pageOpts, event, this.type, this.smsStatus);
   }
 
   //查询短信列表
@@ -41,8 +41,9 @@ export class MessageComponent implements OnInit {
   }
 
   //分页
-  pageChange(event){
-
+  pageChange(event) {
+    this.pageOpts.page = event;
+    this.getMessageList(this.pageOpts, this.key, this.type, this.smsStatus);
   }
 
 }

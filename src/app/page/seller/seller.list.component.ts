@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectorRef, EventEmitter, Output} from '@angular/core';
+import {Component, OnInit,EventEmitter, Output} from '@angular/core';
 import {SellerService} from '../../service/seller.service';
 import {INglDatatableSort, INglDatatableRowClick} from 'ng-lightning/ng-lightning';
 @Component({
@@ -19,7 +19,7 @@ export class SellerListComponent implements OnInit {
   placeholder: string = '搜索  ID  名称 手机号';
   @Output() sellerDetail = new EventEmitter<any>();
 
-  constructor(private sellerService: SellerService, private cdr: ChangeDetectorRef) {
+  constructor(private sellerService: SellerService) {
   }
 
   ngOnInit(): void {
@@ -61,7 +61,6 @@ export class SellerListComponent implements OnInit {
   getSellerList(page: any, searchKey: string, status: string, keyType: string) {
     this.sellerService.getSellerList(page, searchKey, status, keyType).subscribe(res=> {
       this.sellerList = res.json();
-      this.cdr.detectChanges();
     });
   }
 

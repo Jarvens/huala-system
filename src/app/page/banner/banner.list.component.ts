@@ -1,7 +1,5 @@
-import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
-import {INglDatatableSort, INglDatatableRowClick} from 'ng-lightning/ng-lightning';
+import {Component, OnInit} from '@angular/core';
 import {BannerService} from '../../service/banner.service';
-import {Observable} from 'rxjs/Observable';
 @Component({
   selector: 'banner-list-component',
   templateUrl: 'banner.list.component.html'
@@ -23,7 +21,7 @@ export class BannerListComponent implements OnInit {
   //删除标记默认为false
   delFlag: boolean = false;
 
-  constructor(private bannerService: BannerService, private cdr: ChangeDetectorRef) {
+  constructor(private bannerService: BannerService) {
   }
 
   ngOnInit(): void {
@@ -40,7 +38,6 @@ export class BannerListComponent implements OnInit {
   getBannerList(page: any, searchKey: string) {
     this.bannerService.getBannerList(page, searchKey).subscribe(res=> {
       this.bannerList = res.json();
-      this.cdr.detectChanges();
     });
   }
 

@@ -21,6 +21,7 @@ export class AppVersionComponent implements OnInit {
   opened: boolean = false;
   //Toast提示
   toastMessage: string = '';
+  //类型
   toastType: string = 'error';
   //显示|关闭toast
   showAlert: boolean = false;

@@ -24,9 +24,4 @@
 </div>
 
 <!--登录提示信息-->
-<div class="slds-notify_container">
-    <ngl-notification *ngIf="showAlert" type="toast" severity="error" (nglNotificationClose)="onClose()"
-                      timeout="5000" class="slds-theme--alert-texture">
-        <h2>用户名或密码错误,请联系管理员！</h2>
-    </ngl-notification>
-</div>
+<toast-component [toastType]="toastType" [toastMessage]="toastMessage" [showAlert]="showAlert"></toast-component>
