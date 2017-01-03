@@ -19,7 +19,9 @@ export class AppVersionComponent implements OnInit {
   pageOpts: any = {total: 0, limit: 3, perPage: 10}
   //模态显示
   opened: boolean = false;
-
+  //Toast提示
+  toastOpen: boolean = false;
+  toastMessage: string = '';
   //appObj
   appObj: any = {};
 
@@ -44,6 +46,24 @@ export class AppVersionComponent implements OnInit {
   //关闭模态
   cancel() {
     this.opened = !this.opened;
+  }
+
+  //保存appVersion版本管理
+  saveAppVersion() {
+    this.appVersionService.saveAppVersion(this.appObj).subscribe(res=> {
+      let ret = res.json();
+      if (ret.success) {
+        this.toastMessage = '保存成功';
+        this.toastOpen = !this.toastOpen;
+      } else {
+        this.toastMessage = ret.message;
+        this.toastOpen = !this.toastOpen;
+      }
+    });
+  }
+
+  onClose() {
+    this.toastOpen = !this.toastOpen;
   }
 
 }

@@ -11,4 +11,8 @@ export class AppVersionService {
     }
     return this.http.get("/sysConfig/app-version-list",{page:page.page,size:page.perPage});
   }
+
+  saveAppVersion(app){
+    return this.http.post("/sysConfig/update-app",app);
+  }
 }

@@ -94,6 +94,14 @@
     </div>
     <template ngl-modal-footer *ngIf="!noFooter">
         <button class="slds-button slds-button--neutral" (click)="cancel()">取消</button>
-        <button class="slds-button slds-button--brand">保存</button>
+        <button class="slds-button slds-button--brand" (click)="saveAppVersion()">保存</button>
     </template>
 </ngl-modal>
+
+
+<!--Toast-->
+<div class="slds-notify_container">
+    <ngl-notification *ngIf="toastOpen" type="toast" severity="error" (nglNotificationClose)="onClose($event)" timeout="5000" class="slds-theme--alert-texture">
+        <h2>{{toastMessage}}</h2>
+    </ngl-notification>
+</div>
