@@ -27,7 +27,8 @@ export class BalanceComponent implements OnInit {
 
   //分页
   pageChange(event) {
-
+    this.pageOpts.page = event;
+    this.getBalanceList(this.pageOpts);
   }
 
 }
