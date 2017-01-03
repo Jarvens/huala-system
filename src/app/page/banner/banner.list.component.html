@@ -11,9 +11,7 @@
         </div>
     </div>
     <div class="slds-card__body">
-        <table ngl-datatable [data]="bannerList.rows" trackByKey="rank" [loading]="loading" [(sort)]="sort"
-               (sortChange)="onSort($event)"
-               (onRowClick)="onRowClick($event)" class="slds-max-medium-table--stacked-horizontal">
+        <table ngl-datatable [data]="bannerList.rows" trackByKey="rank" class="slds-max-medium-table--stacked-horizontal">
             <ngl-datatable-column heading="名称" key="bannerName" sortable></ngl-datatable-column>
             <ngl-datatable-column heading="图片" key="imgUrl">
                 <template nglDatatableCell let-value>

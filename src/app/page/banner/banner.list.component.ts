@@ -49,10 +49,6 @@ export class BannerListComponent implements OnInit {
     this.showAlert = true;
   }
 
-  //Table点击事件
-  onRowClick($event: INglDatatableRowClick) {
-  }
-
   //关闭Toast
   onClose(reason: string) {
     this.showAlert = false;
