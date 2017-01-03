@@ -1,24 +1,21 @@
 <article class="slds-card">
     <div class="slds-card__header slds-grid">
         <header class="slds-media slds-media--center slds-has-flexi-truncate">
-            <div class="col-md-6">
-                <search-component [showIcon]="false" [debounce]="2000" [placeHolder]="placeholder"
-                                  (searchKey)="searchByCondition($event)"></search-component>
-            </div>
+
         </header>
     </div>
     <div class="slds-card__body">
-        <table ngl-datatable [data]="appVersionList.rows" trackByKey="rank" class="slds-max-medium-table--stacked-horizontal">
-            <ngl-datatable-column heading="应用版本号" key="bannerName" sortable></ngl-datatable-column>
-            <ngl-datatable-column heading="版本号" key="imgUrl"></ngl-datatable-column>
+        <table ngl-datatable [data]="appVersionList.rows" class="slds-max-medium-table--stacked-horizontal">
+            <ngl-datatable-column heading="应用版本号" key="version" sortable></ngl-datatable-column>
+            <ngl-datatable-column heading="版本号" key="sortOrder"></ngl-datatable-column>
             <ngl-datatable-column heading="终端类型" key="imgUrl"></ngl-datatable-column>
-            <ngl-datatable-column heading="应用名称" key="imgUrl"></ngl-datatable-column>
+            <ngl-datatable-column heading="应用名称" key="appName"></ngl-datatable-column>
             <ngl-datatable-column heading="是否可以升级" key="imgUrl"></ngl-datatable-column>
-            <ngl-datatable-column heading="下载地址" key="imgUrl"></ngl-datatable-column>
-            <ngl-datatable-column heading="文件大小" key="imgUrl"></ngl-datatable-column>
+            <ngl-datatable-column heading="下载地址" key="url"></ngl-datatable-column>
+            <ngl-datatable-column heading="文件大小" key="size"></ngl-datatable-column>
             <ngl-datatable-column heading="操作" key="">
                 <template nglDatatableCell let-row="row">
-                    <ngl-badge type="error" (click)="delConfirm()"><i class="fa fa-times"></i>修改</ngl-badge>
+                    <ngl-badge type="error" (click)="open()"><i class="fa fa-times"></i>修改</ngl-badge>
                 </template>
             </ngl-datatable-column>
             <template nglNoRowsOverlay>暂无数据!</template>
@@ -30,3 +27,16 @@
                         nextText="下一页"></ngl-pagination>
     </div>
 </article>
+
+<!--app模态-->
+<ngl-modal [header]="noHeader ? '' : 'app版本管理'" [(open)]="opened" [size]="size" [directional]="directional">
+    <div body>
+        <p>Sit nulla est ex deserunt exercitation anim occaecat. Tempor cupidatat consequat elit dolor adipisicing.</p>
+        <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia.</p>
+        <p>Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
+    </div>
+    <template ngl-modal-footer *ngIf="!noFooter">
+        <button class="slds-button slds-button--neutral" (click)="cancel()">Cancel</button>
+        <button class="slds-button slds-button--brand">Save</button>
+    </template>
+</ngl-modal>
