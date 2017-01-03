@@ -60,7 +60,7 @@
     <div body>
         <search-component [showIcon]="false" [debounce]="2000" placeHolder="店铺ID  店铺名称"
                           (searchKey)="searchByCondition($event)"></search-component>
-        <table ngl-datatable [data]="balanceDetailList.rows" class="slds-max-medium-table--stacked-horizontal slds-table--fixed-layout">
+        <table ngl-datatable [data]="balanceDetailList.rows" class="slds-max-medium-table--stacked-horizontal slds-table--fixed-layout slds-is-resizable">
             <ngl-datatable-column heading="店铺名称" key="sellerName"></ngl-datatable-column>
             <ngl-datatable-column heading="金额" key="amount">
                 <template nglDatatableCell let-row="row">
@@ -69,7 +69,13 @@
                     </ngl-badge>
                 </template>
             </ngl-datatable-column>
-            <ngl-datatable-column heading="类型" key="type"></ngl-datatable-column>
+            <ngl-datatable-column heading="类型" key="type">
+                <template nglDatatableCell let-value>
+                    <ngl-badge type="success">
+                        {{value}}
+                    </ngl-badge>
+                </template>
+            </ngl-datatable-column>
             <ngl-datatable-column heading="操作时间" key="addTime">
                 <template nglDatatableCell let-value>
                     {{value|date:'short'}}
