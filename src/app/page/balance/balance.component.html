@@ -58,43 +58,52 @@
 <!--结算详情列表模态-->
 <ngl-modal [header]="header" [(open)]="opened" size="large" [directional]="directional">
     <div body>
-        <search-component [showIcon]="false" [debounce]="2000" placeHolder="店铺ID  店铺名称"
-                          (searchKey)="searchByCondition($event)"></search-component>
-        <table ngl-datatable [data]="balanceDetailList.rows" class="slds-max-medium-table--stacked-horizontal slds-table--fixed-layout slds-scrollable--x">
-            <ngl-datatable-column heading="店铺名称" key="sellerName"></ngl-datatable-column>
-            <ngl-datatable-column heading="金额" key="amount">
-                <template nglDatatableCell let-row="row">
-                    <ngl-badge type="info">
-                        {{row.amount/100|number:'1.2-2'}}
-                    </ngl-badge>
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="类型" key="type">
-                <template nglDatatableCell let-value>
-                    <ngl-badge type="success">
-                        {{value}}
-                    </ngl-badge>
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="操作时间" key="addTime">
-                <template nglDatatableCell let-value>
-                    {{value|date:'short'}}
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="打款时间" key="financeBatchNoTime">
-                <template nglDatatableCell let-value>
-                    {{value|date:'short'}}
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="备注" key="remark"></ngl-datatable-column>
-            <ngl-datatable-column heading="返回信息" key="payResponse"></ngl-datatable-column>
-            <ngl-datatable-column heading="操作" key="">
-                <template nglDatatableCell let-row="row">
-                    <button type="button" nglButton="neutral" (click)="change()">结算</button>
-                </template>
-            </ngl-datatable-column>
-            <template nglNoRowsOverlay>暂无数据!</template>
-        </table>
+        <article class="slds-card">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media--center slds-has-flexi-truncate">
+                    <search-component [showIcon]="false" [debounce]="2000" placeHolder="店铺ID  店铺名称"
+                                      (searchKey)="searchByCondition($event)"></search-component>
+                </header>
+            </div>
+            <div class="slds-card__body" style="overflow:auto;">
+                <table ngl-datatable [data]="balanceDetailList.rows"
+                       class="slds-max-medium-table--stacked-horizontal">
+                    <ngl-datatable-column heading="店铺名称" key="sellerName"></ngl-datatable-column>
+                    <ngl-datatable-column heading="金额" key="amount">
+                        <template nglDatatableCell let-row="row">
+                            <ngl-badge type="info">
+                                {{row.amount/100|number:'1.2-2'}}
+                            </ngl-badge>
+                        </template>
+                    </ngl-datatable-column>
+                    <ngl-datatable-column heading="类型" key="type">
+                        <template nglDatatableCell let-value>
+                            <ngl-badge type="success">
+                                {{value}}
+                            </ngl-badge>
+                        </template>
+                    </ngl-datatable-column>
+                    <ngl-datatable-column heading="操作时间" key="addTime">
+                        <template nglDatatableCell let-value>
+                            {{value|date:'short'}}
+                        </template>
+                    </ngl-datatable-column>
+                    <ngl-datatable-column heading="打款时间" key="financeBatchNoTime">
+                        <template nglDatatableCell let-value>
+                            {{value|date:'short'}}
+                        </template>
+                    </ngl-datatable-column>
+                    <ngl-datatable-column heading="备注" key="remark"></ngl-datatable-column>
+                    <ngl-datatable-column heading="返回信息" key="payResponse"></ngl-datatable-column>
+                    <ngl-datatable-column heading="操作" key="">
+                        <template nglDatatableCell let-row="row">
+                            <button type="button" nglButton="neutral" (click)="change()">结算</button>
+                        </template>
+                    </ngl-datatable-column>
+                    <template nglNoRowsOverlay>暂无数据!</template>
+                </table>
+            </div>
+        </article>
     </div>
     <template ngl-modal-footer *ngIf="!noFooter">
         <ngl-pagination [(page)]="modalPageOpts.page" [total]="balanceDetailList.total"
