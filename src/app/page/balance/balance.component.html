@@ -60,7 +60,7 @@
     <div body>
         <search-component [showIcon]="false" [debounce]="2000" placeHolder="店铺ID  店铺名称"
                           (searchKey)="searchByCondition($event)"></search-component>
-        <table ngl-datatable [data]="balanceDetailList.rows" class="slds-max-medium-table--stacked-horizontal slds-table--fixed-layout slds-is-resizable">
+        <table ngl-datatable [data]="balanceDetailList.rows" class="slds-max-medium-table--stacked-horizontal slds-table--fixed-layout slds-scrollable--x">
             <ngl-datatable-column heading="店铺名称" key="sellerName"></ngl-datatable-column>
             <ngl-datatable-column heading="金额" key="amount">
                 <template nglDatatableCell let-row="row">
@@ -100,7 +100,7 @@
         <ngl-pagination [(page)]="modalPageOpts.page" [total]="balanceDetailList.total"
                         [perPage]="balanceDetailList.size"
                         [limit]="modalPageOpts.limit"
-                        boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                        boundaryNumbers="1" #pagination (pageChange)="modalPageChanges($event)" previousText="上一页"
                         nextText="下一页"></ngl-pagination>
     </template>
 </ngl-modal>

@@ -17,6 +17,8 @@ export class BalanceComponent implements OnInit {
   opened: boolean = false;
   //结算详情列表
   balanceDetailList: any = {};
+  //结算详情列表查询条件
+  detailQueryOpts: any = {};
   header: string = '';
 
   constructor(private balanceService: BalanceService, private cdr: ChangeDetectorRef) {
@@ -41,11 +43,12 @@ export class BalanceComponent implements OnInit {
 
   //结算详情列表
   getBalanceDetail(data: any, balanceType: string, title: string) {
+    this.detailQueryOpts.date = data.date;
+    this.detailQueryOpts.title = title;
+    this.detailQueryOpts.balanceType = balanceType;
     this.header = title;
     this.balanceService.getBalanceDetailList(this.modalPageOpts, data.date, balanceType).subscribe(res=> {
       this.balanceDetailList = res.json();
-      console.log("结算详情列表");
-      console.log(res.json());
     });
     this.opened = !this.opened;
   }
@@ -53,6 +56,14 @@ export class BalanceComponent implements OnInit {
   //条件搜索
   searchByCondition(event) {
 
+  }
+
+  //结算详情列表分页
+  modalPageChanges(event) {
+    this.modalPageOpts.page = event;
+    this.balanceService.getBalanceDetailList(this.modalPageOpts, this.detailQueryOpts.date, this.detailQueryOpts.balanceType).subscribe(res=> {
+      this.balanceDetailList = res.json();
+    });
   }
 
 }

@@ -46,7 +46,7 @@
 <div class="row" style="margin-top: 24px;">
   <div class="col-md-12">
     <div class="col-md-4">
-      <article class="slds-card slds-card--narrow">
+      <article class="slds-card slds-card--narrow" style="background: #fff">
         <div class="slds-card__header slds-grid">
           <header class="slds-media slds-media--center slds-has-flexi-truncate">
             <div class="slds-media__figure">
@@ -71,15 +71,15 @@
                     <span class="slds-truncate" title="Date">店铺名称:</span>
                   </dt>
                   <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                    <h3><span class="slds-truncate" title="Visit">{{detailFromSellerMain.name}}</span>
-                    </h3>
+                    <h3 class="slds-text-heading--medium slds-text-color--error slds-truncate">{{detailFromSellerMain.name}}</h3>
                   </dd>
                   <dt class="slds-dl--horizontal__label">
                     <span class="slds-truncate" title="Date">联系方式:</span>
                   </dt>
                   <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                    <span class="slds-truncate"
-                        title="1/31/15 3:45PM">{{detailFromSellerMain.phone}}</span>
+                    <span class="slds-truncate">
+                      <ngl-badge type="info">{{detailFromSellerMain.phone}}</ngl-badge>
+                    </span>
                   </dd>
                 </dl>
               </div>
@@ -128,7 +128,7 @@
       </article>
     </div>
     <div class="col-md-4">
-      <article class="slds-card slds-card--narrow">
+      <article class="slds-card slds-card--narrow" style="background: #fff">
         <div class="slds-card__header slds-grid">
           <header class="slds-media slds-media--center slds-has-flexi-truncate">
             <div class="slds-media__figure">
@@ -207,7 +207,7 @@
       </article>
     </div>
     <div class="col-md-4">
-      <article class="slds-card slds-card--narrow">
+      <article class="slds-card slds-card--narrow" style="background: #fff">
         <div class="slds-card__header slds-grid">
           <header class="slds-media slds-media--center slds-has-flexi-truncate">
             <div class="slds-media__figure">

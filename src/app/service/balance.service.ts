@@ -22,7 +22,7 @@ export class BalanceService {
       date: date,
       balanceType: type,
       page: page.page,
-      pageSize: page.perPage
+      size: page.perPage
     });
   }
 }
