@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BalanceService} from '../../service/balance.service';
 @Component({
   selector: 'balance-component',
@@ -20,8 +20,9 @@ export class BalanceComponent implements OnInit {
   //结算详情列表查询条件
   detailQueryOpts: any = {};
   header: string = '';
+  notificationOpen: boolean = false;
 
-  constructor(private balanceService: BalanceService, private cdr: ChangeDetectorRef) {
+  constructor(private balanceService: BalanceService) {
   }
 
   ngOnInit(): void {
@@ -64,6 +65,23 @@ export class BalanceComponent implements OnInit {
     this.balanceService.getBalanceDetailList(this.modalPageOpts, this.detailQueryOpts.date, this.detailQueryOpts.balanceType).subscribe(res=> {
       this.balanceDetailList = res.json();
     });
+  }
+
+  //结算操作
+  settleMent(data: any) {
+    this.notificationOpen = !this.notificationOpen;
+  }
+
+  //prompt取消
+  cancel() {
+    this.notificationOpen = !this.notificationOpen;
+    console.log("点击了cancel方法");
+  }
+
+  //prompt确定
+  confirm() {
+    this.notificationOpen = !this.notificationOpen;
+    console.log("点击了confirm方法");
   }
 
 }

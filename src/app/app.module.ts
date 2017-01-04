@@ -38,11 +38,11 @@ import {BalanceComponent} from './page/balance/balance.component';
  *
  * 公用组件
  */
-//搜索
 import {SearchComponent} from './page/component/search.component';
 import {ImgUploadComponent} from './page/component/img.upload.component';
 import {BreadCrumbsComponent} from './page/component/breadcrumbs/bread.crumbs.component';
 import {ToastComponent} from './page/component/toast/toast.component';
+import {ConfirmPromptComponent} from './page/component/prompt/confirm.prompt.component';
 //Directive
 
 /**
@@ -100,7 +100,8 @@ import {BalanceService} from './service/balance.service';
     UserComponent,
     MessageComponent,
     ToastComponent,
-    BalanceComponent
+    BalanceComponent,
+    ConfirmPromptComponent
   ],
   imports: [
     BrowserModule,

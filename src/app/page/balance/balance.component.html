@@ -42,7 +42,7 @@
             </ngl-datatable-column>
             <ngl-datatable-column heading="操作" key="">
                 <template nglDatatableCell let-row="row">
-                    <button type="button" nglButton="neutral" (click)="change()">结算</button>
+                    <button type="button" nglButton="neutral" (click)="settleMent($event)">结算</button>
                 </template>
             </ngl-datatable-column>
             <template nglNoRowsOverlay>暂无数据!</template>
@@ -113,3 +113,6 @@
                         nextText="下一页"></ngl-pagination>
     </template>
 </ngl-modal>
+
+<!--prompt-->
+<confirm-prompt-component [isOpen]="notificationOpen" (cancelFunction)="cancel()" (confirmFunction)="confirm()"></confirm-prompt-component>
