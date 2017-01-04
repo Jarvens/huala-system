@@ -5,7 +5,7 @@
                               (searchKey)="searchByCondition($event)"></search-component>
         </header>
     </div>
-    <div class="slds-card__body">
+    <div class="slds-card__body slds-scrollable">
         <table ngl-datatable [data]="messageList.rows" trackByKey="rank" [loading]="loading" [(sort)]="sort"
                (sortChange)="onSort($event)"
                (onRowClick)="onRowClick($event)" class="slds-max-medium-table--stacked-horizontal">
@@ -27,7 +27,7 @@
             </ngl-datatable-column>
             <ngl-datatable-column heading="错误编码" key="errorcode"></ngl-datatable-column>
             <ngl-datatable-column heading="错误信息" key="errormessage"></ngl-datatable-column>
-            <ngl-datatable-column heading="创建时间" key="addTime">
+            <ngl-datatable-column heading="创建时间" key="gmtCreate">
             </ngl-datatable-column>
             <template nglNoRowsOverlay>暂无数据!</template>
         </table>

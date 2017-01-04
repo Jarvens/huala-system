@@ -65,7 +65,7 @@
                                       (searchKey)="searchByCondition($event)"></search-component>
                 </header>
             </div>
-            <div class="slds-card__body" style="overflow:auto;">
+            <div class="slds-card__body slds-scrollable">
                 <table ngl-datatable [data]="balanceDetailList.rows"
                        class="slds-max-medium-table--stacked-horizontal">
                     <ngl-datatable-column heading="店铺名称" key="sellerName"></ngl-datatable-column>
