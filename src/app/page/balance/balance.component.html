@@ -42,10 +42,10 @@
             </ngl-datatable-column>
             <ngl-datatable-column heading="操作" key="">
                 <template nglDatatableCell let-row="row">
-                    <button *ngIf="row.noSendAmount!=0" type="button" nglButton="neutral" (click)="settleMent($event)">
+                    <button *ngIf="row.noSendAmount!=0" type="button" nglButton="neutral" (click)="settleMent(row)">
                         结算
                     </button>
-                    <button *ngIf="row.failSendAmount>0" type="button" nglButton="neutral" (click)="settleMent($event)">
+                    <button *ngIf="row.failSendAmount>0" type="button" nglButton="neutral" (click)="settleMent(row)">
                         重试
                     </button>
                 </template>
@@ -104,11 +104,11 @@
                     <ngl-datatable-column heading="操作" key="">
                         <template nglDatatableCell let-row="row">
                             <button *ngIf="row.noSendAmount!=0" type="button" nglButton="neutral"
-                                    (click)="settleMent($event)">
+                                    (click)="settleMent(row)">
                                 结算
                             </button>
                             <button *ngIf="row.failSendAmount>0" type="button" nglButton="neutral"
-                                    (click)="settleMent($event)">
+                                    (click)="settleMent(row)">
                                 重试
                             </button>
                         </template>
@@ -130,3 +130,5 @@
 <!--prompt-->
 <confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancel()"
                           (confirmFunction)="confirm()"></confirm-prompt-component>
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage" [showAlert]="showAlert"></toast-component>

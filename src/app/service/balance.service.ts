@@ -25,4 +25,9 @@ export class BalanceService {
       size: page.perPage
     });
   }
+
+  //去结算
+  goSettleMent(data: any) {
+    return this.http.post("/balance/send-xyl", {date: data.date, status: data.status, amount: data.amount});
+  }
 }

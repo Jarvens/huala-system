@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 @Component({
   selector: 'toast-component',
   templateUrl: './toast.component.html'
@@ -14,8 +14,10 @@ export class ToastComponent {
   @Input() toastType: string = 'error';
   //显示|关闭toast
   @Input() showAlert: boolean = false;
+  @Output() notifyParam = new EventEmitter<boolean>();
   //关闭方法
   onClose() {
     this.showAlert = !this.showAlert;
+    this.notifyParam.emit(this.showAlert);
   }
 }
