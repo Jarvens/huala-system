@@ -37,6 +37,7 @@ import {MessageComponent} from './page/system/message/message.component';
 import {BalanceComponent} from './page/balance/balance.component';
 import {GoodsComponent} from './page/goods/goods.component';
 import {GoodsCatComponent} from "./page/goods/goodsCat.component";
+import {GoodsListComponent} from "./page/goods/goodsList.component";
 /**
  *
  * 公用组件
@@ -68,6 +69,7 @@ import {UserService} from './service/user.service';
 import {OrderService} from './service/order.service';
 import {MessageService} from './service/message.service';
 import {BalanceService} from './service/balance.service';
+import {GoodsService} from "./service/goods.service";
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -103,7 +105,8 @@ import {BalanceService} from './service/balance.service';
     BalanceComponent,
     ConfirmPromptComponent,
     GoodsComponent,
-    GoodsCatComponent
+    GoodsCatComponent,
+    GoodsListComponent
   ],
   imports: [
     BrowserModule,
@@ -127,7 +130,8 @@ import {BalanceService} from './service/balance.service';
     OrderService,
     UserService,
     MessageService,
-    BalanceService
+    BalanceService,
+    GoodsService
   ]
 })
 export class AppModule {
