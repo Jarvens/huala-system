@@ -21,7 +21,7 @@ export class BalanceComponent implements OnInit {
   detailQueryOpts: any = {};
   header: string = '';
   notificationOpen: boolean = false;
-
+  promptMessage:string='确定要立即结算吗?';
   constructor(private balanceService: BalanceService) {
   }
 
@@ -88,5 +88,4 @@ export class BalanceComponent implements OnInit {
   openChange(event) {
     this.balanceDetailList = {};
   }
-
 }
