@@ -1,1 +1,67 @@
-商户统计数据
+<article class="slds-card">
+    <div class="slds-card__header slds-grid">
+        <header class="slds-media slds-media--center slds-has-flexi-truncate">
+            <div class="col-md-2">
+                <a [nglPopover]="tip" nglPopoverPlacement="bottom" [nglOpen]="open"
+                   (mouseenter)="open = true" (mouseleave)="open = false" class="text-info"><i class="fa fa-info-circle"></i><span>信息</span></a>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </header>
+        <div class="slds-no-flex">
+            <button class="slds-button slds-button--neutral">导出Excel</button>
+        </div>
+    </div>
+    <div class="slds-card__body slds-scrollable">
+        <table ngl-datatable [data]="sellerDataList.rows" trackByKey="rank" class="slds-max-medium-table--stacked-horizontal">
+            <ngl-datatable-column heading="商户id" key="bannerName" sortable></ngl-datatable-column>
+            <ngl-datatable-column heading="商户名" key="imgUrl"></ngl-datatable-column>
+            <ngl-datatable-column heading="业务员" key="scopeSeller"></ngl-datatable-column>
+            <ngl-datatable-column heading="电话" key="bannerType"></ngl-datatable-column>
+            <ngl-datatable-column heading="城市" key="city"></ngl-datatable-column>
+            <ngl-datatable-column heading="区域" key="startTime"></ngl-datatable-column>
+            <ngl-datatable-column heading="地址" key="endTime"></ngl-datatable-column>
+            <ngl-datatable-column heading="上线时间" key="addTime"></ngl-datatable-column>
+            <ngl-datatable-column heading="开单时间" key="addTime"></ngl-datatable-column>
+            <ngl-datatable-column heading="最后下单时间" key="addTime"></ngl-datatable-column>
+            <ngl-datatable-column heading="新用户订单量" key="addTime"></ngl-datatable-column>
+            <ngl-datatable-column heading="总订单量" key="addTime"></ngl-datatable-column>
+            <ngl-datatable-column heading="销售额" key="addTime"></ngl-datatable-column>
+            <ngl-datatable-column heading="店铺累计访问人数" key="addTime"></ngl-datatable-column>
+            <ngl-datatable-column heading="注册用户数" key="addTime"></ngl-datatable-column>
+            <ngl-datatable-column heading="奖励金额" key="addTime"></ngl-datatable-column>
+            <ngl-datatable-column heading="红包金额" key="addTime"></ngl-datatable-column>
+            <template nglNoRowsOverlay>暂无数据!</template>
+        </table>
+    </div>
+    <div class="slds-card__footer">
+        <ngl-pagination [(page)]="page" [total]="sellerDataList.total" [perPage]="sellerDataList.size" [limit]="pageOpts.limit"
+                        boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                        nextText="下一页"></ngl-pagination>
+    </div>
+</article>
+
+<!--提示信息-->
+<div class="slds-notify_container">
+    <ngl-notification *ngIf="showAlert" type="alert" severity="error" (nglNotificationClose)="onClose($event)"
+                      timeout="5000" class="slds-theme--alert-texture">
+        <h2>您的权限不足,请联系管理员~</h2>
+    </ngl-notification>
+</div>
+
+<!--tips-->
+<template #tip>
+    <div class="slds-text-title--caps">报表参数详解</div>
+    <div class="slds-text-longform">
+        <ul>
+            <li>上线时间:店铺通过审核(非物料审核)的时间</li>
+            <li>开单时间:店铺上线后第一笔订单完成的时间</li>
+            <li>最后下单时间:距离现在,最后一笔在该店完成的交易</li>
+            <li>红包金额:当日该店完成订单中所有不含配送费的优惠金额总和</li>
+            <li>奖励金额:指当日向该店发出的所有奖励金额,不扣除冲账</li>
+            <li>商家基本信息栏:数据为店铺属性,不根据筛选时间的改变而变化</li>
+            <li>商户业务信息、商户消耗成本栏：除“店铺累计访问人数”为累计数据，其余数据皆为当日数据</li>
+        </ul>
+    </div>
+</template>

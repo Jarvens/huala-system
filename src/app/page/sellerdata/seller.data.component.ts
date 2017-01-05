@@ -6,6 +6,11 @@ import {SellerDataService} from '../../service/seller.data.service';
 })
 
 export class SellerDataComponent implements OnInit {
+  // 商户报表对象
+  sellerDataList: any = {};
+  //分页对象
+  pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10}
+
   constructor(private sellerDataService: SellerDataService) {
   }
 
