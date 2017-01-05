@@ -84,4 +84,9 @@ export class BalanceComponent implements OnInit {
     console.log("点击了confirm方法");
   }
 
+  //关闭按钮触发
+  openChange(event) {
+    this.balanceDetailList = {};
+  }
+
 }

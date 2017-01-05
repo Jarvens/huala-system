@@ -56,7 +56,7 @@
     </div>
 </article>
 <!--结算详情列表模态-->
-<ngl-modal [header]="header" [(open)]="opened" size="large" [directional]="directional">
+<ngl-modal [header]="header" [(open)]="opened" size="large" [directional]="directional" (openChange)="openChange($event)">
     <div body>
         <article class="slds-card">
             <div class="slds-card__header slds-grid">
