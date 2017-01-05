@@ -15,6 +15,7 @@ import {UserComponent} from '../page/system/user/user.component';
 import {MessageComponent} from '../page/system/message/message.component';
 import {BalanceComponent} from '../page/balance/balance.component';
 import {GoodsComponent} from '../page/goods/goods.component';
+import {SellerDataComponent} from '../page/sellerdata/seller.data.component';
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
@@ -32,7 +33,8 @@ const routes: Routes = [
       {path: 'system-user-manage', component: UserComponent},
       {path: 'system-sms', component: MessageComponent},
       {path: 'balance-list', component: BalanceComponent},
-      {path: 'goods-entry', component: GoodsComponent}
+      {path: 'goods-entry', component: GoodsComponent},
+      {path: 'seller-rate', component: SellerDataComponent}
     ]
   },
 ];

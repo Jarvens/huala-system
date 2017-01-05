@@ -38,6 +38,7 @@ import {BalanceComponent} from './page/balance/balance.component';
 import {GoodsComponent} from './page/goods/goods.component';
 import {GoodsCatComponent} from "./page/goods/goodsCat.component";
 import {GoodsListComponent} from "./page/goods/goodsList.component";
+import {SellerDataComponent} from './page/sellerdata/seller.data.component';
 /**
  *
  * 公用组件
@@ -70,6 +71,7 @@ import {OrderService} from './service/order.service';
 import {MessageService} from './service/message.service';
 import {BalanceService} from './service/balance.service';
 import {GoodsService} from "./service/goods.service";
+import {SellerDataService} from './service/seller.data.service';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -106,7 +108,8 @@ import {GoodsService} from "./service/goods.service";
     ConfirmPromptComponent,
     GoodsComponent,
     GoodsCatComponent,
-    GoodsListComponent
+    GoodsListComponent,
+    SellerDataComponent
   ],
   imports: [
     BrowserModule,
@@ -131,7 +134,8 @@ import {GoodsService} from "./service/goods.service";
     UserService,
     MessageService,
     BalanceService,
-    GoodsService
+    GoodsService,
+    SellerDataService
   ]
 })
 export class AppModule {
