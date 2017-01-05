@@ -1,289 +1,287 @@
 <!--图片信息-->
 <div class="row">
-    <div class="col-md-12">
-        <div class="col-md-3">
-            <figure class="slds-image slds-image--card">
-                <a href="javascript:void(0);" class="slds-image__crop slds-image__crop--16-by-9">
-                    <img src="/assets/images/placeholder-img@16x9.jpg" alt="身份证"/>
-                </a>
-                <figcaption class="slds-image__title slds-image__title--card">
-                    <span class="slds-image__text slds-truncate" title="Image Title">身份证(320382190981234)</span>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="col-md-3">
-            <figure class="slds-image slds-image--card">
-                <a href="javascript:void(0);" class="slds-image__crop slds-image__crop--16-by-9">
-                    <img src="/assets/images/placeholder-img@16x9.jpg" alt="营业执照"/>
-                </a>
-                <figcaption class="slds-image__title slds-image__title--card">
-                    <span class="slds-image__text slds-truncate" title="Image Title">营业执照(1234567890)</span>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="col-md-3">
-            <figure class="slds-image slds-image--card">
-                <a href="javascript:void(0);" class="slds-image__crop slds-image__crop--16-by-9">
-                    <img src="/assets/images/placeholder-img@16x9.jpg" alt="烟草许可证"/>
-                </a>
-                <figcaption class="slds-image__title slds-image__title--card">
-                    <span class="slds-image__text slds-truncate" title="Image Title">烟草许可证(ZJ-HZ18324873857643)</span>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="col-md-3">
-            <figure class="slds-image slds-image--card">
-                <a href="javascript:void(0);" class="slds-image__crop slds-image__crop--16-by-9">
-                    <img [src]="commonImgUrl+detailFromSellerMain.imgUrl" alt="店铺头像"/>
-                </a>
-                <figcaption class="slds-image__title slds-image__title--card">
-                    <span class="slds-image__text slds-truncate" title="Image Title">店铺头像</span>
-                </figcaption>
-            </figure>
-        </div>
+  <div class="col-md-12">
+    <div class="col-md-3">
+      <figure class="slds-image slds-image--card">
+        <a href="javascript:void(0);" class="slds-image__crop slds-image__crop--16-by-9">
+          <img src="/assets/images/placeholder-img@16x9.jpg" alt="身份证"/>
+        </a>
+        <figcaption class="slds-image__title slds-image__title--card">
+          <span class="slds-image__text slds-truncate" title="Image Title">身份证(320382190981234)</span>
+        </figcaption>
+      </figure>
     </div>
+    <div class="col-md-3">
+      <figure class="slds-image slds-image--card">
+        <a href="javascript:void(0);" class="slds-image__crop slds-image__crop--16-by-9">
+          <img src="/assets/images/placeholder-img@16x9.jpg" alt="营业执照"/>
+        </a>
+        <figcaption class="slds-image__title slds-image__title--card">
+          <span class="slds-image__text slds-truncate" title="Image Title">营业执照(1234567890)</span>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="col-md-3">
+      <figure class="slds-image slds-image--card">
+        <a href="javascript:void(0);" class="slds-image__crop slds-image__crop--16-by-9">
+          <img src="/assets/images/placeholder-img@16x9.jpg" alt="烟草许可证"/>
+        </a>
+        <figcaption class="slds-image__title slds-image__title--card">
+          <span class="slds-image__text slds-truncate" title="Image Title">烟草许可证(ZJ-HZ18324873857643)</span>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="col-md-3">
+      <figure class="slds-image slds-image--card">
+        <a href="javascript:void(0);" class="slds-image__crop slds-image__crop--16-by-9">
+          <img [src]="commonImgUrl+detailFromSellerMain.imgUrl" alt="店铺头像"/>
+        </a>
+        <figcaption class="slds-image__title slds-image__title--card">
+          <span class="slds-image__text slds-truncate" title="Image Title">店铺头像</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
 </div>
 <div class="row" style="margin-top: 24px;">
-    <div class="col-md-12">
-        <div class="col-md-4">
-            <article class="slds-card slds-card--narrow" style="background: #fff">
-                <div class="slds-card__header slds-grid">
-                    <header class="slds-media slds-media--center slds-has-flexi-truncate">
-                        <div class="slds-media__figure">
-                            <ngl-icon icon="home" category="standard"></ngl-icon>
-                        </div>
-                        <div class="slds-media__body slds-truncate">
-                            <h2>
-                                <a href="javascript:void(0);" class="slds-text-link--reset">
-                                    <span class="slds-text-heading--small">店铺基本信息</span>
-                                </a>
-                            </h2>
-                        </div>
-                    </header>
-                </div>
-                <div class="slds-card__body">
-                    <div class="slds-card__body--inner">
-                        <div class="slds-tile">
-                            <div class="slds-tile__detail slds-text-body--small">
-                                <dl class="slds-dl--horizontal">
-
-                                    <dt class="slds-dl--horizontal__label">
-                                        <span class="slds-truncate" title="Date">店铺名称:</span>
-                                    </dt>
-                                    <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                                        <h3 class="slds-text-heading--medium slds-text-color--error slds-truncate">
-                                            {{detailFromSellerMain.name}}</h3>
-                                    </dd>
-                                    <dt class="slds-dl--horizontal__label">
-                                        <span class="slds-truncate" title="Date">联系方式:</span>
-                                    </dt>
-                                    <dd class="slds-dl--horizontal__detail slds-tile__meta">
+  <div class="col-md-12">
+    <div class="col-md-4">
+      <article class="slds-card slds-card--narrow" style="background: #fff">
+        <div class="slds-card__header slds-grid">
+          <header class="slds-media slds-media--center slds-has-flexi-truncate">
+            <div class="slds-media__figure">
+              <ngl-icon icon="home" category="standard"></ngl-icon>
+            </div>
+            <div class="slds-media__body slds-truncate">
+              <h2>
+                <a href="javascript:void(0);" class="slds-text-link--reset">
+                  <span class="slds-text-heading--small">店铺基本信息</span>
+                </a>
+              </h2>
+            </div>
+          </header>
+        </div>
+        <div class="slds-card__body">
+          <div class="slds-card__body--inner">
+            <div class="slds-tile">
+              <div class="slds-tile__detail slds-text-body--small">
+                <dl class="slds-dl--horizontal">
+                  <dt class="slds-dl--horizontal__label">
+                    <span class="slds-truncate">店铺名称:</span>
+                  </dt>
+                  <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                    <span class="slds-truncate">
+                      <h3 class="slds-text-heading--medium slds-text-color--error ">{{detailFromSellerMain.name}}</h3></span>
+                  </dd>
+                  <dt class="slds-dl--horizontal__label">
+                    <span class="slds-truncate">联系方式:</span>
+                  </dt>
+                  <dd class="slds-dl--horizontal__detail slds-tile__meta">
                     <span class="slds-truncate">
                       <ngl-badge type="info">{{detailFromSellerMain.phone}}</ngl-badge>
                     </span>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </div>
-                        <div class="slds-tile">
-                            <div class="slds-tile__detail slds-text-body--small">
-                                <dl class="slds-dl--horizontal">
-                                    <dt class="slds-dl--horizontal__label">
-                                        <span class="slds-truncate" title="Date">店铺地址:</span>
-                                    </dt>
-                                    <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                    <span class="slds-truncate"
-                          title="1/31/15 3:45PM">{{detailFromSellerMain.address}}</span>
-                                    </dd>
-                                    <dt class="slds-dl--horizontal__label">
-                                        <span class="slds-truncate" title="Date">营业时间:</span>
-                                    </dt>
-                                    <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                                        <span class="slds-truncate" title="1/31/15 3:45PM">{{detailFromSellerMain.openTime}}--{{detailFromSellerMain.endTime}}</span>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </div>
-                        <div class="slds-tile">
-                            <div class="slds-tile__detail slds-text-body--small">
-                                <dl class="slds-dl--horizontal">
-                                    <dt class="slds-dl--horizontal__label">
-                                        <span class="slds-truncate" title="Date">审核时间:</span>
-                                    </dt>
-                                    <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                                        <span class="slds-truncate" title="1/31/15 3:45PM">{{detailFromSellerMain.enterTime}}</span>
-                                    </dd>
-                                    <dt class="slds-dl--horizontal__label">
-                                        <span class="slds-truncate" title="Date">经纬度:</span>
-                                    </dt>
-                                    <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                                        <span class="slds-truncate" title="1/31/15 3:45PM">{{detailFromSellerMain.lng}}E,{{detailFromSellerMain.lat}}N</span>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slds-card__footer"><a href="javascript:void(0);">编辑</a>
-                </div>
-            </article>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+            <div class="slds-tile">
+              <div class="slds-tile__detail slds-text-body--small">
+                <dl class="slds-dl--horizontal">
+                  <dt class="slds-dl--horizontal__label">
+                    <span class="slds-truncate">店铺地址:</span>
+                  </dt>
+                  <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                    <span class="slds-truncate">{{detailFromSellerMain.address}}</span>
+                  </dd>
+                  <dt class="slds-dl--horizontal__label">
+                    <span class="slds-truncate">营业时间:</span>
+                  </dt>
+                  <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                    <span class="slds-truncate">{{detailFromSellerMain.openTime}}--{{detailFromSellerMain.endTime}}</span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+            <div class="slds-tile">
+              <div class="slds-tile__detail slds-text-body--small">
+                <dl class="slds-dl--horizontal">
+                  <dt class="slds-dl--horizontal__label">
+                    <span class="slds-truncate">审核时间:</span>
+                  </dt>
+                  <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                    <span class="slds-truncate">{{detailFromSellerMain.enterTime}}</span>
+                  </dd>
+                  <dt class="slds-dl--horizontal__label">
+                    <span class="slds-truncate">经纬度:</span>
+                  </dt>
+                  <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                    <span class="slds-truncate">{{detailFromSellerMain.lng}}E,{{detailFromSellerMain.lat}}N</span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-md-4">
-            <article class="slds-card slds-card--narrow" style="background: #fff">
-                <div class="slds-card__header slds-grid">
-                    <header class="slds-media slds-media--center slds-has-flexi-truncate">
-                        <div class="slds-media__figure">
-                            <ngl-icon icon="link" category="standard"></ngl-icon>
-                        </div>
-                        <div class="slds-media__body slds-truncate">
-                            <h2>
-                                <a href="javascript:void(0);" class="slds-text-link--reset">
-                                    <span class="slds-text-heading--small">店铺附加信息</span>
-                                </a>
-                            </h2>
-                        </div>
-                    </header>
-                </div>
-                <div class="slds-card__body">
-                    <div class="slds-card__body--inner">
-                        <div class="slds-tile">
-                            <div class="slds-tile__detail slds-text-body--small">
-                                <dl class="slds-dl--horizontal">
-                                    <dt class="slds-dl--horizontal__label">
-                                        <span class="slds-truncate" title="Type">奖励上限:</span>
-                                    </dt>
-                                    <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                                        <span class="slds-truncate" title="Visit">0</span>
-                                    </dd>
-                                    <dt class="slds-dl--horizontal__label">
-                                        <span class="slds-truncate" title="Date">销量:</span>
-                                    </dt>
-                                    <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                                        <span class="slds-truncate" title="1/31/15 3:45PM">0</span>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </div>
-                        <div class="slds-tile">
-                            <div class="slds-tile__detail slds-text-body--small">
-                                <dl class="slds-dl--horizontal">
-                                    <dt class="slds-dl--horizontal__label">
-                                        <span class="slds-truncate" title="Type">配送范围:</span>
-                                    </dt>
-                                    <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                                        <span class="slds-truncate" title="Visit">1.5公里</span>
-                                    </dd>
-                                    <dt class="slds-dl--horizontal__label">
-                                        <span class="slds-truncate" title="Date">免费配送:</span>
-                                    </dt>
-                                    <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                                        <span class="slds-truncate" title="1/31/15 3:45PM">1公里</span>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </div>
-                        <div class="slds-tile">
-
-                            <div class="slds-tile__detail slds-text-body--small">
-                                <dl class="slds-dl--horizontal">
-                                    <dt class="slds-dl--horizontal__label">
-                                        <span class="slds-truncate" title="Type">配送费:</span>
-                                    </dt>
-                                    <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                                        <span class="slds-truncate" title="Visit">20</span>
-                                    </dd>
-                                    <dt class="slds-dl--horizontal__label">
-                                        <span class="slds-truncate" title="Date">起送费:</span>
-                                    </dt>
-                                    <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                                        <span class="slds-truncate" title="1/31/15 3:45PM">30</span>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slds-card__footer"><a href="javascript:void(0);">编辑</a>
-                </div>
-            </article>
+        <div class="slds-card__footer"><a href="javascript:void(0);">编辑</a>
         </div>
-        <div class="col-md-4">
-            <article class="slds-card slds-card--narrow" style="background: #fff">
-                <div class="slds-card__header slds-grid">
-                    <header class="slds-media slds-media--center slds-has-flexi-truncate">
-                        <div class="slds-media__figure">
-                            <ngl-icon icon="account" category="standard"></ngl-icon>
-                        </div>
-                        <div class="slds-media__body slds-truncate">
-                            <h2>
-                                <a href="javascript:void(0);" class="slds-text-link--reset">
-                                    <span class="slds-text-heading--small">店铺银行信息</span>
-                                </a>
-                            </h2>
-                        </div>
-                    </header>
-                </div>
-                <div class="slds-card__body">
-                    <div class="slds-card__body--inner">
-                        <div class="slds-tile">
-                            <div class="slds-tile__detail slds-text-body--small">
-                                <dl class="slds-dl--horizontal">
-                                    <dt class="slds-dl--horizontal__label">
-                                        <span class="slds-truncate" title="Type">开户行支行:</span>
-                                    </dt>
-                                    <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                                        <span class="slds-truncate" title="Visit">123456</span>
-                                    </dd>
-                                    <dt class="slds-dl--horizontal__label">
-                                        <span class="slds-truncate" title="Date">营业执照号:</span>
-                                    </dt>
-                                    <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                                        <span class="slds-truncate" title="1/31/15 3:45PM">1234567890</span>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </div>
-                        <div class="slds-tile">
-                            <div class="slds-tile__detail slds-text-body--small">
-                                <dl class="slds-dl--horizontal">
-                                    <dt class="slds-dl--horizontal__label">
-                                        <span class="slds-truncate" title="Type">银行卡号:</span>
-                                    </dt>
-                                    <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                                        <span class="slds-truncate" title="Visit">Visit</span>
-                                    </dd>
-                                    <dt class="slds-dl--horizontal__label">
-                                        <span class="slds-truncate" title="Date">开户行:</span>
-                                    </dt>
-                                    <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                                        <span class="slds-truncate" title="1/31/15 3:45PM">1/31/15 3:45PM</span>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </div>
-                        <div class="slds-tile">
-                            <div class="slds-tile__detail slds-text-body--small">
-                                <dl class="slds-dl--horizontal">
-                                    <dt class="slds-dl--horizontal__label">
-                                        <span class="slds-truncate" title="Type">身份证号:</span>
-                                    </dt>
-                                    <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                                        <span class="slds-truncate" title="Visit">320382199018762345</span>
-                                    </dd>
-                                    <dt class="slds-dl--horizontal__label">
-                                        <span class="slds-truncate" title="Date">姓名:</span>
-                                    </dt>
-                                    <dd class="slds-dl--horizontal__detail slds-tile__meta">
-                                        <span class="slds-truncate" title="1/31/15 3:45PM">张三</span>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slds-card__footer"><a href="javascript:void(0);">编辑 <span class="slds-assistive-text">entity type</span></a>
-                </div>
-            </article>
-        </div>
+      </article>
     </div>
+    <div class="col-md-4">
+      <article class="slds-card slds-card--narrow" style="background: #fff">
+        <div class="slds-card__header slds-grid">
+          <header class="slds-media slds-media--center slds-has-flexi-truncate">
+            <div class="slds-media__figure">
+              <ngl-icon icon="link" category="standard"></ngl-icon>
+            </div>
+            <div class="slds-media__body slds-truncate">
+              <h2>
+                <a href="javascript:void(0);" class="slds-text-link--reset">
+                  <span class="slds-text-heading--small">店铺附加信息</span>
+                </a>
+              </h2>
+            </div>
+          </header>
+        </div>
+        <div class="slds-card__body">
+          <div class="slds-card__body--inner">
+            <div class="slds-tile">
+              <div class="slds-tile__detail slds-text-body--small">
+                <dl class="slds-dl--horizontal">
+                  <dt class="slds-dl--horizontal__label">
+                    <span class="slds-truncate" title="Type">奖励上限:</span>
+                  </dt>
+                  <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                    <span class="slds-truncate" title="Visit">0</span>
+                  </dd>
+                  <dt class="slds-dl--horizontal__label">
+                    <span class="slds-truncate" title="Date">销量:</span>
+                  </dt>
+                  <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                    <span class="slds-truncate" title="1/31/15 3:45PM">0</span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+            <div class="slds-tile">
+              <div class="slds-tile__detail slds-text-body--small">
+                <dl class="slds-dl--horizontal">
+                  <dt class="slds-dl--horizontal__label">
+                    <span class="slds-truncate" title="Type">配送范围:</span>
+                  </dt>
+                  <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                    <span class="slds-truncate" title="Visit">1.5公里</span>
+                  </dd>
+                  <dt class="slds-dl--horizontal__label">
+                    <span class="slds-truncate" title="Date">免费配送:</span>
+                  </dt>
+                  <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                    <span class="slds-truncate" title="1/31/15 3:45PM">1公里</span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+            <div class="slds-tile">
+
+              <div class="slds-tile__detail slds-text-body--small">
+                <dl class="slds-dl--horizontal">
+                  <dt class="slds-dl--horizontal__label">
+                    <span class="slds-truncate" title="Type">配送费:</span>
+                  </dt>
+                  <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                    <span class="slds-truncate" title="Visit">20</span>
+                  </dd>
+                  <dt class="slds-dl--horizontal__label">
+                    <span class="slds-truncate" title="Date">起送费:</span>
+                  </dt>
+                  <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                    <span class="slds-truncate" title="1/31/15 3:45PM">30</span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slds-card__footer"><a href="javascript:void(0);">编辑</a>
+        </div>
+      </article>
+    </div>
+    <div class="col-md-4">
+      <article class="slds-card slds-card--narrow" style="background: #fff">
+        <div class="slds-card__header slds-grid">
+          <header class="slds-media slds-media--center slds-has-flexi-truncate">
+            <div class="slds-media__figure">
+              <ngl-icon icon="account" category="standard"></ngl-icon>
+            </div>
+            <div class="slds-media__body slds-truncate">
+              <h2>
+                <a href="javascript:void(0);" class="slds-text-link--reset">
+                  <span class="slds-text-heading--small">店铺银行信息</span>
+                </a>
+              </h2>
+            </div>
+          </header>
+        </div>
+        <div class="slds-card__body">
+          <div class="slds-card__body--inner">
+            <div class="slds-tile">
+              <div class="slds-tile__detail slds-text-body--small">
+                <dl class="slds-dl--horizontal">
+                  <dt class="slds-dl--horizontal__label">
+                    <span class="slds-truncate">开户行支行:</span>
+                  </dt>
+                  <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                    <span class="slds-truncate">123456</span>
+                  </dd>
+                  <dt class="slds-dl--horizontal__label">
+                    <span class="slds-truncate">营业执照号:</span>
+                  </dt>
+                  <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                    <span class="slds-truncate">1234567890</span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+            <div class="slds-tile">
+              <div class="slds-tile__detail slds-text-body--small">
+                <dl class="slds-dl--horizontal">
+                  <dt class="slds-dl--horizontal__label">
+                    <span class="slds-truncate">银行卡号:</span>
+                  </dt>
+                  <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                    <span class="slds-truncate">Visit</span>
+                  </dd>
+                  <dt class="slds-dl--horizontal__label">
+                    <span class="slds-truncate">开户行:</span>
+                  </dt>
+                  <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                    <span class="slds-truncate">1/31/15 3:45PM</span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+            <div class="slds-tile">
+              <div class="slds-tile__detail slds-text-body--small">
+                <dl class="slds-dl--horizontal">
+                  <dt class="slds-dl--horizontal__label">
+                    <span class="slds-truncate">身份证号:</span>
+                  </dt>
+                  <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                    <span class="slds-truncate">320382199018762345</span>
+                  </dd>
+                  <dt class="slds-dl--horizontal__label">
+                    <span class="slds-truncate">姓名:</span>
+                  </dt>
+                  <dd class="slds-dl--horizontal__detail slds-tile__meta">
+                    <span class="slds-truncate">张三</span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slds-card__footer"><a href="javascript:void(0);">编辑 <span class="slds-assistive-text">entity type</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
 </div>

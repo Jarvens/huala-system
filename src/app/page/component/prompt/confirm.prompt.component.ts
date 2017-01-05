@@ -16,6 +16,8 @@ export class ConfirmPromptComponent {
   @Output() cancelFunction = new EventEmitter<boolean>();
   @Output() confirmFunction = new EventEmitter<boolean>();
   @Input() promptMessage: string = '确定要删除吗?';
+  @Input() icon: string = 'question_feed';
+  @Input() category: string = 'standard';
   //取消
   cancel() {
     this.cancelFunction.emit(!this.isOpen);

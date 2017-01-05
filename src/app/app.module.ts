@@ -6,6 +6,7 @@ import {NglModule} from 'ng-lightning';
 import {ENV_PROVIDERS} from './environment';
 import {BaiduMap} from '../../node_modules/angular2-baidu-map/src';
 import {AppComponent} from './app.component';
+import {TreeModule} from "angular2-tree-component";
 //路由
 import {AppRoutingModule} from './router/routing';
 //导航
@@ -34,6 +35,8 @@ import {UserComponent} from './page/system/user/user.component';
 import {OrderComponent} from './page/order/order.component';
 import {MessageComponent} from './page/system/message/message.component';
 import {BalanceComponent} from './page/balance/balance.component';
+import {GoodsComponent} from './page/goods/goods.component';
+import {GoodsCatComponent} from "./page/goods/goodsCat.component";
 /**
  *
  * 公用组件
@@ -65,9 +68,6 @@ import {UserService} from './service/user.service';
 import {OrderService} from './service/order.service';
 import {MessageService} from './service/message.service';
 import {BalanceService} from './service/balance.service';
-
-
-
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -101,13 +101,16 @@ import {BalanceService} from './service/balance.service';
     MessageComponent,
     ToastComponent,
     BalanceComponent,
-    ConfirmPromptComponent
+    ConfirmPromptComponent,
+    GoodsComponent,
+    GoodsCatComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
+    TreeModule,
     NglModule.forRoot()
   ],
   providers: [
