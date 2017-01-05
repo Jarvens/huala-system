@@ -6,7 +6,7 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
 export class StartTimeComponent {
 
   //开始时间
-  @Output() _startTime = new EventEmitter<Date>();
+  @Output() _startTime = new EventEmitter<string>();
 
   @Input() _show: boolean = false;
 
@@ -21,10 +21,19 @@ export class StartTimeComponent {
   //时间change触发
   dateChange(event) {
     this._show = !this._show;
-    this._startTime.emit(event);
+    let currentDate: string = this.dateFormat(event);
+    this._startTime.emit(currentDate);
   }
 
   selectDate() {
     this._show = !this._show;
+  }
+
+  //格式化时间
+  dateFormat(date: Date) {
+    let _year: string = date.getFullYear();
+    let _month: string = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth();
+    let _day: string = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    return _year + _month + _day;
   }
 }
