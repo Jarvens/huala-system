@@ -11,13 +11,22 @@ export class SellerDataComponent implements OnInit {
   //分页对象
   pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10}
   //日期对象
-
+  queryDate: string = '';
+  //测试店铺
+  testSeller: boolean = true;
+  //下线店铺
+  outLineSeller: boolean = true;
 
   constructor(private sellerDataService: SellerDataService) {
   }
 
   ngOnInit(): void {
 
+  }
+
+  //接收时间
+  receiveDate(event) {
+    this.queryDate = event;
   }
 
 }

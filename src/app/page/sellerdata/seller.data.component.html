@@ -6,10 +6,10 @@
                    (mouseenter)="open = true" (mouseleave)="open = false" class="text-info"><i
                         class="fa fa-info-circle"></i><span>信息</span></a>
             </div>
-            <div class="slds-p-horizontal--small slds-large-size--3-of-12">
+            <div class="slds-p-horizontal--small slds-large-size--2-of-12">
                 <div class="slds-form-element">
                     <div class="slds-form-element__control">
-                        <start-time-component></start-time-component>
+                        <start-time-component (_startTime)="receiveDate($event)"></start-time-component>
                     </div>
                 </div>
             </div>
@@ -23,10 +23,13 @@
                     <input nglFormControl type="checkbox" [required]="required"/>
                 </ngl-form-checkbox>
             </div>
+            <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+                <button class="slds-button slds-button--neutral">查询</button>
+            </div>
+            <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+                <button class="slds-button slds-button--neutral">导出Excel</button>
+            </div>
         </header>
-        <div class="slds-no-flex">
-            <button class="slds-button slds-button--neutral">导出Excel</button>
-        </div>
     </div>
     <div class="slds-card__body slds-scrollable">
         <table ngl-datatable [data]="sellerDataList.rows" trackByKey="rank"

@@ -42,4 +42,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
+
+  //toast通知
+  notifyParamFunction(event) {
+    this.showAlert = !this.showAlert;
+  }
+
 }
