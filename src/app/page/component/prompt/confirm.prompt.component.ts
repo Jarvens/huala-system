@@ -15,7 +15,7 @@ export class ConfirmPromptComponent {
   @Input() isOpen: boolean = false;
   @Output() cancelFunction = new EventEmitter<boolean>();
   @Output() confirmFunction = new EventEmitter<boolean>();
-  @Input() promptMessage:string='确定要删除吗?';
+  @Input() promptMessage: string = '确定要删除吗?';
   //取消
   cancel() {
     this.cancelFunction.emit(!this.isOpen);
@@ -23,7 +23,6 @@ export class ConfirmPromptComponent {
 
   //确定
   confirm() {
-    console.log("点击了");
     this.confirmFunction.emit(!this.isOpen);
   }
 
