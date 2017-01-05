@@ -1,3 +1,3 @@
 <button type="button" nglButton="neutral" (click)="selectDate()">{{date | date:'yyyyMMdd'}}</button>
-<ngl-datepicker style="width: 310px;position: fixed;background: aliceblue;z-index: 100" [monthNames]="monthNames" [dayNamesShort]="dayNamesShort" [(date)]="date"
+<ngl-datepicker style="width: 310px;position: fixed;background: #fff;z-index: 100" [monthNames]="monthNames" [dayNamesShort]="dayNamesShort" [(date)]="date"
                 class="slds-box slds-box--x-small" *ngIf="_show" (dateChange)="dateChange($event)"></ngl-datepicker>
