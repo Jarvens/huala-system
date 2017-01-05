@@ -1,12 +1,27 @@
 <article class="slds-card">
     <div class="slds-card__header slds-grid">
         <header class="slds-media slds-media--center slds-has-flexi-truncate">
-            <div class="col-md-2">
+            <div class="slds-p-horizontal--small slds-large-size--1-of-12">
                 <a [nglPopover]="tip" nglPopoverPlacement="bottom" [nglOpen]="open"
-                   (mouseenter)="open = true" (mouseleave)="open = false" class="text-info"><i class="fa fa-info-circle"></i><span>信息</span></a>
+                   (mouseenter)="open = true" (mouseleave)="open = false" class="text-info"><i
+                        class="fa fa-info-circle"></i><span>信息</span></a>
             </div>
-            <div class="col-md-3">
-
+            <div class="slds-p-horizontal--small slds-large-size--3-of-12">
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <input id="text-input-01" class="slds-input" type="text" placeholder="日期YYYYmmdd"/>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+                <ngl-form-checkbox label="测试店铺" [error]="hasError ? error : null" class="slds-m-top--small">
+                    <input nglFormControl type="checkbox" [required]="required" />
+                </ngl-form-checkbox>
+            </div>
+            <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+                <ngl-form-checkbox label="下线店铺" [error]="hasError ? error : null" class="slds-m-top--small">
+                    <input nglFormControl type="checkbox" [required]="required" />
+                </ngl-form-checkbox>
             </div>
         </header>
         <div class="slds-no-flex">
@@ -14,8 +29,9 @@
         </div>
     </div>
     <div class="slds-card__body slds-scrollable">
-        <table ngl-datatable [data]="sellerDataList.rows" trackByKey="rank" class="slds-max-medium-table--stacked-horizontal">
-            <ngl-datatable-column heading="商户id" key="bannerName" sortable></ngl-datatable-column>
+        <table ngl-datatable [data]="sellerDataList.rows" trackByKey="rank"
+               class="slds-max-medium-table--stacked-horizontal">
+            <ngl-datatable-column heading="商户id" key="bannerName"></ngl-datatable-column>
             <ngl-datatable-column heading="商户名" key="imgUrl"></ngl-datatable-column>
             <ngl-datatable-column heading="业务员" key="scopeSeller"></ngl-datatable-column>
             <ngl-datatable-column heading="电话" key="bannerType"></ngl-datatable-column>
@@ -36,7 +52,8 @@
         </table>
     </div>
     <div class="slds-card__footer">
-        <ngl-pagination [(page)]="page" [total]="sellerDataList.total" [perPage]="sellerDataList.size" [limit]="pageOpts.limit"
+        <ngl-pagination [(page)]="page" [total]="sellerDataList.total" [perPage]="sellerDataList.size"
+                        [limit]="pageOpts.limit"
                         boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
                         nextText="下一页"></ngl-pagination>
     </div>

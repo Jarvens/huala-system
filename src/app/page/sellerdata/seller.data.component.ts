@@ -10,6 +10,8 @@ export class SellerDataComponent implements OnInit {
   sellerDataList: any = {};
   //分页对象
   pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10}
+  //日期对象
+
 
   constructor(private sellerDataService: SellerDataService) {
   }
