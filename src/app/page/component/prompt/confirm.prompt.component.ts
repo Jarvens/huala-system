@@ -13,10 +13,15 @@ export class ConfirmPromptComponent {
 
   //打开|关闭confirm
   @Input() isOpen: boolean = false;
+  //取消
   @Output() cancelFunction = new EventEmitter<boolean>();
+  //确定
   @Output() confirmFunction = new EventEmitter<boolean>();
+  //提示消息
   @Input() promptMessage: string = '确定要删除吗?';
+  //icon
   @Input() icon: string = 'question_feed';
+  //icon类型
   @Input() category: string = 'standard';
   //取消
   cancel() {

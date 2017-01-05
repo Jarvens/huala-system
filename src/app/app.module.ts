@@ -48,6 +48,8 @@ import {ImgUploadComponent} from './page/component/img.upload.component';
 import {BreadCrumbsComponent} from './page/component/breadcrumbs/bread.crumbs.component';
 import {ToastComponent} from './page/component/toast/toast.component';
 import {ConfirmPromptComponent} from './page/component/prompt/confirm.prompt.component';
+import {StartTimeComponent} from './page/component/dateutil/start.time.component';
+import {EndTimeCOmponent} from './page/component/dateutil/end.time.component';
 //Directive
 
 /**
@@ -109,7 +111,9 @@ import {SellerDataService} from './service/seller.data.service';
     GoodsComponent,
     GoodsCatComponent,
     GoodsListComponent,
-    SellerDataComponent
+    SellerDataComponent,
+    StartTimeComponent,
+    EndTimeCOmponent
   ],
   imports: [
     BrowserModule,

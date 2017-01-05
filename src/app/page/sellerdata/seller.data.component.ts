@@ -17,6 +17,7 @@ export class SellerDataComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
 }
