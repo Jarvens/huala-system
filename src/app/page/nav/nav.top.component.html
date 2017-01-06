@@ -1,6 +1,6 @@
 <!--头部导航栏-->
-<nav class="navbar navbar-dark slds-theme--warning navbar-fixed-top" style="border-radius: 0">
-    <a class="navbar-brand" href="#"><i class="fa fa-skyatlas"><span>花啦生活</span></i></a>
+<nav class="navbar navbar-dark navbar-fixed-top" style="border-radius: 0;background: #ffef06">
+    <a class="navbar-brand" href="#"><span>花啦生活</span></a>
     <ul class="nav navbar-nav pull-right">
         <li class="nav-item active">
             <a href="#" class="nav-link">
@@ -16,13 +16,17 @@
             </a>
         </li>
         <li class="nav-item active">
-            <a [nglPopover]="tip1" (click)="tipChange('bottom')" class="nav-link dropdown-toggle"  [nglPopover]="tip1" [nglPopoverPlacement]="placement" [nglOpen]="tipOpen"><i class="fa fa-bell"></i><span class="caret"></span></a>
+            <a [nglPopover]="tip1" (click)="tipChange('bottom')" class="nav-link dropdown-toggle" [nglPopover]="tip1"
+               [nglPopoverPlacement]="placement" [nglOpen]="tipOpen"><i class="fa fa-bell"></i><span
+                    class="caret"></span></a>
             <template #tip1>
                 <i>infoTips</i>
             </template>
         </li>
         <li class="nav-item active dropdown">
-            <a [nglPopover]="tip" (click)="settingChange('bottom')" class="nav-link dropdown-toggle"  [nglPopover]="tip" [nglPopoverPlacement]="placement" [nglOpen]="settingOpen"><i class="fa fa-gear"></i><span class="caret"></span></a>
+            <a [nglPopover]="tip" (click)="settingChange('bottom')" class="nav-link dropdown-toggle" [nglPopover]="tip"
+               [nglPopoverPlacement]="placement" [nglOpen]="settingOpen"><i class="fa fa-gear"></i><span
+                    class="caret"></span></a>
             <template #tip>
                 <ul class="setting-tip">
                     <li (click)="openModifyPassword()">修改密码</li>
