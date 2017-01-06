@@ -7,6 +7,7 @@ import {ENV_PROVIDERS} from './environment';
 import {BaiduMap} from '../../node_modules/angular2-baidu-map/src';
 import {AppComponent} from './app.component';
 import {TreeModule} from "angular2-tree-component";
+import {QuillEditorModule} from 'ng2-quill-editor';
 //路由
 import {AppRoutingModule} from './router/routing';
 //导航
@@ -39,6 +40,7 @@ import {GoodsComponent} from './page/goods/goods.component';
 import {GoodsCatComponent} from "./page/goods/goodsCat.component";
 import {GoodsListComponent} from "./page/goods/goodsList.component";
 import {SellerDataComponent} from './page/sellerdata/seller.data.component';
+import {ArticleComponent} from './page/system/article/article.component';
 /**
  *
  * 公用组件
@@ -50,6 +52,7 @@ import {ToastComponent} from './page/component/toast/toast.component';
 import {ConfirmPromptComponent} from './page/component/prompt/confirm.prompt.component';
 import {StartTimeComponent} from './page/component/dateutil/start.time.component';
 import {EndTimeCOmponent} from './page/component/dateutil/end.time.component';
+import {QuillEditorComponent} from './page/component/quilleditor/quill.editor.component';
 //Directive
 
 /**
@@ -113,7 +116,9 @@ import {SellerDataService} from './service/seller.data.service';
     GoodsListComponent,
     SellerDataComponent,
     StartTimeComponent,
-    EndTimeCOmponent
+    EndTimeCOmponent,
+    QuillEditorComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
@@ -121,6 +126,7 @@ import {SellerDataService} from './service/seller.data.service';
     HttpModule,
     AppRoutingModule,
     TreeModule,
+    QuillEditorModule,
     NglModule.forRoot()
   ],
   providers: [

@@ -1,0 +1,13 @@
+<!-- use with ngModel -->
+<quill-editor [(ngModel)]="editorContent"
+              [config]="editorConfig"
+              (ready)="onEditorCreated($event)"
+              (change)="onContentChanged($event)"></quill-editor>
+
+
+<!-- or use with formControl -->
+<!--<quill-editor class="form-control"-->
+              <!--[formControl]="editorContent"-->
+              <!--[config]="editorConfig"-->
+              <!--(ready)="onEditorCreated($event)"-->
+              <!--(change)="onContentChanged($event)"></quill-editor>-->

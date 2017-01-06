@@ -16,6 +16,7 @@ import {MessageComponent} from '../page/system/message/message.component';
 import {BalanceComponent} from '../page/balance/balance.component';
 import {GoodsComponent} from '../page/goods/goods.component';
 import {SellerDataComponent} from '../page/sellerdata/seller.data.component';
+import {ArticleComponent} from '../page/system/article/article.component';
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
@@ -34,7 +35,8 @@ const routes: Routes = [
       {path: 'system-sms', component: MessageComponent},
       {path: 'balance-list', component: BalanceComponent},
       {path: 'goods-entry', component: GoodsComponent},
-      {path: 'seller-rate', component: SellerDataComponent}
+      {path: 'seller-rate', component: SellerDataComponent},
+      {path: 'system-article-manage', component: ArticleComponent}
     ]
   },
 ];
