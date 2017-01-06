@@ -1,0 +1,29 @@
+<table ngl-datatable [data]="goodsList" class="slds-max-medium-table--stacked-horizontal">
+  <ngl-datatable-column heading="#" key="rank"></ngl-datatable-column>
+  <ngl-datatable-column heading="商品名称" key="title"></ngl-datatable-column>
+  <ngl-datatable-column heading="商品货号" key="goodsSn"></ngl-datatable-column>
+  <ngl-datatable-column heading="所属类目" key="cname">
+    <template nglDatatableCell let-row="row">
+      <ngl-badge type="success">{{row.cname}}</ngl-badge>
+    </template>
+  </ngl-datatable-column>
+  <ngl-datatable-column heading="商品图片" key="picUrl">
+    <template nglDatatableCell let-row="row">
+      <img [src]="imgUrl + row.picUrl + '?s=200x200'" alt="商品图片">
+    </template>
+  </ngl-datatable-column>
+  <ngl-datatable-column heading="进货价" key="recPrice"></ngl-datatable-column>
+  <ngl-datatable-column heading="售价" key="salePrice"></ngl-datatable-column>
+  <ngl-datatable-column heading="操作">
+    <template nglDatatableCell let-row="row">
+      <ngl-badge type="info"><i class="fa fa-info"></i>编辑</ngl-badge>
+      <ngl-badge type="error"><i class="fa fa-close"></i>删除</ngl-badge>
+    </template>
+  </ngl-datatable-column>
+</table>
+<div class="slds-card__footer">
+  <ngl-pagination [(page)]="pageOpts.page" [total]="pageOpts.total" [perPage]="pageOpts.perPage"
+                  [limit]="pageOpts.limit"
+                  boundaryNumbers="1" #pagination (pageChange)="getGoodsByCat($event)"
+                  previousText="上一页" nextText="下一页"></ngl-pagination>
+</div>
