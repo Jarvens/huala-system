@@ -1,1 +1,8 @@
-<quill-editor-component></quill-editor-component>
+<ngl-tabs [(selected)]="selected">
+    <template ngl-tab heading="文章列表" nglTabId="list">
+        <article-list-component></article-list-component>
+    </template>
+    <template ngl-tab heading="文章录入" nglTabId="entry">
+        <article-entry-component></article-entry-component>
+    </template>
+</ngl-tabs>

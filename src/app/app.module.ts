@@ -41,6 +41,8 @@ import {GoodsCatComponent} from "./page/goods/goodsCat.component";
 import {GoodsListComponent} from "./page/goods/goodsList.component";
 import {SellerDataComponent} from './page/sellerdata/seller.data.component';
 import {ArticleComponent} from './page/system/article/article.component';
+import {ArticleListComponent} from './page/system/article/article.list.component';
+import {ArticleEntryComponent} from './page/system/article/article.entry.component';
 /**
  *
  * 公用组件
@@ -77,6 +79,7 @@ import {MessageService} from './service/message.service';
 import {BalanceService} from './service/balance.service';
 import {GoodsService} from "./service/goods.service";
 import {SellerDataService} from './service/seller.data.service';
+import {ArticleService} from './service/article.service';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -118,7 +121,9 @@ import {SellerDataService} from './service/seller.data.service';
     StartTimeComponent,
     EndTimeCOmponent,
     QuillEditorComponent,
-    ArticleComponent
+    ArticleComponent,
+    ArticleListComponent,
+    ArticleEntryComponent
   ],
   imports: [
     BrowserModule,
@@ -145,7 +150,8 @@ import {SellerDataService} from './service/seller.data.service';
     MessageService,
     BalanceService,
     GoodsService,
-    SellerDataService
+    SellerDataService,
+    ArticleService
   ]
 })
 export class AppModule {
