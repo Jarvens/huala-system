@@ -21,12 +21,32 @@ export class SellerDataComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.getSellerData(this.pageOpts, this.queryDate, this.testSeller, this.outLineSeller);
   }
 
   //接收时间
   receiveDate(event) {
     this.queryDate = event;
+  }
+
+  //查询列表方法
+  getSellerData(page: any, date: string, testSeller: boolean, outLineSeller: boolean) {
+    this.sellerDataService.getSellerData(page, date, testSeller, outLineSeller).subscribe(res=> {
+      this.sellerDataList = res.json();
+      console.log("返回结果");
+      console.log(res.json());
+    });
+  }
+
+  //分页查询
+  pageChange(event) {
+    this.pageOpts.page = event;
+    this.getSellerData(this.pageOpts, this.queryDate, this.testSeller, this.outLineSeller);
+  }
+
+  //按钮查询
+  querySellerDataByBtn(){
+    this.getSellerData(this.pageOpts, this.queryDate, this.testSeller, this.outLineSeller);
   }
 
 }

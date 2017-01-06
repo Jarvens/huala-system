@@ -15,16 +15,16 @@
             </div>
             <div class="slds-p-horizontal--small slds-large-size-2-of-12">
                 <ngl-form-checkbox label="测试店铺" [error]="hasError ? error : null" class="slds-m-top--small">
-                    <input nglFormControl type="checkbox" [required]="required"/>
+                    <input nglFormControl type="checkbox" [ngModel]="testSeller"/>
                 </ngl-form-checkbox>
             </div>
             <div class="slds-p-horizontal--small slds-large-size-2-of-12">
                 <ngl-form-checkbox label="下线店铺" [error]="hasError ? error : null" class="slds-m-top--small">
-                    <input nglFormControl type="checkbox" [required]="required"/>
+                    <input nglFormControl type="checkbox" [(ngModel)]="outLineSeller"/>
                 </ngl-form-checkbox>
             </div>
             <div class="slds-p-horizontal--small slds-large-size-2-of-12">
-                <button class="slds-button slds-button--neutral">查询</button>
+                <button class="slds-button slds-button--neutral" (click)="querySellerDataByBtn()">查询</button>
             </div>
             <div class="slds-p-horizontal--small slds-large-size-2-of-12">
                 <button class="slds-button slds-button--neutral">导出Excel</button>
@@ -34,23 +34,35 @@
     <div class="slds-card__body slds-scrollable">
         <table ngl-datatable [data]="sellerDataList.rows" trackByKey="rank"
                class="slds-max-medium-table--stacked-horizontal">
-            <ngl-datatable-column heading="商户id" key="bannerName"></ngl-datatable-column>
-            <ngl-datatable-column heading="商户名" key="imgUrl"></ngl-datatable-column>
-            <ngl-datatable-column heading="业务员" key="scopeSeller"></ngl-datatable-column>
-            <ngl-datatable-column heading="电话" key="bannerType"></ngl-datatable-column>
+            <ngl-datatable-column heading="商户id" key="sellerId"></ngl-datatable-column>
+            <ngl-datatable-column heading="商户名" key="sellerName"></ngl-datatable-column>
+            <ngl-datatable-column heading="业务员" key="clerk"></ngl-datatable-column>
+            <ngl-datatable-column heading="电话" key="phone"></ngl-datatable-column>
             <ngl-datatable-column heading="城市" key="city"></ngl-datatable-column>
-            <ngl-datatable-column heading="区域" key="startTime"></ngl-datatable-column>
-            <ngl-datatable-column heading="地址" key="endTime"></ngl-datatable-column>
-            <ngl-datatable-column heading="上线时间" key="addTime"></ngl-datatable-column>
-            <ngl-datatable-column heading="开单时间" key="addTime"></ngl-datatable-column>
-            <ngl-datatable-column heading="最后下单时间" key="addTime"></ngl-datatable-column>
-            <ngl-datatable-column heading="新用户订单量" key="addTime"></ngl-datatable-column>
-            <ngl-datatable-column heading="总订单量" key="addTime"></ngl-datatable-column>
-            <ngl-datatable-column heading="销售额" key="addTime"></ngl-datatable-column>
-            <ngl-datatable-column heading="店铺累计访问人数" key="addTime"></ngl-datatable-column>
-            <ngl-datatable-column heading="注册用户数" key="addTime"></ngl-datatable-column>
-            <ngl-datatable-column heading="奖励金额" key="addTime"></ngl-datatable-column>
-            <ngl-datatable-column heading="红包金额" key="addTime"></ngl-datatable-column>
+            <ngl-datatable-column heading="区域" key="area"></ngl-datatable-column>
+            <ngl-datatable-column heading="地址" key="address"></ngl-datatable-column>
+            <ngl-datatable-column heading="上线时间" key="onlineDate">
+                <template nglDatatableCell let-value>
+                    {{value|date:'yyyy-MM-dd HH:mm'}}
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="开单时间" key="billingDate">
+                <template nglDatatableCell let-value>
+                    {{value|date:'yyyy-MM-dd HH:mm'}}
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="最后下单时间" key="lastOrderDate">
+                <template nglDatatableCell let-value>
+                    {{value|date:'yyyy-MM-dd HH:mm'}}
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="新用户订单量" key="firstOrderDate"></ngl-datatable-column>
+            <ngl-datatable-column heading="总订单量" key="totalOrderCount"></ngl-datatable-column>
+            <ngl-datatable-column heading="销售额" key="saleAmount"></ngl-datatable-column>
+            <ngl-datatable-column heading="店铺累计访问人数" key="visitCount"></ngl-datatable-column>
+            <ngl-datatable-column heading="注册用户数" key="registerCount"></ngl-datatable-column>
+            <ngl-datatable-column heading="奖励金额" key="rewardAmount"></ngl-datatable-column>
+            <ngl-datatable-column heading="红包金额" key="redPackageAmount"></ngl-datatable-column>
             <template nglNoRowsOverlay>暂无数据!</template>
         </table>
     </div>
@@ -61,14 +73,6 @@
                         nextText="下一页"></ngl-pagination>
     </div>
 </article>
-
-<!--提示信息-->
-<div class="slds-notify_container">
-    <ngl-notification *ngIf="showAlert" type="alert" severity="error" (nglNotificationClose)="onClose($event)"
-                      timeout="5000" class="slds-theme--alert-texture">
-        <h2>您的权限不足,请联系管理员~</h2>
-    </ngl-notification>
-</div>
 
 <!--tips-->
 <template #tip>
