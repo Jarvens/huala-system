@@ -48,6 +48,7 @@ import {HngCompanyComponent} from './page/hng/company/hng.company.component';
 import {HngJobComponent} from './page/hng/job/hng.job.component';
 import {HngRecruitMainComponent} from './page/hng/recruit/hng.recruit.main.component';
 import {HngMovieComponent} from './page/hng/movie/hng.movie.component';
+import {HngRecruitBasicComponent} from './page/hng/recruit/hng.recruit.basic.component';
 /**
  *
  * 公用组件
@@ -133,7 +134,8 @@ import {HngService} from './service/hng.service';
     HngCompanyComponent,
     HngJobComponent,
     HngRecruitMainComponent,
-    HngMovieComponent
+    HngMovieComponent,
+    HngRecruitBasicComponent
   ],
   imports: [
     BrowserModule,
