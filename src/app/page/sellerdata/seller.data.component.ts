@@ -33,8 +33,6 @@ export class SellerDataComponent implements OnInit {
   getSellerData(page: any, date: string, testSeller: boolean, outLineSeller: boolean) {
     this.sellerDataService.getSellerData(page, date, testSeller, outLineSeller).subscribe(res=> {
       this.sellerDataList = res.json();
-      console.log("返回结果");
-      console.log(res.json());
     });
   }
 
@@ -45,8 +43,14 @@ export class SellerDataComponent implements OnInit {
   }
 
   //按钮查询
-  querySellerDataByBtn(){
+  querySellerDataByBtn() {
     this.getSellerData(this.pageOpts, this.queryDate, this.testSeller, this.outLineSeller);
+  }
+
+  //报表导出
+  exportExcel() {
+    let city = localStorage.getItem("cityForHuala");
+    this.sellerDataService.exportExcel(city, this.queryDate, this.testSeller, this.outLineSeller);
   }
 
 }

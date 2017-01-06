@@ -27,7 +27,7 @@
                 <button class="slds-button slds-button--neutral" (click)="querySellerDataByBtn()">查询</button>
             </div>
             <div class="slds-p-horizontal--small slds-large-size-2-of-12">
-                <button class="slds-button slds-button--neutral">导出Excel</button>
+                <button class="slds-button slds-button--neutral" (click)="exportExcel()">导出Excel</button>
             </div>
         </header>
     </div>
@@ -35,7 +35,13 @@
         <table ngl-datatable [data]="sellerDataList.rows" trackByKey="rank"
                class="slds-max-medium-table--stacked-horizontal">
             <ngl-datatable-column heading="商户id" key="sellerId"></ngl-datatable-column>
-            <ngl-datatable-column heading="商户名" key="sellerName"></ngl-datatable-column>
+            <ngl-datatable-column heading="商户名" key="sellerName">
+                <template nglDatatableCell let-value>
+                    <ngl-badge type="info">
+                        {{value}}
+                    </ngl-badge>
+                </template>
+            </ngl-datatable-column>
             <ngl-datatable-column heading="业务员" key="clerk"></ngl-datatable-column>
             <ngl-datatable-column heading="电话" key="phone"></ngl-datatable-column>
             <ngl-datatable-column heading="城市" key="city"></ngl-datatable-column>

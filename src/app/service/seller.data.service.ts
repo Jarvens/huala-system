@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {MyHttp} from '../core/http';
+const ApiUrl = process.env.ApiUrl;
 @Injectable()
 export class SellerDataService {
   constructor(private http: MyHttp) {
@@ -17,5 +18,10 @@ export class SellerDataService {
       hasTest: testSeller,
       hasOutLine: outLineSeller
     });
+  }
+
+  //下载商户信息报表
+  exportExcel(city: string, date: string, testSeller: boolean, outLineSeller: boolean) {
+    location.href = ApiUrl + "/report/other/downLoad-file?date=" + date + "&city=" + city + "&hasTest=" + testSeller + "&hasOutLine=" + outLineSeller;
   }
 }
