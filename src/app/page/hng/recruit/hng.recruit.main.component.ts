@@ -19,5 +19,10 @@ export class HngRecruitMainComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //分页事件
+  pageChange(event) {
+    this.pageOpts.page = event;
+  }
+
 
 }
