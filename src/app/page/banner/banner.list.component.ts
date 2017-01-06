@@ -9,7 +9,7 @@ export class BannerListComponent implements OnInit {
   //banner列表对象
   bannerList: any = {};
   //分页对象
-  pageOpts: any = {total: 0, limit: 3, perPage: 10}
+  pageOpts: any = {page:1,total: 0, limit: 3, perPage: 10}
   //图片地址前缀
   commonImgUrl = process.env.ImgUrl;
   //搜索关键词
