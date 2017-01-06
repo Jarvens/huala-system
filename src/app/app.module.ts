@@ -43,6 +43,11 @@ import {SellerDataComponent} from './page/sellerdata/seller.data.component';
 import {ArticleComponent} from './page/system/article/article.component';
 import {ArticleListComponent} from './page/system/article/article.list.component';
 import {ArticleEntryComponent} from './page/system/article/article.entry.component';
+//惠农购业务
+import {HngCompanyComponent} from './page/hng/company/hng.company.component';
+import {HngJobComponent} from './page/hng/job/hng.job.component';
+import {HngRecruitMainComponent} from './page/hng/recruit/hng.recruit.main.component';
+import {HngMovieComponent} from './page/hng/movie/hng.movie.component';
 /**
  *
  * 公用组件
@@ -80,6 +85,7 @@ import {BalanceService} from './service/balance.service';
 import {GoodsService} from "./service/goods.service";
 import {SellerDataService} from './service/seller.data.service';
 import {ArticleService} from './service/article.service';
+import {HngService} from './service/hng.service';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -123,7 +129,11 @@ import {ArticleService} from './service/article.service';
     QuillEditorComponent,
     ArticleComponent,
     ArticleListComponent,
-    ArticleEntryComponent
+    ArticleEntryComponent,
+    HngCompanyComponent,
+    HngJobComponent,
+    HngRecruitMainComponent,
+    HngMovieComponent
   ],
   imports: [
     BrowserModule,
@@ -151,7 +161,8 @@ import {ArticleService} from './service/article.service';
     BalanceService,
     GoodsService,
     SellerDataService,
-    ArticleService
+    ArticleService,
+    HngService
   ]
 })
 export class AppModule {

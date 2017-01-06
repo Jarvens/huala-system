@@ -17,6 +17,10 @@ import {BalanceComponent} from '../page/balance/balance.component';
 import {GoodsComponent} from '../page/goods/goods.component';
 import {SellerDataComponent} from '../page/sellerdata/seller.data.component';
 import {ArticleComponent} from '../page/system/article/article.component';
+import {HngCompanyComponent} from '../page/hng/company/hng.company.component';
+import {HngJobComponent} from '../page/hng/job/hng.job.component';
+import {HngRecruitMainComponent} from '../page/hng/recruit/hng.recruit.main.component';
+import {HngMovieComponent} from '../page/hng/movie/hng.movie.component';
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
@@ -36,7 +40,11 @@ const routes: Routes = [
       {path: 'balance-list', component: BalanceComponent},
       {path: 'goods-entry', component: GoodsComponent},
       {path: 'seller-rate', component: SellerDataComponent},
-      {path: 'system-article-manage', component: ArticleComponent}
+      {path: 'system-article-manage', component: ArticleComponent},
+      {path: 'hng/hng-company', component: HngCompanyComponent},
+      {path: 'hng/hng-job', component: HngJobComponent},
+      {path: 'hng/hng-recruit', component: HngRecruitMainComponent},
+      {path: 'hng/hng-movie', component: HngMovieComponent}
     ]
   },
 ];
