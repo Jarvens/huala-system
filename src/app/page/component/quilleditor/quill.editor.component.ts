@@ -5,7 +5,7 @@ import {Component} from '@angular/core';
 })
 
 export class QuillEditorComponent{
-  editorContent:string =`<p>My HTML </p>`;
+  editorContent:string =``;
   editorConfig:any ={placeholder:"输入公告内容,支持html"};
 
   constructor(){}
