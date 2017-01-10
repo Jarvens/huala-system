@@ -39,6 +39,7 @@ import {BalanceComponent} from './page/balance/balance.component';
 import {GoodsComponent} from './page/goods/goods.component';
 import {GoodsCatComponent} from "./page/goods/goodsCat.component";
 import {GoodsListComponent} from "./page/goods/goodsList.component";
+import {GoodsInfoComponent} from "./page/goods/goodsInfo.component";
 import {SellerDataComponent} from './page/sellerdata/seller.data.component';
 import {ArticleComponent} from './page/system/article/article.component';
 import {ArticleListComponent} from './page/system/article/article.list.component';
@@ -87,7 +88,6 @@ import {GoodsService} from "./service/goods.service";
 import {SellerDataService} from './service/seller.data.service';
 import {ArticleService} from './service/article.service';
 import {HngService} from './service/hng.service';
-import {CardService} from './service/card.service';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -125,6 +125,7 @@ import {CardService} from './service/card.service';
     GoodsComponent,
     GoodsCatComponent,
     GoodsListComponent,
+    GoodsInfoComponent,
     SellerDataComponent,
     StartTimeComponent,
     EndTimeCOmponent,
@@ -144,7 +145,7 @@ import {CardService} from './service/card.service';
     HttpModule,
     AppRoutingModule,
     TreeModule,
-    QuillEditorModule,
+    // QuillEditorModule,
     NglModule.forRoot()
   ],
   providers: [

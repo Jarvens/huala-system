@@ -1,3 +1,8 @@
+<div class="slds-size--1-of-2 slds-m-bottom--x-small">
+  <search-component (selectScope)="selectScope($event)" [showIcon]="false" [debounce]="2000"
+                    placeHolder="请输入商品名称 货号..."
+                    (searchKey)="searchByCondition($event)"></search-component>
+</div>
 <table ngl-datatable [data]="goodsList" class="slds-max-medium-table--stacked-horizontal">
   <ngl-datatable-column heading="#" key="rank"></ngl-datatable-column>
   <ngl-datatable-column heading="商品名称" key="title"></ngl-datatable-column>
@@ -17,7 +22,7 @@
   <ngl-datatable-column heading="操作">
     <template nglDatatableCell let-row="row">
       <ngl-badge type="info"><i class="fa fa-info"></i>编辑</ngl-badge>
-      <ngl-badge type="error"><i class="fa fa-close"></i>删除</ngl-badge>
+      <ngl-badge type="error" (click)="toDelete(row)"><i class="fa fa-close"></i>删除</ngl-badge>
     </template>
   </ngl-datatable-column>
 </table>
@@ -27,3 +32,6 @@
                   boundaryNumbers="1" #pagination (pageChange)="getGoodsByCatId($event)"
                   previousText="上一页" nextText="下一页"></ngl-pagination>
 </div>
+
+<confirm-prompt-component  [isOpen]="confirmBoxOpen" (cancelFunction)="close()"
+                          (confirmFunction)="confirmDel()"></confirm-prompt-component>

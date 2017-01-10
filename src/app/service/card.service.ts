@@ -4,4 +4,10 @@ import {MyHttp} from '../core/http';
 export class CardService {
   constructor(private http: MyHttp) {
   }
+
+  //查询卡券列表
+  public getCardList(conditions: any) {
+
+  }
+
 }

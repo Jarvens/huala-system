@@ -7,6 +7,13 @@ export class GoodsService {
   
   getGoodsByCat(data){
     let gUrl = "/goods/h-goods-list";
+
     return this.http.get(gUrl, data);
+  }
+
+  deleteGoods(data) {
+    let pUrl = "/goods/del-h-goods";
+
+    return this.http.post(pUrl, data);
   }
 }

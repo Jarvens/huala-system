@@ -40,4 +40,9 @@ export class BannerEntryComponent {
   cancel() {
     this.opened = !this.opened;
   }
+
+  //保存banner
+  saveBanner(){
+
+  }
 }

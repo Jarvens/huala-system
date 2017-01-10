@@ -7,11 +7,11 @@
                     <span>花啦生活</span>
                 </div>
                 <div class="card-block">
-                    <ngl-form-element [error]="hasError ? error : null" class="slds-m-top--small">
-                        <input nglFormControl type="text" placeholder="用户名" [required]="required" [(ngModel)]="user.username">
+                    <ngl-form-element  class="slds-m-top--small">
+                        <input nglFormControl type="text" placeholder="用户名"  [(ngModel)]="user.username">
                     </ngl-form-element>
-                    <ngl-form-element  [error]="hasError ? error : null" class="slds-m-top--small">
-                        <input nglFormControl type="password" placeholder="密码" [required]="required" [(ngModel)]="user.password">
+                    <ngl-form-element   class="slds-m-top--small">
+                        <input nglFormControl type="password" placeholder="密码"  [(ngModel)]="user.password">
                     </ngl-form-element>
                 </div>
                 <div class="card-footer">

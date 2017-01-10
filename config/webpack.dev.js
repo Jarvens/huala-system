@@ -115,8 +115,7 @@ module.exports = function (options) {
           'ENV': JSON.stringify(METADATA.ENV),
           'NODE_ENV': JSON.stringify(METADATA.ENV),
           'HMR': METADATA.HMR,
-          'ApiUrl':JSON.stringify(METADATA.ApiUrl),
-          "ImgUrl":JSON.stringify(METADATA.ImgUrl)
+          'ApiUrl':JSON.stringify(METADATA.ApiUrl)
         }
       }),
 

@@ -36,13 +36,13 @@
 <!--新增活动模态-->
 <ngl-modal [header]="noHeader ? '' : '新增活动'" [(open)]="opened" [size]="size" [directional]="directional">
     <div body>
-        <ngl-form-element label="活动名称" [error]="hasError ? error : null" class="slds-m-top--small">
+        <ngl-form-element label="活动名称"  class="slds-m-top--small">
             <input nglFormControl type="text"  [required]="required">
         </ngl-form-element>
-        <ngl-form-element label="活动图标" [error]="hasError ? error : null" class="slds-m-top--small">
+        <ngl-form-element label="活动图标"  class="slds-m-top--small">
             <input nglFormControl type="text" >
         </ngl-form-element>
-        <ngl-form-element label="活动类型" [error]="hasError ? error : null" class="slds-m-top--small">
+        <ngl-form-element label="活动类型"  class="slds-m-top--small">
             <select nglFormControl class="slds-select" [required]="required">
                 <option>折扣</option>
                 <option>热卖</option>
@@ -51,7 +51,7 @@
         <div class="row">
             <div class="col-md-6">
                 <!--活动开始时间-->
-                <ngl-form-element label="开始时间" [error]="hasError ? error : null" class="slds-m-top--small">
+                <ngl-form-element label="开始时间"  class="slds-m-top--small">
                     <input nglFormControl type="text"  [required]="required" [(ngModel)]="startDate"
                            (click)="showStartDate=!showStartDate">
                 </ngl-form-element>
@@ -61,7 +61,7 @@
             </div>
             <div class="col-md-6">
                 <!--活动结束时间-->
-                <ngl-form-element label="结束时间" [error]="hasError ? error : null" class="slds-m-top--small">
+                <ngl-form-element label="结束时间"  class="slds-m-top--small">
                     <input nglFormControl type="text"  [required]="required" [(ngModel)]="endDate"
                            (click)="showEndDate=!showEndDate">
                 </ngl-form-element>
@@ -70,7 +70,7 @@
                                 *ngIf="showEndDate"></ngl-datepicker>
             </div>
         </div>
-        <ngl-form-element [error]="hasError ? error : null" class="slds-m-top--small">
+        <ngl-form-element  class="slds-m-top--small">
             <template nglFormLabel>活动说明</template>
             <textarea nglFormControl  [required]="required"></textarea>
         </ngl-form-element>

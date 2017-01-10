@@ -38,19 +38,19 @@
 </nav>
 
 <!--修改密码模态-->
-<ngl-modal [header]="noHeader ? '' : '修改密码'" [(open)]="opened" [directional]="directional" class="small-modal">
+<ngl-modal header="修改密码" [(open)]="opened" class="small-modal">
     <div body>
-        <ngl-form-element label="原始密码" [error]="hasError ? error : null" class="slds-m-top--small">
+        <ngl-form-element label="原始密码"  class="slds-m-top--small">
             <input nglFormControl type="text" [required]="required">
         </ngl-form-element>
-        <ngl-form-element label="新密码" [error]="hasError ? error : null" class="slds-m-top--small">
+        <ngl-form-element label="新密码"  class="slds-m-top--small">
             <input nglFormControl type="text" [required]="required">
         </ngl-form-element>
-        <ngl-form-element label="确认密码" [error]="hasError ? error : null" class="slds-m-top--small">
+        <ngl-form-element label="确认密码"  class="slds-m-top--small">
             <input nglFormControl type="text" [required]="required">
         </ngl-form-element>
     </div>
-    <template ngl-modal-footer *ngIf="!noFooter">
+    <template ngl-modal-footer >
         <button class="slds-button slds-button--neutral" (click)="cancel()">取消</button>
         <button class="slds-button slds-button--brand">保存</button>
     </template>

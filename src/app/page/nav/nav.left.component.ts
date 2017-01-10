@@ -10,7 +10,7 @@ export class NavLeftComponent implements OnInit {
     //父节点菜单
     @Output() parentMenu = new EventEmitter<string>();
     //子节点菜单
-    @Output() childrenMenu: string = '';
+    @Output() childrenMenu: any = '';
     menuList: Array<any> = [];
     currentMenuId: string = '';
 

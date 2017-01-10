@@ -13,6 +13,8 @@ export class GoodsListComponent {
   public goodsList:any = []; //商品列表;
   public imgUrl:string;
   public pageOpts: any = {}; //分页对象
+  public confirmBoxOpen:boolean = false; //打开或关闭确认对话框;
+  public delGoods:any;
 
   constructor(public goodsService: GoodsService) {
     this.imgUrl = window["ImgUrl"];
@@ -54,7 +56,7 @@ export class GoodsListComponent {
 
       this.goodsList = rData.rows;
       this.pageOpts = {
-        total: rData.total > 0?rData.total:1,
+        total: rData.total > 0 ? rData.total : 1,
         limit: 5,
         perPage: 10,
         page: rData.page
@@ -65,6 +67,41 @@ export class GoodsListComponent {
         item.recPrice = item.recPrice / 100;
         item.salePrice = item.salePrice / 100;
       });
+    });
+  }
+
+  /*
+   * @description: Delete goods, it will bring up a confirm popup window;
+   * @params: goods: Object;
+   * @date: 2017-01-10;
+   */
+  public toDelete(goods):void {
+    this.confirmBoxOpen = true;
+    this.delGoods = goods;
+  }
+
+  /*
+   * @description: Close confirm box;
+   * @date: 2017-01-10;
+   */
+  public close():void {
+    this.confirmBoxOpen = false;
+  }
+
+  /*
+   * @description: Confirm to delete goods;
+   * @date: 2017-01-10;
+   */
+  public confirmDel():void {
+    this.confirmBoxOpen = false;
+    this.goodsService.deleteGoods(this.delGoods).subscribe(res => {
+      let data = res.json();
+
+      if(data.success){
+        this.getGoodsByCatId(this.pageOpts.page);
+      }else {
+        console.error("删除商品失败!");
+      }
     })
   }
 }

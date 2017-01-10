@@ -8,7 +8,7 @@
         </header>
     </div>
     <div class="slds-card__body">
-        <table ngl-datatable [data]="sellerList.rows" trackByKey="rank" [loading]="loading" [(sort)]="sort"
+        <table ngl-datatable [data]="sellerList.rows" trackByKey="rank" [loading]="loading"
                (sortChange)="onSort($event)" (onRowClick)="onRowClick($event)"
                class="slds-max-medium-table--stacked-horizontal">
             <ngl-datatable-column heading="ID" key="id" sortable></ngl-datatable-column>
@@ -21,7 +21,6 @@
             <ngl-datatable-column heading="电话" key="phone"></ngl-datatable-column>
             <ngl-datatable-column heading="操作" key="">
                 <template nglDatatableCell let-row="row">
-                    <!--<ngl-badge type="error" (click)="show()"><i class="fa fa-times"></i>删除</ngl-badge>-->
                     <ngl-badge type="info" (click)="sellerDetailInfo(row)"><i class="fa fa-info"></i>详情</ngl-badge>
                 </template>
             </ngl-datatable-column>
