@@ -42,6 +42,10 @@ export class GoodsCatComponent implements OnInit {
    * @date: 2017-01-05;
    */
   public getGoodsByCatId(node: TreeNode){
-    this.catSelected.emit(node.data);
+    let cat = node.data;
+
+    if(cat && !cat.hasChildren){
+      this.catSelected.emit(cat);
+    }
   }
 }

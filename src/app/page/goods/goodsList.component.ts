@@ -12,7 +12,7 @@ export class GoodsListComponent {
   @Input() public cat:any;
   public goodsList:any = []; //商品列表;
   public imgUrl:string;
-  public pageOpts: any = {total: 100, limit: 5, perPage: 10, page: 1}; //分页对象
+  public pageOpts: any = {}; //分页对象
 
   constructor(public goodsService: GoodsService) {
     this.imgUrl = window["ImgUrl"];
@@ -20,10 +20,11 @@ export class GoodsListComponent {
 
   ngOnChanges(changes){
     let catSelected = changes["cat"];
+
     if(!catSelected || !catSelected.currentValue){
       return;
-    } else if(catSelected.currentValue != catSelected.previousValue && !catSelected.currentValue.hasChildren){
-      this.getGoodsByCat(1);
+    }else if(catSelected.currentValue != catSelected.previousValue && !catSelected.currentValue.hasChildren){
+      this.getGoodsByCatId(1);
     }
   }
 
@@ -32,7 +33,11 @@ export class GoodsListComponent {
    * @params: pageNum:Number;
    * @date: 2017-01-05;
    */
-  public getGoodsByCat(pageNum:any){
+  public getGoodsByCatId(pageNum:any){
+    if(!this.cat || !this.cat.id){
+      return;
+    }
+
     let data = {
       page: 1,
       size: 10,
@@ -43,21 +48,23 @@ export class GoodsListComponent {
     if(pageNum){
       data.page = pageNum;
     }
+
     this.goodsService.getGoodsByCat(data).subscribe(res => {
-      let data = res.json();
-      this.goodsList = data.rows;
+      let rData = res.json();
+
+      this.goodsList = rData.rows;
       this.pageOpts = {
-        total: data.total,
+        total: rData.total > 0?rData.total:1,
         limit: 5,
         perPage: 10,
-        page: data.page
+        page: rData.page
       };
-      console.log(this.goodsList);
+
       this.goodsList.forEach((item, index) => {
         item.rank = index + 1;
         item.recPrice = item.recPrice / 100;
         item.salePrice = item.salePrice / 100;
-      })
+      });
     })
   }
 }
