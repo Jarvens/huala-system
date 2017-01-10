@@ -87,6 +87,7 @@ import {GoodsService} from "./service/goods.service";
 import {SellerDataService} from './service/seller.data.service';
 import {ArticleService} from './service/article.service';
 import {HngService} from './service/hng.service';
+import {CardService} from './service/card.service';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -164,7 +165,8 @@ import {HngService} from './service/hng.service';
     GoodsService,
     SellerDataService,
     ArticleService,
-    HngService
+    HngService,
+    CardService
   ]
 })
 export class AppModule {
