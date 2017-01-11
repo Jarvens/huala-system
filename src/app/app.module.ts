@@ -6,15 +6,13 @@ import {NglModule} from 'ng-lightning';
 import {ENV_PROVIDERS} from './environment';
 import {BaiduMap} from '../../node_modules/angular2-baidu-map/src';
 import {AppComponent} from './app.component';
-import {TreeModule} from "angular2-tree-component";
+// import {TreeModule} from "angular2-tree-component";
 import {QuillEditorModule} from 'ng2-quill-editor';
 //路由
 import {AppRoutingModule} from './router/routing';
 //导航
 import {NavTopComponent} from './page/nav/nav.top.component';
 import {NavLeftComponent} from './page/nav/nav.left.component';
-//底部栏
-import {FooterComponent} from './footer/footer.component';
 //http
 import {MyHttp} from './core/http';
 //业务组件
@@ -88,6 +86,7 @@ import {GoodsService} from "./service/goods.service";
 import {SellerDataService} from './service/seller.data.service';
 import {ArticleService} from './service/article.service';
 import {HngService} from './service/hng.service';
+import {CardService} from './service/card.service';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -95,7 +94,6 @@ import {HngService} from './service/hng.service';
     AppComponent,
     NavTopComponent,
     NavLeftComponent,
-    FooterComponent,
     LoginComponent,
     IndexComponent,
     ActivityComponent,
@@ -144,8 +142,8 @@ import {HngService} from './service/hng.service';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    TreeModule,
-    // QuillEditorModule,
+    // TreeModule,
+    QuillEditorModule,
     NglModule.forRoot()
   ],
   providers: [
@@ -173,6 +171,6 @@ import {HngService} from './service/hng.service';
 export class AppModule {
   constructor() {
   }
-
+  
 }
 

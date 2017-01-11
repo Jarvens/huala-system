@@ -12,7 +12,7 @@ export class UserComponent implements OnInit {
   //用户列表对象
   userList: any = {};
   //分页对象
-  pageOpts: any = {total: 0, limit: 3, perPage: 10}
+  pageOpts: any = {page:1,total: 0, limit: 3, perPage: 10}
   placeholder: string = '这是搜索提示';
   //显示&隐藏用户新增模态
   opened: boolean = false;

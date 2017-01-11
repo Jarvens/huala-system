@@ -16,7 +16,7 @@ export class AppVersionComponent implements OnInit {
   //app版本集合
   appVersionList: any = {};
   //分页对象
-  pageOpts: any = {total: 0, limit: 3, perPage: 10}
+  pageOpts: any = {page:1,total: 0, limit: 3, perPage: 10}
   //模态显示
   opened: boolean = false;
   //Toast提示

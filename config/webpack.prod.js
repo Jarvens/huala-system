@@ -21,6 +21,8 @@ const V8LazyParseWebpackPlugin = require('v8-lazy-parse-webpack-plugin');
 /**
  * Webpack Constants
  */
+const ApiUrl = '//api.huala.com';
+const ImgUrl = '//img.huala.com/hlman-pic'
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 8080;
@@ -28,7 +30,9 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   host: HOST,
   port: PORT,
   ENV: ENV,
-  HMR: false
+  HMR: false,
+  ApiUrl:ApiUrl,
+  ImgUrl:ImgUrl
 });
 
 module.exports = function (env) {
@@ -154,6 +158,8 @@ module.exports = function (env) {
           'ENV': JSON.stringify(METADATA.ENV),
           'NODE_ENV': JSON.stringify(METADATA.ENV),
           'HMR': METADATA.HMR,
+          'ApiUrl':JSON.stringify(METADATA.ApiUrl),
+          'ImgUrl':JSON.stringify(METADATA.ImgUrl)
         }
       }),
 

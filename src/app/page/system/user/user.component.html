@@ -3,7 +3,7 @@
     <div class="slds-card__header slds-grid">
         <header class="slds-media slds-media--center slds-has-flexi-truncate">
             <div class="col-md-6">
-                <search-component [showIcon]="false" [debounce]="2000" (selectScope)="selectScope($event)"
+                <search-component [showIcon]="false" [debounce]="2000"
                                   [placeHolder]="placeholder"
                                   (searchKey)="searchByCondition($event)"></search-component>
             </div>
@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="slds-card__body">
-        <table ngl-datatable [data]="userList.rows" trackByKey="rank" [loading]="loading" [(sort)]="sort"
+        <table ngl-datatable [data]="userList.rows" trackByKey="rank"
                (sortChange)="onSort($event)" (onRowClick)="onRowClick($event)"
                class="slds-max-medium-table--stacked-horizontal">
             <ngl-datatable-column heading="ID" key="id" cellClass="slds-truncate"></ngl-datatable-column>
@@ -33,13 +33,13 @@
         </table>
     </div>
     <div class="slds-card__footer">
-        <ngl-pagination [(page)]="page" [total]="userList.total" [perPage]="userList.size" [limit]="pageOpts.limit"
+        <ngl-pagination [(page)]="pageOpts.page" [total]="userList.total" [perPage]="userList.size" [limit]="pageOpts.limit"
                         boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
                         nextText="下一页"></ngl-pagination>
     </div>
 </article>
 <!--用户新增模态-->
-<ngl-modal [header]="noHeader ? '' : '新增用户'" [(open)]="opened" [size]="size" [directional]="directional" class =“small-modal”>
+<ngl-modal header="新增用户" [(open)]="opened" class =“small-modal”>
     <div body>
         <div class="row">
             <div class="col-md-6">
@@ -63,7 +63,7 @@
                 </ngl-form-element>
             </div>
             <div class="col-md-6">
-                <ngl-form-element label="角色" [error]="hasError ? error : null" class="slds-m-top--small">
+                <ngl-form-element label="角色"  class="slds-m-top--small">
                     <select nglFormControl class="slds-select" [required]="required">
                         <option>角色一</option>
                         <option>角色二</option>
@@ -106,7 +106,7 @@
             </div>
         </div>
     </div>
-    <template ngl-modal-footer *ngIf="!noFooter">
+    <template ngl-modal-footer>
         <button class="slds-button slds-button--neutral" (click)="cancel()">取消</button>
         <button class="slds-button slds-button--brand">保存</button>
     </template>

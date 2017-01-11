@@ -54,14 +54,14 @@
         </table>
     </div>
     <div class="slds-card__footer">
-        <ngl-pagination [(page)]="page" [total]="balanceList.total" [perPage]="balanceList.size"
+        <ngl-pagination [(page)]="pageOpts.page" [total]="balanceList.total" [perPage]="pageOpts.size"
                         [limit]="pageOpts.limit"
                         boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
                         nextText="下一页"></ngl-pagination>
     </div>
 </article>
 <!--结算详情列表模态-->
-<ngl-modal [header]="header" [(open)]="opened" size="large" [directional]="directional"
+<ngl-modal [header]="header" [(open)]="opened" size="large"
            (openChange)="openChange($event)">
     <div body>
         <article class="slds-card">
@@ -118,7 +118,7 @@
             </div>
         </article>
     </div>
-    <template ngl-modal-footer *ngIf="!noFooter">
+    <template ngl-modal-footer>
         <ngl-pagination [(page)]="modalPageOpts.page" [total]="balanceDetailList.total"
                         [perPage]="balanceDetailList.size"
                         [limit]="modalPageOpts.limit"
@@ -131,4 +131,5 @@
 <confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancel()"
                           (confirmFunction)="confirm()"></confirm-prompt-component>
 <!--Toast-->
-<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage" [showAlert]="showAlert"></toast-component>
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>

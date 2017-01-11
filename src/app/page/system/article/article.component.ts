@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
 @Component({
-  selector:'article-component',
-  templateUrl:'./article.component.html'
+    selector: 'article-component',
+    templateUrl: './article.component.html'
 })
 
-export class ArticleComponent{
-
+export class ArticleComponent {
+    
+    selected: boolean = true;
 }

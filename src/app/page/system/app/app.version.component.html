@@ -26,7 +26,7 @@
         </table>
     </div>
     <div class="slds-card__footer">
-        <ngl-pagination [(page)]="page" [total]="appVersionList.total" [perPage]="appVersionList.size"
+        <ngl-pagination [(page)]="pageOpts.page" [total]="appVersionList.total" [perPage]="appVersionList.size"
                         [limit]="pageOpts.limit"
                         boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
                         nextText="下一页"></ngl-pagination>
@@ -34,7 +34,7 @@
 </article>
 
 <!--app模态-->
-<ngl-modal [header]="noHeader ? '' : 'app版本管理'" [(open)]="opened" [size]="size" [directional]="directional">
+<ngl-modal header="app版本管理" [(open)]="opened">
     <div body>
         <div class="row">
             <div class="col-md-12">
@@ -92,7 +92,7 @@
         </div>
 
     </div>
-    <template ngl-modal-footer *ngIf="!noFooter">
+    <template ngl-modal-footer>
         <button class="slds-button slds-button--neutral" (click)="cancel()">取消</button>
         <button class="slds-button slds-button--brand" (click)="saveAppVersion()">保存</button>
     </template>
