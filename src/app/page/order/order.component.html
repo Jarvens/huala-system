@@ -43,6 +43,9 @@
           <ngl-badge type="info" (click)="showDetail(row)"><i class="fa fa-info"></i>详情</ngl-badge>
         </template>
       </ngl-datatable-column>
+      <template nglNoRowsOverlay>
+        <p class="slds-text-color--error slds-text-align--center">暂无数据...</p>
+      </template>
     </table>
   </div>
   <div class="slds-card__footer">

@@ -14,6 +14,7 @@ export class GoodsListComponent {
     public imgUrl: string;
     public pageOpts: any = {}; //分页对象
     public confirmBoxOpen: boolean = false; //打开或关闭确认对话框;
+    public editorOpened:boolean = false; //打开或关闭edit对话框;
     public delGoods: any;
     
     constructor(public goodsService: GoodsService) {
@@ -112,4 +113,20 @@ export class GoodsListComponent {
     searchByCondition(event) {
         
     }
+
+  /*
+   * @description: Click to edit goods, it will bring up a editor popup window;
+   * @date: 2017-01-11;
+   */
+  public toEdit(goods):void {
+    this.editorOpened = true;
+  }
+
+  /*
+   * @description: Confirm to edit goods;
+   * @date: 2017-01-11;
+   */
+  public confirmEdit():void {
+    console.log("hello");
+  }
 }

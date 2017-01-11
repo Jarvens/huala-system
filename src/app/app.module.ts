@@ -6,9 +6,9 @@ import {NglModule} from 'ng-lightning';
 import {ENV_PROVIDERS} from './environment';
 import {BaiduMap} from '../../node_modules/angular2-baidu-map/src';
 import {AppComponent} from './app.component';
-// import {TreeModule} from "angular2-tree-component";
 //路由
 import {AppRoutingModule} from './router/routing';
+import {DropdownTreeviewModule} from 'ng2-dropdown-treeview';
 //导航
 import {NavTopComponent} from './page/nav/nav.top.component';
 import {NavLeftComponent} from './page/nav/nav.left.component';
@@ -143,7 +143,7 @@ import {CardService} from './service/card.service';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    // TreeModule,
+    DropdownTreeviewModule.forRoot(),
     NglModule.forRoot()
   ],
   providers: [
@@ -171,6 +171,6 @@ import {CardService} from './service/card.service';
 export class AppModule {
   constructor() {
   }
-  
+
 }
 

@@ -1,6 +1,6 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {MyHttp} from '../../core/http';
-import {TreeNode} from "angular2-tree-component/dist/angular2-tree-component";
+//import {TreeNode} from "angular2-tree-component/dist/angular2-tree-component";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
 

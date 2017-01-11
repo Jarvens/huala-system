@@ -11,11 +11,11 @@ const mergeAuthToken = (options: RequestOptionsArgs)=> {
   let newHeaders = new Headers(newOptions.headers);
   newHeaders.set('Content-Type', 'application/json');
   newHeaders.set('token', localStorage.getItem('hl-token'));
-  //newHeaders.set('city', localStorage.getItem("cityForHuala"));
-  newHeaders.set('city', "330100");
-  //if(!localStorage.getItem("cityForHuala")) {
-  //	toastr.warning('请选择城市');
-  //}
+  newHeaders.set('city', localStorage.getItem("hualaCity"));
+  //newHeaders.set('city', "330100");
+  if(!localStorage.getItem("hualaCity")) {
+    alert('请选择城市');
+  }
   newOptions.headers = newHeaders;
   return newOptions;
 }
