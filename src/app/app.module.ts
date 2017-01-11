@@ -7,7 +7,6 @@ import {ENV_PROVIDERS} from './environment';
 import {BaiduMap} from '../../node_modules/angular2-baidu-map/src';
 import {AppComponent} from './app.component';
 // import {TreeModule} from "angular2-tree-component";
-import {QuillEditorModule} from 'ng2-quill-editor';
 //路由
 import {AppRoutingModule} from './router/routing';
 //导航
@@ -60,6 +59,7 @@ import {ConfirmPromptComponent} from './page/component/prompt/confirm.prompt.com
 import {StartTimeComponent} from './page/component/dateutil/start.time.component';
 import {EndTimeCOmponent} from './page/component/dateutil/end.time.component';
 import {QuillEditorComponent} from './page/component/quilleditor/quill.editor.component';
+import {QuillEditor} from './utils/quillEditor/quillEditor';
 //Directive
 
 /**
@@ -135,7 +135,8 @@ import {CardService} from './service/card.service';
     HngJobComponent,
     HngRecruitMainComponent,
     HngMovieComponent,
-    HngRecruitBasicComponent
+    HngRecruitBasicComponent,
+    QuillEditor
   ],
   imports: [
     BrowserModule,
@@ -143,7 +144,6 @@ import {CardService} from './service/card.service';
     HttpModule,
     AppRoutingModule,
     // TreeModule,
-    QuillEditorModule,
     NglModule.forRoot()
   ],
   providers: [
