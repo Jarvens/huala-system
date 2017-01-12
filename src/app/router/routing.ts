@@ -22,6 +22,7 @@ import {HngJobComponent} from '../page/hng/job/hng.job.component';
 import {HngRecruitMainComponent} from '../page/hng/recruit/hng.recruit.main.component';
 import {HngMovieComponent} from '../page/hng/movie/hng.movie.component';
 import {HngRecruitBasicComponent} from '../page/hng/recruit/hng.recruit.basic.component';
+import {EveryDateReportComponent} from '../page/everydatereport/every.date.report.component';
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
@@ -46,7 +47,8 @@ const routes: Routes = [
       {path: 'hng/hng-job', component: HngJobComponent},
       {path: 'hng/hng-recruit', component: HngRecruitMainComponent},
       {path: 'hng/hng-movie', component: HngMovieComponent},
-      {path: 'hng/hng-recruit-basic', component: HngRecruitBasicComponent}
+      {path: 'hng/hng-recruit-basic', component: HngRecruitBasicComponent},
+      {path: 'platform', component: EveryDateReportComponent}
     ]
   },
 ];

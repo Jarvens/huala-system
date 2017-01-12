@@ -42,6 +42,7 @@ import {SellerDataComponent} from './page/sellerdata/seller.data.component';
 import {ArticleComponent} from './page/system/article/article.component';
 import {ArticleListComponent} from './page/system/article/article.list.component';
 import {ArticleEntryComponent} from './page/system/article/article.entry.component';
+import {EveryDateReportComponent} from './page/everydatereport/every.date.report.component';
 //惠农购业务
 import {HngCompanyComponent} from './page/hng/company/hng.company.component';
 import {HngJobComponent} from './page/hng/job/hng.job.component';
@@ -137,7 +138,8 @@ import {CardService} from './service/card.service';
     HngRecruitMainComponent,
     HngMovieComponent,
     HngRecruitBasicComponent,
-    QuillEditor
+    QuillEditor,
+    EveryDateReportComponent
   ],
   imports: [
     BrowserModule,

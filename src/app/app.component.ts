@@ -1,5 +1,4 @@
-
-import { Component, ViewEncapsulation } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app',
@@ -7,9 +6,11 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrls: [
     'app.component.css'
   ],
-  templateUrl:'app.component.html'
+  templateUrl: 'app.component.html'
 })
 export class AppComponent {
-  
-  
+
+  constructor() {
+  }
+
 }

@@ -24,7 +24,9 @@ export class BannerListComponent implements OnInit {
   
   ngOnInit(): void {
     console.log("图片前缀：", this.commonImgUrl);
+    console.log("env：", process.env.ApiUrl);
     console.log("env：", process.env);
+    console.log("env：", process.env.ImgUrl);
     this.getBannerList(null, this.searchKey);
   }
   

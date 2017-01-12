@@ -1,0 +1,87 @@
+<article class="slds-card">
+    <div class="slds-card__header slds-grid">
+        <header class="slds-media slds-media--center slds-has-flexi-truncate">
+            <div class="slds-p-horizontal--small slds-large-size--1-of-12">
+                <a [nglPopover]="tip" nglPopoverPlacement="bottom" [nglOpen]="open"
+                   (mouseenter)="open = true" (mouseleave)="open = false" class="text-info"><i
+                        class="fa fa-info-circle"></i><span>信息</span></a>
+            </div>
+            <div class="slds-p-horizontal--small slds-large-size--2-of-12">
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <start-time-component (_startTime)="receiveDate($event)"></start-time-component>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+                <button class="slds-button slds-button--neutral" (click)="querySellerDataByBtn()">查询</button>
+            </div>
+            <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+                <button class="slds-button slds-button--neutral" (click)="exportExcel()">导出Excel</button>
+            </div>
+        </header>
+    </div>
+    <div class="slds-card__body slds-scrollable">
+        <table ngl-datatable [data]="reportDataList.rows" trackByKey="rank"
+               class="slds-max-medium-table--stacked-horizontal">
+            <ngl-datatable-column heading="日期" key="sellerId"></ngl-datatable-column>
+            <ngl-datatable-column heading="订单数" key="sellerName">
+                <template nglDatatableCell let-value>
+                    <ngl-badge type="info">
+                        {{value}}
+                    </ngl-badge>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="销售额" key="clerk"></ngl-datatable-column>
+            <ngl-datatable-column heading="下单人数" key="phone"></ngl-datatable-column>
+            <ngl-datatable-column heading="客单价" key="city"></ngl-datatable-column>
+            <ngl-datatable-column heading="红包金额" key="area"></ngl-datatable-column>
+            <ngl-datatable-column heading="奖励金额" key="address"></ngl-datatable-column>
+            <ngl-datatable-column heading="上线商户数" key="onlineDate">
+                <template nglDatatableCell let-value>
+                    {{value|date:'yyyy-MM-dd HH:mm'}}
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="开单商户数" key="billingDate">
+                <template nglDatatableCell let-value>
+                    {{value|date:'yyyy-MM-dd HH:mm'}}
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="活跃商户数" key="lastOrderDate">
+                <template nglDatatableCell let-value>
+                    {{value|date:'yyyy-MM-dd HH:mm'}}
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="下单商户数" key="firstOrderDate"></ngl-datatable-column>
+            <ngl-datatable-column heading="累计注册用户数" key="totalOrderCount"></ngl-datatable-column>
+            <ngl-datatable-column heading="累计下单用户数" key="saleAmount"></ngl-datatable-column>
+            <ngl-datatable-column heading="店铺累计访问人数" key="visitCount"></ngl-datatable-column>
+            <ngl-datatable-column heading="当日下单新用户数" key="registerCount"></ngl-datatable-column>
+            <template nglNoRowsOverlay>暂无数据!</template>
+        </table>
+    </div>
+    <div class="slds-card__footer">
+        <ngl-pagination [(page)]="pageOpts.page" [total]="reportDataList.total" [perPage]="pageOpts.size"
+                        [limit]="pageOpts.limit"
+                        boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                        nextText="下一页"></ngl-pagination>
+    </div>
+</article>
+
+<!--tips-->
+<template #tip>
+    <div class="slds-text-title--caps">
+        <strong>所有描述中“订单”指代:商品金额>1的完成订单</strong>
+    </div>
+    <div class="slds-text-longform">
+        <ul>
+            <li>客单价:销售额/订单数</li>
+            <li>红包金额:当日完成订单中</li>
+            <li>奖励金额:当日发出的所有奖励金额,不扣除冲账</li>
+            <li>销售额:订单金额(商品金额+运费金额)</li>
+            <li>上线商户数:当日通过审核(非物料审核)的商户数</li>
+            <li>开单商户数:当日完成第一笔1笔及以上订单的商户数</li>
+            <li>活跃商户数:距离当日的30天内,完成5笔及以上订单的商户数</li>
+        </ul>
+    </div>
+</template>
