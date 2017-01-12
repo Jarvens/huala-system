@@ -1,6 +1,6 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {MyHttp} from '../../core/http';
-//import {TreeNode} from "angular2-tree-component/dist/angular2-tree-component";
+import {TreeNode} from "angular2-tree-component/dist/angular2-tree-component";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
 
@@ -14,13 +14,13 @@ export class GoodsCatComponent implements OnInit {
     @Output() public catSelected = new EventEmitter<any>(); //将当前所选的类目节点(TreeNode)传播到父组件;
     public catNodes: Array<any> = []; //类目节点数组;
     showDetail: boolean;
-    // public options = {
-    //     getChildren: (node: TreeNode) => {
-    //         return this.getCatsById(node.data.id).map(res => {
-    //             return res.json().body;
-    //         }).toPromise();
-    //     }
-    // };
+    public options = {
+        getChildren: (node: TreeNode) => {
+            return this.getCatsById(node.data.id).map(res => {
+                return res.json().body;
+            }).toPromise();
+        }
+    };
     //选项对象;
     
     ngOnInit() {
@@ -46,11 +46,11 @@ export class GoodsCatComponent implements OnInit {
      * @params: TreeNode: node;
      * @date: 2017-01-05;
      */
-    // public getGoodsByCatId(node: TreeNode) {
-    //     let cat = node.data;
-    //
-    //     if (cat && !cat.hasChildren) {
-    //         this.catSelected.emit(cat);
-    //     }
-    // }
+    public getGoodsByCatId(node: TreeNode) {
+        let cat = node.data;
+
+        if (cat && !cat.hasChildren) {
+            this.catSelected.emit(cat);
+        }
+    }
 }

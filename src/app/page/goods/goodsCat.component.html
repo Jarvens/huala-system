@@ -12,12 +12,12 @@
   <div class="slds-card__body">
     <div class="slds-card__body--inner slds-grid slds-wrap slds-grid--pull-padded">
       <div class="slds-media__body slds-p-horizontal--small">
-        <!--<Tree [nodes]="catNodes" [options]="options">-->
-          <!--<template #treeNodeTemplate let-node="node" let-index="index">-->
-            <!--<span (click)="getGoodsByCatId(node)">{{node.data.name}}</span>-->
-          <!--</template>-->
-          <!--<template #loadingTemplate><span class="slds-text-color&#45;&#45;error">正在加载...</span></template>-->
-        <!--</Tree>-->
+        <Tree [nodes]="catNodes" [options]="options">
+          <template #treeNodeTemplate let-node="node" let-index="index">
+            <span (click)="getGoodsByCatId(node)">{{node.data.name}}</span>
+          </template>
+          <template #loadingTemplate><span class="slds-text-color--error">正在加载...</span></template>
+        </Tree>
       </div>
     </div>
   </div>
