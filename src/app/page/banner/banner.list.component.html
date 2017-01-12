@@ -10,7 +10,7 @@
             <button class="slds-button slds-button--neutral">Banner录入</button>
         </div>
     </div>
-    <div class="slds-card__body">
+    <div class="slds-card__body slds-scrollable">
         <table ngl-datatable [data]="bannerList.rows" trackByKey="rank" class="slds-max-medium-table--stacked-horizontal">
             <ngl-datatable-column heading="名称" key="bannerName" sortable></ngl-datatable-column>
             <ngl-datatable-column heading="图片" key="imgUrl">
