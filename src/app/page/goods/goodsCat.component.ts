@@ -7,7 +7,8 @@ import "rxjs/add/operator/toPromise";
 @Component({
     moduleId: "goodsCat",
     selector: "goods-cat",
-    templateUrl: "goodsCat.component.html"
+    templateUrl: "goodsCat.component.html",
+    styleUrls:['./goods.cat.component.css']
 })
 
 export class GoodsCatComponent implements OnInit {

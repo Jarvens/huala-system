@@ -12,7 +12,6 @@ const mergeAuthToken = (options: RequestOptionsArgs)=> {
   newHeaders.set('Content-Type', 'application/json');
   newHeaders.set('token', localStorage.getItem('hl-token'));
   newHeaders.set('city', localStorage.getItem("hualaCity"));
-  //newHeaders.set('city', "330100");
   if(!localStorage.getItem("hualaCity")) {
     alert('请选择城市');
   }
