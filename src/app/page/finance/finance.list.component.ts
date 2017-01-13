@@ -55,7 +55,7 @@ export class FinanceListComponent implements OnInit {
         this.financeCard = ret.rows[0];
       }
     });
-    this.financeService.getSql("finance.getFinanceByDay", this.queryDate, null).subscribe(res=> {
+    this.financeService.getSql("finance.getFinanceByDay", this.queryDate, this.pageOpts).subscribe(res=> {
       this.financeList = res.json();
     });
 
