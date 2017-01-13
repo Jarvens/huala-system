@@ -1,4 +1,4 @@
-<div class="slds-global-header slds-grid">
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
     <div class="slds-size--2-of-12">
         <a [nglPopover]="tip" nglPopoverPlacement="bottom" [nglOpen]="open"
            (mouseenter)="open = true" (mouseleave)="open = false" class="text-info"><i
@@ -11,7 +11,6 @@
         <button type="button" nglButton="neutral" (click)="exportDataReport()">Excel导出</button>
     </div>
 </div>
-
 <div class="slds-grid slds-wrap">
     <div class="slds-size--3-of-12">
         <div class="widget-thumb-wrap">
@@ -176,4 +175,5 @@
 
 
 <!--Toast提示-->
-<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage" [showAlert]="showAlert"></toast-component>
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>

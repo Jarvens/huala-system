@@ -1,65 +1,59 @@
-<article class="slds-card">
-    <div class="slds-card__header slds-grid">
-        <header class="slds-media slds-media--center slds-has-flexi-truncate">
-
-        </header>
-    </div>
-    <div class="slds-card__body">
-        <table ngl-datatable [data]="balanceList.rows" class="slds-max-medium-table--stacked-horizontal">
-            <ngl-datatable-column heading="日期" key="date">
-                <template nglDatatableCell let-row="row">
-                    <span>{{row.date}}</span>
-                    <span class="text-danger">(共{{row.sellerCount}}家)</span>
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="应发金额" key="amount">
-                <template nglDatatableCell let-row="row">
-                    <ngl-badge type="info" (click)="getBalanceDetail(row,'amount','应发金额')">
-                        {{row.amount/100|number:'1.2-2'}}
-                    </ngl-badge>
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="已发金额" key="haveSendAmount">
-                <template nglDatatableCell let-row="row">
-                    <ngl-badge type="success" (click)="getBalanceDetail(row,'haveSendAmount','已发金额')">
-                        {{row.haveSendAmount/100|number:'1.2-2'}}
-                    </ngl-badge>
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="未发金额" key="noSendAmount">
-                <template nglDatatableCell let-row="row">
-                    <ngl-badge type="warning" (click)="getBalanceDetail(row,'noSendAmount','未发金额')">
-                        {{row.noSendAmount/100|number:'1.2-2'}}
-                    </ngl-badge>
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="出错金额" key="failSendAmount">
-                <template nglDatatableCell let-row="row">
-                    <ngl-badge type="error" (click)="getBalanceDetail(row,'failSendAmount','出错金额')">
-                        {{row.failSendAmount/100|number:'1.2-2'}}
-                    </ngl-badge>
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="操作" key="">
-                <template nglDatatableCell let-row="row">
-                    <button *ngIf="row.noSendAmount!=0" type="button" nglButton="neutral" (click)="settleMent(row)">
-                        结算
-                    </button>
-                    <button *ngIf="row.failSendAmount>0" type="button" nglButton="neutral" (click)="settleMent(row)">
-                        重试
-                    </button>
-                </template>
-            </ngl-datatable-column>
-            <template nglNoRowsOverlay>暂无数据!</template>
-        </table>
-    </div>
-    <div class="slds-card__footer">
-        <ngl-pagination [(page)]="pageOpts.page" [total]="balanceList.total" [perPage]="pageOpts.size"
-                        [limit]="pageOpts.limit"
-                        boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
-                        nextText="下一页"></ngl-pagination>
-    </div>
-</article>
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    结算管理
+</div>
+<table ngl-datatable [data]="balanceList.rows" class="slds-max-medium-table--stacked-horizontal">
+    <ngl-datatable-column heading="日期" key="date">
+        <template nglDatatableCell let-row="row">
+            <span>{{row.date}}</span>
+            <span class="text-danger">(共{{row.sellerCount}}家)</span>
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="应发金额" key="amount">
+        <template nglDatatableCell let-row="row">
+            <ngl-badge type="info" (click)="getBalanceDetail(row,'amount','应发金额')">
+                {{row.amount/100|number:'1.2-2'}}
+            </ngl-badge>
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="已发金额" key="haveSendAmount">
+        <template nglDatatableCell let-row="row">
+            <ngl-badge type="success" (click)="getBalanceDetail(row,'haveSendAmount','已发金额')">
+                {{row.haveSendAmount/100|number:'1.2-2'}}
+            </ngl-badge>
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="未发金额" key="noSendAmount">
+        <template nglDatatableCell let-row="row">
+            <ngl-badge type="warning" (click)="getBalanceDetail(row,'noSendAmount','未发金额')">
+                {{row.noSendAmount/100|number:'1.2-2'}}
+            </ngl-badge>
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="出错金额" key="failSendAmount">
+        <template nglDatatableCell let-row="row">
+            <ngl-badge type="error" (click)="getBalanceDetail(row,'failSendAmount','出错金额')">
+                {{row.failSendAmount/100|number:'1.2-2'}}
+            </ngl-badge>
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="操作" key="">
+        <template nglDatatableCell let-row="row">
+            <button *ngIf="row.noSendAmount!=0" type="button" nglButton="neutral" (click)="settleMent(row)">
+                结算
+            </button>
+            <button *ngIf="row.failSendAmount>0" type="button" nglButton="neutral" (click)="settleMent(row)">
+                重试
+            </button>
+        </template>
+    </ngl-datatable-column>
+    <template nglNoRowsOverlay>暂无数据!</template>
+</table>
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <ngl-pagination [(page)]="pageOpts.page" [total]="balanceList.total" [perPage]="pageOpts.size"
+                    [limit]="pageOpts.limit"
+                    boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                    nextText="下一页"></ngl-pagination>
+</div>
 <!--结算详情列表模态-->
 <ngl-modal [header]="header" [(open)]="opened" size="large"
            (openChange)="openChange($event)">
