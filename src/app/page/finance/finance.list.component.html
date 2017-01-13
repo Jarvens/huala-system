@@ -1,1 +1,10 @@
-这是财务统计
+<div class="slds-global-header slds-grid">
+
+    <div class="slds-size--2-of-12">
+        <start-time-component (_startTime)="receiveDate($event)"></start-time-component>
+    </div>
+</div>
+
+
+<!--Toast提示-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage" [showAlert]="showAlert"></toast-component>
