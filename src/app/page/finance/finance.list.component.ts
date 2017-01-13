@@ -37,13 +37,14 @@ export class FinanceListComponent implements OnInit {
   }
 
   //toast通知
-  notifyParamFunction(event) {
+  notifyParamFunction(event: any) {
     this.showAlert = !this.showAlert;
   }
 
   //分页事件
-  pageChange(event) {
-
+  pageChange(event: any) {
+    this.pageOpts.page = event;
+    this.getSql();
   }
 
   //查询
@@ -53,7 +54,6 @@ export class FinanceListComponent implements OnInit {
       if (ret.rows.length > 0) {
         this.financeCard = ret.rows[0];
       }
-      console.log(this.financeCard);
     });
     this.financeService.getSql("finance.getFinanceByDay", this.queryDate, null).subscribe(res=> {
       this.financeList = res.json();
