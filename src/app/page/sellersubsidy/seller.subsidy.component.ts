@@ -25,4 +25,9 @@ export class SellerSubsidyComponent implements OnInit {
   pageChange(event) {
 
   }
+
+  //时间选择事件
+  receiveDate(event){
+
+  }
 }

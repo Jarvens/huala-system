@@ -1,46 +1,37 @@
-<div class="slds-p-vertical--x-small slds-p-horizontal--large slds-shrink-none slds-theme--shade">
-    <div class="slds-p-horizontal--small slds-large-size--1-of-12">
+<!--头部信息-->
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <div class="slds-p-horizontal--small slds-large-size--2-of-12">
         <a [nglPopover]="tip" nglPopoverPlacement="bottom" [nglOpen]="open"
            (mouseenter)="open = true" (mouseleave)="open = false" class="text-info"><i
                 class="fa fa-info-circle"></i><span>信息</span></a>
     </div>
-    <div class="slds-large--4-of-12">
-        
+
+    <div class="slds-p-horizontal--small slds-large-size--2-of-12">
+        <div class="slds-form-element">
+            <div class="slds-form-element__control">
+                <start-time-component (_startTime)="receiveDate($event)"></start-time-component>
+            </div>
+        </div>
+    </div>
+    <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+        <ngl-form-checkbox label="测试店铺" class="slds-m-top--small">
+            <input nglFormControl type="checkbox" [ngModel]="testSeller"/>
+        </ngl-form-checkbox>
+    </div>
+    <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+        <ngl-form-checkbox label="下线店铺" class="slds-m-top--small">
+            <input nglFormControl type="checkbox" [(ngModel)]="outLineSeller"/>
+        </ngl-form-checkbox>
+    </div>
+    <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+        <button class="slds-button slds-button--neutral" (click)="querySellerDataByBtn()">查询</button>
+    </div>
+    <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+        <button class="slds-button slds-button--neutral" (click)="exportExcel()">导出Excel</button>
     </div>
 </div>
+<!--店铺列表-->
 <article class="slds-card">
-    <div class="slds-card__header slds-grid">
-        <header class="slds-media slds-media--center slds-has-flexi-truncate">
-            <div class="slds-p-horizontal--small slds-large-size--1-of-12">
-                <a [nglPopover]="tip" nglPopoverPlacement="bottom" [nglOpen]="open"
-                   (mouseenter)="open = true" (mouseleave)="open = false" class="text-info"><i
-                        class="fa fa-info-circle"></i><span>信息</span></a>
-            </div>
-            <div class="slds-p-horizontal--small slds-large-size--2-of-12">
-                <div class="slds-form-element">
-                    <div class="slds-form-element__control">
-                        <start-time-component (_startTime)="receiveDate($event)"></start-time-component>
-                    </div>
-                </div>
-            </div>
-            <div class="slds-p-horizontal--small slds-large-size-2-of-12">
-                <ngl-form-checkbox label="测试店铺" class="slds-m-top--small">
-                    <input nglFormControl type="checkbox" [ngModel]="testSeller"/>
-                </ngl-form-checkbox>
-            </div>
-            <div class="slds-p-horizontal--small slds-large-size-2-of-12">
-                <ngl-form-checkbox label="下线店铺" class="slds-m-top--small">
-                    <input nglFormControl type="checkbox" [(ngModel)]="outLineSeller"/>
-                </ngl-form-checkbox>
-            </div>
-            <div class="slds-p-horizontal--small slds-large-size-2-of-12">
-                <button class="slds-button slds-button--neutral" (click)="querySellerDataByBtn()">查询</button>
-            </div>
-            <div class="slds-p-horizontal--small slds-large-size-2-of-12">
-                <button class="slds-button slds-button--neutral" (click)="exportExcel()">导出Excel</button>
-            </div>
-        </header>
-    </div>
     <div class="slds-card__body slds-scrollable">
         <table ngl-datatable [data]="sellerDataList.rows" trackByKey="rank"
                class="slds-max-medium-table--stacked-horizontal">
@@ -82,13 +73,14 @@
             <template nglNoRowsOverlay>暂无数据!</template>
         </table>
     </div>
-    <div class="slds-card__footer">
-        <ngl-pagination [(page)]="pageOpts.page" [total]="sellerDataList.total" [perPage]="pageOpts.size"
-                        [limit]="pageOpts.limit"
-                        boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
-                        nextText="下一页"></ngl-pagination>
-    </div>
 </article>
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <ngl-pagination [(page)]="pageOpts.page" [total]="sellerDataList.total" [perPage]="pageOpts.size"
+                    [limit]="pageOpts.limit"
+                    boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                    nextText="下一页"></ngl-pagination>
+</div>
+
 
 <!--tips-->
 <template #tip>
