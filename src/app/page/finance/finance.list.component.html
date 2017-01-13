@@ -1,10 +1,67 @@
+<!--头部信息-->
 <div class="slds-global-header slds-grid">
-
     <div class="slds-size--2-of-12">
         <start-time-component (_startTime)="receiveDate($event)"></start-time-component>
     </div>
 </div>
-
+<!--卡片列表-->
+<div class="slds-grid slds-wrap">
+    <div class="slds-size--2-of-12">
+        <div class="widget-thumb-wrap">
+            <h4>订单金额</h4>
+            <div class="wrap-thumb">
+                <i class="fa fa-cny fa-2x"></i>
+                <span class="wrap-txt">10</span>
+            </div>
+        </div>
+    </div>
+    <div class="slds-size--2-of-12">
+        <div class="widget-thumb-wrap">
+            <h4>红包金额</h4>
+            <div class="wrap-thumb">
+                <i class="fa fa-cny fa-2x"></i>
+                <span class="wrap-txt">10</span>
+            </div>
+        </div>
+    </div>
+    <div class="slds-size--2-of-12">
+        <div class="widget-thumb-wrap">
+            <h4>支付总金额</h4>
+            <div class="wrap-thumb">
+                <i class="fa fa-cny fa-2x"></i>
+                <span class="wrap-txt">10</span>
+            </div>
+        </div>
+    </div>
+    <div class="slds-size--2-of-12">
+        <div class="widget-thumb-wrap">
+            <h4>其它店铺订单金额</h4>
+            <div class="wrap-thumb">
+                <i class="fa fa-cny fa-2x"></i>
+                <span class="wrap-txt">10</span>
+            </div>
+        </div>
+    </div>
+    <div class="slds-size--2-of-12">
+        <div class="widget-thumb-wrap">
+            <h4>奖励支付金额</h4>
+            <div class="wrap-thumb">
+                <i class="fa fa-cny fa-2x"></i>
+                <span class="wrap-txt">10</span>
+            </div>
+        </div>
+    </div>
+    <div class="slds-size--2-of-12">
+        <div class="widget-thumb-wrap">
+            <h4>其它支付金额</h4>
+            <div class="wrap-thumb">
+                <i class="fa fa-cny fa-2x"></i>
+                <span class="wrap-txt">10</span>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--Toast提示-->
-<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage" [showAlert]="showAlert"></toast-component>
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>

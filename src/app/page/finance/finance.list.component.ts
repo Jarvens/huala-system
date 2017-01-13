@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FinanceService} from '../../service/finance.service';
 @Component({
   selector: 'finance-list-component',
-  templateUrl: './finance.list.component.html'
+  templateUrl: './finance.list.component.html',
+  styleUrls:['/finance.list.component.css']
 })
 
 export class FinanceListComponent implements OnInit {
