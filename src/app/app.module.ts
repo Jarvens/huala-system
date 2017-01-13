@@ -43,6 +43,7 @@ import {ArticleComponent} from './page/system/article/article.component';
 import {ArticleListComponent} from './page/system/article/article.list.component';
 import {ArticleEntryComponent} from './page/system/article/article.entry.component';
 import {EveryDateReportComponent} from './page/everydatereport/every.date.report.component';
+import {FinanceListComponent} from './page/finance/finance.list.component';
 //惠农购业务
 import {HngCompanyComponent} from './page/hng/company/hng.company.component';
 import {HngJobComponent} from './page/hng/job/hng.job.component';
@@ -90,7 +91,7 @@ import {ArticleService} from './service/article.service';
 import {HngService} from './service/hng.service';
 import {CardService} from './service/card.service';
 import {EveryDateReportService} from './service/every.date.report.service';
-
+import {FinanceService} from './service/finance.service';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -140,7 +141,8 @@ import {EveryDateReportService} from './service/every.date.report.service';
     HngMovieComponent,
     HngRecruitBasicComponent,
     QuillEditor,
-    EveryDateReportComponent
+    EveryDateReportComponent,
+    FinanceListComponent
   ],
   imports: [
     BrowserModule,
@@ -171,7 +173,8 @@ import {EveryDateReportService} from './service/every.date.report.service';
     ArticleService,
     HngService,
     CardService,
-    EveryDateReportService
+    EveryDateReportService,
+    FinanceService
   ]
 })
 export class AppModule {
