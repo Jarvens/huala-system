@@ -1,5 +1,5 @@
-import {COmponent, OnInit} from '@angular/core';
-@COmponent({
+import {Component, OnInit} from '@angular/core';
+@Component({
   selector: 'finance-list-component',
   templateUrl: './finance.list.component.html'
 })
