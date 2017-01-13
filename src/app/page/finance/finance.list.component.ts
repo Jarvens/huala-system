@@ -3,14 +3,14 @@ import {FinanceService} from '../../service/finance.service';
 @Component({
   selector: 'finance-list-component',
   templateUrl: './finance.list.component.html',
-  styleUrls:['/finance.list.component.css']
+  styleUrls: ['/finance.list.component.css']
 })
 
 export class FinanceListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  constructor(private financeService:FinanceService) {
+  constructor(private financeService: FinanceService) {
   }
 
   //日期对象
@@ -21,6 +21,11 @@ export class FinanceListComponent implements OnInit {
   toastType: string = 'warning';
   //显示|关闭toast
   showAlert: boolean = false;
+  //分页对象
+  pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10}
+
+  //财务列表对象
+  financeList: any = {};
 
   //触发查询操作
   receiveDate(event: any) {
@@ -33,4 +38,8 @@ export class FinanceListComponent implements OnInit {
     this.showAlert = !this.showAlert;
   }
 
+  //分页事件
+  pageChange(event) {
+
+  }
 }

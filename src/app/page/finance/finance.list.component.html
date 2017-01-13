@@ -35,7 +35,7 @@
     </div>
     <div class="slds-size--2-of-12">
         <div class="widget-thumb-wrap">
-            <h4>其它店铺订单金额</h4>
+            <h4>店铺订单支付</h4>
             <div class="wrap-thumb">
                 <i class="fa fa-cny fa-2x"></i>
                 <span class="wrap-txt">10</span>
@@ -61,6 +61,30 @@
         </div>
     </div>
 </div>
+<!--数据列表-->
+<table ngl-datatable [data]="financeList.rows" trackByKey="rank"
+       class="slds-max-medium-table--stacked-horizontal">
+    <ngl-datatable-column heading="日期" key="日期"></ngl-datatable-column>
+    <ngl-datatable-column heading="订单金额" key="订单金额"></ngl-datatable-column>
+    <ngl-datatable-column heading="红包金额" key="红包金额"></ngl-datatable-column>
+    <ngl-datatable-column heading="支付总金额" key="支付总金额"></ngl-datatable-column>
+    <ngl-datatable-column heading="店铺订单支付" key="店铺订单支付"></ngl-datatable-column>
+    <ngl-datatable-column heading="奖励支付金额" key="奖励支付金额"></ngl-datatable-column>
+    <ngl-datatable-column heading="惩罚金额" key="惩罚金额"></ngl-datatable-column>
+    <ngl-datatable-column heading="调整金额" key="调整金额"></ngl-datatable-column>
+    <ngl-datatable-column heading="操作" key="操作"></ngl-datatable-column>
+
+    <!-- Loading overlay -->
+    <template nglLoadingOverlay>
+        <div class="slds-box slds-box--small slds-theme--shade slds-text-align--center">Loading...</div>
+    </template>
+
+    <!-- No rows overlay -->
+    <template nglNoRowsOverlay>暂无数据</template>
+</table>
+<ngl-pagination [(page)]="pageOpts.page" [total]="financeList.total" [perPage]="financeList.size" [limit]="pageOpts.limit"
+                boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                nextText="下一页"></ngl-pagination>
 
 <!--Toast提示-->
 <toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
