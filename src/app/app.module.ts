@@ -45,6 +45,7 @@ import {ArticleEntryComponent} from './page/system/article/article.entry.compone
 import {EveryDateReportComponent} from './page/everydatereport/every.date.report.component';
 import {FinanceListComponent} from './page/finance/finance.list.component';
 import {SuppliersListComponent} from './page/suppliers/suppliersList.component';
+import {SellerSubsidyComponent} from './page/sellersubsidy/seller.subsidy.component';
 //惠农购业务
 import {HngCompanyComponent} from './page/hng/company/hng.company.component';
 import {HngJobComponent} from './page/hng/job/hng.job.component';
@@ -93,6 +94,7 @@ import {HngService} from './service/hng.service';
 import {CardService} from './service/card.service';
 import {EveryDateReportService} from './service/every.date.report.service';
 import {FinanceService} from './service/finance.service';
+import {SellerSubsidy} from './service/seller.subsidy.service';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -144,7 +146,8 @@ import {FinanceService} from './service/finance.service';
     QuillEditor,
     EveryDateReportComponent,
     FinanceListComponent,
-    SuppliersListComponent
+    SuppliersListComponent,
+    SellerSubsidyComponent
   ],
   imports: [
     BrowserModule,
@@ -176,7 +179,8 @@ import {FinanceService} from './service/finance.service';
     HngService,
     CardService,
     EveryDateReportService,
-    FinanceService
+    FinanceService,
+    SellerSubsidy
   ]
 })
 export class AppModule {
