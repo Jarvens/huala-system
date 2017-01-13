@@ -26,10 +26,13 @@ export class FinanceListComponent implements OnInit {
 
   //财务列表对象
   financeList: any = {};
+  //卡片列表对象
+  financeCard: any = {};
 
   //触发查询操作
   receiveDate(event: any) {
-    this.queryDate = event;
+    this.queryDate = event.slice(0, 6);
+    this.getSql();
 
   }
 
@@ -40,6 +43,21 @@ export class FinanceListComponent implements OnInit {
 
   //分页事件
   pageChange(event) {
+
+  }
+
+  //查询
+  getSql() {
+    this.financeService.getSql("finance.getFinanceByMonth", this.queryDate, this.pageOpts).subscribe(res=> {
+      let ret = res.json();
+      if (ret.rows.length > 0) {
+        this.financeCard = ret.rows[0];
+      }
+      console.log(this.financeCard);
+    });
+    this.financeService.getSql("finance.getFinanceByDay", this.queryDate, null).subscribe(res=> {
+      this.financeList = res.json();
+    });
 
   }
 }

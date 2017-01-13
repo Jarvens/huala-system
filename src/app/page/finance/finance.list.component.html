@@ -11,7 +11,7 @@
             <h4>订单金额</h4>
             <div class="wrap-thumb">
                 <i class="fa fa-cny fa-2x"></i>
-                <span class="wrap-txt">10</span>
+                <span class="wrap-txt">{{financeCard.order_amount|number:'1.2-2'}}</span>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
             <h4>红包金额</h4>
             <div class="wrap-thumb">
                 <i class="fa fa-cny fa-2x"></i>
-                <span class="wrap-txt">10</span>
+                <span class="wrap-txt">{{financeCard.red_amount|number:'1.2-2'}}</span>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
             <h4>支付总金额</h4>
             <div class="wrap-thumb">
                 <i class="fa fa-cny fa-2x"></i>
-                <span class="wrap-txt">10</span>
+                <span class="wrap-txt">{{financeCard.seller_amount|number:'1.2-2'}}</span>
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
             <h4>店铺订单支付</h4>
             <div class="wrap-thumb">
                 <i class="fa fa-cny fa-2x"></i>
-                <span class="wrap-txt">10</span>
+                <span class="wrap-txt">{{financeCard.auto_income|number:'1.2-2'}}</span>
             </div>
         </div>
     </div>
@@ -47,7 +47,7 @@
             <h4>奖励支付金额</h4>
             <div class="wrap-thumb">
                 <i class="fa fa-cny fa-2x"></i>
-                <span class="wrap-txt">10</span>
+                <span class="wrap-txt">{{financeCard.reward|number:'1.2-2'}}</span>
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@
             <h4>其它支付金额</h4>
             <div class="wrap-thumb">
                 <i class="fa fa-cny fa-2x"></i>
-                <span class="wrap-txt">10</span>
+                <span class="wrap-txt">{{financeCard.punish+financeCard.offset|number:'1.2-2'}}</span>
             </div>
         </div>
     </div>
@@ -64,14 +64,14 @@
 <!--数据列表-->
 <table ngl-datatable [data]="financeList.rows" trackByKey="rank"
        class="slds-max-medium-table--stacked-horizontal">
-    <ngl-datatable-column heading="日期" key="日期"></ngl-datatable-column>
-    <ngl-datatable-column heading="订单金额" key="订单金额"></ngl-datatable-column>
-    <ngl-datatable-column heading="红包金额" key="红包金额"></ngl-datatable-column>
-    <ngl-datatable-column heading="支付总金额" key="支付总金额"></ngl-datatable-column>
-    <ngl-datatable-column heading="店铺订单支付" key="店铺订单支付"></ngl-datatable-column>
-    <ngl-datatable-column heading="奖励支付金额" key="奖励支付金额"></ngl-datatable-column>
-    <ngl-datatable-column heading="惩罚金额" key="惩罚金额"></ngl-datatable-column>
-    <ngl-datatable-column heading="调整金额" key="调整金额"></ngl-datatable-column>
+    <ngl-datatable-column heading="日期" key="date"></ngl-datatable-column>
+    <ngl-datatable-column heading="订单金额" key="order_amount"></ngl-datatable-column>
+    <ngl-datatable-column heading="红包金额" key="red_amount"></ngl-datatable-column>
+    <ngl-datatable-column heading="支付总金额" key="seller_amount"></ngl-datatable-column>
+    <ngl-datatable-column heading="店铺订单支付" key="auto_income"></ngl-datatable-column>
+    <ngl-datatable-column heading="奖励支付金额" key="reward"></ngl-datatable-column>
+    <ngl-datatable-column heading="惩罚金额" key="punish"></ngl-datatable-column>
+    <ngl-datatable-column heading="调整金额" key="offset"></ngl-datatable-column>
     <ngl-datatable-column heading="操作" key="操作"></ngl-datatable-column>
 
     <!-- Loading overlay -->

@@ -1,7 +1,16 @@
 import {Injectable} from '@angular/core';
 import {MyHttp} from '../core/http';
 @Injectable()
-export class FinanceService{
-  constructor(private http:MyHttp){}
+export class FinanceService {
+  constructor(private http: MyHttp) {
+  }
 
+  //获取统计报表
+  getSql(key: string, param: any, page: any) {
+    if (!page) {
+      page = {page: 1, perPage: 10};
+    }
+    return this.http.get("/tongji/sqlExe", {key: key, param: param, page: page.page, size: page.perPage});
+
+  }
 }
