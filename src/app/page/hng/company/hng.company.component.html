@@ -1,1 +1,24 @@
-惠农够公司
+<div class="row">
+  <article class="slds-card">
+    <div class="slds-card__header slds-grid">
+      <header class="slds-media slds-media--center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+          <ngl-icon icon="campaign" category="standard"></ngl-icon>
+        </div>
+        <div class="slds-media__body slds-truncate">
+          <h2 class="slds-text-heading--large">公司信息</h2>
+        </div>
+      </header>
+    </div>
+    <div class="slds-card__body">
+      <ngl-tabs [(selected)]="selectedTab">
+        <template ngl-tab heading="所有公司" nglTabId="companyList">
+          <company-list></company-list>
+        </template>
+        <template ngl-tab heading="新增公司" nglTabId="addCompany">
+          <!--<goods-info [cat]="cat"></goods-info>-->
+        </template>
+      </ngl-tabs>
+    </div>
+  </article>
+</div>

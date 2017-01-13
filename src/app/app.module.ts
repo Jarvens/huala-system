@@ -52,6 +52,7 @@ import {HngJobComponent} from './page/hng/job/hng.job.component';
 import {HngRecruitMainComponent} from './page/hng/recruit/hng.recruit.main.component';
 import {HngMovieComponent} from './page/hng/movie/hng.movie.component';
 import {HngRecruitBasicComponent} from './page/hng/recruit/hng.recruit.basic.component';
+import {HngCompanyListComponent} from './page/hng/company/hng.companyList.component.ts';
 /**
  *
  * 公用组件
@@ -139,6 +140,7 @@ import {SellerSubsidy} from './service/seller.subsidy.service';
     ArticleListComponent,
     ArticleEntryComponent,
     HngCompanyComponent,
+    HngCompanyListComponent,
     HngJobComponent,
     HngRecruitMainComponent,
     HngMovieComponent,
