@@ -40,7 +40,7 @@
       </ngl-datatable-column>
       <ngl-datatable-column heading="操作">
         <template nglDatatableCell let-row="row">
-          <ngl-badge type="info" (click)="showDetail(row)"><i class="fa fa-info"></i>详情</ngl-badge>
+          <button class="slds-button slds-button--brand" (click)="showDetail(row)"><i class="fa fa-info"></i>&nbsp;详情</button>
         </template>
       </ngl-datatable-column>
       <template nglNoRowsOverlay>
