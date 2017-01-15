@@ -1,9 +1,44 @@
+<!--头部信息-->
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <search-component [showIcon]="false" [debounce]="2000" [placeHolder]="placeholder"
+                      (searchKey)="searchByCondition($event)"></search-component>
+</div>
+<table ngl-datatable [data]="bannerList.rows" trackByKey="rank"
+       class="slds-max-medium-table--stacked-horizontal">
+    <ngl-datatable-column heading="名称" key="bannerName" sortable></ngl-datatable-column>
+    <ngl-datatable-column heading="图片" key="imgUrl">
+        <template nglDatatableCell let-value>
+            <img [src]="commonImgUrl+value" width="100" height="100" class="img-thumbnail" alt="">
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="作用范围" key="scopeSeller">
+        <template nglDatatableCell let-value>
+            <span>{{value=='all'|threeElementExpression:'全部;部分'}}</span>
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="类型" key="bannerType">
+        <template nglDatatableCell let-value>
+            <span>{{value=='seller'|threeElementExpression:'商户端;用户端'}}</span>
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="所属区域" key="city"></ngl-datatable-column>
+    <ngl-datatable-column heading="开始时间" key="startTime"></ngl-datatable-column>
+    <ngl-datatable-column heading="结束时间" key="endTime"></ngl-datatable-column>
+    <ngl-datatable-column heading="创建时间" key="addTime">
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="操作" key="">
+        <template nglDatatableCell let-row="row">
+            <ngl-badge type="error" (click)="delConfirm()"><i class="fa fa-times"></i>删除</ngl-badge>
+        </template>
+    </ngl-datatable-column>
+    <template nglNoRowsOverlay>暂无数据!</template>
+</table>
+
 <article class="slds-card">
     <div class="slds-card__header slds-grid">
         <header class="slds-media slds-media--center slds-has-flexi-truncate">
             <div class="col-md-6">
-                <search-component [showIcon]="false" [debounce]="2000" [placeHolder]="placeholder"
-                                  (searchKey)="searchByCondition($event)"></search-component>
+
             </div>
         </header>
         <div class="slds-no-flex">
@@ -11,38 +46,11 @@
         </div>
     </div>
     <div class="slds-card__body slds-scrollable">
-        <table ngl-datatable [data]="bannerList.rows" trackByKey="rank" class="slds-max-medium-table--stacked-horizontal">
-            <ngl-datatable-column heading="名称" key="bannerName" sortable></ngl-datatable-column>
-            <ngl-datatable-column heading="图片" key="imgUrl">
-                <template nglDatatableCell let-value>
-                    <img [src]="commonImgUrl+value" width="100" height="100" class="img-thumbnail" alt="">
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="作用范围" key="scopeSeller">
-                <template nglDatatableCell let-value>
-                    <span>{{value=='all'|threeElementExpression:'全部;部分'}}</span>
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="类型" key="bannerType">
-                <template nglDatatableCell let-value>
-                    <span>{{value=='seller'|threeElementExpression:'商户端;用户端'}}</span>
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="所属区域" key="city"></ngl-datatable-column>
-            <ngl-datatable-column heading="开始时间" key="startTime"></ngl-datatable-column>
-            <ngl-datatable-column heading="结束时间" key="endTime"></ngl-datatable-column>
-            <ngl-datatable-column heading="创建时间" key="addTime">
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="操作" key="">
-                <template nglDatatableCell let-row="row">
-                    <ngl-badge type="error" (click)="delConfirm()"><i class="fa fa-times"></i>删除</ngl-badge>
-                </template>
-            </ngl-datatable-column>
-            <template nglNoRowsOverlay>暂无数据!</template>
-        </table>
+
     </div>
     <div class="slds-card__footer">
-        <ngl-pagination [(page)]="pageOpts.page" [total]="bannerList.total" [perPage]="bannerList.size" [limit]="pageOpts.limit"
+        <ngl-pagination [(page)]="pageOpts.page" [total]="bannerList.total" [perPage]="bannerList.size"
+                        [limit]="pageOpts.limit"
                         boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
                         nextText="下一页"></ngl-pagination>
     </div>
