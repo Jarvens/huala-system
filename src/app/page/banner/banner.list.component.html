@@ -34,28 +34,13 @@
     <template nglNoRowsOverlay>暂无数据!</template>
 </table>
 
-<article class="slds-card">
-    <div class="slds-card__header slds-grid">
-        <header class="slds-media slds-media--center slds-has-flexi-truncate">
-            <div class="col-md-6">
-
-            </div>
-        </header>
-        <div class="slds-no-flex">
-            <button class="slds-button slds-button--neutral">Banner录入</button>
-        </div>
-    </div>
-    <div class="slds-card__body slds-scrollable">
-
-    </div>
-    <div class="slds-card__footer">
-        <ngl-pagination [(page)]="pageOpts.page" [total]="bannerList.total" [perPage]="bannerList.size"
-                        [limit]="pageOpts.limit"
-                        boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
-                        nextText="下一页"></ngl-pagination>
-    </div>
-</article>
-
+<!--footer-->
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <ngl-pagination [(page)]="pageOpts.page" [total]="bannerList.total" [perPage]="bannerList.size"
+                    [limit]="pageOpts.limit"
+                    boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                    nextText="下一页"></ngl-pagination>
+</div>
 <!--提示信息-->
 <div class="slds-notify_container">
     <ngl-notification *ngIf="showAlert" type="alert" severity="error" (nglNotificationClose)="onClose($event)"
