@@ -57,7 +57,7 @@ export class SellerDataComponent implements OnInit {
 
   //报表导出
   exportExcel() {
-    let city = localStorage.getItem("cityForHuala");
+    let city = localStorage.getItem("hualaCity");
     this.sellerDataService.exportExcel(city, this.queryDate, this.testSeller, this.outLineSeller);
   }
 
