@@ -48,3 +48,14 @@
                     boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
                     nextText="下一页"></ngl-pagination>
 </div>
+
+<!--编辑模态-->
+<ngl-modal header="配置项编辑" [(open)]="configOpen">
+    <div body>
+        这是配置项编辑模态
+    </div>
+    <template ngl-modal-footer *ngIf="!noFooter">
+        <button class="slds-button slds-button--neutral" (click)="cancel()">取消</button>
+        <button class="slds-button slds-button--brand">编辑</button>
+    </template>
+</ngl-modal>
