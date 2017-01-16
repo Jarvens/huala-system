@@ -11,21 +11,31 @@
             <b>{{value}}</b>
         </template>
     </ngl-datatable-column>
-    <ngl-datatable-column heading="字典描述" key="dirtDesc"></ngl-datatable-column>
+    <ngl-datatable-column heading="字典描述" key="dirtDesc">
+        <template nglDatatableCell let-value>
+            <span class="text-success">{{value}}</span>
+        </template>
+    </ngl-datatable-column>
     <ngl-datatable-column heading="字典数据名称" key="dataKey">
         <template nglDatatableCell let-value>
                 {{value|json}}
         </template>
     </ngl-datatable-column>
-    <ngl-datatable-column heading="字典数据值" key="dataValue"></ngl-datatable-column>
-    <ngl-datatable-column heading="字典数据描述" key="dataDesc"></ngl-datatable-column>
-    <ngl-datatable-column heading="是否可以修改" key="">
+    <ngl-datatable-column heading="字典数据值" key="dataValue">
         <template nglDatatableCell let-value>
             <span class="text-danger">{{value}}</span>
         </template>
     </ngl-datatable-column>
+    <ngl-datatable-column heading="字典数据描述" key="dataDesc"></ngl-datatable-column>
+    <ngl-datatable-column heading="是否可以修改" key="isFixed">
+        <template nglDatatableCell let-value>
+            <b>{{value=='0'|threeElementExpression:'是;否'}}</b>
+        </template>
+    </ngl-datatable-column>
     <ngl-datatable-column heading="操作" key="">
-        <button type="button" nglButton="neutral" (click)="edit()">编辑</button>
+        <template nglDatatableCell let-row="row">
+            <button type="button" nglButton="neutral" (click)="edit()">编辑</button>
+        </template>
     </ngl-datatable-column>
     <template nglNoRowsOverlay>暂无数据!</template>
 </table>
