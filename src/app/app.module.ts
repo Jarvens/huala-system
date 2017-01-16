@@ -47,6 +47,7 @@ import {FinanceListComponent} from './page/finance/finance.list.component';
 import {SuppliersListComponent} from './page/suppliers/suppliersList.component';
 import {SellerSubsidyComponent} from './page/sellersubsidy/seller.subsidy.component';
 import {SpikeListComponent} from './page/spike/spike.list.component';
+import {SellerAuditComponent} from './page/selleraudit/seller.audit.component';
 //惠农购业务
 import {HngCompanyComponent} from './page/hng/company/hng.company.component';
 import {HngJobComponent} from './page/hng/job/hng.job.component';
@@ -98,6 +99,7 @@ import {EveryDateReportService} from './service/every.date.report.service';
 import {FinanceService} from './service/finance.service';
 import {SellerSubsidyService} from './service/seller.subsidy.service';
 import {SpikeService} from './service/spike.service';
+import {SellerAuditService} from './service/seller.audit.service';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -152,7 +154,8 @@ import {SpikeService} from './service/spike.service';
     FinanceListComponent,
     SuppliersListComponent,
     SellerSubsidyComponent,
-    SpikeListComponent
+    SpikeListComponent,
+    SellerAuditComponent
   ],
   imports: [
     BrowserModule,
@@ -186,7 +189,8 @@ import {SpikeService} from './service/spike.service';
     EveryDateReportService,
     FinanceService,
     SellerSubsidyService,
-    SpikeService
+    SpikeService,
+    SellerAuditService
   ]
 })
 export class AppModule {
