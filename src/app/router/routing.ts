@@ -28,6 +28,7 @@ import {FinanceListComponent} from '../page/finance/finance.list.component';
 import {SellerSubsidyComponent} from '../page/sellersubsidy/seller.subsidy.component';
 import {SpikeListComponent} from '../page/spike/spike.list.component';
 import {SellerAuditComponent} from '../page/selleraudit/seller.audit.component';
+import {ConfigComponent} from '../page/system/config/config.component';
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
@@ -58,7 +59,8 @@ const routes: Routes = [
       {path: 'finance', component: FinanceListComponent},
       {path: 'seller-report', component: SellerSubsidyComponent},
       {path: 'seller-spike', component: SpikeListComponent},
-      {path: 'seller-auth', component: SellerAuditComponent}
+      {path: 'seller-auth', component: SellerAuditComponent},
+      {path: 'system-sysconfig', component: ConfigComponent}
     ]
   },
 ];

@@ -48,6 +48,7 @@ import {SuppliersListComponent} from './page/suppliers/suppliersList.component';
 import {SellerSubsidyComponent} from './page/sellersubsidy/seller.subsidy.component';
 import {SpikeListComponent} from './page/spike/spike.list.component';
 import {SellerAuditComponent} from './page/selleraudit/seller.audit.component';
+import {ConfigComponent} from './page/system/config/config.component';
 //惠农购业务
 import {HngCompanyComponent} from './page/hng/company/hng.company.component';
 import {HngJobComponent} from './page/hng/job/hng.job.component';
@@ -155,7 +156,8 @@ import {SellerAuditService} from './service/seller.audit.service';
     SuppliersListComponent,
     SellerSubsidyComponent,
     SpikeListComponent,
-    SellerAuditComponent
+    SellerAuditComponent,
+    ConfigComponent
   ],
   imports: [
     BrowserModule,
