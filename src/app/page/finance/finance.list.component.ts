@@ -43,6 +43,7 @@ export class FinanceListComponent implements OnInit {
   //触发查询操作
   receiveDate(event: any) {
     this.queryDate = event.slice(0, 6);
+    console.log("当前日期", this.queryDate);
     this.getSql();
 
   }
@@ -73,20 +74,18 @@ export class FinanceListComponent implements OnInit {
   }
 
   //收入详情
-  incomeDetail() {
+  incomeDetail(date: string) {
     this.incomeOpen = !this.incomeOpen;
-    this.financeService.getSql("finance.getFinancePay", this.queryDate, this.incomePageOpts).subscribe(res=> {
+    this.financeService.getSql("finance.getFinanceOrder", date, this.incomePageOpts).subscribe(res=> {
       this.incomeList = res.json();
-      console.log(res.json());
     });
   }
 
   //支出详情
-  expenditureDetail() {
+  expenditureDetail(date: string) {
     this.expenditureOpen = !this.expenditureOpen;
-    this.financeService.getSql("finance.getFinanceOrder", this.queryDate, this.expenditurePageOpts).subscribe(res=> {
+    this.financeService.getSql("finance.getFinancePay", date, this.expenditurePageOpts).subscribe(res=> {
       this.expenditureList = res.json();
-      console.log(res.json());
     });
   }
 

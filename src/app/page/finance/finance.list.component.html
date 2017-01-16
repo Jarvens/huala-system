@@ -64,15 +64,25 @@
 <!--数据列表-->
 <table ngl-datatable [data]="financeList.rows" trackByKey="rank"
        class="slds-max-medium-table--stacked-horizontal">
-    <ngl-datatable-column heading="日期" key="date"></ngl-datatable-column>
+    <ngl-datatable-column heading="日期" key="date">
+        <template nglDatatableCell let-value>
+            <b>
+                {{value}}
+            </b>
+        </template>
+    </ngl-datatable-column>
     <ngl-datatable-column heading="订单金额" key="order_amount">
         <template nglDatatableCell let-value>
-            {{value|number:'1.2-2'}}
+            <span class="text-info">
+                {{value|number:'1.2-2'}}
+            </span>
         </template>
     </ngl-datatable-column>
     <ngl-datatable-column heading="红包金额" key="red_amount">
         <template nglDataCell let-value>
-            {{value|number:'1.2-2'}}
+            <span class="text-danger">
+                {{value|number:'1.2-2'}}
+            </span>
         </template>
     </ngl-datatable-column>
     <ngl-datatable-column heading="支付总金额" key="seller_amount">
@@ -102,8 +112,8 @@
     </ngl-datatable-column>
     <ngl-datatable-column heading="操作" key="操作">
         <template nglDatatableCell let-row="row">
-            <ngl-badge type="info" (click)="incomeDetail()">收入详情</ngl-badge>
-            <ngl-badge type="success" (click)="expenditureDetail()">支出详情</ngl-badge>
+            <ngl-badge type="info" (click)="incomeDetail(row.date)">收入详情</ngl-badge>
+            <ngl-badge type="success" (click)="expenditureDetail(row.date)">支出详情</ngl-badge>
         </template>
     </ngl-datatable-column>
     <!-- No rows overlay -->
@@ -116,30 +126,18 @@
 <!--收入详情模态-->
 <ngl-modal header="收入详情" [(open)]="incomeOpen">
     <div body>
-        <table ngl-datatable [data]="financeList.rows" trackByKey="rank"
+        <table ngl-datatable [data]="incomeList.rows" trackByKey="rank"
                class="slds-max-medium-table--stacked-horizontal">
-            <ngl-datatable-column heading="订单ID" key="date"></ngl-datatable-column>
-            <ngl-datatable-column heading="订单号" key="order_amount">
+            <ngl-datatable-column heading="订单ID" key="id"></ngl-datatable-column>
+            <ngl-datatable-column heading="订单号" key="order_sn"></ngl-datatable-column>
+            <ngl-datatable-column heading="收货人" key="consignee"></ngl-datatable-column>
+            <ngl-datatable-column heading="手机号" key="mobile"></ngl-datatable-column>
+            <ngl-datatable-column heading="订单金额" key="order_amount">
                 <template nglDatatableCell let-value>
                     {{value|number:'1.2-2'}}
                 </template>
             </ngl-datatable-column>
-            <ngl-datatable-column heading="收货人" key="red_amount">
-                <template nglDataCell let-value>
-                    {{value|number:'1.2-2'}}
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="手机号" key="seller_amount">
-                <template nglDatatable let-value>
-                    {{value|number:'1.2-2'}}
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="订单金额" key="auto_income">
-                <template nglDatatableCell let-value>
-                    {{value|number:'1.2-2'}}
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="红包金额" key="reward">
+            <ngl-datatable-column heading="红包金额" key="price">
                 <template nglDatatableCell let-value>
                     {{value|number:'1.2-2'}}
                 </template>
@@ -162,7 +160,9 @@
             <ngl-datatable-column heading="订单ID" key="date"></ngl-datatable-column>
             <ngl-datatable-column heading="订单号" key="order_amount">
                 <template nglDatatableCell let-value>
-                    {{value|number:'1.2-2'}}
+                    <h4 class="text-danger">
+                        {{value|number:'1.2-2'}}
+                    </h4>
                 </template>
             </ngl-datatable-column>
             <ngl-datatable-column heading="收货人" key="red_amount">
@@ -177,12 +177,17 @@
             </ngl-datatable-column>
             <ngl-datatable-column heading="订单金额" key="auto_income">
                 <template nglDatatableCell let-value>
-                    {{value|number:'1.2-2'}}
+                    <b>
+                        {{value|number:'1.2-2'}}
+                    </b>
                 </template>
             </ngl-datatable-column>
             <ngl-datatable-column heading="红包金额" key="reward">
                 <template nglDatatableCell let-value>
-                    {{value|number:'1.2-2'}}
+                    <span class="text-danger">
+                                            {{value|number:'1.2-2'}}
+                    </span>
+
                 </template>
             </ngl-datatable-column>
             <!-- No rows overlay -->
