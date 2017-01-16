@@ -7,7 +7,6 @@ import "@angular/http";
 import "@angular/router";
 import "ng-lightning";
 import 'rxjs';
-import 'angular2-tree-component';
 if ('production' === ENV) {
 } else {
 }

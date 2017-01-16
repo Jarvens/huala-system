@@ -6,7 +6,7 @@ import {NglModule} from 'ng-lightning';
 import {ENV_PROVIDERS} from './environment';
 import {BaiduMap} from '../../node_modules/angular2-baidu-map/src';
 import {AppComponent} from './app.component';
-import {TreeModule} from "angular2-tree-component";
+// import {TreeModule} from "angular2-tree-component";
 //路由
 import {AppRoutingModule} from './router/routing';
 import {DropdownTreeviewModule} from 'ng2-dropdown-treeview';
@@ -158,7 +158,7 @@ import {SellerSubsidy} from './service/seller.subsidy.service';
     AppRoutingModule,
     DropdownTreeviewModule.forRoot(),
     NglModule.forRoot(),
-    TreeModule
+    // TreeModule
   ],
   providers: [
     ENV_PROVIDERS,
