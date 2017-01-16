@@ -23,8 +23,6 @@ export class ConfigComponent implements OnInit {
   placeholder: string = '搜索..';
   //配置项模态  打开|关闭
   configOpen: boolean = false;
-  //显示|关闭   *
-  required: boolean = true;
   //编辑对象
   configEditObj: any = {};
 

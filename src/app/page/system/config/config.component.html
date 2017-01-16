@@ -54,41 +54,59 @@
     <div body>
         <div class="slds-grid slds-wrap">
             <div class="slds-size--5-of-12">
-                <ngl-form-element label="字典ID" class="slds-m-top--small">
-                    <input nglFormControl type="text" placeholder="" [required]="required" [(ngModel)]="configEditObj.id">
-                </ngl-form-element>
+                <div class="slds-form-element">
+                    <span class="slds-form-element__label">字典ID</span>
+                    <div class="slds-form-element__control slds-has-divider--bottom">
+                        <span class="slds-form-element__static text-success">{{configEditObj.id}}</span>
+                    </div>
+                </div>
             </div>
             <div class="slds-size--2-of-12"></div>
             <div class="slds-size--5-of-12">
-                <ngl-form-element label="字典名称" class="slds-m-top--small">
-                    <input nglFormControl type="text" placeholder="" [required]="required" [(ngModel)]="configEditObj.dirtKey">
-                </ngl-form-element>
+                <div class="slds-form-element">
+                    <span class="slds-form-element__label">字典名称</span>
+                    <div class="slds-form-element__control slds-has-divider--bottom">
+                        <span class="slds-form-element__static text-success">{{configEditObj.dirtKey}}</span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="slds-grid slds-wrap">
             <div class="slds-size--5-of-12">
-                <ngl-form-element label="字典描述" class="slds-m-top--small">
-                    <input nglFormControl type="text" placeholder="" [required]="required" [(ngModel)]="configEditObj.dirtDesc">
-                </ngl-form-element>
+                <div class="slds-form-element">
+                    <span class="slds-form-element__label">字典描述</span>
+                    <div class="slds-form-element__control slds-has-divider--bottom">
+                        <span class="slds-form-element__static text-success">{{configEditObj.dirtDesc}}</span>
+                    </div>
+                </div>
             </div>
             <div class="slds-size--2-of-12"></div>
             <div class="slds-size--5-of-12">
-                <ngl-form-element label="字典数据名称" class="slds-m-top--small">
-                    <input nglFormControl type="text" placeholder="" [required]="required" [(ngModel)]="configEditObj.dataKey">
-                </ngl-form-element>
+                <div class="slds-form-element">
+                    <span class="slds-form-element__label">字典数据名称</span>
+                    <div class="slds-form-element__control slds-has-divider--bottom">
+                        <span class="slds-form-element__static text-success">{{configEditObj.dataKey}}</span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="slds-grid slds-wrap">
             <div class="slds-size--5-of-12">
-                <ngl-form-element label="字典数据描述" class="slds-m-top--small">
-                    <input nglFormControl type="text" placeholder="" [required]="required" [(ngModel)]="configEditObj.dataDesc">
-                </ngl-form-element>
+                <div class="slds-form-element">
+                    <span class="slds-form-element__label">字典数据描述</span>
+                    <div class="slds-form-element__control slds-has-divider--bottom">
+                        <span class="slds-form-element__static text-success">{{configEditObj.dataDesc}}</span>
+                    </div>
+                </div>
             </div>
             <div class="slds-size--2-of-12"></div>
             <div class="slds-size--5-of-12">
-                <ngl-form-element label="是否可修改" class="slds-m-top--small">
-                    <input nglFormControl type="text" placeholder="" [required]="required" [(ngModel)]="configEditObj.isFixed">
-                </ngl-form-element>
+                <div class="slds-form-element">
+                    <span class="slds-form-element__label">是否可修改</span>
+                    <div class="slds-form-element__control slds-has-divider--bottom">
+                        <span class="slds-form-element__static text-success">{{configEditObj.isFixed=='0'|threeElementExpression:'是;否'}}</span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="slds-grid slds-wrap">
