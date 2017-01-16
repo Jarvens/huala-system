@@ -101,6 +101,7 @@ import {FinanceService} from './service/finance.service';
 import {SellerSubsidyService} from './service/seller.subsidy.service';
 import {SpikeService} from './service/spike.service';
 import {SellerAuditService} from './service/seller.audit.service';
+import {ConfigService} from './service/config.service';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -192,7 +193,8 @@ import {SellerAuditService} from './service/seller.audit.service';
     FinanceService,
     SellerSubsidyService,
     SpikeService,
-    SellerAuditService
+    SellerAuditService,
+    ConfigService
   ]
 })
 export class AppModule {

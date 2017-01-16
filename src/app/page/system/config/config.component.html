@@ -1,1 +1,38 @@
-配置界面
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <search-component [showIcon]="false" [debounce]="2000"
+                      [placeHolder]="placeholder"
+                      (searchKey)="searchByCondition($event)"></search-component>
+</div>
+<table ngl-datatable [data]="configList.rows" trackByKey="rank"
+       class="slds-max-medium-table--stacked-horizontal">
+    <ngl-datatable-column heading="ID" key="id"></ngl-datatable-column>
+    <ngl-datatable-column heading="字典名称" key="dirtKey">
+        <template nglDatatableCell let-value>
+            <b>{{value}}</b>
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="字典描述" key="dirtDesc"></ngl-datatable-column>
+    <ngl-datatable-column heading="字典数据名称" key="dataKey">
+        <template nglDatatableCell let-value>
+                {{value|json}}
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="字典数据值" key="dataValue"></ngl-datatable-column>
+    <ngl-datatable-column heading="字典数据描述" key="dataDesc"></ngl-datatable-column>
+    <ngl-datatable-column heading="是否可以修改" key="">
+        <template nglDatatableCell let-value>
+            <span class="text-danger">{{value}}</span>
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="操作" key="">
+        <button type="button" nglButton="neutral" (click)="edit()">编辑</button>
+    </ngl-datatable-column>
+    <template nglNoRowsOverlay>暂无数据!</template>
+</table>
+<!--分页-->
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <ngl-pagination [(page)]="pageOpts.page" [total]="configList.total" [perPage]="pageOpts.size"
+                    [limit]="pageOpts.limit"
+                    boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                    nextText="下一页"></ngl-pagination>
+</div>
