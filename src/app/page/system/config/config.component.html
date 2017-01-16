@@ -35,7 +35,7 @@
         </ngl-datatable-column>
         <ngl-datatable-column heading="操作" key="">
             <template nglDatatableCell let-row="row">
-                <button type="button" nglButton="neutral" (click)="edit()">编辑</button>
+                <button type="button" nglButton="neutral" (click)="edit(row)">编辑</button>
             </template>
         </ngl-datatable-column>
         <template nglNoRowsOverlay>暂无数据!</template>
@@ -52,7 +52,53 @@
 <!--编辑模态-->
 <ngl-modal header="配置项编辑" [(open)]="configOpen">
     <div body>
-        这是配置项编辑模态
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="字典ID" class="slds-m-top--small">
+                    <input nglFormControl type="text" placeholder="" [required]="required" [(ngModel)]="configEditObj.id">
+                </ngl-form-element>
+            </div>
+            <div class="slds-size--2-of-12"></div>
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="字典名称" class="slds-m-top--small">
+                    <input nglFormControl type="text" placeholder="" [required]="required" [(ngModel)]="configEditObj.dirtKey">
+                </ngl-form-element>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="字典描述" class="slds-m-top--small">
+                    <input nglFormControl type="text" placeholder="" [required]="required" [(ngModel)]="configEditObj.dirtDesc">
+                </ngl-form-element>
+            </div>
+            <div class="slds-size--2-of-12"></div>
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="字典数据名称" class="slds-m-top--small">
+                    <input nglFormControl type="text" placeholder="" [required]="required" [(ngModel)]="configEditObj.dataKey">
+                </ngl-form-element>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="字典数据描述" class="slds-m-top--small">
+                    <input nglFormControl type="text" placeholder="" [required]="required" [(ngModel)]="configEditObj.dataDesc">
+                </ngl-form-element>
+            </div>
+            <div class="slds-size--2-of-12"></div>
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="是否可修改" class="slds-m-top--small">
+                    <input nglFormControl type="text" placeholder="" [required]="required" [(ngModel)]="configEditObj.isFixed">
+                </ngl-form-element>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size--1-of-1">
+                <ngl-form-element class="slds-m-top--small">
+                    <template nglFormLabel><i>字典数据值</i></template>
+                    <textarea nglFormControl [required]="required" [(ngModel)]="configEditObj.dirtDesc"></textarea>
+                </ngl-form-element>
+            </div>
+        </div>
     </div>
     <template ngl-modal-footer *ngIf="!noFooter">
         <button class="slds-button slds-button--neutral" (click)="cancel()">取消</button>
