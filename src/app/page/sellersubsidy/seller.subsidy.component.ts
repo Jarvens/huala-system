@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {SellerSubsidyService} from '../../service/seller.subsidy.service';
 @Component({
   selector: 'seller-subsidy-component',
   templateUrl: './seller.subsidy.component.html'
@@ -7,7 +8,7 @@ export class SellerSubsidyComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  constructor() {
+  constructor(private sellerSubsidyService:SellerSubsidyService) {
   }
 
   //tips  打开|关闭

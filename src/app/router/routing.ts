@@ -26,6 +26,7 @@ import {SuppliersListComponent} from '../page/suppliers/suppliersList.component'
 import {EveryDateReportComponent} from '../page/everydatereport/every.date.report.component';
 import {FinanceListComponent} from '../page/finance/finance.list.component';
 import {SellerSubsidyComponent} from '../page/sellersubsidy/seller.subsidy.component';
+import {SpikeListComponent} from '../page/spike/spike.list.component';
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
@@ -54,7 +55,8 @@ const routes: Routes = [
       {path: 'supplier-info', component: SuppliersListComponent},
       {path: 'platform', component: EveryDateReportComponent},
       {path: 'finance', component: FinanceListComponent},
-      {path:'seller-report',component:SellerSubsidyComponent}
+      {path:'seller-report',component:SellerSubsidyComponent},
+      {path:'seller-spike',component:SpikeListComponent}
     ]
   },
 ];

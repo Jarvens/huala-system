@@ -46,6 +46,7 @@ import {EveryDateReportComponent} from './page/everydatereport/every.date.report
 import {FinanceListComponent} from './page/finance/finance.list.component';
 import {SuppliersListComponent} from './page/suppliers/suppliersList.component';
 import {SellerSubsidyComponent} from './page/sellersubsidy/seller.subsidy.component';
+import {SpikeListComponent} from './page/spike/spike.list.component';
 //惠农购业务
 import {HngCompanyComponent} from './page/hng/company/hng.company.component';
 import {HngJobComponent} from './page/hng/job/hng.job.component';
@@ -95,7 +96,8 @@ import {HngService} from './service/hng.service';
 import {CardService} from './service/card.service';
 import {EveryDateReportService} from './service/every.date.report.service';
 import {FinanceService} from './service/finance.service';
-import {SellerSubsidy} from './service/seller.subsidy.service';
+import {SellerSubsidyService} from './service/seller.subsidy.service';
+import {SpikeService} from './service/spike.service';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -149,7 +151,8 @@ import {SellerSubsidy} from './service/seller.subsidy.service';
     EveryDateReportComponent,
     FinanceListComponent,
     SuppliersListComponent,
-    SellerSubsidyComponent
+    SellerSubsidyComponent,
+    SpikeListComponent
   ],
   imports: [
     BrowserModule,
@@ -182,7 +185,8 @@ import {SellerSubsidy} from './service/seller.subsidy.service';
     CardService,
     EveryDateReportService,
     FinanceService,
-    SellerSubsidy
+    SellerSubsidyService,
+    SpikeService
   ]
 })
 export class AppModule {
