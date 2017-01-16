@@ -38,16 +38,26 @@
             <ngl-datatable-column heading="商户id" key="sellerId"></ngl-datatable-column>
             <ngl-datatable-column heading="商户名" key="sellerName">
                 <template nglDatatableCell let-value>
+                    <b>
+                        {{value}}
+                    </b>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="业务员" key="clerk"></ngl-datatable-column>
+            <ngl-datatable-column heading="电话" key="phone">
+                <template nglDatatableCell let-value>
                     <ngl-badge type="info">
                         {{value}}
                     </ngl-badge>
                 </template>
             </ngl-datatable-column>
-            <ngl-datatable-column heading="业务员" key="clerk"></ngl-datatable-column>
-            <ngl-datatable-column heading="电话" key="phone"></ngl-datatable-column>
             <ngl-datatable-column heading="城市" key="city"></ngl-datatable-column>
             <ngl-datatable-column heading="区域" key="area"></ngl-datatable-column>
-            <ngl-datatable-column heading="地址" key="address"></ngl-datatable-column>
+            <ngl-datatable-column heading="地址" key="address">
+                <template nglDatatableCell let-value>
+                    <span class="text-danger">{{value}}</span>
+                </template>
+            </ngl-datatable-column>
             <ngl-datatable-column heading="上线时间" key="onlineDate">
                 <template nglDatatableCell let-value>
                     {{value|date:'yyyy-MM-dd HH:mm'}}
@@ -63,13 +73,41 @@
                     {{value|date:'yyyy-MM-dd HH:mm'}}
                 </template>
             </ngl-datatable-column>
-            <ngl-datatable-column heading="新用户订单量" key="firstOrderDate"></ngl-datatable-column>
-            <ngl-datatable-column heading="总订单量" key="totalOrderCount"></ngl-datatable-column>
-            <ngl-datatable-column heading="销售额" key="saleAmount"></ngl-datatable-column>
-            <ngl-datatable-column heading="店铺累计访问人数" key="visitCount"></ngl-datatable-column>
-            <ngl-datatable-column heading="注册用户数" key="registerCount"></ngl-datatable-column>
-            <ngl-datatable-column heading="奖励金额" key="rewardAmount"></ngl-datatable-column>
-            <ngl-datatable-column heading="红包金额" key="redPackageAmount"></ngl-datatable-column>
+            <ngl-datatable-column heading="新用户订单量" key="firstOrderDate">
+                <template nglDatatableCell let-value>
+                    <b>{{value}}</b>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="总订单量" key="totalOrderCount">
+                <template nglDatatableCell let-value>
+                    <b>{{value}}</b>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="销售额" key="saleAmount">
+                <template nglDatatableCell let-value>
+                    <b>{{value}}</b>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="店铺累计访问人数" key="visitCount">
+                <template nglDatatableCell let-value>
+                    <b>{{value}}</b>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="注册用户数" key="registerCount">
+                <template nglDatatableCell let-value>
+                    <b>{{value}}</b>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="奖励金额" key="rewardAmount">
+                <template nglDatatableCell let-value>
+                    <b>{{value}}</b>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="红包金额" key="redPackageAmount">
+                <template nglDatatableCell let-value>
+                    <b>{{value}}</b>
+                </template>
+            </ngl-datatable-column>
             <template nglNoRowsOverlay>暂无数据!</template>
         </table>
     </div>
