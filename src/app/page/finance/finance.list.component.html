@@ -102,16 +102,10 @@
     </ngl-datatable-column>
     <ngl-datatable-column heading="操作" key="操作">
         <template nglDatatableCell let-row="row">
-            <ngl-badge type="info">收入详情</ngl-badge>
-            <ngl-badge type="success">支出详情</ngl-badge>
+            <ngl-badge type="info" (click)="incomeDetail()">收入详情</ngl-badge>
+            <ngl-badge type="success" (click)="expenditureDetail()">支出详情</ngl-badge>
         </template>
     </ngl-datatable-column>
-
-    <!-- Loading overlay -->
-    <template nglLoadingOverlay>
-        <div class="slds-box slds-box--small slds-theme--shade slds-text-align--center">Loading...</div>
-    </template>
-
     <!-- No rows overlay -->
     <template nglNoRowsOverlay>暂无数据</template>
 </table>
@@ -120,7 +114,86 @@
                 nextText="下一页"></ngl-pagination>
 
 <!--收入详情模态-->
+<ngl-modal header="收入详情" [(open)]="incomeOpen">
+    <div body>
+        <table ngl-datatable [data]="financeList.rows" trackByKey="rank"
+               class="slds-max-medium-table--stacked-horizontal">
+            <ngl-datatable-column heading="订单ID" key="date"></ngl-datatable-column>
+            <ngl-datatable-column heading="订单号" key="order_amount">
+                <template nglDatatableCell let-value>
+                    {{value|number:'1.2-2'}}
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="收货人" key="red_amount">
+                <template nglDataCell let-value>
+                    {{value|number:'1.2-2'}}
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="手机号" key="seller_amount">
+                <template nglDatatable let-value>
+                    {{value|number:'1.2-2'}}
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="订单金额" key="auto_income">
+                <template nglDatatableCell let-value>
+                    {{value|number:'1.2-2'}}
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="红包金额" key="reward">
+                <template nglDatatableCell let-value>
+                    {{value|number:'1.2-2'}}
+                </template>
+            </ngl-datatable-column>
+            <!-- No rows overlay -->
+            <template nglNoRowsOverlay>暂无数据</template>
+        </table>
+    </div>
+    <template ngl-modal-footer *ngIf="!noFooter">
+        <button class="slds-button slds-button--neutral" (click)="cancel()">Cancel</button>
+        <button class="slds-button slds-button--brand">Save</button>
+    </template>
+</ngl-modal>
+
 <!--支出详情模态-->
+<ngl-modal header="支出详情" [(open)]="expenditureOpen">
+    <div body>
+        <table ngl-datatable [data]="financeList.rows" trackByKey="rank"
+               class="slds-max-medium-table--stacked-horizontal">
+            <ngl-datatable-column heading="订单ID" key="date"></ngl-datatable-column>
+            <ngl-datatable-column heading="订单号" key="order_amount">
+                <template nglDatatableCell let-value>
+                    {{value|number:'1.2-2'}}
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="收货人" key="red_amount">
+                <template nglDataCell let-value>
+                    {{value|number:'1.2-2'}}
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="手机号" key="seller_amount">
+                <template nglDatatable let-value>
+                    {{value|number:'1.2-2'}}
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="订单金额" key="auto_income">
+                <template nglDatatableCell let-value>
+                    {{value|number:'1.2-2'}}
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="红包金额" key="reward">
+                <template nglDatatableCell let-value>
+                    {{value|number:'1.2-2'}}
+                </template>
+            </ngl-datatable-column>
+            <!-- No rows overlay -->
+            <template nglNoRowsOverlay>暂无数据</template>
+        </table>
+    </div>
+    <template ngl-modal-footer *ngIf="!noFooter">
+        <button class="slds-button slds-button--neutral" (click)="cancel()">Cancel</button>
+        <button class="slds-button slds-button--brand">Save</button>
+    </template>
+</ngl-modal>
 
 <!--Toast提示-->
 <toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"

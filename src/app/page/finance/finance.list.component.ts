@@ -23,11 +23,14 @@ export class FinanceListComponent implements OnInit {
   showAlert: boolean = false;
   //分页对象
   pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10}
-
   //财务列表对象
   financeList: any = {};
   //卡片列表对象
   financeCard: any = {};
+  //收入详情 打开|关闭
+  incomeOpen: boolean = false;
+  //支出详情 打开|关闭
+  expenditureOpen: boolean = false;
 
   //触发查询操作
   receiveDate(event: any) {
@@ -60,4 +63,16 @@ export class FinanceListComponent implements OnInit {
     });
 
   }
+
+  //收入详情
+  incomeDetail() {
+    this.incomeOpen = !this.incomeOpen;
+  }
+
+  //支出详情
+  expenditureDetail() {
+    this.expenditureOpen = !this.expenditureOpen;
+  }
+
+
 }
