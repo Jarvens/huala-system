@@ -3,42 +3,44 @@
                       [placeHolder]="placeholder"
                       (searchKey)="searchByCondition($event)"></search-component>
 </div>
-<table ngl-datatable [data]="configList.rows" trackByKey="rank"
-       class="slds-max-medium-table--stacked-horizontal">
-    <ngl-datatable-column heading="ID" key="id"></ngl-datatable-column>
-    <ngl-datatable-column heading="字典名称" key="dirtKey">
-        <template nglDatatableCell let-value>
-            <b>{{value}}</b>
-        </template>
-    </ngl-datatable-column>
-    <ngl-datatable-column heading="字典描述" key="dirtDesc">
-        <template nglDatatableCell let-value>
-            <span class="text-success">{{value}}</span>
-        </template>
-    </ngl-datatable-column>
-    <ngl-datatable-column heading="字典数据名称" key="dataKey">
-        <template nglDatatableCell let-value>
+<div class="slds-scrollable">
+    <table ngl-datatable [data]="configList.rows" trackByKey="rank"
+           class="slds-max-medium-table--stacked-horizontal">
+        <ngl-datatable-column heading="ID" key="id"></ngl-datatable-column>
+        <ngl-datatable-column heading="字典名称" key="dirtKey">
+            <template nglDatatableCell let-value>
+                <b>{{value}}</b>
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="字典描述" key="dirtDesc">
+            <template nglDatatableCell let-value>
+                <span class="text-success">{{value}}</span>
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="字典数据名称" key="dataKey">
+            <template nglDatatableCell let-value>
                 {{value|json}}
-        </template>
-    </ngl-datatable-column>
-    <ngl-datatable-column heading="字典数据值" key="dataValue">
-        <template nglDatatableCell let-value>
-            <span class="text-danger">{{value}}</span>
-        </template>
-    </ngl-datatable-column>
-    <ngl-datatable-column heading="字典数据描述" key="dataDesc"></ngl-datatable-column>
-    <ngl-datatable-column heading="是否可以修改" key="isFixed">
-        <template nglDatatableCell let-value>
-            <b>{{value=='0'|threeElementExpression:'是;否'}}</b>
-        </template>
-    </ngl-datatable-column>
-    <ngl-datatable-column heading="操作" key="">
-        <template nglDatatableCell let-row="row">
-            <button type="button" nglButton="neutral" (click)="edit()">编辑</button>
-        </template>
-    </ngl-datatable-column>
-    <template nglNoRowsOverlay>暂无数据!</template>
-</table>
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="字典数据值" key="dataValue">
+            <template nglDatatableCell let-value>
+                <span class="text-danger">{{value}}</span>
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="字典数据描述" key="dataDesc"></ngl-datatable-column>
+        <ngl-datatable-column heading="是否可以修改" key="isFixed">
+            <template nglDatatableCell let-value>
+                <b>{{value=='0'|threeElementExpression:'是;否'}}</b>
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="操作" key="">
+            <template nglDatatableCell let-row="row">
+                <button type="button" nglButton="neutral" (click)="edit()">编辑</button>
+            </template>
+        </ngl-datatable-column>
+        <template nglNoRowsOverlay>暂无数据!</template>
+    </table>
+</div>
 <!--分页-->
 <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
     <ngl-pagination [(page)]="pageOpts.page" [total]="configList.total" [perPage]="pageOpts.size"

@@ -23,7 +23,7 @@ export class ConfigComponent implements OnInit {
   //分页
   pageChange(event: any) {
     this.pageOpts.page = event;
-    this.queryConfig(this.pageOpts, this.key);
+    this.queryConfig(this.key, this.pageOpts);
   }
 
   //编辑
@@ -36,5 +36,11 @@ export class ConfigComponent implements OnInit {
     this.configService.getConfigList(page, key).subscribe(res=> {
       this.configList = res.json();
     });
+  }
+
+  //条件搜索
+  searchByCondition(data: any) {
+    this.key = data;
+    this.queryConfig(data, this.pageOpts);
   }
 }
