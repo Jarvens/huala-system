@@ -22,7 +22,7 @@ export class FinanceListComponent implements OnInit {
   //显示|关闭toast
   showAlert: boolean = false;
   //分页对象
-  pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10}
+  pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
   //财务列表对象
   financeList: any = {};
   //卡片列表对象
@@ -31,6 +31,14 @@ export class FinanceListComponent implements OnInit {
   incomeOpen: boolean = false;
   //支出详情 打开|关闭
   expenditureOpen: boolean = false;
+  //收入详情列表
+  incomeList: any = {};
+  //支出详情列表
+  expenditureList: any = {};
+  //收入详情分页对象
+  incomePageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
+  //支出详情分页对象
+  expenditurePageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
 
   //触发查询操作
   receiveDate(event: any) {
@@ -67,11 +75,19 @@ export class FinanceListComponent implements OnInit {
   //收入详情
   incomeDetail() {
     this.incomeOpen = !this.incomeOpen;
+    this.financeService.getSql("finance.getFinancePay", this.queryDate, this.incomePageOpts).subscribe(res=> {
+      this.incomeList = res.json();
+      console.log(res.json());
+    });
   }
 
   //支出详情
   expenditureDetail() {
     this.expenditureOpen = !this.expenditureOpen;
+    this.financeService.getSql("finance.getFinanceOrder", this.queryDate, this.expenditurePageOpts).subscribe(res=> {
+      this.expenditureList = res.json();
+      console.log(res.json());
+    });
   }
 
 
