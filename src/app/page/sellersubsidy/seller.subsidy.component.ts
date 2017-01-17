@@ -30,7 +30,7 @@ export class SellerSubsidyComponent implements OnInit {
   //查询时间
   queryDate: string = '';
   //格式化
-  date_formate:string ='yyyy-mm-dd';
+  date_formate: string = 'yyyy-mm-dd';
   //初始化奖励数据
   initData() {
     if (this.queryDate == '') {
@@ -41,18 +41,29 @@ export class SellerSubsidyComponent implements OnInit {
     }
     this.sellerSubsidyService.initData(this.queryDate).subscribe(res=> {
       let ret = res.json();
-      console.log(res.json());
+      if (ret.success) {
+        this.showAlert = !this.showAlert;
+        this.toastType = 'success';
+        this.toastMessage = '奖励数据生成成功';
+        this.queryRewardList(this.queryDate, this.pageOpts);
+      } else {
+        this.showAlert = !this.showAlert;
+        this.toastMessage = ret.message;
+        this.toastType = 'error';
+      }
     });
   }
 
   //分页事件
   pageChange(event) {
-
+    this.pageOpts.page = event;
+    this.queryRewardList(this.queryDate, this.pageOpts);
   }
 
   //时间选择事件
-  receiveDate(event:any) {
+  receiveDate(event: any) {
     this.queryDate = event;
+    this.queryRewardList(event, this.pageOpts);
   }
 
   //toast事件传递
@@ -68,6 +79,14 @@ export class SellerSubsidyComponent implements OnInit {
   //prompt确定事件
   confirm() {
 
+  }
+
+  //查询奖励列表
+  queryRewardList(date: string, page: any) {
+    this.sellerSubsidyService.getRewardList(date, page).subscribe(res=> {
+      this.rewardList = res.json();
+      console.log(res.json());
+    });
   }
 
 }

@@ -6,6 +6,13 @@ export class SellerSubsidyService {
   }
 
   initData(date: string) {
-    return this.http.post("/balance/seller-reward",{date:date});
+    return this.http.post("/balance/seller-reward", {date: date});
+  }
+
+  getRewardList(date: string, page: any) {
+    if (!page) {
+      page = {page: 1, perPage: 10};
+    }
+    return this.http.get("/balance/seller-reward-list", {date: date, page: page.page, size: page.perPage});
   }
 }
