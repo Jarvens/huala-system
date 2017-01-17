@@ -28,19 +28,30 @@ export class ImgUploadComponent {
 
 
   //监听文件变化
-  listenFileChange(target: any) {
+  listenFileChange(dom: any) {
     this.uploader.setOptions({url: this.serverUrl + "/uploadImg.json?imgType=" + this.uploadFolder});
     //将文件添加到上传队列
-    this.uploader.addToQueue(target.files);
+    this.uploader.addToQueue(dom.files);
     let that = this;
-    let file = target.files[0];
+    let file = dom.files[0];
     //Base64转换
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function () {
       that.prevFile = this.result;
+      console.log(that.prevFile);
     }
 
+  }
+
+  //选择图片触发  input  type=file
+  openFileSelect(dom: any) {
+    dom.click();
+  }
+
+  //上传
+  uploadAll(){
+    console.log(this.uploader);
   }
 
 }
