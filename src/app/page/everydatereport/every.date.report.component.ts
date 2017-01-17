@@ -23,6 +23,8 @@ export class EveryDateReportComponent {
   toastType: string = 'warning';
   //显示|关闭toast
   showAlert: boolean = false;
+  //格式化时间
+  _date_formate:string ='yyyymmdd';
 
   //触发查询操作
   receiveDate(event: any) {

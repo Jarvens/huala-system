@@ -39,11 +39,12 @@ export class FinanceListComponent implements OnInit {
   incomePageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
   //支出详情分页对象
   expenditurePageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
+  //格式化时间
+  _date_formate: string = 'yyyymmdd';
 
   //触发查询操作
   receiveDate(event: any) {
     this.queryDate = event.slice(0, 6);
-    console.log("当前日期", this.queryDate);
     this.getSql();
 
   }

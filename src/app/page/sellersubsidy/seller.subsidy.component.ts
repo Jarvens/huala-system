@@ -29,6 +29,8 @@ export class SellerSubsidyComponent implements OnInit {
   notificationOpen: boolean = false;
   //查询时间
   queryDate: string = '';
+  //格式化
+  date_formate:string ='yyyy-mm-dd';
   //初始化奖励数据
   initData() {
     if (this.queryDate == '') {
@@ -49,7 +51,7 @@ export class SellerSubsidyComponent implements OnInit {
   }
 
   //时间选择事件
-  receiveDate(event) {
+  receiveDate(event:any) {
     this.queryDate = event;
   }
 

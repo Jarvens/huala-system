@@ -5,7 +5,7 @@
                 class="fa fa-info-circle"></i><span>信息</span></a>
     </div>
     <div class="slds-size--2-of-12">
-        <start-time-component (_startTime)="receiveDate($event)"></start-time-component>
+        <start-time-component (_startTime)="receiveDate($event)" [_date_format]="_date_formate"></start-time-component>
     </div>
     <div class="slds-size--2-of-12">
         <button type="button" nglButton="neutral" (click)="exportDataReport()">Excel导出</button>

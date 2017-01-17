@@ -24,6 +24,8 @@ export class SellerDataComponent implements OnInit {
   //select下拉框 打开|关闭
   multipleOpen: boolean = false;
   pick: any = [];
+  //格式化时间
+  _date_formate: string = 'yyyymmdd';
 
   constructor(private sellerDataService: SellerDataService) {
   }

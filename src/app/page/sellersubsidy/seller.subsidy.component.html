@@ -6,7 +6,7 @@
                 class="fa fa-info-circle"></i><span>奖励规则</span></a>
     </div>
     <div class="slds-size--2-of-12">
-        <start-time-component (_startTime)="receiveDate($event)"></start-time-component>
+        <start-time-component (_startTime)="receiveDate($event)" [_date_format]="date_formate"></start-time-component>
     </div>
     <div class="slds-size--2-of-12">
         <button type="button" nglButton="neutral" (click)="initData()">初始化奖励数据</button>
