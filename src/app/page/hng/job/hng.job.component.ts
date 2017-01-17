@@ -26,6 +26,12 @@ export class HngJobComponent implements OnInit {
   promptMessage: string = '您确定要删除该岗位吗?';
   //操作对象
   operaObj: any = {};
+  //toast类型
+  toastType: string = 'success';
+  //toast信息
+  toastMessage: string = '';
+  //toast显示|关闭
+  showAlert: boolean = false;
 
   //条件搜索
   searchByCondition(data: any) {
@@ -54,7 +60,19 @@ export class HngJobComponent implements OnInit {
   //prompt确定事件
   confirm() {
     this.notificationOpen = !this.notificationOpen;
-
+    this.hngService.deleteJob(this.operaObj).subscribe(res=> {
+      let ret = res.json();
+      if (ret.success) {
+        this.toastType = 'success';
+        this.toastMessage = '删除成功';
+        this.showAlert = !this.showAlert;
+        this.queryJobList(this.key, this.pageOpts);
+      } else {
+        this.toastType = 'error';
+        this.toastMessage = ret.message;
+        this.showAlert = !this.showAlert;
+      }
+    });
   }
 
   //删除事件
@@ -65,5 +83,10 @@ export class HngJobComponent implements OnInit {
 
   //编辑事件
   editFun(data: any) {
+  }
+
+  //toast消息通知事件
+  notifyParamFunction() {
+    this.showAlert = !this.showAlert;
   }
 }
