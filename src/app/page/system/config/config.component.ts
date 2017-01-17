@@ -25,6 +25,17 @@ export class ConfigComponent implements OnInit {
   configOpen: boolean = false;
   //编辑对象
   configEditObj: any = {};
+  //prompt提示消息
+  promptMessage: string = '您确定要修改吗？';
+  //prompt打开|关闭
+  notificationOpen: boolean = false;
+  //toast类型
+  toastType: string = 'success';
+  //toast消息
+  toastMessage: string = '编辑成功';
+  //toast打开|关闭
+  showAlert: boolean = false;
+
 
   //分页
   pageChange(event: any) {
@@ -55,4 +66,37 @@ export class ConfigComponent implements OnInit {
   cancel() {
     this.configOpen = !this.configOpen;
   }
+
+  //模态编辑按钮
+  confirmEdit() {
+    this.notificationOpen = !this.notificationOpen;
+  }
+
+  //prompt取消
+  cancelPrompt() {
+    this.notificationOpen = !this.notificationOpen;
+  }
+
+  //确认修改
+  confirm() {
+    this.notificationOpen = !this.notificationOpen;
+    this.configService.editConfig(this.configEditObj).subscribe(res=> {
+      let ret = res.json();
+      if (ret.success) {
+        this.toastMessage = "修改成功";
+        this.toastType = "success";
+        this.showAlert = true;
+      } else {
+        this.toastMessage = "修改失败";
+        this.toastType = "error";
+        this.showAlert = true;
+      }
+    });
+  }
+
+  //toast事件
+  notifyParamFunction(event) {
+    this.showAlert = !this.showAlert;
+  }
+
 }

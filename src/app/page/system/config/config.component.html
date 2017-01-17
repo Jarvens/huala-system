@@ -113,13 +113,20 @@
             <div class="slds-size--1-of-1">
                 <ngl-form-element class="slds-m-top--small">
                     <template nglFormLabel><i>字典数据值</i></template>
-                    <textarea nglFormControl [required]="required" [(ngModel)]="configEditObj.dirtDesc"></textarea>
+                    <textarea nglFormControl [required]="required" [(ngModel)]="configEditObj.dataValue"></textarea>
                 </ngl-form-element>
             </div>
         </div>
     </div>
     <template ngl-modal-footer *ngIf="!noFooter">
         <button class="slds-button slds-button--neutral" (click)="cancel()">取消</button>
-        <button class="slds-button slds-button--brand">编辑</button>
+        <button class="slds-button slds-button--brand" (click)="confirmEdit()">编辑</button>
     </template>
 </ngl-modal>
+
+<!--prompt-->
+<confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancelPrompt()"
+                          (confirmFunction)="confirm()"></confirm-prompt-component>
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>

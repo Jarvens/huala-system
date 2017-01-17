@@ -9,7 +9,11 @@ export class ConfigService {
     if (!page) {
       page = {page: 1, perPage: 10}
     }
-    return this.http.get("/sysConfig/list",{key:key,page:page.page,size:page.perPage});
+    return this.http.get("/sysConfig/list", {key: key, page: page.page, size: page.perPage});
+  }
+
+  editConfig(data: any) {
+    return this.http.post("/sysConfig/edit",data);
 
   }
 }
