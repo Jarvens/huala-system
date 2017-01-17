@@ -11,12 +11,12 @@
       </header>
     </div>
     <div class="slds-card__body">
-      <ngl-tabs>
+      <ngl-tabs [(selected)]="selectedTab">
         <template ngl-tab heading="所有公司" nglTabId="companyList">
           <company-list></company-list>
         </template>
         <template ngl-tab heading="新增公司" nglTabId="addCompany">
-          <!--<goods-info [cat]="cat"></goods-info>-->
+          <add-Company></add-Company>
         </template>
       </ngl-tabs>
     </div>

@@ -9,7 +9,7 @@ import {AppComponent} from './app.component';
 // import {TreeModule} from "angular2-tree-component";
 //路由
 import {AppRoutingModule} from './router/routing';
-import {DropdownTreeviewModule} from 'ng2-dropdown-treeview';
+//import {DropdownTreeviewModule} from 'ng2-dropdown-treeview';
 //导航
 import {NavTopComponent} from './page/nav/nav.top.component';
 import {NavLeftComponent} from './page/nav/nav.left.component';
@@ -56,6 +56,7 @@ import {HngRecruitMainComponent} from './page/hng/recruit/hng.recruit.main.compo
 import {HngMovieComponent} from './page/hng/movie/hng.movie.component';
 import {HngRecruitBasicComponent} from './page/hng/recruit/hng.recruit.basic.component';
 import {HngCompanyListComponent} from './page/hng/company/hng.companyList.component.ts';
+import {HngAddCompanyComponent} from './page/hng/company/hng.addCompany.component';
 /**
  *
  * 公用组件
@@ -147,6 +148,7 @@ import {ConfigService} from './service/config.service';
     ArticleEntryComponent,
     HngCompanyComponent,
     HngCompanyListComponent,
+    HngAddCompanyComponent,
     HngJobComponent,
     HngRecruitMainComponent,
     HngMovieComponent,
@@ -165,7 +167,7 @@ import {ConfigService} from './service/config.service';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    DropdownTreeviewModule.forRoot(),
+    //DropdownTreeviewModule.forRoot(),
     NglModule.forRoot(),
     // TreeModule
   ],

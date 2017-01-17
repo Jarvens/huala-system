@@ -12,7 +12,7 @@
         <li class="nav-item active">
           <span nglDropdown [(open)]="dropdownOpen">
             <a class="nav-link" href="javascript:void(0);" nglDropdownTrigger>
-              <i class="fa fa-home"></i>
+              <i class="fa fa-location-arrow"></i>
               <span>{{selectedCity}}</span>
               <ngl-icon icon="down" type="default" size="x-small"></ngl-icon>
             </a>
@@ -28,14 +28,14 @@
             </div>
           </span>
         </li>
-        <li class="nav-item active">
-            <a [nglPopover]="tip1" (click)="tipChange('bottom')" class="nav-link dropdown-toggle" [nglPopover]="tip1"
-               [nglPopoverPlacement]="placement" [nglOpen]="tipOpen"><i class="fa fa-bell"></i><span
-                    class="caret"></span></a>
-            <template #tip1>
-                <i>infoTips</i>
-            </template>
-        </li>
+        <!--<li class="nav-item active">-->
+            <!--<a [nglPopover]="tip1" (click)="tipChange('bottom')" class="nav-link dropdown-toggle" [nglPopover]="tip1"-->
+               <!--[nglPopoverPlacement]="placement" [nglOpen]="tipOpen"><i class="fa fa-bell"></i><span-->
+                    <!--class="caret"></span></a>-->
+            <!--<template #tip1>-->
+                <!--<i>infoTips</i>-->
+            <!--</template>-->
+        <!--</li>-->
         <li class="nav-item active dropdown">
             <a [nglPopover]="tip" (click)="settingChange('bottom')" class="nav-link dropdown-toggle" [nglPopover]="tip"
                [nglPopoverPlacement]="placement" [nglOpen]="settingOpen"><i class="fa fa-gear"></i><span

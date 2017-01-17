@@ -1,1 +1,36 @@
-<p>hello</p>
+<table ngl-datatable [data]="companies" class="slds-max-medium-table--stacked-horizontal">
+  <ngl-datatable-column heading="ID" key="id"></ngl-datatable-column>
+  <ngl-datatable-column heading="公司名称" key="companyName"></ngl-datatable-column>
+  <ngl-datatable-column heading="联系人" key="contacts"></ngl-datatable-column>
+  <ngl-datatable-column heading="联系电话" key="contactsPhone">
+    <template nglDatatableCell let-row="row">
+      <ngl-badge type="info">{{row.contactsPhone}}</ngl-badge>
+    </template>
+  </ngl-datatable-column>
+  <ngl-datatable-column heading="状态" key="status">
+    <template nglDatatableCell let-row="row">
+      <ngl-badge type="success" *ngIf="row.status=='0'">正常</ngl-badge>
+      <ngl-badge type="error" *ngIf="row.status=='1'">已删除</ngl-badge>
+    </template>
+  </ngl-datatable-column>
+  <ngl-datatable-column heading="操作">
+    <template nglDatatableCell let-row="row">
+      <button class="slds-button slds-button--small slds-button--brand slds-button">
+        <i class="fa fa-edit"></i>编辑
+      </button>
+      <button class="slds-button slds-button--small slds-button--destructive slds-button" (click)="toEdit(row);">
+        <i class="fa fa-times"></i>删除
+      </button>
+    </template>
+  </ngl-datatable-column>
+</table>
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+  <ngl-pagination [(page)]="pageOpts.page" [total]="pageOpts.total" [perPage]="pageOpts.perPage"
+                  [limit]="pageOpts.limit"
+                  boundaryNumbers="1" #pagination (pageChange)="getCompanies($event)"
+                  previousText="上一页" nextText="下一页"></ngl-pagination>
+</div>
+
+<!--prompt-->
+<confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancel()"
+                          (confirmFunction)="confirm()"></confirm-prompt-component>
