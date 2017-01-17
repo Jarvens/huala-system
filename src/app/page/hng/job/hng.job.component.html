@@ -1,1 +1,47 @@
-惠农够岗位信息
+<!--头部信息-->
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <div class="slds-size--4-of-12">
+        <search-component [showIcon]="false" [debounce]="2000"
+                          [placeHolder]="placeholder"
+                          (searchKey)="searchByCondition($event)"></search-component>
+    </div>
+</div>
+<!--数据列表-->
+<table ngl-datatable [data]="jdbList.rows" trackByKey="rank"
+       class="slds-max-medium-table--stacked-horizontal">
+    <ngl-datatable-column heading="ID" key="id"></ngl-datatable-column>
+    <ngl-datatable-column heading="名称" key="jobName">
+        <template nglDatatableCell let-value>
+            <b class="text-success">{{value}}</b>
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="状态" key="status">
+        <template nglDatatableCell let-value>
+            <span *ngIf="value=='0'" class="text-default">有效</span>
+            <span *ngIf="value=='1'" class="text-danger">已失效</span>
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="创建时间" key="createTime">
+        <template nglDatatableCell let-value>
+            <ngl-badge type="inverse" class="slds-m-horizontal--large">{{value}}</ngl-badge>
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="更新时间" key="updateTime">
+        <template nglDatatableCell let-value>
+            <ngl-badge type="info">{{value}}</ngl-badge>
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="操作" key="">
+        <template nglDatatableCell let-row="row">
+            <button type="button" nglButton="neutral" (click)="edit(row)">编辑</button>
+        </template>
+    </ngl-datatable-column>
+    <template nglNoRowsOverlay>暂无数据!</template>
+</table>
+<!--分页-->
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <ngl-pagination [(page)]="pageOpts.page" [total]="jdbList.total" [perPage]="jdbList.size"
+                    [limit]="pageOpts.limit"
+                    boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                    nextText="下一页"></ngl-pagination>
+</div>
