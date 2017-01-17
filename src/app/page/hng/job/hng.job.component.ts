@@ -23,7 +23,7 @@ export class HngJobComponent implements OnInit {
 
   //条件搜索
   searchByCondition(data: any) {
-    this.key = date;
+    this.key = data;
     this.queryJobList(this.key, this.pageOpts);
   }
 
