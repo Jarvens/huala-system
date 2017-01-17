@@ -34,6 +34,10 @@ export class HngJobComponent implements OnInit {
   showAlert: boolean = false;
   //详情模态 打开|关闭
   jobDetaiOpen: boolean = false;
+  //新增|编辑   打开|关闭
+  insertOrEditOpen: boolean = false;
+  //显示|隐藏  *
+  required: boolean = true;
 
   //条件搜索
   searchByCondition(data: any) {
@@ -85,6 +89,8 @@ export class HngJobComponent implements OnInit {
 
   //编辑事件
   editFun(data: any) {
+    this.operaObj = data;
+    this.insertOrEditOpen = !this.insertOrEditOpen;
   }
 
   //toast消息通知事件
@@ -101,6 +107,16 @@ export class HngJobComponent implements OnInit {
   //模态关闭
   cancel() {
     this.jobDetaiOpen = !this.jobDetaiOpen;
-    console.log("dayin ");
+  }
+
+  //保存
+  save() {
+    console.log(this.operaObj);
+  }
+
+  //新增
+  create() {
+    this.insertOrEditOpen = !this.insertOrEditOpen;
+    this.operaObj = {};
   }
 }
