@@ -5,6 +5,9 @@
                           [placeHolder]="placeholder"
                           (searchKey)="searchByCondition($event)"></search-component>
     </div>
+    <div class="slds-size--2-of-12">
+        <button type="button" nglButton="neutral" (click)="change()">新增</button>
+    </div>
 </div>
 <!--数据列表-->
 <table ngl-datatable [data]="jdbList.rows" trackByKey="rank"
@@ -17,23 +20,24 @@
     </ngl-datatable-column>
     <ngl-datatable-column heading="状态" key="status">
         <template nglDatatableCell let-value>
-            <span *ngIf="value=='0'" class="text-default">有效</span>
+            <span *ngIf="value=='0'" class="text-info">有效</span>
             <span *ngIf="value=='1'" class="text-danger">已失效</span>
         </template>
     </ngl-datatable-column>
     <ngl-datatable-column heading="创建时间" key="createTime">
         <template nglDatatableCell let-value>
-            <ngl-badge type="inverse" class="slds-m-horizontal--large">{{value}}</ngl-badge>
+            <span>{{value}}</span>
         </template>
     </ngl-datatable-column>
     <ngl-datatable-column heading="更新时间" key="updateTime">
         <template nglDatatableCell let-value>
-            <ngl-badge type="info">{{value}}</ngl-badge>
+            <span>{{value}}</span>
         </template>
     </ngl-datatable-column>
     <ngl-datatable-column heading="操作" key="">
         <template nglDatatableCell let-row="row">
-            <button type="button" nglButton="neutral" (click)="edit(row)">编辑</button>
+            <ngl-badge type="info" (click)="editFun(row)">修改</ngl-badge>
+            <ngl-badge type="error" (click)="deleteFunc(row)">删除</ngl-badge>
         </template>
     </ngl-datatable-column>
     <template nglNoRowsOverlay>暂无数据!</template>
@@ -45,3 +49,10 @@
                     boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
                     nextText="下一页"></ngl-pagination>
 </div>
+
+<!--prompt-->
+<confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancelPrompt()"
+                          (confirmFunction)="confirm()"></confirm-prompt-component>
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>

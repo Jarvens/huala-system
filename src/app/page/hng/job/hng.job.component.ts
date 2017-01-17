@@ -20,6 +20,12 @@ export class HngJobComponent implements OnInit {
   //搜索条件
   key: string = '';
   placeholder: string = '搜索..岗位名称..联系人..电话';
+  //prompt 打开|关闭
+  notificationOpen: boolean = false;
+  //prompt 提示信息
+  promptMessage: string = '您确定要删除该岗位吗?';
+  //操作对象
+  operaObj: any = {};
 
   //条件搜索
   searchByCondition(data: any) {
@@ -38,5 +44,26 @@ export class HngJobComponent implements OnInit {
   pageChange(data: any) {
     this.pageOpts.page = data;
     this.queryJobList(this.key, this.pageOpts);
+  }
+
+  //prompt取消事件
+  cancelPrompt() {
+    this.notificationOpen = !this.notificationOpen;
+  }
+
+  //prompt确定事件
+  confirm() {
+    this.notificationOpen = !this.notificationOpen;
+
+  }
+
+  //删除事件
+  deleteFunc(data: any) {
+    this.operaObj = data;
+    this.notificationOpen = !this.notificationOpen;
+  }
+
+  //编辑事件
+  editFun(data: any) {
   }
 }
