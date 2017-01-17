@@ -5,7 +5,7 @@ export class SellerSubsidyService {
   constructor(private http: MyHttp) {
   }
 
-  getSellerSubsidy(date: string) {
-    return this.http.get("/balance/seller-reward",{date:date});
+  initData(date: string) {
+    return this.http.post("/balance/seller-reward",{date:date});
   }
 }

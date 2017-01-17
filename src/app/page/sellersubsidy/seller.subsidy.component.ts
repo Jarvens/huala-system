@@ -37,7 +37,7 @@ export class SellerSubsidyComponent implements OnInit {
       this.toastType = 'warning';
       return;
     }
-    this.sellerSubsidyService.getSellerSubsidy(this.queryDate).subscribe(res=> {
+    this.sellerSubsidyService.initData(this.queryDate).subscribe(res=> {
       let ret = res.json();
       console.log(res.json());
     });

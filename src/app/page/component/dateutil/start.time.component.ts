@@ -10,6 +10,8 @@ export class StartTimeComponent {
 
   @Input() _show: boolean = false;
 
+  @Input() _date_format: string='yyyyMMdd';
+
   date: Date = new Date();
 
   //格式化月份
@@ -32,7 +34,7 @@ export class StartTimeComponent {
   //格式化时间
   dateFormat(date: Date) {
     let _year: string = date.getFullYear().toString();
-    let _month: string = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth()+1).toString();
+    let _month: string = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1).toString();
     let _day: string = date.getDate() < 10 ? '0' + date.getDate() : date.getDate().toString();
     return _year + _month + _day;
   }
