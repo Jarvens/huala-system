@@ -11,10 +11,9 @@
         </li>
         <li class="nav-item active">
           <span nglDropdown [(open)]="dropdownOpen">
-            <a class="nav-link" href="javascript:void(0);" nglDropdownTrigger>
+            <a class="nav-link dropdown-toggle" href="javascript:void(0);" nglDropdownTrigger>
               <i class="fa fa-location-arrow"></i>
               <span>{{selectedCity}}</span>
-              <ngl-icon icon="down" type="default" size="x-small"></ngl-icon>
             </a>
             <div class="slds-dropdown slds-dropdown--left">
               <ul class="dropdown__list" role="menu">
@@ -38,8 +37,7 @@
         <!--</li>-->
         <li class="nav-item active dropdown">
             <a [nglPopover]="tip" (click)="settingChange('bottom')" class="nav-link dropdown-toggle" [nglPopover]="tip"
-               [nglPopoverPlacement]="placement" [nglOpen]="settingOpen"><i class="fa fa-gear"></i><span
-                    class="caret"></span></a>
+               [nglPopoverPlacement]="placement" [nglOpen]="settingOpen"><i class="fa fa-gear"></i></a>
             <template #tip>
                 <ul class="setting-tip">
                     <li (click)="openModifyPassword()">修改密码</li>

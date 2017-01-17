@@ -20,7 +20,7 @@ export class HngService {
   saveJob(data:any){
     return this.http.post("/recruit/save-job",data);
   }
-  
+
   /*
    * @Description: Get companies list;
    * @Date: 2017-01-16;
@@ -37,6 +37,16 @@ export class HngService {
    */
   deleteCompany(pData){
     let pUrl = "/recruit/del-company";
+
+    return this.http.post(pUrl, pData);
+  }
+
+  /*
+   * @Description: Add a new company;
+   * @Date: 2017-01-17;
+   */
+  addCompany(pData){
+    let pUrl = "/recruit/save-company";
 
     return this.http.post(pUrl, pData);
   }

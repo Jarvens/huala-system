@@ -1,1 +1,23 @@
-<p>this is add module</p>
+<div class="slds-size--1-of-2 slds-align--absolute-center">
+  <div class="slds-size--1-of-1">
+    <ngl-form-element label="公司名称" class="slds-m-top--small">
+      <input type="text" nglFormControl placeholder="公司名称" required>
+    </ngl-form-element>
+    <ngl-form-element label="联系人" clsss="slds-m-top--small">
+      <input type="text" nglFormControl placeholder="联系人" required>
+    </ngl-form-element>
+    <ngl-form-element label="联系电话" class="slds-m-top--small">
+      <input type="text" nglFormControl placeholder="联系电话" required>
+    </ngl-form-element>
+    <ngl-form-element label="营业执照" class="slds-m-top--small">
+      <input type="text" nglFormControl placeholder="营业执照" required style="display:none">
+      <div class="slds-size--1-of-2">
+        <img-upload-component></img-upload-component>
+      </div>
+    </ngl-form-element>
+    <div class="slds-card__footer">
+      <button class="slds-button slds-button--brand"><i class="fa fa-floppy-o" aria-hidden="true"></i>
+        &nbsp;确&nbsp;&nbsp;定</button>
+    </div>
+  </div>
+</div>
