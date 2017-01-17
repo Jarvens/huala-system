@@ -3,7 +3,7 @@
     <div class="slds-size--2-of-12">
         <a [nglPopover]="tip" nglPopoverPlacement="bottom" [nglOpen]="open"
            (mouseenter)="open = true" (mouseleave)="open = false" class="text-info"><i
-                class="fa fa-info-circle"></i><span>信息</span></a>
+                class="fa fa-info-circle"></i><span>奖励规则</span></a>
     </div>
     <div class="slds-size--2-of-12">
         <start-time-component (_startTime)="receiveDate($event)"></start-time-component>
@@ -75,3 +75,10 @@
         </ul>
     </div>
 </template>
+
+<!--prompt-->
+<confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancelPrompt()"
+                          (confirmFunction)="confirm()"></confirm-prompt-component>
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>

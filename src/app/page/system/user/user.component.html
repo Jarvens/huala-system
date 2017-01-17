@@ -15,8 +15,16 @@
        (sortChange)="onSort($event)" (onRowClick)="onRowClick($event)"
        class="slds-max-medium-table--stacked-horizontal">
     <ngl-datatable-column heading="ID" key="id" cellClass="slds-truncate"></ngl-datatable-column>
-    <ngl-datatable-column heading="姓名" key="name" cellClass="slds-truncate"></ngl-datatable-column>
-    <ngl-datatable-column heading="账号" key="account" cellClass="slds-truncate"></ngl-datatable-column>
+    <ngl-datatable-column heading="姓名" key="name" cellClass="slds-truncate">
+        <template nglDatatableCell let-value>
+            <b>{{value}}</b>
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="账号" key="account" cellClass="slds-truncate">
+        <template nglDatatableCell let-value>
+            <span class="text-success">{{value}}</span>
+        </template>
+    </ngl-datatable-column>
     <ngl-datatable-column heading="手机" key="mobile" cellClass="slds-truncate"></ngl-datatable-column>
     <ngl-datatable-column heading="邮箱" key="email" cellClass="slds-truncate"></ngl-datatable-column>
     <ngl-datatable-column heading="性别" key="sex" cellClass="slds-truncate"></ngl-datatable-column>

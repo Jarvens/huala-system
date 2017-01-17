@@ -39,7 +39,6 @@ export class ImgUploadComponent {
     reader.readAsDataURL(file);
     reader.onload = function () {
       that.prevFile = this.result;
-      console.log(that.prevFile);
     }
 
   }
@@ -48,7 +47,6 @@ export class ImgUploadComponent {
   openFileSelect(dom: any) {
     dom.click();
   }
-
   //上传
   uploadAll(){
     console.log(this.uploader);

@@ -5,10 +5,7 @@ export class SellerSubsidyService {
   constructor(private http: MyHttp) {
   }
 
-  getSellerSubsidy(date: string, page: any) {
-    if (!page) {
-      page = {page: 1, perPage: 10};
-    }
-
+  getSellerSubsidy(date: string) {
+    return this.http.get("/balance/seller-reward",{date:date});
   }
 }
