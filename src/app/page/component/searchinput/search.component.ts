@@ -8,7 +8,7 @@ import {Observable} from 'rxjs/Observable';
  */
 @Component({
   selector: 'search-component',
-  templateUrl: './search.component.html'
+  templateUrl: 'search.component.html'
 })
 export class SearchComponent implements OnInit {
   ngOnInit(): void {

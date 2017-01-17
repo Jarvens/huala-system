@@ -60,8 +60,8 @@ import {HngCompanyListComponent} from './page/hng/company/hng.companyList.compon
  *
  * 公用组件
  */
-import {SearchComponent} from './page/component/search.component';
-import {ImgUploadComponent} from './page/component/img.upload.component';
+import {SearchComponent} from './page/component/searchinput/search.component';
+import {ImgUploadComponent} from './page/component/imgupload/img.upload.component';
 import {BreadCrumbsComponent} from './page/component/breadcrumbs/bread.crumbs.component';
 import {ToastComponent} from './page/component/toast/toast.component';
 import {ConfirmPromptComponent} from './page/component/prompt/confirm.prompt.component';

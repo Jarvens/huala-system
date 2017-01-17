@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Output, Input} from '@angular/core';
 import {FileUploader} from 'ng2-file-upload';
-import {MyHttp} from '../../core/http';
+import {MyHttp} from '../../../core/http';
 
 /**
  * 图片上传工具
@@ -8,7 +8,7 @@ import {MyHttp} from '../../core/http';
  */
 @Component({
   selector: 'img-upload-component',
-  templateUrl: './img.upload.component.html'
+  templateUrl: 'img.upload.component.html'
 })
 export class ImgUploadComponent {
   serverUrl: string = process.env.ApiUrl;
