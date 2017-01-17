@@ -16,4 +16,8 @@ export class HngService {
   deleteJob(data:any){
     return this.http.post("/recruit/delete-job",data);
   }
+
+  saveJob(data:any){
+    return this.http.post("/recruit/save-job",data);
+  }
 }

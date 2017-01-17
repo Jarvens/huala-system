@@ -111,7 +111,20 @@ export class HngJobComponent implements OnInit {
 
   //保存
   save() {
-    console.log(this.operaObj);
+    this.hngService.saveJob(this.operaObj).subscribe(res=> {
+      let ret = res.json();
+      if (ret.success) {
+        this.toastMessage = '保存成功';
+        this.toastType = 'success';
+        this.showAlert = !this.showAlert;
+        this.insertOrEditOpen = !this.insertOrEditOpen;
+        this.queryJobList(this.key, this.pageOpts);
+      } else {
+        this.toastType = 'error';
+        this.toastMessage = ret.message;
+        this.showAlert = !this.showAlert;
+      }
+    });
   }
 
   //新增
