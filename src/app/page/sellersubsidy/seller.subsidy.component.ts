@@ -85,7 +85,6 @@ export class SellerSubsidyComponent implements OnInit {
   queryRewardList(date: string, page: any) {
     this.sellerSubsidyService.getRewardList(date, page).subscribe(res=> {
       this.rewardList = res.json();
-      console.log(res.json());
     });
   }
 
