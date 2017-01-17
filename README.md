@@ -1,6 +1,12 @@
 #花啦生活管理系统[![Kunlun](https://github.com/Jarvens/huala-system)]
->plugin(插件)
-*[ng-lightning](http://ng-lightning.github.io/ng-lightning/#/)
+
+* [Angular2官网教程](https://angular.cn/docs/ts/latest/quickstart.html)
+
+* [ng-lightning闪电UI组件](http://ng-lightning.github.io/ng-lightning/#/)
+
+* [bootstrap4ForAngular2](http://valor-software.com/ng2-bootstrap/index-bs4.html)
+
+* [QuillEditor富文本插件](https://surmon-china.github.io/ng2-quill-editor/)
 
 ___
 
