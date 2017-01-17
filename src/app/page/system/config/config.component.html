@@ -43,7 +43,7 @@
 </div>
 <!--分页-->
 <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
-    <ngl-pagination [(page)]="pageOpts.page" [total]="configList.total" [perPage]="pageOpts.size"
+    <ngl-pagination [(page)]="pageOpts.page" [total]="configList.total" [perPage]="configList.size"
                     [limit]="pageOpts.limit"
                     boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
                     nextText="下一页"></ngl-pagination>
