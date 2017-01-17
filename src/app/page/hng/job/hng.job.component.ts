@@ -32,6 +32,8 @@ export class HngJobComponent implements OnInit {
   toastMessage: string = '';
   //toast显示|关闭
   showAlert: boolean = false;
+  //详情模态 打开|关闭
+  jobDetaiOpen: boolean = false;
 
   //条件搜索
   searchByCondition(data: any) {
@@ -88,5 +90,17 @@ export class HngJobComponent implements OnInit {
   //toast消息通知事件
   notifyParamFunction() {
     this.showAlert = !this.showAlert;
+  }
+
+  //岗位详情
+  jobDetail(data: any) {
+    this.operaObj = data;
+    this.jobDetaiOpen = !this.jobDetaiOpen;
+  }
+
+  //模态关闭
+  cancel() {
+    this.jobDetaiOpen = !this.jobDetaiOpen;
+    console.log("dayin ");
   }
 }

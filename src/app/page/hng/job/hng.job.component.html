@@ -36,6 +36,7 @@
     </ngl-datatable-column>
     <ngl-datatable-column heading="操作" key="">
         <template nglDatatableCell let-row="row">
+            <ngl-badge type="success" (click)="jobDetail(row)">详情</ngl-badge>
             <ngl-badge type="info" (click)="editFun(row)">修改</ngl-badge>
             <ngl-badge type="error" (click)="deleteFunc(row)">删除</ngl-badge>
         </template>
@@ -56,3 +57,83 @@
 <!--Toast-->
 <toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
                  [showAlert]="showAlert"></toast-component>
+
+<!--详情模态-->
+<ngl-modal header="岗位详情" [(open)]="jobDetaiOpen">
+    <div body>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size--5-of-12">
+                <div class="slds-form-element">
+                    <span class="slds-form-element__label">岗位名称</span>
+                    <div class="slds-form-element__control slds-has-divider--bottom">
+                        <span class="slds-form-element__static text-success">{{operaObj.jobName}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-size--2-of-12"></div>
+            <div class="slds-size--5-of-12">
+                <div class="slds-form-element">
+                    <span class="slds-form-element__label">岗位状态</span>
+                    <div class="slds-form-element__control slds-has-divider--bottom">
+                        <span class="slds-form-element__static text-success">{{operaObj.status}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size--5-of-12">
+                <div class="slds-form-element">
+                    <span class="slds-form-element__label">创建时间</span>
+                    <div class="slds-form-element__control slds-has-divider--bottom">
+                        <span class="slds-form-element__static text-success">{{operaObj.createTime}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-size--2-of-12"></div>
+            <div class="slds-size--5-of-12">
+                <div class="slds-form-element">
+                    <span class="slds-form-element__label">更新时间</span>
+                    <div class="slds-form-element__control slds-has-divider--bottom">
+                        <span class="slds-form-element__static text-success">{{operaObj.updateTime}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size--1-of-1">
+                <div class="slds-form-element">
+                    <span class="slds-form-element__label">岗位职责</span>
+                    <div class="slds-form-element__control slds-has-divider--bottom">
+                        <div class="slds-form-element__static slds-text-longform">
+                            <p class="text-success">{{operaObj.jobDuty}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size--1-of-1">
+                <div class="slds-form-element">
+                    <span class="slds-form-element__label">岗位技能</span>
+                    <div class="slds-form-element__control slds-has-divider--bottom">
+                        <div class="slds-form-element__static slds-text-longform">
+                            <p class="text-success">{{operaObj.jobSkill}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size--1-of-1">
+                <div class="slds-form-element">
+                    <span class="slds-form-element__label">岗位描述</span>
+                    <div class="slds-form-element__control slds-has-divider--bottom">
+                        <div class="slds-form-element__static slds-text-longform">
+                            <p class="text-success">{{operaObj.jobDescription}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ngl-modal>
