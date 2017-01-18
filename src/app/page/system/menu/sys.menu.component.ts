@@ -75,7 +75,19 @@ export class SysMenuComponent implements OnInit {
 
   //prompt确定事件
   confirm() {
-
+    this.sysMenuService.deleteMenu(this.currentMenuObj).subscribe(res=> {
+      let ret = res.json();
+      if (ret.success) {
+        this.toastMessage = '删除成功';
+        this.showAlert = !this.showAlert;
+        this.toastType = 'success';
+        this.currentMenuObj = {};
+      } else {
+        this.toastType = 'error';
+        this.toastMessage = ret.message;
+        this.showAlert = !this.showAlert;
+      }
+    });
   }
 
   //toast通知事件
@@ -83,4 +95,21 @@ export class SysMenuComponent implements OnInit {
     this.showAlert = !this.showAlert;
   }
 
+
+  //编辑菜单
+  editMenu() {
+    this.sysMenuService.editMenu(this.currentMenuObj).subscribe(res=> {
+      let ret = res.json();
+      console.log(res.json());
+      if (ret.success) {
+        this.showAlert = !this.showAlert;
+        this.toastMessage = '保存成功';
+        this.toastType = 'success';
+      } else {
+        this.showAlert = !this.showAlert;
+        this.toastType = 'error';
+        this.toastMessage = ret.message;
+      }
+    });
+  }
 }

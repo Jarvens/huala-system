@@ -6,6 +6,13 @@ export class SysMenuService {
 
   getMenuList(){
     return this.http.get("/menu/menu-list");
+  }
 
+  deleteMenu(data:any){
+    return this.http.post("/menu/deleteMenu",data);
+  }
+
+  editMenu(data:any){
+    return this.http.post("/menu/saveMenu",data);
   }
 }
