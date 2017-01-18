@@ -19,9 +19,23 @@ export class SysMenuComponent implements OnInit {
   sysMenuList: Array<any> = [];
   //显示  *
   required: boolean = true;
-
   //当前菜单ID
   currentMenuId: string = '';
+  //当前菜单对象
+  currentMenuObj: any = {};
+  //prompt提示信息
+  promptMessage: string = '确定要删除吗?';
+  //prompt 打开|关闭
+  notificationOpen: boolean = false;
+  //toast类型
+  toastType: string = 'success';
+  //toastMessage 提示信息
+  toastMessage: string = '';
+  //tosat 打开|关闭
+  showAlert: boolean = false;
+
+
+
 
   //打开子菜单
   openChildMenu(menu: any) {
@@ -32,6 +46,29 @@ export class SysMenuComponent implements OnInit {
     }
   }
 
+  //子菜单点击事件
+  getCurrentMenu(menu: any) {
+    this.currentMenuObj = (<any>Object).assign({}, menu);
+  }
 
+  //清除事件
+  clearMenu() {
+    this.currentMenuObj = {};
+  }
+
+  //删除菜单
+  deleteMenu() {
+
+  }
+
+  //prompt取消事件
+  cancelPrompt() {
+    this.notificationOpen = !this.notificationOpen;
+  }
+
+  //prompt确定事件
+  confirm() {
+
+  }
 
 }

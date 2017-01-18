@@ -15,7 +15,7 @@
                                 <button class="slds-button slds-button--icon slds-m-right--x-small">
                                     <ngl-icon icon="chevronright" state="selected"></ngl-icon>
                                 </button>
-                                <a tabindex="-1" role="presentation" class="slds-truncate">{{child.name}}</a></div>
+                                <a tabindex="-1" role="presentation" class="slds-truncate" (click)="getCurrentMenu(child)">{{child.name}}</a></div>
                         </li>
                     </ul>
                 </li>
@@ -26,66 +26,83 @@
         <div class="slds-grid">
             <div class="slds-size--4-of-12">
                 <ngl-form-element label="菜单ID" class="slds-m-top--small">
-                    <input nglFormControl type="text" [required]="required">
+                    <input nglFormControl type="text" [required]="required" [(ngModel)]="currentMenuObj.id">
                 </ngl-form-element>
             </div>
             <div class="slds-size--1-of-12"></div>
             <div class="slds-size--4-of-12">
                 <ngl-form-element label="菜单名称" class="slds-m-top--small">
-                    <input nglFormControl type="text" [required]="required">
+                    <input nglFormControl type="text" [required]="required" [(ngModel)]="currentMenuObj.name">
                 </ngl-form-element>
             </div>
         </div>
         <div class="slds-grid">
             <div class="slds-size--4-of-12">
                 <ngl-form-element label="上级菜单" class="slds-m-top--small">
-                    <input nglFormControl type="text" [required]="required">
+                    <input nglFormControl type="text" [required]="required" [(ngModel)]="currentMenuObj.pid">
                 </ngl-form-element>
             </div>
             <div class="slds-size--1-of-12"></div>
             <div class="slds-size--4-of-12">
                 <ngl-form-element label="菜单地址" class="slds-m-top--small">
-                    <input nglFormControl type="text" [required]="required">
+                    <input nglFormControl type="text" [required]="required" [(ngModel)]="currentMenuObj.component">
                 </ngl-form-element>
             </div>
         </div>
         <div class="slds-grid">
             <div class="slds-size--4-of-12">
                 <ngl-form-element label="菜单图标" class="slds-m-top--small">
-                    <input nglFormControl type="text" [required]="required">
+                    <input nglFormControl type="text" [required]="required" [(ngModel)]="currentMenuObj.icon">
                 </ngl-form-element>
             </div>
             <div class="slds-size--1-of-12"></div>
             <div class="slds-size--4-of-12">
                 <ngl-form-element label="菜单排序" class="slds-m-top--small">
-                    <input nglFormControl type="text" [required]="required">
+                    <input nglFormControl type="text" [required]="required" [(ngModel)]="currentMenuObj.sort">
                 </ngl-form-element>
             </div>
         </div>
         <div class="slds-grid">
             <div class="slds-size--4-of-12">
                 <ngl-form-element label="菜单类型" class="slds-m-top--small">
-                    <select nglFormControl class="slds-select" [required]="required">
-                        <option>功能按钮</option>
-                        <option>导航菜单</option>
-                        <option>删除的菜单</option>
+                    <select nglFormControl class="slds-select" [required]="required" [(ngModel)]="currentMenuObj.type">
+                        <option [value]="0">功能按钮</option>
+                        <option [value]="1">导航菜单</option>
+                        <option [value]="2">删除的菜单</option>
                     </select>
                 </ngl-form-element>
             </div>
             <div class="slds-size--1-of-12"></div>
             <div class="slds-size--4-of-12">
                 <ngl-form-element label="是否有效" class="slds-m-top--small">
-                    <select nglFormControl class="slds-select" [required]="required">
-                        <option>有效</option>
-                        <option>无效</option>
+                    <select nglFormControl class="slds-select" [required]="required" [(ngModel)]="currentMenuObj.state">
+                        <option [value]="'是'">有效</option>
+                        <option [value]="'否'">无效</option>
                     </select>
                 </ngl-form-element>
             </div>
         </div>
+        <div class="slds-grid">
+            <div class="slds-size--9-of-12">
+                <ngl-form-element  class="slds-m-top--small">
+                    <template nglFormLabel>菜单描述</template>
+                    <textarea nglFormControl  [required]="required" [(ngModel)]="currentMenuObj.description"></textarea>
+                </ngl-form-element>
+            </div>
+        </div>
         <div class="slds-card__footer slds-text-align--center">
-            <button type="button" nglButton="neutral" (click)="change()">编辑</button>
-            <button type="button" nglButton="neutral" (click)="change()">清空</button>
-            <button type="button" nglButton="neutral" (click)="change()">删除</button>
+            <div class="slds-size--9-of-12">
+                <button type="button" nglButton="neutral" (click)="change()">编辑</button>
+                <button type="button" nglButton="neutral" (click)="clearMenu()">清空</button>
+                <button type="button" nglButton="neutral" (click)="deleteMenu()">删除</button>
+            </div>
         </div>
     </div>
 </div>
+
+<!--prompt-->
+<confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancelPrompt()"
+                          (confirmFunction)="confirm()"></confirm-prompt-component>
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>
