@@ -62,66 +62,71 @@
     </div>
 </div>
 <!--数据列表-->
-<table ngl-datatable [data]="financeList.rows" trackByKey="rank"
-       class="slds-max-medium-table--stacked-horizontal">
-    <ngl-datatable-column heading="日期" key="date">
-        <template nglDatatableCell let-value>
-            <b>
-                {{value}}
-            </b>
-        </template>
-    </ngl-datatable-column>
-    <ngl-datatable-column heading="订单金额" key="order_amount">
-        <template nglDatatableCell let-value>
+<div class="slds-scrollable">
+    <table ngl-datatable [data]="financeList.rows" trackByKey="rank"
+           class="slds-max-medium-table--stacked-horizontal">
+        <ngl-datatable-column heading="日期" key="date">
+            <template nglDatatableCell let-value>
+                <b>
+                    {{value}}
+                </b>
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="订单金额" key="order_amount">
+            <template nglDatatableCell let-value>
             <span class="text-info">
                 {{value|number:'1.2-2'}}
             </span>
-        </template>
-    </ngl-datatable-column>
-    <ngl-datatable-column heading="红包金额" key="red_amount">
-        <template nglDataCell let-value>
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="红包金额" key="red_amount">
+            <template nglDataCell let-value>
             <span class="text-danger">
                 {{value|number:'1.2-2'}}
             </span>
-        </template>
-    </ngl-datatable-column>
-    <ngl-datatable-column heading="支付总金额" key="seller_amount">
-        <template nglDatatable let-value>
-            {{value|number:'1.2-2'}}
-        </template>
-    </ngl-datatable-column>
-    <ngl-datatable-column heading="店铺订单支付" key="auto_income">
-        <template nglDatatableCell let-value>
-            {{value|number:'1.2-2'}}
-        </template>
-    </ngl-datatable-column>
-    <ngl-datatable-column heading="奖励支付金额" key="reward">
-        <template nglDatatableCell let-value>
-            {{value|number:'1.2-2'}}
-        </template>
-    </ngl-datatable-column>
-    <ngl-datatable-column heading="惩罚金额" key="punish">
-        <template nglDatatableCell let-value>
-            {{value|number:'1.2-2'}}
-        </template>
-    </ngl-datatable-column>
-    <ngl-datatable-column heading="调整金额" key="offset">
-        <template nglDatatableCell let-value>
-            {{value|number:'1.2-2'}}
-        </template>
-    </ngl-datatable-column>
-    <ngl-datatable-column heading="操作" key="操作">
-        <template nglDatatableCell let-row="row">
-            <ngl-badge type="info" (click)="incomeDetail(row.date)">收入详情</ngl-badge>
-            <ngl-badge type="success" (click)="expenditureDetail(row.date)">支出详情</ngl-badge>
-        </template>
-    </ngl-datatable-column>
-    <!-- No rows overlay -->
-    <template nglNoRowsOverlay>暂无数据</template>
-</table>
-<ngl-pagination [(page)]="pageOpts.page" [total]="financeList.total" [perPage]="financeList.size"
-                boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
-                nextText="下一页"></ngl-pagination>
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="支付总金额" key="seller_amount">
+            <template nglDatatable let-value>
+                {{value|number:'1.2-2'}}
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="店铺订单支付" key="auto_income">
+            <template nglDatatableCell let-value>
+                {{value|number:'1.2-2'}}
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="奖励支付金额" key="reward">
+            <template nglDatatableCell let-value>
+                {{value|number:'1.2-2'}}
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="惩罚金额" key="punish">
+            <template nglDatatableCell let-value>
+                {{value|number:'1.2-2'}}
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="调整金额" key="offset">
+            <template nglDatatableCell let-value>
+                {{value|number:'1.2-2'}}
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="操作" key="操作">
+            <template nglDatatableCell let-row="row">
+                <ngl-badge type="info" (click)="incomeDetail(row.date)">收入详情</ngl-badge>
+                <ngl-badge type="success" (click)="expenditureDetail(row.date)">支出详情</ngl-badge>
+            </template>
+        </ngl-datatable-column>
+        <!-- No rows overlay -->
+        <template nglNoRowsOverlay>暂无数据</template>
+    </table>
+</div>
+<!--底部分页-->
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <ngl-pagination [(page)]="pageOpts.page" [total]="financeList.total" [perPage]="financeList.size"
+                    boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                    nextText="下一页"></ngl-pagination>
+</div>
 
 <!--收入详情模态-->
 <ngl-modal header="收入详情" [(open)]="incomeOpen">

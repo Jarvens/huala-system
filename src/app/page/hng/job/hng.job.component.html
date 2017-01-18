@@ -36,9 +36,9 @@
     </ngl-datatable-column>
     <ngl-datatable-column heading="操作" key="">
         <template nglDatatableCell let-row="row">
-            <ngl-badge type="success" (click)="jobDetail(row)">详情</ngl-badge>
-            <ngl-badge type="info" (click)="editFun(row)">修改</ngl-badge>
-            <ngl-badge type="error" (click)="deleteFunc(row)">删除</ngl-badge>
+            <button class="slds-button slds-button--neutral" (click)="jobDetail(row)">详情</button>
+            <button class="slds-button slds-button--brand" (click)="editFun(row)">编辑</button>
+            <button class="slds-button slds-button--destructive" (click)="deleteFunc(row)">删除</button>
         </template>
     </ngl-datatable-column>
     <template nglNoRowsOverlay>暂无数据!</template>

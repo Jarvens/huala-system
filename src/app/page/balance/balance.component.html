@@ -38,7 +38,7 @@
     </ngl-datatable-column>
     <ngl-datatable-column heading="操作" key="">
         <template nglDatatableCell let-row="row">
-            <button *ngIf="row.noSendAmount!=0" type="button" nglButton="neutral" (click)="settleMent(row)">
+            <button *ngIf="row.noSendAmount!=0" type="button" nglButton="brand" (click)="settleMent(row)">
                 结算
             </button>
             <button *ngIf="row.failSendAmount>0" type="button" nglButton="neutral" (click)="settleMent(row)">

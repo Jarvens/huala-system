@@ -6,9 +6,8 @@
                           (searchKey)="searchByCondition($event)"></search-component>
     </div>
     <div class="slds-size--2-of-12">
-        <button class="slds-button slds-button--neutral" (click)="openModal()">创建</button>
+        <button class="slds-button slds-button--brand" (click)="openModal()">创建</button>
     </div>
-
 </div>
 <!--用户列表-->
 <table ngl-datatable [data]="userList.rows" trackByKey="rank"
@@ -30,8 +29,8 @@
     <ngl-datatable-column heading="性别" key="sex" cellClass="slds-truncate"></ngl-datatable-column>
     <ngl-datatable-column heading="操作" key="">
         <template nglDatatableCell let-row="row">
-            <ngl-badge type="error" (click)="show()"><i class="fa fa-times"></i>删除</ngl-badge>
-            <ngl-badge type="info" (click)="sellerDetailInfo(row)"><i class="fa fa-info"></i>详情</ngl-badge>
+            <button class="slds-button slds-button--neutral" (click)="openModal()">详情</button>
+            <button class="slds-button slds-button--destructive" (click)="openModal()">删除</button>
         </template>
     </ngl-datatable-column>
     <!-- No rows overlay -->
