@@ -30,6 +30,8 @@ export class ImgUploadComponent {
   //监听文件变化
   listenFileChange(dom: any) {
     this.uploader.setOptions({url: this.serverUrl + "/uploadImg.json?imgType=" + this.uploadFolder});
+    //清空文件队列
+    this.uploader.clearQueue();
     //将文件添加到上传队列
     this.uploader.addToQueue(dom.files);
     let that = this;
@@ -55,6 +57,11 @@ export class ImgUploadComponent {
       let result = JSON.parse(response).body;
       this.uploadAddr.emit(result);
     }
+  }
+
+  //重新选择
+  reSelect($dom) {
+    $dom.click();
   }
 
 }

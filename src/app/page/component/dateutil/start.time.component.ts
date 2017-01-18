@@ -11,7 +11,7 @@ export class StartTimeComponent {
   @Input() _show: boolean = false;
   //格式化字符串  目前仅支持   yyyymmdd  &  yyyy-mm-dd
   @Input() _date_format: string = 'yyyymmdd';
-
+  //初始化当天日期
   date: Date = new Date();
 
   //格式化月份
