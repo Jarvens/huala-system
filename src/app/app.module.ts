@@ -57,7 +57,7 @@ import {HngRecruitMainComponent} from './page/hng/recruit/hng.recruit.main.compo
 import {HngMovieComponent} from './page/hng/movie/hng.movie.component';
 import {HngRecruitBasicComponent} from './page/hng/recruit/hng.recruit.basic.component';
 import {HngCompanyListComponent} from './page/hng/company/hng.companyList.component.ts';
-import {HngAddCompanyComponent} from './page/hng/company/hng.addCompany.component';
+import {HngcompanyInfoComponent} from './page/hng/company/hng.companyInfo.component';
 /**
  *
  * 公用组件
@@ -150,7 +150,7 @@ import {SysMenuService} from './service/sys.menu.service';
     ArticleEntryComponent,
     HngCompanyComponent,
     HngCompanyListComponent,
-    HngAddCompanyComponent,
+    HngcompanyInfoComponent,
     HngJobComponent,
     HngRecruitMainComponent,
     HngMovieComponent,

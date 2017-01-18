@@ -34,3 +34,14 @@
 <!--prompt-->
 <confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancel()"
                           (confirmFunction)="confirm()"></confirm-prompt-component>
+
+<!-- edit company -->
+<ngl-modal header="编辑公司" [(open)]="editorOpened">
+  <div body>
+
+  </div>
+  <template ngl-modal-footer>
+    <button class="slds-button slds-button--neutral" (click)="editorOpened=false;">取&nbsp;&nbsp;消</button>
+    <button class="slds-button slds-button--brand" (click)="confirmEdit()">确&nbsp;&nbsp;定</button>
+  </template>
+</ngl-modal>

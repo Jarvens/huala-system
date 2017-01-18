@@ -1,13 +1,13 @@
 <div class="slds-size--1-of-2 slds-align--absolute-center">
   <div class="slds-size--1-of-1">
     <ngl-form-element label="公司名称" class="slds-m-top--small">
-      <input type="text" nglFormControl placeholder="公司名称" required>
+      <input type="text" nglFormControl placeholder="公司名称" required [(ngModel)]="companyInfo.companyName">
     </ngl-form-element>
     <ngl-form-element label="联系人" clsss="slds-m-top--small">
-      <input type="text" nglFormControl placeholder="联系人" required>
+      <input type="text" nglFormControl placeholder="联系人" required [(ngModel)]="companyInfo.contacts">
     </ngl-form-element>
     <ngl-form-element label="联系电话" class="slds-m-top--small">
-      <input type="text" nglFormControl placeholder="联系电话" required>
+      <input type="tel" nglFormControl placeholder="联系电话" required [(ngModel)]="companyInfo.contactsPhone">
     </ngl-form-element>
     <ngl-form-element label="营业执照" class="slds-m-top--small">
       <input type="text" nglFormControl placeholder="营业执照" required style="display:none">
@@ -16,7 +16,7 @@
       </div>
     </ngl-form-element>
     <div class="slds-card__footer">
-      <button class="slds-button slds-button--brand"><i class="fa fa-floppy-o" aria-hidden="true"></i>
+      <button class="slds-button slds-button--brand" (click)="addCompany();"><i class="fa fa-floppy-o" aria-hidden="true"></i>
         &nbsp;确&nbsp;&nbsp;定</button>
     </div>
   </div>
