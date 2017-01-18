@@ -51,6 +51,7 @@ import {SellerAuditComponent} from './page/selleraudit/seller.audit.component';
 import {ConfigComponent} from './page/system/config/config.component';
 import {SysMenuComponent} from './page/system/menu/sys.menu.component';
 import {OrderLogComponent} from './page/orderlog/order.log.component';
+import {RefundOrderComponent} from './page/refundorder/refund.order.component';
 //惠农购业务
 import {HngCompanyComponent} from './page/hng/company/hng.company.component';
 import {HngJobComponent} from './page/hng/job/hng.job.component';
@@ -107,6 +108,7 @@ import {SellerAuditService} from './service/seller.audit.service';
 import {ConfigService} from './service/config.service';
 import {SysMenuService} from './service/sys.menu.service';
 import {OrderLogService} from './service/order.log.service';
+import {RefundOrderService} from './service/refund.order.service';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -166,7 +168,8 @@ import {OrderLogService} from './service/order.log.service';
     SellerAuditComponent,
     ConfigComponent,
     SysMenuComponent,
-    OrderLogComponent
+    OrderLogComponent,
+    RefundOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -204,7 +207,8 @@ import {OrderLogService} from './service/order.log.service';
     SellerAuditService,
     ConfigService,
     SysMenuService,
-    OrderLogService
+    OrderLogService,
+    RefundOrderService
   ]
 })
 export class AppModule {
