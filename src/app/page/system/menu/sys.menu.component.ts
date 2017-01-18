@@ -58,7 +58,14 @@ export class SysMenuComponent implements OnInit {
 
   //删除菜单
   deleteMenu() {
-
+    console.log(this.currentMenuObj);
+    if (!this.currentMenuObj.id) {
+      this.toastType = 'info';
+      this.toastMessage = '请选择需要删除的菜单';
+      this.showAlert = !this.showAlert;
+      return;
+    }
+    this.notificationOpen = !this.notificationOpen;
   }
 
   //prompt取消事件
@@ -69,6 +76,11 @@ export class SysMenuComponent implements OnInit {
   //prompt确定事件
   confirm() {
 
+  }
+
+  //toast通知事件
+  notifyParamFunction() {
+    this.showAlert = !this.showAlert;
   }
 
 }
