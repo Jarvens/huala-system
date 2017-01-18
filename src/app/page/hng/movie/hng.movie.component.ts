@@ -8,4 +8,6 @@ export class HngMovieComponent implements OnInit{
   ngOnInit(): void {
   }
 
+  uploadFolder:string ='test';
+
 }

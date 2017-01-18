@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output, Input} from '@angular/core';
-import {FileUploader} from 'ng2-file-upload';
+import {FileUploader} from '../../../utils/file-upload/file-uploader.class';
 import {MyHttp} from '../../../core/http';
 
 /**
@@ -47,9 +47,14 @@ export class ImgUploadComponent {
   openFileSelect(dom: any) {
     dom.click();
   }
+
   //上传
-  uploadAll(){
-    console.log(this.uploader);
+  uploadAll() {
+    this.uploader.uploadAll();
+    this.uploader.onSuccessItem = (item: any, response: any, status: any, headers: any)=> {
+      let result = JSON.parse(response).body;
+      console.log("上传返回地址：",result);
+    }
   }
 
 }
