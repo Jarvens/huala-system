@@ -8,8 +8,8 @@
                         <button class="slds-button slds-button--icon slds-m-right--x-small">
                             <ngl-icon icon="chevronright" state="selected"></ngl-icon>
                         </button>
-                        <a tabindex="-1" role="presentation" class="slds-truncate">{{sysmenu.name}}</a></div>
-                    <ul class="slds-is-collapsed" role="group">
+                        <a tabindex="-1" role="presentation" class="slds-truncate" (click)="openChildMenu(sysmenu)">{{sysmenu.name}}</a></div>
+                    <ul [ngClass]= "{'slds-is-collapsed': sysmenu.id != currentMenuId}" role="group">
                         <li role="treeitem" aria-level="2" *ngFor="let child of sysmenu.leaf">
                             <div class="slds-tree__item">
                                 <button class="slds-button slds-button--icon slds-m-right--x-small">

@@ -20,6 +20,18 @@ export class SysMenuComponent implements OnInit {
   //显示  *
   required: boolean = true;
 
+  //当前菜单ID
+  currentMenuId: string = '';
+
+  //打开子菜单
+  openChildMenu(menu: any) {
+    if (this.currentMenuId === menu.id) {
+      this.currentMenuId = "";
+    } else {
+      this.currentMenuId = menu.id;
+    }
+  }
+
 
 
 }
