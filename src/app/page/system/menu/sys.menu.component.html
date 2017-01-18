@@ -1,1 +1,83 @@
-菜单
+<div class="slds-grid slds-wrap">
+    <div class="slds-size--3-of-12">
+        <div class="slds-tree_container" role="application">
+            <ul class="slds-tree" role="tree" aria-labelledby="treeheading">
+                <li id="tree0-node1" role="treeitem" aria-level="1" aria-expanded="false"
+                    *ngFor="let sysmenu of sysMenuList">
+                    <div class="slds-tree__item">
+                        <button class="slds-button slds-button--icon slds-m-right--x-small">
+                            <ngl-icon icon="chevronright" state="selected"></ngl-icon>
+                        </button>
+                        <a tabindex="-1" role="presentation" class="slds-truncate">{{sysmenu.name}}</a></div>
+                    <ul class="slds-is-collapsed" role="group">
+                        <li role="treeitem" aria-level="2" *ngFor="let child of sysmenu.leaf">
+                            <div class="slds-tree__item">
+                                <button class="slds-button slds-button--icon slds-m-right--x-small">
+                                    <ngl-icon icon="chevronright" state="selected"></ngl-icon>
+                                </button>
+                                <a tabindex="-1" role="presentation" class="slds-truncate">{{child.name}}</a></div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="slds-size--9-of-12">
+        <div class="slds-grid">
+            <div class="slds-size--4-of-12">
+                <ngl-form-element label="菜单ID"  class="slds-m-top--small">
+                    <input nglFormControl type="text"  [required]="required">
+                </ngl-form-element>
+            </div>
+            <div class="slds-size--1-of-12"></div>
+            <div class="slds-size--4-of-12">
+                <ngl-form-element label="菜单名称"  class="slds-m-top--small">
+                    <input nglFormControl type="text"  [required]="required">
+                </ngl-form-element>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-size--4-of-12">
+                <ngl-form-element label="上级菜单"  class="slds-m-top--small">
+                    <input nglFormControl type="text"  [required]="required">
+                </ngl-form-element>
+            </div>
+            <div class="slds-size--1-of-12"></div>
+            <div class="slds-size--4-of-12">
+                <ngl-form-element label="菜单地址"  class="slds-m-top--small">
+                    <input nglFormControl type="text"  [required]="required">
+                </ngl-form-element>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-size--4-of-12">
+                <ngl-form-element label="菜单图标"  class="slds-m-top--small">
+                    <input nglFormControl type="text"  [required]="required">
+                </ngl-form-element>
+            </div>
+            <div class="slds-size--1-of-12"></div>
+            <div class="slds-size--4-of-12">
+                <ngl-form-element label="菜单排序"  class="slds-m-top--small">
+                    <input nglFormControl type="text"  [required]="required">
+                </ngl-form-element>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-size--4-of-12">
+                <ngl-form-element label="菜单类型" class="slds-m-top--small">
+                    <select nglFormControl class="slds-select" [required]="required">
+                        <option>功能按钮</option>
+                        <option>导航菜单</option>
+                        <option>删除的菜单</option>
+                    </select>
+                </ngl-form-element>
+            </div>
+            <div class="slds-size--1-of-12"></div>
+            <div class="slds-size--4-of-12">
+                <ngl-form-element label="是否有效"  class="slds-m-top--small">
+                    <input nglFormControl type="text"  [required]="required">
+                </ngl-form-element>
+            </div>
+        </div>
+    </div>
+</div>
