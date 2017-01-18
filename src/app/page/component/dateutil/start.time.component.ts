@@ -7,9 +7,9 @@ export class StartTimeComponent {
 
   //开始时间
   @Output() _startTime = new EventEmitter<string>();
-
+  //显示|隐藏时间选项卡
   @Input() _show: boolean = false;
-
+  //格式化字符串  目前仅支持   yyyymmdd  &  yyyy-mm-dd
   @Input() _date_format: string = 'yyyymmdd';
 
   date: Date = new Date();
