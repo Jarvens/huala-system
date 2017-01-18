@@ -49,6 +49,7 @@ import {SellerSubsidyComponent} from './page/sellersubsidy/seller.subsidy.compon
 import {SpikeListComponent} from './page/spike/spike.list.component';
 import {SellerAuditComponent} from './page/selleraudit/seller.audit.component';
 import {ConfigComponent} from './page/system/config/config.component';
+import {SysMenuComponent} from './page/system/menu/sys.menu.component';
 //惠农购业务
 import {HngCompanyComponent} from './page/hng/company/hng.company.component';
 import {HngJobComponent} from './page/hng/job/hng.job.component';
@@ -103,6 +104,7 @@ import {SellerSubsidyService} from './service/seller.subsidy.service';
 import {SpikeService} from './service/spike.service';
 import {SellerAuditService} from './service/seller.audit.service';
 import {ConfigService} from './service/config.service';
+import {SysMenuService} from './service/sys.menu.service';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -160,7 +162,8 @@ import {ConfigService} from './service/config.service';
     SellerSubsidyComponent,
     SpikeListComponent,
     SellerAuditComponent,
-    ConfigComponent
+    ConfigComponent,
+    SysMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -196,7 +199,8 @@ import {ConfigService} from './service/config.service';
     SellerSubsidyService,
     SpikeService,
     SellerAuditService,
-    ConfigService
+    ConfigService,
+    SysMenuService
   ]
 })
 export class AppModule {
