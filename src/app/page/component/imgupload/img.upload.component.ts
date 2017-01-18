@@ -53,7 +53,7 @@ export class ImgUploadComponent {
     this.uploader.uploadAll();
     this.uploader.onSuccessItem = (item: any, response: any, status: any, headers: any)=> {
       let result = JSON.parse(response).body;
-      console.log("上传返回地址：",result);
+      this.uploadAddr.emit(result);
     }
   }
 
