@@ -30,6 +30,7 @@ import {SpikeListComponent} from '../page/spike/spike.list.component';
 import {SellerAuditComponent} from '../page/selleraudit/seller.audit.component';
 import {ConfigComponent} from '../page/system/config/config.component';
 import {SysMenuComponent} from '../page/system/menu/sys.menu.component';
+import {OrderLogComponent} from '../page/orderlog/order.log.component';
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
@@ -62,7 +63,8 @@ const routes: Routes = [
       {path: 'seller-spike', component: SpikeListComponent},
       {path: 'seller-auth', component: SellerAuditComponent},
       {path: 'system-sysconfig', component: ConfigComponent},
-      {path: 'system-menu', component: SysMenuComponent}
+      {path: 'system-menu', component: SysMenuComponent},
+      {path: 'order-log', component: OrderLogComponent}
     ]
   },
 ];
