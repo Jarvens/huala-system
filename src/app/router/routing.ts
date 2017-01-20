@@ -32,6 +32,7 @@ import {ConfigComponent} from '../page/system/config/config.component';
 import {SysMenuComponent} from '../page/system/menu/sys.menu.component';
 import {OrderLogComponent} from '../page/orderlog/order.log.component';
 import {RefundOrderComponent} from '../page/refundorder/refund.order.component';
+import {RoleCOmponent} from '../page/system/role/role.component';
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
@@ -66,7 +67,8 @@ const routes: Routes = [
       {path: 'system-sysconfig', component: ConfigComponent},
       {path: 'system-menu', component: SysMenuComponent},
       {path: 'order-log', component: OrderLogComponent},
-      {path: 'order-refund', component: RefundOrderComponent}
+      {path: 'order-refund', component: RefundOrderComponent},
+      {path: 'system-role', component: RoleCOmponent}
     ]
   },
 ];
