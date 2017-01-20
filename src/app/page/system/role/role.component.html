@@ -1,1 +1,53 @@
-角色管理
+<!--头部信息-->
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <div class="slds-size--3-of-12">
+        <search-component [showIcon]="false" [debounce]="2000"
+                          [placeHolder]="placeholder"
+                          (searchKey)="searchByCondition($event)"></search-component>
+    </div>
+    <div class="slds-size--2-of-12">
+        <button type="button" nglButton="neutral" (click)="change()">新增</button>
+    </div>
+</div>
+<!--角色列表-->
+<div class="slds-scrollable">
+    <table ngl-datatable [data]="roleList.rows" trackByKey="rank"
+           class="slds-max-medium-table--stacked-horizontal">
+        <ngl-datatable-column heading="ID" key="id"></ngl-datatable-column>
+        <ngl-datatable-column heading="角色名称" key="roleName">
+            <template nglDatatableCell let-value>
+                <b>{{value}}</b>
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="创建时间" key="addTime">
+            <template nglDatatableCell let-value>
+                <span class="text-success">{{value|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="角色状态" key="state">
+            <template nglDatatableCell let-value>
+                <span class="text-info" *ngIf="value=='1'">启用</span>
+                <span class="text-danger" *ngIf="value=='0'">禁用</span>
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="修改时间" key="updateTime">
+            <template nglDatatableCell let-value>
+                <span class="text-success">{{value|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="操作" key="">
+            <template nglDatatableCell let-row="row">
+                <button class="slds-button slds-button--brand" (click)="edit(row)">编辑</button>
+            </template>
+        </ngl-datatable-column>
+        <template nglNoRowsOverlay>暂无数据!</template>
+    </table>
+</div>
+
+<!--底部分页-->
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <ngl-pagination [(page)]="pageOpts.page" [total]="roleList.total" [perPage]="roleList.size"
+                    [limit]="pageOpts.limit"
+                    boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                    nextText="下一页"></ngl-pagination>
+</div>

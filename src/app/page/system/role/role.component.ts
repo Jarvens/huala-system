@@ -10,6 +10,8 @@ export class RoleCOmponent implements OnInit {
   roleList: any = {};
   //分页对象
   pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
+  //搜索提示
+  placeholder: string = '搜索..名称';
 
   ngOnInit(): void {
     this.queryRoleList('', this.pageOpts);
@@ -23,6 +25,12 @@ export class RoleCOmponent implements OnInit {
     this.roleService.getRoleList(key, page).subscribe(res=> {
       this.roleList = res.json();
     });
+  }
+
+  //分页事件
+  pageChange(event: any) {
+    this.pageOpts.page = event;
+    this.queryRoleList('', this.pageOpts);
   }
 
 
