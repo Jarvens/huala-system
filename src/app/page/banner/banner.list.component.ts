@@ -23,8 +23,6 @@ export class BannerListComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    console.log("图片前缀：", this.commonImgUrl);
-    console.log("env：", process.env);
     this.getBannerList(null, this.searchKey);
   }
   
@@ -60,7 +58,6 @@ export class BannerListComponent implements OnInit {
   //删除提示
   delConfirm(event) {
     this.delFlag = !this.delFlag;
-    console.log(this.delFlag);
   }
   
 }
