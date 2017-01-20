@@ -55,13 +55,6 @@
 </div>
 
 
-<!--prompt-->
-<confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancelPrompt()"
-                          (confirmFunction)="confirm()"></confirm-prompt-component>
-<!--Toast-->
-<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
-                 [showAlert]="showAlert"></toast-component>
-
 <!--授权模态-->
 <ngl-modal header="授权模态" [(open)]="authorOpen">
     <div body class="slds-grid slds-picklist--draggable">
@@ -115,3 +108,11 @@
         </div>
     </div>
 </ngl-modal>
+
+
+<!--prompt-->
+<confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancelPrompt()"
+                          (confirmFunction)="confirm()"></confirm-prompt-component>
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>

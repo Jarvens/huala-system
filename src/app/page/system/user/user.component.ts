@@ -12,12 +12,25 @@ export class UserComponent implements OnInit {
   //用户列表对象
   userList: any = {};
   //分页对象
-  pageOpts: any = {page:1,total: 0, limit: 3, perPage: 10}
-  placeholder: string = '这是搜索提示';
+  pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10}
+  //搜索提示
+  placeholder: string = '搜索..';
   //显示&隐藏用户新增模态
   opened: boolean = false;
   //显示&隐藏错误星标
   required: boolean = true;
+  //操作对象
+  operaObj: any = {};
+  //prompt提示信息
+  promptMessage: string = '';
+  //prompt 打开|关闭
+  notificationOpen: boolean = false;
+  //toast类型
+  toastType: string = 'success';
+  //toast提示信息
+  toastMessage: string = '';
+  //toast打开|关闭
+  showAlert: boolean = false;
 
   constructor(private userService: UserService, private cdr: ChangeDetectorRef) {
   }
@@ -66,8 +79,29 @@ export class UserComponent implements OnInit {
   }
 
   //保存用户
-  saveUser(){
+  saveUser() {
 
+  }
+
+  //密码重置
+  reset(data: any) {
+    this.operaObj = data;
+
+  }
+
+  //prompt取消事件
+  cancelPrompt() {
+    this.notificationOpen = !this.notificationOpen;
+  }
+
+  //prompt确定事件
+  confirm() {
+
+  }
+
+  //toast传递事件
+  notifyParamFunction() {
+    this.showAlert = !this.showAlert;
   }
 
 }
