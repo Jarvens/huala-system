@@ -5,7 +5,7 @@ export class RoleService {
   constructor(private http: MyHttp) {
   }
 
-  getRoleList(key: string, Page: any) {
+  getRoleList(key: string, page: any) {
     if (!page) {
       page = {page: 1, perPage: 10};
     }
