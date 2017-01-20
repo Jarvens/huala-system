@@ -38,7 +38,7 @@
         <ngl-datatable-column heading="操作" key="">
             <template nglDatatableCell let-row="row">
                 <button type="button" nglButton="neutral" (click)="roleDetail()">详情</button>
-                <button class="slds-button slds-button--brand" (click)="edit(row)">编辑</button>
+                <button class="slds-button slds-button--brand" (click)="grantAuthorization(row)">授权</button>
                 <button class="slds-button slds-button--destructive" (click)="delete(row)">删除</button>
             </template>
         </ngl-datatable-column>
@@ -55,10 +55,63 @@
 </div>
 
 
-
 <!--prompt-->
 <confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancelPrompt()"
                           (confirmFunction)="confirm()"></confirm-prompt-component>
 <!--Toast-->
 <toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
                  [showAlert]="showAlert"></toast-component>
+
+<!--授权模态-->
+<ngl-modal header="授权模态" [(open)]="authorOpen">
+    <div body class="slds-grid slds-picklist--draggable">
+        <div class="slds-form-element">
+            <span class="slds-form-element__label" >菜单列表</span>
+            <div class="slds-picklist" role="application">
+                <ul aria-describedby="option-drag-label" aria-multiselectable="true"
+                    class="slds-picklist__options slds-picklist__options--multi" role="listbox" tabindex="0">
+                    <li aria-selected="false" class="slds-picklist__item slds-is-draggable" draggable="true"
+                        role="option" tabindex="-1">
+                        <span class="slds-truncate">Option 2</span>
+                    </li>
+                    <li aria-selected="false" class="slds-picklist__item slds-is-draggable" draggable="true"
+                        role="option" tabindex="-1">
+                        <span class="slds-truncate">Option 3</span>
+                    </li>
+                    <li aria-selected="false" class="slds-picklist__item slds-is-draggable" draggable="true"
+                        role="option" tabindex="-1">
+                        <span class="slds-truncate">Option 6</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="slds-grid slds-grid--vertical">
+            <button class="slds-button slds-button--icon-container" title="Up">
+                <svg class="slds-button__icon" aria-hidden="true">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                         xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#right"></use>
+                </svg>
+                <span class="slds-assistive-text">Move Selection to Second Category</span>
+            </button>
+            <button class="slds-button slds-button--icon-container" title="Down">
+                <svg class="slds-button__icon" aria-hidden="true">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                         xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#left"></use>
+                </svg>
+                <span class="slds-assistive-text">Move Selection to First Category</span>
+            </button>
+        </div>
+        <div class="slds-form-element">
+            <span class="slds-form-element__label">已授权菜单</span>
+            <div class="slds-picklist" role="application">
+                <ul aria-describedby="option-drag-label"  aria-multiselectable="true"
+                    class="slds-picklist__options slds-picklist__options--multi" role="listbox" tabindex="0">
+                    <li aria-selected="false" class="slds-picklist__item slds-is-draggable" draggable="true"
+                        role="option" tabindex="-1">
+                        <span class="slds-truncate">Option 5</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</ngl-modal>

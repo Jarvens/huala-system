@@ -24,6 +24,8 @@ export class RoleCOmponent implements OnInit {
   toastMessage: string = '';
   //操作对象
   operaObj: any = {};
+  //授权模态  打开|关闭
+  authorOpen: boolean = false;
 
 
   ngOnInit(): void {
@@ -70,6 +72,11 @@ export class RoleCOmponent implements OnInit {
   delete(data: any) {
     this.notificationOpen = !this.notificationOpen;
     this.operaObj = data;
+  }
+
+  //授权按钮
+  grantAuthorization() {
+    this.authorOpen = !this.authorOpen;
   }
 
 
