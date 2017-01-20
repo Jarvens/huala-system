@@ -146,4 +146,10 @@ export class UserComponent implements OnInit {
     });
   }
 
+  //编辑用户信息
+  edit(data: any) {
+    this.operaObj = data;
+    this.opened = !this.opened;
+  }
+
 }
