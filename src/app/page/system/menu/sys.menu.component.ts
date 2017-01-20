@@ -82,6 +82,7 @@ export class SysMenuComponent implements OnInit {
         this.showAlert = !this.showAlert;
         this.toastType = 'success';
         this.currentMenuObj = {};
+        this.notificationOpen = !this.notificationOpen;
       } else {
         this.toastType = 'error';
         this.toastMessage = ret.message;
@@ -100,7 +101,6 @@ export class SysMenuComponent implements OnInit {
   editMenu() {
     this.sysMenuService.editMenu(this.currentMenuObj).subscribe(res=> {
       let ret = res.json();
-      console.log(res.json());
       if (ret.success) {
         this.showAlert = !this.showAlert;
         this.toastMessage = '保存成功';
