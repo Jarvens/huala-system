@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { HngService } from "../../../service/hng.service";
 
 @Component({
@@ -8,11 +8,14 @@ import { HngService } from "../../../service/hng.service";
 })
 
 export class HngCompanyListComponent implements OnInit {
+  @Input() public editCompany:any;
   public searchKey:string = '';
   public companies:Array<any> = [];
   public pageOpts: any = {total: 100, limit: 5, perPage: 10, page: 1}; //分页对象
   public promptMessage:string = "您确定要删除该公司吗?";
-  public notificationOpen:boolean = false;
+  public notificationOpen:boolean = false; //是否显示删除确认对话框;
+  public editorOpened:boolean = false; //whether to show editor;
+  public editCompanyInfo:any;
   public curOpCompany:any;
 
   constructor(public hngService: HngService){}
@@ -65,9 +68,41 @@ export class HngCompanyListComponent implements OnInit {
 
   /*
    * @Description: To edit the company;
-   * @Date: 2017-01-17;
+   * @Date: 2017-01-18;
    */
   public toEdit(company){
+    this.curOpCompany = company;
+    console.log(this.curOpCompany);
+    this.editorOpened = true;
+  }
+
+  /*
+   * @Description: Conform to edit the company;
+   * @Date: 2017-01-18;
+   */
+  public confirmEdit(label){
+    label.postInfo();
+    let edit = confirm("请核对信息并确认!");
+    
+    if(edit){
+      this.hngService.updateCompany(this.editCompanyInfo).subscribe(res => {
+        let data = res.json();
+
+        if(data.success){
+          this.editorOpened = false;
+          this.curOpCompany = null;
+        }else{
+          alert(data.message);
+        }
+      });
+    }
+  }
+
+  /*
+   * @Description: To delete the company;
+   * @Date: 2017-01-17;
+   */
+  public toDelete(company){
     this.notificationOpen = true;
     this.curOpCompany = company;
   }

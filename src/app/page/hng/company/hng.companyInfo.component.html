@@ -15,7 +15,7 @@
         <img-upload-component></img-upload-component>
       </div>
     </ngl-form-element>
-    <div class="slds-card__footer">
+    <div class="slds-card__footer" *ngIf="noBtn">
       <button class="slds-button slds-button--brand" (click)="addCompany();"><i class="fa fa-floppy-o" aria-hidden="true"></i>
         &nbsp;确&nbsp;&nbsp;定</button>
     </div>

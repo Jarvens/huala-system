@@ -1,13 +1,17 @@
-import { Component } from "@angular/core";
+import { Component, Input, OnChanges, Output, EventEmitter } from "@angular/core";
 import { HngService } from "../../../service/hng.service";
 
 @Component({
-  moduleId: "addCompany",
-  selector: "add-Company",
+  moduleId: "companyInfo",
+  selector: "company-info",
   templateUrl: "hng.companyInfo.component.html"
 })
 
-export class HngcompanyInfoComponent {
+export class HngcompanyInfoComponent implements OnChanges{
+  @Input() public companyInput:any;
+  @Input() public noBtn:boolean = true;
+  @Output() public postCompanyInfo = new EventEmitter<any>();
+
   public companyInfo = {
     companyName: '',
     contacts: '',
@@ -15,7 +19,19 @@ export class HngcompanyInfoComponent {
     filePath: ''
   }; //公司信息;
 
-  constructor(public hngService:HngService){}
+  constructor(public hngService:HngService){
+    if(this.companyInput){
+      this.companyInfo = this.companyInput;
+    }
+  }
+
+  ngOnChanges(changes){
+    let company = changes['companyInput'];
+    console.log(company.currentValue);
+    if(company && company.currentValue && company.currentValue != company.previousValue){
+      this.companyInfo = company.currentValue;
+    }
+  }
 
   /*
    * @Description: Add new company;
@@ -59,5 +75,13 @@ export class HngcompanyInfoComponent {
     }
 
     return true;
+  }
+
+  /*
+   * @Description: Post the company info;
+   * @Date: 2017-01-17;
+   */
+  public postInfo(){
+    this.postCompanyInfo.emit(this.companyInfo);
   }
 }

@@ -15,10 +15,10 @@
   </ngl-datatable-column>
   <ngl-datatable-column heading="操作">
     <template nglDatatableCell let-row="row">
-      <button class="slds-button slds-button--small slds-button--brand slds-button">
+      <button class="slds-button slds-button--small slds-button--brand slds-button" (click)="toEdit(row);">
         <i class="fa fa-edit"></i>编辑
       </button>
-      <button class="slds-button slds-button--small slds-button--destructive slds-button" (click)="toEdit(row);">
+      <button class="slds-button slds-button--small slds-button--destructive slds-button" (click)="toDelete(row);">
         <i class="fa fa-times"></i>删除
       </button>
     </template>
@@ -38,10 +38,10 @@
 <!-- edit company -->
 <ngl-modal header="编辑公司" [(open)]="editorOpened">
   <div body>
-
+    <company-info #companyEl [companyInput]="curOpCompany" [noBtn]="false" (postCompanyInfo)="editCompanyInfo=$event"></company-info>
   </div>
   <template ngl-modal-footer>
     <button class="slds-button slds-button--neutral" (click)="editorOpened=false;">取&nbsp;&nbsp;消</button>
-    <button class="slds-button slds-button--brand" (click)="confirmEdit()">确&nbsp;&nbsp;定</button>
+    <button class="slds-button slds-button--brand" (click)="confirmEdit(companyEl)">确&nbsp;&nbsp;定</button>
   </template>
 </ngl-modal>
