@@ -1,12 +1,12 @@
 <!--头部信息-->
 <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
-    <div class="slds-size--2-of-12">
+    <div class="slds-size--3-of-12">
         <search-component [showIcon]="false" [debounce]="2000"
                           [placeHolder]="placeholder"
                           (searchKey)="searchByCondition($event)"></search-component>
     </div>
     <div class="slds-size--2-of-12">
-        <button class="slds-button slds-button--brand" (click)="openModal()">创建</button>
+        <button class="slds-button slds-button--neutral" (click)="openModal()">创建</button>
     </div>
 </div>
 <!--用户列表-->
@@ -30,8 +30,8 @@
     <ngl-datatable-column heading="操作" key="">
         <template nglDatatableCell let-row="row">
             <button class="slds-button slds-button--hint" (click)="reset(row)">密码重置</button>
-            <button class="slds-button slds-button--brand" (click)="openModal()">编辑</button>
-            <button class="slds-button slds-button--destructive" (click)="openModal()">删除</button>
+            <button class="slds-button slds-button--brand" (click)="openModal(row)">编辑</button>
+            <button class="slds-button slds-button--destructive" (click)="deleteUser(row)">删除</button>
         </template>
     </ngl-datatable-column>
     <!-- No rows overlay -->

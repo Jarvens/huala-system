@@ -12,4 +12,13 @@ export class UserService {
     }
     return this.http.get("/role/user-list", {page: page.page, size: page.perPage, searchKey: key});
   }
+
+  resetPassword(data: any) {
+    return this.http.post("/role/reset-password", data);
+  }
+
+  deleteUser(data: any) {
+    return this.http.post("/role/delete-user", data);
+  }
+
 }

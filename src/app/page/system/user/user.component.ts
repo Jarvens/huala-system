@@ -31,6 +31,8 @@ export class UserComponent implements OnInit {
   toastMessage: string = '';
   //toast打开|关闭
   showAlert: boolean = false;
+  //confirm类型
+  confirmType: string = '';
 
   constructor(private userService: UserService, private cdr: ChangeDetectorRef) {
   }
@@ -44,16 +46,6 @@ export class UserComponent implements OnInit {
     this.userService.getUserList(page, key).subscribe(res=> {
       this.userList = res.json();
     });
-  }
-
-  //row点击事件
-  onRowClick(event) {
-
-  }
-
-  //排序事件
-  onSort(event) {
-
   }
 
   //条件搜索
@@ -86,7 +78,9 @@ export class UserComponent implements OnInit {
   //密码重置
   reset(data: any) {
     this.operaObj = data;
-
+    this.notificationOpen = !this.notificationOpen;
+    this.promptMessage = '您确定要重置吗?';
+    this.confirmType = 'reset';
   }
 
   //prompt取消事件
@@ -96,12 +90,60 @@ export class UserComponent implements OnInit {
 
   //prompt确定事件
   confirm() {
-
+    if (this.confirmType == 'delete') {
+      this.confirmDelete();
+    }
+    if (this.confirmType == 'reset') {
+      this.confirmReset();
+    }
   }
 
   //toast传递事件
   notifyParamFunction() {
     this.showAlert = !this.showAlert;
+  }
+
+  //删除用户
+  deleteUser(data: any) {
+    this.notificationOpen = !this.notificationOpen;
+    this.promptMessage = '您确定要删除该用户吗?';
+    this.confirmType = 'delete';
+    this.operaObj = data;
+  }
+
+
+
+  confirmDelete() {
+    this.userService.deleteUser(this.operaObj).subscribe(res=> {
+      let ret = res.json();
+      if (ret.success) {
+        this.showAlert = !this.showAlert;
+        this.toastMessage = '删除成功';
+        this.notificationOpen = !this.notificationOpen;
+        this.getUserList(null, this.pageOpts);
+      } else {
+        this.showAlert = !this.showAlert;
+        this.toastMessage = ret.message;
+        this.toastType = 'error';
+        this.notificationOpen = !this.notificationOpen;
+      }
+    });
+  }
+
+  confirmReset() {
+    this.userService.resetPassword(this.operaObj).subscribe(res=> {
+      let ret = res.json();
+      if (ret.success) {
+        this.showAlert = !this.showAlert;
+        this.toastMessage = '密码重置成功';
+        this.notificationOpen = !this.notificationOpen;
+      } else {
+        this.showAlert = !this.showAlert;
+        this.toastMessage = ret.message;
+        this.toastType = 'error';
+        this.notificationOpen = !this.notificationOpen;
+      }
+    });
   }
 
 }
