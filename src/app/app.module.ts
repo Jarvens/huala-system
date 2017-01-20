@@ -52,6 +52,7 @@ import {ConfigComponent} from './page/system/config/config.component';
 import {SysMenuComponent} from './page/system/menu/sys.menu.component';
 import {OrderLogComponent} from './page/orderlog/order.log.component';
 import {RefundOrderComponent} from './page/refundorder/refund.order.component';
+import {Ro} from './page/system/role/role.component';
 //惠农购业务
 import {HngCompanyComponent} from './page/hng/company/hng.company.component';
 import {HngJobComponent} from './page/hng/job/hng.job.component';
