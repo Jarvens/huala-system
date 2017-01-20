@@ -12,6 +12,19 @@ export class RoleCOmponent implements OnInit {
   pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
   //搜索提示
   placeholder: string = '搜索..名称';
+  //prompt提示消息
+  promptMessage: string = '您确定要删除该角色吗?';
+  //prompt 打开|关闭
+  notificationOpen: boolean = false;
+  //toast 打开|关闭
+  showAlert: boolean = false;
+  //toast 类型
+  toastType: string = 'success';
+  //toast消息提示
+  toastMessage: string = '';
+  //操作对象
+  operaObj: any = {};
+
 
   ngOnInit(): void {
     this.queryRoleList('', this.pageOpts);
@@ -31,6 +44,32 @@ export class RoleCOmponent implements OnInit {
   pageChange(event: any) {
     this.pageOpts.page = event;
     this.queryRoleList('', this.pageOpts);
+  }
+
+  //角色详情
+  roleDetail() {
+
+  }
+
+  //prompt取消事件
+  cancelPrompt() {
+    this.notificationOpen = !this.notificationOpen;
+  }
+
+  //prompt确定事件
+  confirm() {
+
+  }
+
+  //toast传播事件
+  notifyParamFunction() {
+    this.showAlert = !this.showAlert;
+  }
+
+  //删除按钮
+  delete(data: any) {
+    this.notificationOpen = !this.notificationOpen;
+    this.operaObj = data;
   }
 
 

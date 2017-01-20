@@ -37,7 +37,9 @@
         </ngl-datatable-column>
         <ngl-datatable-column heading="操作" key="">
             <template nglDatatableCell let-row="row">
+                <button type="button" nglButton="neutral" (click)="roleDetail()">详情</button>
                 <button class="slds-button slds-button--brand" (click)="edit(row)">编辑</button>
+                <button class="slds-button slds-button--destructive" (click)="delete(row)">删除</button>
             </template>
         </ngl-datatable-column>
         <template nglNoRowsOverlay>暂无数据!</template>
@@ -51,3 +53,12 @@
                     boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
                     nextText="下一页"></ngl-pagination>
 </div>
+
+
+
+<!--prompt-->
+<confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancelPrompt()"
+                          (confirmFunction)="confirm()"></confirm-prompt-component>
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>
