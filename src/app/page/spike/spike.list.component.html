@@ -1,14 +1,18 @@
 <div class="slds-scrollable">
     <table ngl-datatable [data]="spikeArray" trackByKey="rank"
            class="slds-max-medium-table--stacked-horizontal">
-        <ngl-datatable-column heading="ID" key="id" sortable></ngl-datatable-column>
+        <!--<ngl-datatable-column heading="ID" key="id" sortable></ngl-datatable-column>-->
         <ngl-datatable-column heading="名称" key="title">
             <template nglDatatableCell let-value>
                 <ngl-badge type="info">{{value}}</ngl-badge>
             </template>
         </ngl-datatable-column>
         <ngl-datatable-column heading="店铺ID" key="sellerId"></ngl-datatable-column>
-        <ngl-datatable-column heading="店铺名称" key="sellerName"></ngl-datatable-column>
+        <ngl-datatable-column heading="店铺名称" key="sellerName">
+            <template nglDatatableCell let-value>
+                <b>{{value}}</b>
+            </template>
+        </ngl-datatable-column>
         <ngl-datatable-column heading="价格" key="salePrice">
             <template nglDatatableCell let-value>
                 {{value/100|number:'1.2-2'}}
