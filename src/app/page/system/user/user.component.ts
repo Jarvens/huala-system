@@ -63,6 +63,7 @@ export class UserComponent implements OnInit {
   //打开创建用户modal
   openModal() {
     this.opened = !this.opened;
+    this.operaObj = {};
   }
 
   //创建用户模态取消事件
