@@ -2,26 +2,46 @@
     <table ngl-datatable [data]="spikeArray" trackByKey="rank"
            class="slds-max-medium-table--stacked-horizontal">
         <ngl-datatable-column heading="ID" key="id" sortable></ngl-datatable-column>
-        <ngl-datatable-column heading="名称" key="title"></ngl-datatable-column>
+        <ngl-datatable-column heading="名称" key="title">
+            <template nglDatatableCell let-value>
+                <ngl-badge type="info">{{value}}</ngl-badge>
+            </template>
+        </ngl-datatable-column>
         <ngl-datatable-column heading="店铺ID" key="sellerId"></ngl-datatable-column>
         <ngl-datatable-column heading="店铺名称" key="sellerName"></ngl-datatable-column>
         <ngl-datatable-column heading="价格" key="salePrice">
             <template nglDatatableCell let-value>
-                {{value|number:'1.2-2'}}
+                {{value/100|number:'1.2-2'}}
             </template>
         </ngl-datatable-column>
         <ngl-datatable-column heading="秒杀价" key="priceRole">
             <template nglDatatableCell let-value>
-                {{value|number:'2.1-2'}}
+                <ngl-badge type="error">{{value/100|number:'2.1-2'}}</ngl-badge>
             </template>
         </ngl-datatable-column>
-        <ngl-datatable-column heading="开始时间" key="startTime"></ngl-datatable-column>
-        <ngl-datatable-column heading="结束时间" key="endTime"></ngl-datatable-column>
-        <ngl-datatable-column heading="库存" key="defaultCount"></ngl-datatable-column>
-        <ngl-datatable-column heading="剩余库存" key="totalCount"></ngl-datatable-column>
+        <ngl-datatable-column heading="开始时间" key="startTime">
+            <template nglDatatableCell let-value>
+                <span class="text-success">{{value}}</span>
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="结束时间" key="endTime">
+            <template nglDatatableCell let-value>
+                <span class="text-success">{{value}}</span>
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="库存" key="defaultCount">
+            <template nglDatatableCell let-value>
+                <span class="text-danger">{{value}}</span>
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="剩余库存" key="totalCount">
+            <template nglDatatableCell let-value>
+                <span class="text-danger">{{value}}</span>
+            </template>
+        </ngl-datatable-column>
         <ngl-datatable-column heading="操作" key="">
             <template nglDatatableCell let-row="row">
-                <ngl-badge type="error" (click)="delConfirm()"><i class="fa fa-times"></i>删除</ngl-badge>
+                <button class="slds-button slds-button--brand" (click)="change()">编辑</button>
             </template>
         </ngl-datatable-column>
         <template nglNoRowsOverlay>暂无数据!</template>

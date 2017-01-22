@@ -7,4 +7,5 @@ export class SpikeService{
   getSpikeList(){
     return this.http.get('/spike/activity-list');
   }
+
 }
