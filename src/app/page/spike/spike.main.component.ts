@@ -5,6 +5,8 @@ import {Component,OnInit} from '@angular/core';
 })
 
 export  class SpikeMainComponent implements OnInit{
+  //默认选择tab页
+  selected:string ='list';
   ngOnInit(): void {
   }
 
