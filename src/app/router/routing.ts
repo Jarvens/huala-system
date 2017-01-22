@@ -26,13 +26,13 @@ import {SuppliersListComponent} from '../page/suppliers/suppliersList.component'
 import {EveryDateReportComponent} from '../page/everydatereport/every.date.report.component';
 import {FinanceListComponent} from '../page/finance/finance.list.component';
 import {SellerSubsidyComponent} from '../page/sellersubsidy/seller.subsidy.component';
-import {SpikeListComponent} from '../page/spike/spike.list.component';
 import {SellerAuditComponent} from '../page/selleraudit/seller.audit.component';
 import {ConfigComponent} from '../page/system/config/config.component';
 import {SysMenuComponent} from '../page/system/menu/sys.menu.component';
 import {OrderLogComponent} from '../page/orderlog/order.log.component';
 import {RefundOrderComponent} from '../page/refundorder/refund.order.component';
 import {RoleCOmponent} from '../page/system/role/role.component';
+import {SpikeMainComponent} from '../page/spike/spike.main.component';
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
@@ -62,7 +62,7 @@ const routes: Routes = [
       {path: 'platform', component: EveryDateReportComponent},
       {path: 'finance', component: FinanceListComponent},
       {path: 'seller-report', component: SellerSubsidyComponent},
-      {path: 'seller-spike', component: SpikeListComponent},
+      {path: 'seller-spike', component: SpikeMainComponent},
       {path: 'seller-auth', component: SellerAuditComponent},
       {path: 'system-sysconfig', component: ConfigComponent},
       {path: 'system-menu', component: SysMenuComponent},
