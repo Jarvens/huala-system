@@ -25,12 +25,12 @@
         </ngl-datatable-column>
         <ngl-datatable-column heading="开始时间" key="startTime">
             <template nglDatatableCell let-value>
-                <span class="text-success">{{value}}</span>
+                <span class="text-success">{{value|date:'yyyy-MM-dd HH:mm:ss'}}</span>
             </template>
         </ngl-datatable-column>
         <ngl-datatable-column heading="结束时间" key="endTime">
             <template nglDatatableCell let-value>
-                <span class="text-success">{{value}}</span>
+                <span class="text-success">{{value|date:'yyyy-MM-dd HH:mm:ss'}}</span>
             </template>
         </ngl-datatable-column>
         <ngl-datatable-column heading="库存" key="defaultCount">
