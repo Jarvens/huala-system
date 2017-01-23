@@ -1,1 +1,32 @@
-这是商家列表组件
+<!--头部信息-->
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <search-component [showIcon]="openConditionIcon" [debounce]="debounce" [placeHolder]="placeholder"
+                      (searchKey)="searchByCondition($event)"></search-component>
+</div>
+<table ngl-datatable [data]="sellerList.rows" trackByKey="rank"
+       (sortChange)="onSort($event)" (onRowClick)="onRowClick($event)"
+       class="slds-max-medium-table--stacked-horizontal">
+    <ngl-datatable-column heading="选择" key="">
+        <template nglDatatableCell let-value>
+            <ngl-form-checkbox style="display: inline-block;">
+                <input nglFormControl type="checkbox" />
+            </ngl-form-checkbox>
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="ID" key="id" sortable></ngl-datatable-column>
+    <ngl-datatable-column heading="名称" key="name" cellClass="slds-truncate"></ngl-datatable-column>
+    <ngl-datatable-column heading="地址" key="address" cellClass="slds-truncate"></ngl-datatable-column>
+    <ngl-datatable-column heading="店铺状态" key="isDelete" cellClass="slds-truncate"></ngl-datatable-column>
+    <ngl-datatable-column heading="店铺类型" key="sellerType" cellClass="slds-truncate">
+        <template nglDatatableCell let-row="row"><b>{{row.sellerType=='1'|threeElementExpression:'烟店;超市'}}</b></template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="电话" key="phone"></ngl-datatable-column>
+    <ngl-datatable-column heading="操作" key="">
+        <template nglDatatableCell let-row="row">
+            <ngl-badge type="info" (click)="sellerDetailInfo(row)"><i class="fa fa-info"></i>详情</ngl-badge>
+        </template>
+    </ngl-datatable-column>
+    <!-- No rows overlay -->
+    <template nglNoRowsOverlay>暂无数据!</template>
+</table>
+<!--底部分页-->
