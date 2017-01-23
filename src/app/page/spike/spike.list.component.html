@@ -63,7 +63,7 @@
                 <div class="slds-form-element">
                     <span class="slds-form-element__label">商品ID</span>
                     <div class="slds-form-element__control slds-has-divider--bottom">
-                        <span class="slds-form-element__static text-success">22222</span>
+                        <span class="slds-form-element__static text-success">{{operaObj.id}}</span>
                     </div>
                 </div>
             </div>
@@ -71,14 +71,14 @@
             <div class="slds-form-element">
                 <span class="slds-form-element__label">商品标准ID</span>
                 <div class="slds-form-element__control slds-has-divider--bottom">
-                    <span class="slds-form-element__static text-success">33333</span>
+                    <span class="slds-form-element__static text-success">{{operaObj.baseGoodsId}}</span>
                 </div>
             </div>
             <div class="slds-size--5-of-12">
                 <div class="slds-form-element">
                     <span class="slds-form-element__label">商品销量</span>
                     <div class="slds-form-element__control slds-has-divider--bottom">
-                        <span class="slds-form-element__static text-success">10</span>
+                        <span class="slds-form-element__static text-success">{{operaObj.saleVolume}}</span>
                     </div>
                 </div>
             </div>
@@ -87,7 +87,7 @@
                 <div class="slds-form-element">
                     <span class="slds-form-element__label">商品原价</span>
                     <div class="slds-form-element__control slds-has-divider--bottom">
-                        <span class="slds-form-element__static text-success">1</span>
+                        <span class="slds-form-element__static text-success">{{operaObj.salePrice/100|number:'1.2-2'}}</span>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                 <div class="slds-form-element">
                     <span class="slds-form-element__label">供应商ID</span>
                     <div class="slds-form-element__control slds-has-divider--bottom">
-                        <span class="slds-form-element__static text-success">1</span>
+                        <span class="slds-form-element__static text-success">{{operaObj.sellerId}}</span>
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                 <div class="slds-form-element">
                     <span class="slds-form-element__label">供应商名称</span>
                     <div class="slds-form-element__control slds-has-divider--bottom">
-                        <span class="slds-form-element__static text-success">1</span>
+                        <span class="slds-form-element__static text-success">{{operaObj.sellerName}}</span>
                     </div>
                 </div>
             </div>
@@ -112,31 +112,31 @@
                 <div class="slds-form-element">
                     <span class="slds-form-element__label">默认库存</span>
                     <div class="slds-form-element__control slds-has-divider--bottom">
-                        <span class="slds-form-element__static text-success">1</span>
+                        <span class="slds-form-element__static text-success">{{operaObj.defaultCount}}</span>
                     </div>
                 </div>
             </div>
             <div class="slds-size--2-of-12"></div>
             <div class="slds-size--5-of-12">
                 <ngl-form-element label="剩余库存" class="slds-m-top--small">
-                    <input nglFormControl type="text" [required]="required">
+                    <input nglFormControl type="text" [required]="required" [(ngModel)]="operaObj.totalCount">
                 </ngl-form-element>
             </div>
             <div class="slds-size--2-of-12"></div>
             <div class="slds-size--5-of-12">
                 <ngl-form-element label="秒杀价" class="slds-m-top--small">
-                    <input nglFormControl type="text" [required]="required">
+                    <input nglFormControl type="text" [required]="required" [(ngModel)]="operaObj.priceRole">
                 </ngl-form-element>
             </div>
             <div class="slds-size--5-of-12">
                 <ngl-form-element label="开始时间" class="slds-m-top--small">
-                    <input nglFormControl type="text" [required]="required">
+                    <input nglFormControl type="text" [required]="required" [(ngModel)]="operaObj.startTime">
                 </ngl-form-element>
             </div>
             <div class="slds-size--2-of-12"></div>
             <div class="slds-size--5-of-12">
                 <ngl-form-element label="结束时间" class="slds-m-top--small">
-                    <input nglFormControl type="text" [required]="required">
+                    <input nglFormControl type="text" [required]="required" [(ngModel)]="operaObj.endTime">
                 </ngl-form-element>
             </div>
         </div>
