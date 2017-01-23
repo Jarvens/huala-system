@@ -17,17 +17,22 @@ export class SellerListCommonComponent implements OnInit {
   searchKey: string = '';
   //全部:0   所属人:1
   keyType: string = '0';
+  //显示|隐藏  全选
+  openSelectAll: boolean = true;
+  //搜索提示
   placeholder: string = '搜索  ID  名称 手机号';
 
   ngOnInit(): void {
+    this.querySellerList(this.searchKey, this.pageOpts, this.keyType);
   }
 
   constructor(private sellerService: SellerService) {
   }
 
   //查询商家列表
-  querySellerList(key:string,page:any,keyType:string) {
-
-
+  querySellerList(key: string, page: any, keyType: string) {
+    this.sellerService.getSellerList(page, key, keyType).subscribe(res=> {
+      this.sellerList = res.json();
+    });
   }
 }

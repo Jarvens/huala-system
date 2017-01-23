@@ -55,6 +55,7 @@ import {RefundOrderComponent} from './page/refundorder/refund.order.component';
 import {RoleCOmponent} from './page/system/role/role.component';
 import {SpikeMainComponent} from './page/spike/spike.main.component';
 import {SpikeEntryComponent} from './page/spike/spike.entry.component';
+import {SellerListCommonComponent} from './page/component/seller/seller.list.common.component';
 //惠农购业务
 import {HngCompanyComponent} from './page/hng/company/hng.company.component';
 import {HngJobComponent} from './page/hng/job/hng.job.component';
@@ -176,7 +177,8 @@ import {RoleService} from './service/role.service';
     RefundOrderComponent,
     RoleCOmponent,
     SpikeMainComponent,
-    SpikeEntryComponent
+    SpikeEntryComponent,
+    SellerListCommonComponent
   ],
   imports: [
     BrowserModule,
