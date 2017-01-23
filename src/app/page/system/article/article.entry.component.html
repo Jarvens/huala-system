@@ -1,14 +1,17 @@
-<div class="slds-large-size--1-of-1">
-    <ngl-form-element label="标题"  class="slds-m-top--small">
-        <input nglFormControl type="text" [required]="required">
-    </ngl-form-element>
-    <ngl-form-element label="关键词"  class="slds-m-top--small">
-        <input nglFormControl type="text" [required]="required">
-    </ngl-form-element>
-    <ngl-form-element class="slds-m-top--small">
-        <template nglFormLabel><i>描述</i></template>
-        <textarea nglFormControl [required]="required"></textarea>
-    </ngl-form-element>
-    <quill-editor-component></quill-editor-component>
+<div class="slds-grid slds-wrap slds-align--absolute-center">
+    <div class="slds-size--8-of-12">
+        <ngl-form-element label="标题" class="slds-m-top--small">
+            <input nglFormControl type="text" [required]="required">
+        </ngl-form-element>
+        <ngl-form-element label="关键词" class="slds-m-top--small">
+            <input nglFormControl type="text" [required]="required">
+        </ngl-form-element>
+        <ngl-form-element class="slds-m-top--small">
+            <template nglFormLabel><i>描述</i></template>
+            <textarea nglFormControl [required]="required"></textarea>
+        </ngl-form-element>
+        <quill-editor-component></quill-editor-component>
+    </div>
+
 </div>
 <!--文章预览-->

@@ -13,13 +13,9 @@ export class QuillEditorComponent {
 
   //初始化
   onEditorCreated(quill) {
-
   }
 
   //内容改变
   onContentChanged({quill, html, text}) {
-    console.log(quill, html, text);
   }
-
-
 }
