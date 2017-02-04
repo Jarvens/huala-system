@@ -6,7 +6,7 @@
                               (searchKey)="searchByCondition($event)"></search-component>
         </div>
         <table ngl-datatable [data]="sellerList.rows" trackByKey="rank"
-               (sortChange)="onSort($event)" (onRowClick)="onRowClick($event)"
+                (onRowClick)="onRowClick($event)"
                class="slds-max-medium-table--stacked-horizontal">
             <ngl-datatable-column heading="选择" key="">
                 <template nglDatatableCell let-value>

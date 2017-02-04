@@ -67,8 +67,8 @@ export class SellerSubsidyComponent implements OnInit {
   }
 
   //toast事件传递
-  notifyParamFunction() {
-    this.showAlert = !this.showAlert;
+  notifyParamFunction(event:boolean) {
+    this.showAlert = event;
   }
 
   //prompt取消事件

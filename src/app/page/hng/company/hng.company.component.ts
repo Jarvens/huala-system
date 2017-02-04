@@ -13,6 +13,8 @@ export class HngCompanyComponent implements OnInit {
 
   //公司列表对象
   companyList: any = {};
+  //tab
+  selectedTab:string='companyList';
 
 
 }

@@ -100,8 +100,8 @@ export class UserComponent implements OnInit {
   }
 
   //toast传递事件
-  notifyParamFunction() {
-    this.showAlert = !this.showAlert;
+  notifyParamFunction(event: boolean) {
+    this.showAlert = event;
   }
 
   //删除用户

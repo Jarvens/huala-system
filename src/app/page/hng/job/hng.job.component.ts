@@ -94,8 +94,8 @@ export class HngJobComponent implements OnInit {
   }
 
   //toast消息通知事件
-  notifyParamFunction() {
-    this.showAlert = !this.showAlert;
+  notifyParamFunction(event:boolean) {
+    this.showAlert = event;
   }
 
   //岗位详情

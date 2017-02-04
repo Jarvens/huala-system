@@ -92,8 +92,8 @@ export class SysMenuComponent implements OnInit {
   }
 
   //toast通知事件
-  notifyParamFunction() {
-    this.showAlert = !this.showAlert;
+  notifyParamFunction(event:boolean) {
+    this.showAlert = event;
   }
 
 
