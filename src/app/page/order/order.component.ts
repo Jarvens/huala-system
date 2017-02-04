@@ -82,4 +82,9 @@ export class OrderComponent implements OnInit {
   searchByCondition(event) {
     
   }
+
+  //导出订单
+  exportOrder(){
+
+  }
 }
