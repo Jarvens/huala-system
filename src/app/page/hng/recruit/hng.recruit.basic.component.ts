@@ -8,8 +8,20 @@ export class HngRecruitBasicComponent implements OnInit {
   wriInfoStatus: string = 'doing';
   relativeSellerInfoStatus: string = 'will';
   wriPublishTimeStatus: string = 'will';
+  //显示|隐藏  *
+  required: boolean = true;
 
   ngOnInit(): void {
+  }
+
+  //保存数据以及跳转到下一步
+  nextStep() {
+
+  }
+
+  //上一步
+  previousStep() {
+
   }
 
 }

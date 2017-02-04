@@ -63,6 +63,7 @@ import {HngMovieComponent} from './page/hng/movie/hng.movie.component';
 import {HngRecruitBasicComponent} from './page/hng/recruit/hng.recruit.basic.component';
 import {HngCompanyListComponent} from './page/hng/company/hng.companyList.component.ts';
 import {HngcompanyInfoComponent} from './page/hng/company/hng.companyInfo.component';
+import {RelativeSellerComponent} from './page/hng/recruit/hng.recruit.relative.seller.component';
 /**
  *
  * 公用组件
@@ -179,7 +180,8 @@ import {RoleService} from './service/role.service';
     SpikeMainComponent,
     SpikeEntryComponent,
     SellerListCommonComponent,
-    RecruitHeaderComponent
+    RecruitHeaderComponent,
+    RelativeSellerComponent
   ],
   imports: [
     BrowserModule,
