@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-3">
-    <!--<goods-cat (catSelected)="cat=$event"></goods-cat>-->
+    <goods-cat (catSelected)="cat=$event"></goods-cat>
   </div>
   <div class="col-md-9">
     <article class="slds-card" [hidden]="showDetail">
@@ -17,10 +17,10 @@
       <div class="slds-card__body">
         <ngl-tabs [(selected)]="selectedTab" [hidden]="!cat">
           <template ngl-tab heading="商品列表" nglTabId="goodsList">
-            <!--<goods-list [cat]="cat"></goods-list>-->
+            <goods-list [cat]="cat"></goods-list>
           </template>
           <template ngl-tab heading="新增商品" nglTabId="addGoods">
-            <!--<goods-info [cat]="cat"></goods-info>-->
+            <goods-info [cat]="cat"></goods-info>
           </template>
           <template nglNoRowsOverlay>
             <h3 class="slds-text-heading--medium slds-text-color--error">暂无商品!</h3>
