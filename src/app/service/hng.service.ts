@@ -50,4 +50,12 @@ export class HngService {
 
     return this.http.post(pUrl, pData);
   }
+
+  /*
+   * @Description: Add a new company;
+   * @Date: 2017-01-17;
+   */
+  updateCompany(pData){
+    return this.addCompany(pData);
+  }
 }
