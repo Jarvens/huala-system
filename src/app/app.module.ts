@@ -6,10 +6,9 @@ import {NglModule} from 'ng-lightning';
 import {ENV_PROVIDERS} from './environment';
 import {BaiduMap} from '../../node_modules/angular2-baidu-map/src';
 import {AppComponent} from './app.component';
-// import {TreeModule} from "angular2-tree-component";
+import {TreeModule} from "angular2-tree-component";
 //路由
 import {AppRoutingModule} from './router/routing';
-//import {DropdownTreeviewModule} from 'ng2-dropdown-treeview';
 //导航
 import {NavTopComponent} from './page/nav/nav.top.component';
 import {NavLeftComponent} from './page/nav/nav.left.component';
@@ -185,9 +184,8 @@ import {RoleService} from './service/role.service';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    //DropdownTreeviewModule.forRoot(),
     NglModule.forRoot(),
-    // TreeModule
+    TreeModule
   ],
   providers: [
     ENV_PROVIDERS,
