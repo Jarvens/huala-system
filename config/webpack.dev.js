@@ -20,7 +20,7 @@ const ApiUrlTest = '//apitest.huala.com';
 const ApiUrl = 'http://localhost:8111/xiaopai';
 //正式环境
 // const ApiUrl ='//api.huala.com';
-const ImgUrl = '//wxtest.huala.com/hlman-pic';
+const ImgUrl = '//wxtest.huala.com/hlman-pic'
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;

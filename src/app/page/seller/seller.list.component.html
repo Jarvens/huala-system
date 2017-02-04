@@ -14,7 +14,14 @@
             <ngl-datatable-column heading="ID" key="id" sortable></ngl-datatable-column>
             <ngl-datatable-column heading="名称" key="name" cellClass="slds-truncate"></ngl-datatable-column>
             <ngl-datatable-column heading="地址" key="address" cellClass="slds-truncate"></ngl-datatable-column>
-            <ngl-datatable-column heading="店铺状态" key="isDelete" cellClass="slds-truncate"></ngl-datatable-column>
+            <ngl-datatable-column heading="店铺状态" key="isDelete" cellClass="slds-truncate">
+                <template nglDatatableCell let-value>
+                    <span *ngIf="value=='0'" class="text-success">正常</span>
+                    <span *ngIf="value=='1'" class="text-danger">删除</span>
+                    <span *ngIf="value=='2'" class="text-info">审核中</span>
+                    <span *ngIf="value=='3'" class="text-danger">审核失败</span>
+                </template>
+            </ngl-datatable-column>
             <ngl-datatable-column heading="店铺类型" key="sellerType" cellClass="slds-truncate">
               <template nglDatatableCell let-row="row"><b>{{row.sellerType=='1'|threeElementExpression:'烟店;超市'}}</b></template>
             </ngl-datatable-column>

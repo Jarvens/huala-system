@@ -4,7 +4,7 @@
 <table ngl-datatable [data]="balanceList.rows" class="slds-max-medium-table--stacked-horizontal">
     <ngl-datatable-column heading="日期" key="date">
         <template nglDatatableCell let-row="row">
-            <span>{{row.date}}</span>
+            <b>{{row.date}}</b>
             <span class="text-danger">(共{{row.sellerCount}}家)</span>
         </template>
     </ngl-datatable-column>
