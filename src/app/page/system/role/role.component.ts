@@ -79,5 +79,15 @@ export class RoleCOmponent implements OnInit {
     this.authorOpen = !this.authorOpen;
   }
 
+  //搜索方法
+  searchByCondition(data: any) {
+
+  }
+
+  //新增
+  add(){
+
+  }
+
 
 }
