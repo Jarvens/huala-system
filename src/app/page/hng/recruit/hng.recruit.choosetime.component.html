@@ -8,7 +8,10 @@
             <label class="slds-form-element__label">开始时间</label>
             <start-time-component (_startTime)="receiveDate($event)" [_date_format]="_date_formate"></start-time-component>
         </div>
-
+        <div class="slds-size--1-of-1 slds-align--absolute-center">
+            <a [routerLink]="['../../recruit-seller/',recruitId]" class="slds-button slds-button--neutral">上一步</a>
+            <button class="slds-button slds-button--brand">保存</button>
+        </div>
     </div>
     <div class="slds-size--3-of-12"></div>
 </div>
