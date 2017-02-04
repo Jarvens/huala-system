@@ -10,6 +10,8 @@ export class HngRecruitBasicComponent implements OnInit {
   wriPublishTimeStatus: string = 'will';
   //显示|隐藏  *
   required: boolean = true;
+  //招聘模板id
+  recruitId:string='111';
 
   ngOnInit(): void {
   }

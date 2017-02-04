@@ -35,7 +35,6 @@ export class SellerListCommonComponent implements OnInit {
   querySellerList(key: string, page: any, keyType: string) {
     this.sellerService.getSellerList(page, key, keyType).subscribe(res=> {
       this.sellerList = res.json();
-      console.log(res.json());
     });
   }
 
