@@ -76,6 +76,7 @@ import {StartTimeComponent} from './page/component/dateutil/start.time.component
 import {EndTimeCOmponent} from './page/component/dateutil/end.time.component';
 import {QuillEditorComponent} from './page/component/quilleditor/quill.editor.component';
 import {QuillEditor} from './utils/quillEditor/quillEditor';
+import {RecruitHeaderComponent} from './page/component/recruit/recruit.header.component';
 //Directive
 
 /**
@@ -177,7 +178,8 @@ import {RoleService} from './service/role.service';
     RoleCOmponent,
     SpikeMainComponent,
     SpikeEntryComponent,
-    SellerListCommonComponent
+    SellerListCommonComponent,
+    RecruitHeaderComponent
   ],
   imports: [
     BrowserModule,
