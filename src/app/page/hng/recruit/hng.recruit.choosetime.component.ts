@@ -7,4 +7,12 @@ export class RecruitChooseTimeComponent{
   wriInfoStatus: string = 'complete';
   relativeSellerInfoStatus: string = 'complete';
   wriPublishTimeStatus: string = 'doing';
+  //格式化时间
+  _date_formate:string = 'yyyy-mm-dd';
+  //开始时间
+  receiveDate(event:any){
+
+  }
+
+
 }

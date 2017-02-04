@@ -1,2 +1,14 @@
 <!--头部进度条-->
 <recruit-header [wriInfoStatus]="wriInfoStatus" [relativeSellerInfoStatus]="relativeSellerInfoStatus" [wriPublishTimeStatus]="wriPublishTimeStatus"></recruit-header>
+
+<div class="slds-grid slds-wrap">
+    <div class="slds-size--3-of-12"></div>
+    <div class="slds-size--6-of-12">
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">开始时间</label>
+            <start-time-component (_startTime)="receiveDate($event)" [_date_format]="_date_formate"></start-time-component>
+        </div>
+
+    </div>
+    <div class="slds-size--3-of-12"></div>
+</div>

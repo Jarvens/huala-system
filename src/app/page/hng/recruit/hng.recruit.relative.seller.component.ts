@@ -8,6 +8,7 @@ export class RelativeSellerComponent implements OnInit {
   wriInfoStatus: string = 'complete';
   relativeSellerInfoStatus: string = 'doing';
   wriPublishTimeStatus: string = 'will';
+  recruitId: string = '111';
 
   ngOnInit(): void {
   }
