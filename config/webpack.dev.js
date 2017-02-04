@@ -31,7 +31,7 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
     ENV: ENV,
     HMR: HMR,
     ApiUrl: ApiUrl,
-    ImgUrl: ImgUrl
+    commonsUrl: ImgUrl
 });
 
 /**
@@ -120,7 +120,7 @@ module.exports = function (options) {
                     'NODE_ENV': JSON.stringify(METADATA.ENV),
                     'HMR': METADATA.HMR,
                     'ApiUrl': JSON.stringify(METADATA.ApiUrl),
-                    'ImgUrl:': JSON.stringify(METADATA.ImgUrl)
+                    'commonsUrl:': JSON.stringify(METADATA.commonsUrl)
                 }
             }),
             
