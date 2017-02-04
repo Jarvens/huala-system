@@ -9,7 +9,7 @@ export class BannerListComponent implements OnInit {
   bannerList: any = {};
   //分页对象
   pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10}
-  commonImgUrl = process.env.ImgUrl;
+  commonImgUrl = window['commonsUrl'];
   //搜索关键词
   searchKey: string = '';
   //是否展示提示信息
@@ -23,6 +23,8 @@ export class BannerListComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    console.log("打印图片服务器前缀...");
+    console.log(this.commonImgUrl);
     this.getBannerList(null, this.searchKey);
   }
   
