@@ -19,7 +19,8 @@
             <ngl-datatable-column heading="名称" key="name" cellClass="slds-truncate"></ngl-datatable-column>
             <ngl-datatable-column heading="操作" key="">
                 <template nglDatatableCell let-row="row">
-                    <ngl-badge type="info" (click)="sellerDetailInfo(row)"><i class="fa fa-info"></i>详情</ngl-badge>
+                    <button class="slds-button slds-button--neutral" (click)="sellerDetailInfo(row)">详情</button>
+                    <!--//<ngl-badge type="info" (click)="sellerDetailInfo(row)"><i class="fa fa-info"></i>详情</ngl-badge>-->
                 </template>
             </ngl-datatable-column>
             <!-- No rows overlay -->
