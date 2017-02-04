@@ -35,6 +35,8 @@ export class ConfigComponent implements OnInit {
   toastMessage: string = '编辑成功';
   //toast打开|关闭
   showAlert: boolean = false;
+  //显示|隐藏  *
+  required: boolean = false;
 
 
   //分页
