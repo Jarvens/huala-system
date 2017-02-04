@@ -64,8 +64,8 @@ export class RoleCOmponent implements OnInit {
   }
 
   //toast传播事件
-  notifyParamFunction() {
-    this.showAlert = !this.showAlert;
+  notifyParamFunction(event:boolean) {
+    this.showAlert = event;
   }
 
   //删除按钮
