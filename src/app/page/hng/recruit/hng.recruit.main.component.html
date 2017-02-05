@@ -1,4 +1,4 @@
-<!--头部信息-->
+<!--查询条件-->
 <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
     <div class="slds-p-horizontal--small slds-large-size--2-of-12">
         <div class="slds-form-element">
@@ -20,7 +20,7 @@
         <button class="slds-button slds-button--neutral" (click)="exportExcel()">导出Excel</button>
     </div>
 </div>
-<div class=" slds-scrollable">
+<div class="slds-scrollable">
     <table ngl-datatable [data]="hngRecruitDataList.rows" trackByKey="rank"
            class="slds-max-medium-table--stacked-horizontal">
         <ngl-datatable-column heading="id" key="id"></ngl-datatable-column>
@@ -54,10 +54,12 @@
         <ngl-datatable-column heading="申请人数" key="applyNum"></ngl-datatable-column>
         <ngl-datatable-column heading="操作" key="">
             <template nglDatatableCell let-row="row">
-                <button type="button" nglButton="neutral">详情</button>
-                <button type="button" nglButton="neutral">编辑</button>
-                <button type="button" nglButton="neutral">删除</button>
-                <button type="button" nglButton="neutral">统计</button>
+                <div class="slds-button-group" role="group">
+                    <button class="slds-button slds-button--neutral">详情</button>
+                    <button class="slds-button slds-button--neutral">编辑</button>
+                    <button class="slds-button slds-button--neutral">删除</button>
+                    <button class="slds-button slds-button--neutral">统计</button>
+                </div>
             </template>
         </ngl-datatable-column>
         <template nglNoRowsOverlay>暂无数据!</template>
