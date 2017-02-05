@@ -4,6 +4,6 @@ import {Component} from '@angular/core';
   templateUrl: './hng.recruit.main.component.html'
 })
 
-export class HngRecruitMainComponent implements OnInit {
+export class HngRecruitMainComponent {
   public selected: string = 'list';
 }
