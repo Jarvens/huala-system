@@ -27,7 +27,7 @@ export class HngRecruitMainComponent implements OnInit {
   public operaObj: any = {};
   public companyListData: Array<any> = [];
   public jobListData: Array<any> = [];
-  placeHolder:string ='搜索  店铺ID..店铺名称';
+  public placeholder:string ='搜索..店铺ID..店铺名称';
 
   constructor(private hngService: HngService) {
   }
