@@ -27,7 +27,7 @@ export class HngRecruitMainComponent implements OnInit {
   public operaObj: any = {};
   public companyListData: Array<any> = [];
   public jobListData: Array<any> = [];
-  public placeholder:string ='搜索..店铺ID..店铺名称';
+  public placeholder: string = '搜索..店铺ID..店铺名称';
 
   constructor(private hngService: HngService) {
   }
@@ -46,9 +46,11 @@ export class HngRecruitMainComponent implements OnInit {
   //分页事件
   pageChange(event) {
     this.pageOpts.page = event;
+    this.querySellerDataByBtn();
   }
 
   querySellerDataByBtn() {
+    console.log(this.conditions);
     this.hngService.getRecruitData(this.pageOpts, this.conditions).subscribe(res=> {
       this.hngRecruitDataList = res.json();
     });
