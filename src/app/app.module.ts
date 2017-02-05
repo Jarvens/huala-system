@@ -65,6 +65,8 @@ import {HngCompanyListComponent} from './page/hng/company/hng.companyList.compon
 import {HngcompanyInfoComponent} from './page/hng/company/hng.companyInfo.component';
 import {RelativeSellerComponent} from './page/hng/recruit/hng.recruit.relative.seller.component';
 import {RecruitChooseTimeComponent} from './page/hng/recruit/hng.recruit.choosetime.component';
+import {HngRecruitListComponent} from './page/hng/recruit/hng.recruit.list.component';
+import {HngRecruitStaticsComponent} from './page/hng/recruit/hng.recruit.statics.component';
 /**
  *
  * 公用组件
@@ -183,7 +185,9 @@ import {RoleService} from './service/role.service';
     SellerListCommonComponent,
     RecruitHeaderComponent,
     RelativeSellerComponent,
-    RecruitChooseTimeComponent
+    RecruitChooseTimeComponent,
+    HngRecruitListComponent,
+    HngRecruitStaticsComponent
   ],
   imports: [
     BrowserModule,
