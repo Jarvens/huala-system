@@ -1,23 +1,72 @@
+<!--搜索头-->
+<div class=" slds-align--absolute-center slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <div class="slds-size--4-of-12 ">
+        <search-component [showIcon]="false" [debounce]="2000" [placeHolder]="placeholder"
+                          (searchKey)="searchByCondition($event)"></search-component>
+    </div>
+</div>
 <!--查询条件-->
 <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
-    <div class="slds-p-horizontal--small slds-large-size--2-of-12">
-        <div class="slds-form-element">
-            <div class="slds-form-element__control">
-                <a [routerLink]="['../hng-recruit-basic']">发布招聘信息</a>
+    <div class="slds-grid slds-wrap">
+        <div class="slds-p-horizontal--small slds-large-size--2-of-12">
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <a [routerLink]="['../hng-recruit-basic']">发布招聘信息</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="slds-p-horizontal--small slds-large-size-2-of-12">
-        占位符
-    </div>
-    <div class="slds-p-horizontal--small slds-large-size-2-of-12">
-        占位符
-    </div>
-    <div class="slds-p-horizontal--small slds-large-size-2-of-12">
-        <button class="slds-button slds-button--neutral" (click)="querySellerDataByBtn()">查询</button>
-    </div>
-    <div class="slds-p-horizontal--small slds-large-size-2-of-12">
-        <button class="slds-button slds-button--neutral" (click)="exportExcel()">导出Excel</button>
+        <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <div class="slds-select_container">
+                        <select class="slds-select">
+                            <option>-状态-</option>
+                            <option>Option Two</option>
+                            <option>Option Three</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+            <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                    <select class="slds-select">
+                        <option>-公司-</option>
+                        <option>Option Two</option>
+                        <option>Option Three</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+            <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                    <select class="slds-select">
+                        <option>-岗位-</option>
+                        <option>Option Two</option>
+                        <option>Option Three</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+            <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                    <select class="slds-select">
+                        <option>-范围-</option>
+                        <option>Option Two</option>
+                        <option>Option Three</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="slds-p-horizontal--small slds-large-size-3-of-12">
+            <button class="slds-button slds-button--neutral" (click)="querySellerDataByBtn()">查询</button>
+        </div>
+        <div class="slds-p-horizontal--small slds-large-size-3-of-12">
+            <button class="slds-button slds-button--neutral" (click)="exportExcel()">导出Excel</button>
+        </div>
     </div>
 </div>
 <div class="slds-scrollable">
@@ -30,7 +79,6 @@
             </template>
         </ngl-datatable-column>
         <ngl-datatable-column heading="薪资(元)" key="salary"></ngl-datatable-column>
-        <!--<ngl-datatable-column heading="招聘编码" key="recruitCode"></ngl-datatable-column>-->
         <ngl-datatable-column heading="状态" key="status">
             <template nglDatatableCell let-value>
                 <span class="text-success" *ngIf="value=='0'">正常</span>
