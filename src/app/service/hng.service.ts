@@ -75,4 +75,13 @@ export class HngService {
       sellerScope: conditions.sellerScope
     });
   }
+
+  //查询岗位 all
+  getAllJob(){
+    return this.http.get("/recruit/all-job");
+  }
+  //查询公司 all
+  getAllCompany(){
+    return this.http.get("/recruit/all-company");
+  }
 }

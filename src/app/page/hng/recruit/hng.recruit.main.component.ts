@@ -25,12 +25,21 @@ export class HngRecruitMainComponent implements OnInit {
   public showAlert: boolean = false;
   //操作对象
   public operaObj: any = {};
+  public companyListData: Array<any> = [];
+  public jobListData: Array<any> = [];
 
   constructor(private hngService: HngService) {
   }
 
   ngOnInit(): void {
     this.querySellerDataByBtn();
+    this.hngService.getAllCompany().subscribe(res=> {
+      this.companyListData = res.json().body;
+    });
+
+    this.hngService.getAllJob().subscribe(res=> {
+      this.jobListData = res.json().body;
+    });
   }
 
   //分页事件
