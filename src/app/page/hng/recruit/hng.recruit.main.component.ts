@@ -8,12 +8,23 @@ import {HngService} from '../../../service/hng.service';
 export class HngRecruitMainComponent implements OnInit {
 
   //招聘信息列表对象
-  hngRecruitDataList: any = {};
-
+  public hngRecruitDataList: any = {};
   //分页对象
-  pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
+  public pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
   //查询条件对象
-  conditions: any = {};
+  public conditions: any = {};
+  //prompt提示信息
+  public promptMessage: string = '您却定要删除吗?';
+  //打开|关闭 prompt
+  public notificationOpen: boolean = false;
+  //toast类型
+  public toastType: string = 'success';
+  //toast提示消息
+  public toastMessage: string = '';
+  //toast 打开|关闭
+  public showAlert: boolean = false;
+  //操作对象
+  public operaObj: any = {};
 
   constructor(private hngService: HngService) {
   }
@@ -33,7 +44,36 @@ export class HngRecruitMainComponent implements OnInit {
     });
   }
 
+  //prompt取消事件
+  cancelPrompt() {
+    this.notificationOpen = !this.notificationOpen;
+  }
+
+  //prompt确定事件
+  confirm() {
+    this.notificationOpen = !this.notificationOpen;
+    this.showAlert = !this.showAlert;
+    this.toastMessage = '删除成功';
+  }
+
+  //Toast传播事件
+  notifyParamFunction(event: boolean) {
+    this.notificationOpen = event;
+  }
+
+  //导出Excel
   exportExcel() {
+
+  }
+
+  //删除事件
+  delClick(data: any) {
+    this.operaObj = data;
+    this.notificationOpen = !this.notificationOpen;
+  }
+
+  //删除数据操作
+  confirmDel() {
 
   }
 

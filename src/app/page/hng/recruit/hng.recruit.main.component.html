@@ -7,7 +7,7 @@
 </div>
 <!--查询条件-->
 <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
-    <div class="slds-grid slds-wrap">
+    <div class="slds-grid slds-size--1-of-1 slds-wrap">
         <div class="slds-p-horizontal--small slds-large-size--2-of-12">
             <div class="slds-form-element">
                 <div class="slds-form-element__control">
@@ -105,7 +105,7 @@
                 <div class="slds-button-group" role="group">
                     <button class="slds-button slds-button--neutral">详情</button>
                     <button class="slds-button slds-button--neutral">编辑</button>
-                    <button class="slds-button slds-button--neutral">删除</button>
+                    <button class="slds-button slds-button--neutral" (click)="delClick(row)">删除</button>
                     <button class="slds-button slds-button--neutral">统计</button>
                 </div>
             </template>
@@ -120,3 +120,10 @@
                     boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
                     nextText="下一页"></ngl-pagination>
 </div>
+
+<!--prompt-->
+<confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancelPrompt()"
+                          (confirmFunction)="confirm()"></confirm-prompt-component>
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>
