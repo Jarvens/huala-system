@@ -1,4 +1,5 @@
-<recruit-header [wriInfoStatus]="wriInfoStatus" [relativeSellerInfoStatus]="relativeSellerInfoStatus" [wriPublishTimeStatus]="wriPublishTimeStatus"></recruit-header>
+<recruit-header [wriInfoStatus]="wriInfoStatus" [relativeSellerInfoStatus]="relativeSellerInfoStatus"
+                [wriPublishTimeStatus]="wriPublishTimeStatus"></recruit-header>
 <div class="slds-grid slds-wrap">
     <div class="slds-size--3-of-12"></div>
     <div class="slds-size--6-of-12 ">
@@ -25,33 +26,39 @@
             </select>
         </ngl-form-element>
         <ngl-form-element label="计划招聘人数" class="slds-m-top--small">
-            <input nglFormControl type="text"  [required]="required">
+            <input nglFormControl type="text" [required]="required" [(ngModel)]="operaObj.planNum">
         </ngl-form-element>
-        <ngl-form-element label="联系人"  class="slds-m-top--small">
-            <input nglFormControl type="text"  [required]="required">
+        <ngl-form-element label="联系人" class="slds-m-top--small">
+            <input nglFormControl type="text" [required]="required" [(ngModel)]="operaObj.contacts">
         </ngl-form-element>
-        <ngl-form-element label="联系电话"  class="slds-m-top--small">
-            <input nglFormControl type="text"  [required]="required">
+        <ngl-form-element label="联系电话" class="slds-m-top--small">
+            <input nglFormControl type="text" [required]="required" [(ngModel)]="operaObj.contactsPhone">
         </ngl-form-element>
-        <ngl-form-element label="工作地点"  class="slds-m-top--small">
-            <input nglFormControl type="text"  [required]="required">
+        <ngl-form-element label="工作地点" class="slds-m-top--small">
+            <input nglFormControl type="text" [required]="required" [(ngModel)]="operaObj.jobAddress">
         </ngl-form-element>
         <ngl-form-element class="slds-m-top--small">
             <template nglFormLabel>岗位描述</template>
-            <textarea nglFormControl  [required]="required"></textarea>
+            <textarea nglFormControl [required]="required" [(ngModel)]="operaObj.jobDescription"></textarea>
         </ngl-form-element>
-        <ngl-form-element  class="slds-m-top--small">
+        <ngl-form-element class="slds-m-top--small">
             <template nglFormLabel>岗位职责</template>
-            <textarea nglFormControl  [required]="required"></textarea>
+            <textarea nglFormControl [required]="required" [(ngModel)]="operaObj.jobDuty"></textarea>
         </ngl-form-element>
-        <ngl-form-element  class="slds-m-top--small">
+        <ngl-form-element class="slds-m-top--small">
             <template nglFormLabel>任职要求</template>
-            <textarea nglFormControl [required]="required"></textarea>
+            <textarea nglFormControl [required]="required" [(ngModel)]="operaObj.jobSkill"></textarea>
         </ngl-form-element>
         <div class="slds-size--1-of-1 slds-align--absolute-center">
-            <button class="slds-button slds-button--neutral" (click)="previousStep()">上一步</button>
-            <a class="slds-button slds-button--brand" [routerLink]="['../../recruit-seller/',recruitId]">下一步</a>
+            <a class="slds-button slds-button--neutral" routerLink="../../hng/hng-recruit/">招聘列表</a>
+            <button *ngIf="recruitId==''" class="slds-button slds-button--neutral" (click)="saveData()">保存</button>
+            <a *ngIf="recruitId!=''" class="slds-button slds-button--brand"
+               [routerLink]="['../../recruit-seller/',recruitId]">下一步</a>
         </div>
     </div>
     <div class="slds-size--3-of-12"></div>
 </div>
+
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>

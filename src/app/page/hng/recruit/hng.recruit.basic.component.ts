@@ -12,13 +12,19 @@ export class HngRecruitBasicComponent implements OnInit {
   //显示|隐藏  *
   public required: boolean = true;
   //招聘模板id
-  public recruitId: string = '111';
+  public recruitId: string = '';
   //公司
   public companyListData: Array<any> = [];
   //岗位
   public jobListData: Array<any> = [];
   //操作对象
   public operaObj: any = {};
+  //toast类型
+  public toastType: string = 'success';
+  //toast消息
+  public toastMessage: string = '';
+  //打开|关闭 toast
+  public showAlert: boolean = false;
 
   ngOnInit(): void {
     this.hngService.getAllJob().subscribe(res=> {
@@ -32,14 +38,15 @@ export class HngRecruitBasicComponent implements OnInit {
   constructor(private hngService: HngService) {
   }
 
-  //保存数据以及跳转到下一步
-  nextStep() {
-
+  //保存数据
+  saveData() {
+    console.log(this.operaObj);
   }
 
-  //上一步
-  previousStep() {
-
+  //toast传播事件
+  notifyParamFunction(event: boolean) {
+    this.showAlert = event;
   }
+
 
 }
