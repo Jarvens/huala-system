@@ -1,37 +1,43 @@
-<div class="slds-grid slds-wrap">
-    <div class="slds-size--3-of-12">
-        <!--头部信息-->
-        <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
-            <search-component [showIcon]="openConditionIcon" [debounce]="debounce" [placeHolder]="placeholder"
-                              (searchKey)="searchByCondition($event)"></search-component>
-        </div>
-        <table ngl-datatable [data]="sellerList.rows" trackByKey="rank"
-                (onRowClick)="onRowClick($event)"
-               class="slds-max-medium-table--stacked-horizontal">
-            <ngl-datatable-column heading="选择" key="">
-                <template nglDatatableCell let-value>
-                    <ngl-form-checkbox style="display: inline-block;">
-                        <input nglFormControl type="checkbox"/>
-                    </ngl-form-checkbox>
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="ID" key="id" sortable></ngl-datatable-column>
-            <ngl-datatable-column heading="名称" key="name" cellClass="slds-truncate"></ngl-datatable-column>
-            <ngl-datatable-column heading="操作" key="">
-                <template nglDatatableCell let-row="row">
-                    <button class="slds-button slds-button--neutral" (click)="sellerDetailInfo(row)">详情</button>
-                    <!--//<ngl-badge type="info" (click)="sellerDetailInfo(row)"><i class="fa fa-info"></i>详情</ngl-badge>-->
-                </template>
-            </ngl-datatable-column>
-            <!-- No rows overlay -->
-            <template nglNoRowsOverlay>暂无数据!</template>
-        </table>
-        <!--底部分页-->
-        <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
-            <ngl-pagination [(page)]="pageOpts.page" [total]="sellerList.total" [perPage]="sellerList.size"
-                            [limit]="pageOpts.limit"
-                            boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
-                            nextText="下一页"></ngl-pagination>
-        </div>
+<!--头部信息-->
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <div class="slds-size--4-of-12" style="background: #fff">
+        <search-component [showIcon]="openConditionIcon" [debounce]="debounce" [placeHolder]="placeholder"
+                          (searchKey)="searchByCondition($event)"></search-component>
     </div>
+</div>
+<table ngl-datatable [data]="sellerList.rows" trackByKey="rank"
+       (onRowClick)="onRowClick($event)"
+       class="slds-max-medium-table--stacked-horizontal">
+    <ngl-datatable-column heading="选择" key="">
+        <template nglDatatableCell let-value>
+            <ngl-form-checkbox style="display: inline-block;">
+                <input nglFormControl type="checkbox"/>
+            </ngl-form-checkbox>
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="ID" key="id" sortable></ngl-datatable-column>
+    <ngl-datatable-column heading="名称" key="name" cellClass="slds-truncate"></ngl-datatable-column>
+    <ngl-datatable-column heading="地址" key="address" cellClass="slds-truncate"></ngl-datatable-column>
+    <ngl-datatable-column heading="店铺状态" key="isDelete" cellClass="slds-truncate">
+        <template nglDatatableCell let-value>
+            <span *ngIf="value=='0'" class="text-success">正常</span>
+            <span *ngIf="value=='1'" class="text-danger">删除</span>
+            <span *ngIf="value=='2'" class="text-info">审核中</span>
+            <span *ngIf="value=='3'" class="text-danger">审核失败</span>
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="店铺类型" key="sellerType" cellClass="slds-truncate">
+        <template nglDatatableCell let-row="row"><b>{{row.sellerType=='1'|threeElementExpression:'烟店;超市'}}</b>
+        </template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="电话" key="phone"></ngl-datatable-column>
+    <!-- No rows overlay -->
+    <template nglNoRowsOverlay>暂无数据!</template>
+</table>
+<!--底部分页-->
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <ngl-pagination [(page)]="pageOpts.page" [total]="sellerList.total" [perPage]="sellerList.size"
+                    [limit]="pageOpts.limit"
+                    boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                    nextText="下一页"></ngl-pagination>
 </div>

@@ -50,7 +50,8 @@ export class SellerListCommonComponent implements OnInit {
 
   //分页事件
   pageChange(event: any) {
-
+    this.pageOpts.page = event;
+    this.querySellerList(this.searchKey, this.pageOpts, this.keyType);
   }
 
 }
