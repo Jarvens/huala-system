@@ -40,7 +40,19 @@ export class HngRecruitBasicComponent implements OnInit {
 
   //保存数据
   saveData() {
-    console.log(this.operaObj);
+    this.hngService.saveRecruitBasicData(this.operaObj).subscribe(res=> {
+      let ret = res.json();
+      if (ret.success) {
+        this.toastType = 'success';
+        this.showAlert = !this.showAlert;
+        this.toastMessage = ret.message;
+        this.recruitId = ret.body;
+      } else {
+        this.showAlert = !this.showAlert;
+        this.toastMessage = ret.message;
+        this.toastType = 'error';
+      }
+    });
   }
 
   //toast传播事件

@@ -84,4 +84,9 @@ export class HngService {
   getAllCompany(){
     return this.http.get("/recruit/all-company");
   }
+
+  //保存招聘基本信息
+  saveRecruitBasicData(data:any){
+    return this.http.post("/recruit/save-recruit",data);
+  }
 }
