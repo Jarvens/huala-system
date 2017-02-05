@@ -1,68 +1,72 @@
-<article class="slds-card">
-    <div class="slds-card__header slds-grid">
-        <header class="slds-media slds-media--center slds-has-flexi-truncate">
-            <div class="slds-p-horizontal--small slds-large-size--2-of-12">
-                <div class="slds-form-element">
-                    <div class="slds-form-element__control">
-                        <a [routerLink]="['../hng-recruit-basic']">发布招聘信息</a>
-                    </div>
-                </div>
+<!--头部信息-->
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <div class="slds-p-horizontal--small slds-large-size--2-of-12">
+        <div class="slds-form-element">
+            <div class="slds-form-element__control">
+                <a [routerLink]="['../hng-recruit-basic']">发布招聘信息</a>
             </div>
-            <div class="slds-p-horizontal--small slds-large-size-2-of-12">
-                占位符
-            </div>
-            <div class="slds-p-horizontal--small slds-large-size-2-of-12">
-                占位符
-            </div>
-            <div class="slds-p-horizontal--small slds-large-size-2-of-12">
-                <button class="slds-button slds-button--neutral" (click)="querySellerDataByBtn()">查询</button>
-            </div>
-            <div class="slds-p-horizontal--small slds-large-size-2-of-12">
-                <button class="slds-button slds-button--neutral" (click)="exportExcel()">导出Excel</button>
-            </div>
-        </header>
+        </div>
     </div>
-    <div class="slds-card__body slds-scrollable">
-        <table ngl-datatable [data]="hngRecruitDataList.rows" trackByKey="rank"
-               class="slds-max-medium-table--stacked-horizontal">
-            <ngl-datatable-column heading="id" key="sellerId"></ngl-datatable-column>
-            <ngl-datatable-column heading="招聘编码" key="sellerName">
-                <template nglDatatableCell let-value>
-                    <ngl-badge type="info">
-                        {{value}}
-                    </ngl-badge>
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="状态" key="clerk"></ngl-datatable-column>
-            <ngl-datatable-column heading="更新时间" key="phone"></ngl-datatable-column>
-            <ngl-datatable-column heading="公司" key="city"></ngl-datatable-column>
-            <ngl-datatable-column heading="岗位" key="area"></ngl-datatable-column>
-            <ngl-datatable-column heading="薪资(元)" key="address"></ngl-datatable-column>
-            <ngl-datatable-column heading="发布商家" key="onlineDate">
-                <template nglDatatableCell let-value>
-                    {{value|date:'yyyy-MM-dd HH:mm'}}
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="招聘开始时间" key="billingDate">
-                <template nglDatatableCell let-value>
-                    {{value|date:'yyyy-MM-dd HH:mm'}}
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="招聘结束时间" key="lastOrderDate">
-                <template nglDatatableCell let-value>
-                    {{value|date:'yyyy-MM-dd HH:mm'}}
-                </template>
-            </ngl-datatable-column>
-            <ngl-datatable-column heading="状态" key="firstOrderDate"></ngl-datatable-column>
-            <ngl-datatable-column heading="申请人数" key="totalOrderCount"></ngl-datatable-column>
-            <ngl-datatable-column heading="操作" key="saleAmount"></ngl-datatable-column>
-            <template nglNoRowsOverlay>暂无数据!</template>
-        </table>
+    <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+        占位符
     </div>
-    <div class="slds-card__footer">
-        <ngl-pagination [(page)]="pageOpts.page" [total]="hngRecruitDataList.total" [perPage]="hngRecruitDataList.size"
-                        [limit]="pageOpts.limit"
-                        boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
-                        nextText="下一页"></ngl-pagination>
+    <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+        占位符
     </div>
-</article>
+    <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+        <button class="slds-button slds-button--neutral" (click)="querySellerDataByBtn()">查询</button>
+    </div>
+    <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+        <button class="slds-button slds-button--neutral" (click)="exportExcel()">导出Excel</button>
+    </div>
+</div>
+<div class=" slds-scrollable">
+    <table ngl-datatable [data]="hngRecruitDataList.rows" trackByKey="rank"
+           class="slds-max-medium-table--stacked-horizontal">
+        <ngl-datatable-column heading="id" key="id"></ngl-datatable-column>
+        <ngl-datatable-column heading="岗位" key="jobName">
+            <template nglDatatableCell let-value>
+                <ngl-badge type="info">{{value}}</ngl-badge>
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="薪资(元)" key="salary"></ngl-datatable-column>
+        <!--<ngl-datatable-column heading="招聘编码" key="recruitCode"></ngl-datatable-column>-->
+        <ngl-datatable-column heading="状态" key="status">
+            <template nglDatatableCell let-value>
+                <span class="text-success" *ngIf="value=='0'">正常</span>
+                <span class="text-danger" *ngIf="value=='1'">已删除</span>
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="更新时间" key="updateTime"></ngl-datatable-column>
+        <ngl-datatable-column heading="公司" key="companyName"></ngl-datatable-column>
+        <ngl-datatable-column heading="发布商家" key="sellerScope"></ngl-datatable-column>
+        <ngl-datatable-column heading="招聘开始时间" key="startTime">
+            <template nglDatatableCell let-value>
+                {{value|date:'yyyy-MM-dd HH:mm'}}
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="招聘结束时间" key="endTime">
+            <template nglDatatableCell let-value>
+                {{value|date:'yyyy-MM-dd HH:mm'}}
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="状态" key="statusName"></ngl-datatable-column>
+        <ngl-datatable-column heading="申请人数" key="applyNum"></ngl-datatable-column>
+        <ngl-datatable-column heading="操作" key="">
+            <template nglDatatableCell let-row="row">
+                <button type="button" nglButton="neutral">详情</button>
+                <button type="button" nglButton="neutral">编辑</button>
+                <button type="button" nglButton="neutral">删除</button>
+                <button type="button" nglButton="neutral">统计</button>
+            </template>
+        </ngl-datatable-column>
+        <template nglNoRowsOverlay>暂无数据!</template>
+    </table>
+</div>
+<!--底部分页-->
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <ngl-pagination [(page)]="pageOpts.page" [total]="hngRecruitDataList.total" [perPage]="hngRecruitDataList.size"
+                    [limit]="pageOpts.limit"
+                    boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                    nextText="下一页"></ngl-pagination>
+</div>
