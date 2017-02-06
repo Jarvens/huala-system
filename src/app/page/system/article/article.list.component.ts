@@ -35,7 +35,7 @@ export class ArticleListComponent implements OnInit {
   //toast 打开|关闭
   public showAlert: boolean = false;
   //显示 隐藏  *
-  public required:boolean =true;
+  public required: boolean = true;
 
   constructor(private articleService: ArticleService) {
   }
@@ -122,5 +122,13 @@ export class ArticleListComponent implements OnInit {
     this.notificationOpen = !this.notificationOpen;
   }
 
+
+  //保存目录
+  saveCategory() {
+    this.categoryOpened = !this.categoryOpened;
+    this.showAlert = !this.showAlert;
+    this.toastType = 'success';
+    this.toastMessage = '保存成功';
+  }
 
 }
