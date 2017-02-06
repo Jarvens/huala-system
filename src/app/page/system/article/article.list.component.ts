@@ -52,7 +52,7 @@ export class ArticleListComponent implements OnInit {
 
   //目录点击事件
   getCategoryId(data: any) {
-    this.currentCateGoryId = data;
+    this.currentCateGoryId = data.data.id;
     this.getArticleList(this.currentCateGoryId, this.pageOpts, this.key);
   }
 
