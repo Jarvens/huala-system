@@ -1,4 +1,3 @@
-
 <!--搜索头-->
 <div class=" slds-align--absolute-center slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
     <div class="slds-size--4-of-12 ">
@@ -103,7 +102,7 @@
         <ngl-datatable-column heading="操作" key="">
             <template nglDatatableCell let-row="row">
                 <div class="slds-button-group" role="group">
-                    <button class="slds-button slds-button--neutral">详情</button>
+                    <button class="slds-button slds-button--neutral" (click)="detail(row)">详情</button>
                     <button class="slds-button slds-button--neutral">编辑</button>
                     <button class="slds-button slds-button--neutral" (click)="delClick(row)">删除</button>
                     <button class="slds-button slds-button--neutral">统计</button>
@@ -127,3 +126,102 @@
 <!--Toast-->
 <toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
                  [showAlert]="showAlert"></toast-component>
+
+<!--详情模态-->
+<ngl-modal header="招聘详情" [(open)]="recruitOpened">
+    <div body>
+        <div class="slds-panel slds-grid slds-grid--vertical slds-nowrap">
+            <div class="slds-form--stacked slds-grow slds-scrollable--y">
+                <div class="slds-panel__section">
+                    <h3 class="slds-text-heading--small slds-m-bottom--medium text-danger">招聘状态:{{operaObj.statusName}}</h3>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-size--5-of-12">
+                            <span class="slds-form-element__label">招聘开始时间</span>
+                            <div class="slds-form-element__control">
+                                <span class="slds-form-element__static text-warning">{{operaObj.startTime}}</span>
+                            </div>
+                        </div>
+                        <div class="slds-size--2-of-12"></div>
+                        <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-size--5-of-12">
+                            <span class="slds-form-element__label">招聘结束时间</span>
+                            <div class="slds-form-element__control">
+                                <span class="slds-form-element__static text-warning">{{operaObj.endTime}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-size--5-of-12">
+                            <span class="slds-form-element__label">公司名称</span>
+                            <div class="slds-form-element__control">
+                                <span class="slds-form-element__static">{{operaObj.companyName}}</span>
+                            </div>
+                        </div>
+                        <div class="slds-size--2-of-12"></div>
+                        <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-size--5-of-12">
+                            <span class="slds-form-element__label">岗位</span>
+                            <div class="slds-form-element__control">
+                                <span class="slds-form-element__static">{{operaObj.jobName}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-size--5-of-12">
+                            <span class="slds-form-element__label">薪资</span>
+                            <div class="slds-form-element__control">
+                                <span class="slds-form-element__static">{{operaObj.salary}}/月</span>
+                            </div>
+                        </div>
+                        <div class="slds-size--2-of-12"></div>
+                        <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-size--5-of-12">
+                            <span class="slds-form-element__label">计划招聘人数</span>
+                            <div class="slds-form-element__control">
+                                <span class="slds-form-element__static">{{operaObj.planNum}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-size--5-of-12">
+                            <span class="slds-form-element__label">联系人</span>
+                            <div class="slds-form-element__control">
+                                <span class="slds-form-element__static text-info">{{operaObj.contacts}}</span>
+                            </div>
+                        </div>
+                        <div class="slds-size--2-of-12"></div>
+                        <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-size--5-of-12">
+                            <span class="slds-form-element__label">联系电话</span>
+                            <div class="slds-form-element__control">
+                                <span class="slds-form-element__static text-info">{{operaObj.contactsPhone}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <span class="slds-form-element__label">岗位描述</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static text-success">{{operaObj.jobDescription}}</span>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <span class="slds-form-element__label">岗位职责</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static text-success">{{operaObj.jobDuty}}</span>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <span class="slds-form-element__label">任职要求</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static text-success">{{operaObj.jobSkill}}</span>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <span class="slds-form-element__label">发布关联商家</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static slds-text-longform">
+                                <ngl-badge *ngFor="let s of operaObj.hSellers">{{s.name}}</ngl-badge>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ngl-modal>

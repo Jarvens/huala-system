@@ -28,6 +28,8 @@ export class HngRecruitListComponent implements OnInit {
   public companyListData: Array<any> = [];
   public jobListData: Array<any> = [];
   public placeholder: string = '搜索..店铺ID..店铺名称';
+  //详情模态 打开|关闭
+  public recruitOpened: boolean = false;
 
   constructor(private hngService: HngService) {
   }
@@ -93,6 +95,12 @@ export class HngRecruitListComponent implements OnInit {
   searchByCondition(data: string) {
     this.conditions.key = data;
     this.querySellerDataByBtn();
+  }
+
+  //查看详情
+  detail(data: any) {
+    this.recruitOpened = !this.recruitOpened;
+    this.operaObj = data;
   }
 
 
