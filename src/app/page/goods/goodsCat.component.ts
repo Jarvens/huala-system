@@ -27,8 +27,6 @@ export class GoodsCatComponent implements OnInit {
   ngOnInit() {
     this.getCatsById("0").subscribe(res => {
       this.catNodes = res.json().body;
-      console.log("执行了");
-      console.log(res.json().body);
     })
   }
 

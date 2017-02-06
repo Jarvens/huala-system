@@ -1,8 +1,64 @@
 <div class="slds-grid slds-wrap">
     <div class="slds-size--3-of-12">
-        这里是文章菜单
+        <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+            <button type="button" nglButton="neutral" (click)="createCategory()">创建目录</button>
+        </div>
+        <Tree [nodes]="cateGoryArray" [options]="treeOptions">
+            <template #treeNodeTemplate let-node>
+                <span title="{{node.data.subTitle}}" (click)="getCategoryId(node)">{{ node.data.name }}</span>
+            </template>
+            <template #loadingTemplate>加载中</template>
+        </Tree>
     </div>
-    <div class="slds-size--9-of-12">
-        这里是文章预览
+    <div class="slds-size--1-of-12"></div>
+    <div class="slds-size--8-of-12">
+        <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+            <div class="slds-size--6-of-12">
+                <search-component [showIcon]="false" [debounce]="2000"
+                                  [placeHolder]="placeholder"
+                                  (searchKey)="searchByCondition($event)"></search-component>
+            </div>
+            <div class="slds-size--1-of-12"></div>
+            <div class="slds-size--2-of-12">
+                <button type="button" nglButton="neutral" (click)="createCategory()">创建文章</button>
+            </div>
+        </div>
+        <div class="slds-scrollable">
+            <table ngl-datatable [data]="articleListData.rows" trackByKey="rank"
+                   class="slds-max-medium-table--stacked-horizontal">
+                <ngl-datatable-column heading="文章标题" key="id"></ngl-datatable-column>
+                <ngl-datatable-column heading="文章关键词" key="jobName">
+                    <template nglDatatableCell let-value>
+                        <ngl-badge type="info">{{value}}</ngl-badge>
+                    </template>
+                </ngl-datatable-column>
+                <ngl-datatable-column heading="点击次数" key="salary"></ngl-datatable-column>
+                <ngl-datatable-column heading="创建人" key="status">
+                    <template nglDatatableCell let-value>
+                        <span class="text-success" *ngIf="value=='0'">正常</span>
+                        <span class="text-danger" *ngIf="value=='1'">已删除</span>
+                    </template>
+                </ngl-datatable-column>
+                <ngl-datatable-column heading="创建时间" key="updateTime"></ngl-datatable-column>
+                <ngl-datatable-column heading="操作" key="">
+                    <template nglDatatableCell let-row="row">
+                        <div class="slds-button-group" role="group">
+                            <button class="slds-button slds-button--neutral" (click)="detail(row)">详情</button>
+                            <a class="slds-button slds-button--neutral" [routerLink]="['../hng-recruit-basic/',row.id]">编辑</a>
+                            <button class="slds-button slds-button--neutral" (click)="delClick(row)">删除</button>
+                            <button class="slds-button slds-button--neutral">统计</button>
+                        </div>
+                    </template>
+                </ngl-datatable-column>
+                <template nglNoRowsOverlay>暂无数据!</template>
+            </table>
+            <!--分页-->
+            <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+                <ngl-pagination [(page)]="pageOpts.page" [total]="articleListData.total" [perPage]="articleListData.size"
+                                [limit]="pageOpts.limit"
+                                boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                                nextText="下一页"></ngl-pagination>
+            </div>
+        </div>
     </div>
 </div>

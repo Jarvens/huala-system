@@ -50,7 +50,7 @@
             <textarea nglFormControl [required]="required" [(ngModel)]="operaObj.jobSkill"></textarea>
         </ngl-form-element>
         <div class="slds-size--1-of-1 slds-align--absolute-center">
-            <a class="slds-button slds-button--neutral" routerLink="../../hng/hng-recruit/">招聘列表</a>
+            <a class="slds-button slds-button--neutral" routerLink="../../hng-recruit/">招聘列表</a>
             <button *ngIf="recruitId==0" class="slds-button slds-button--brand" (click)="saveData()">保存</button>
             <a *ngIf="recruitId!=0" class="slds-button slds-button--brand"
                [routerLink]="['../../recruit-seller/',recruitId]">下一步</a>
