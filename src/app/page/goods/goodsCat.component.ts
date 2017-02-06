@@ -14,7 +14,7 @@ import "rxjs/add/operator/toPromise";
 export class GoodsCatComponent implements OnInit {
   @Output() public catSelected = new EventEmitter<any>(); //将当前所选的类目节点(TreeNode)传播到父组件;
   public catNodes: Array<any> = []; //类目节点数组;
-  showDetail: boolean;
+  public showDetail: boolean;
   public options = {
     getChildren: (node: TreeNode) => {
       return this.getCatsById(node.data.id).map(res => {
@@ -22,16 +22,17 @@ export class GoodsCatComponent implements OnInit {
       }).toPromise();
     }
   };
-  //选项对象;
 
+  //选项对象;
   ngOnInit() {
     this.getCatsById("0").subscribe(res => {
       this.catNodes = res.json().body;
+      console.log("执行了");
+      console.log(res.json().body);
     })
   }
 
-  constructor(public http: MyHttp) {
-  }
+  constructor(public http: MyHttp) {}
 
   /*
    * @description: Get children categories by parents cat id;

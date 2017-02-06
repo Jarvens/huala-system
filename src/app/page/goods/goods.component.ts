@@ -7,8 +7,7 @@ import {Component} from '@angular/core';
 })
 
 export class GoodsComponent {
-    public selectedTab: string = "goodsList";
-    showDetail: boolean;
-    cat: any = {};
-    
+  public selectedTab: string = "goodsList";
+  public showDetail: boolean;
+  public cat: any;
 }

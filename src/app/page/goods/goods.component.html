@@ -15,19 +15,19 @@
         </header>
       </div>
       <div class="slds-card__body">
-        <ngl-tabs [(selected)]="selectedTab" [hidden]="!cat">
+        <ngl-tabs [(selected)]="selectedTab" *ngIf="cat">
           <template ngl-tab heading="商品列表" nglTabId="goodsList">
             <goods-list [cat]="cat"></goods-list>
           </template>
           <template ngl-tab heading="新增商品" nglTabId="addGoods">
-            <goods-info [cat]="cat"></goods-info>
+            <goods-add [cat]="cat"></goods-add>
           </template>
           <template nglNoRowsOverlay>
             <h3 class="slds-text-heading--medium slds-text-color--error">暂无商品!</h3>
           </template>
         </ngl-tabs>
         <div class="slds-card__body--inner slds-grid slds-wrap slds-grid--pull-padded">
-          <h3 class="slds-text-heading--medium slds-text-color--error" [hidden]="cat"><i class="fa fa-warning"></i>请先选择相关类目!</h3>
+          <h3 class="slds-text-heading--medium slds-text-color--error" *ngIf="!cat"><i class="fa fa-warning"></i>请先选择相关类目!</h3>
         </div>
       </div>
     </article>

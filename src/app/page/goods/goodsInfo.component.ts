@@ -1,5 +1,4 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { GoodsService } from "../../service/goods.service";
+import { Component, Input, Output, EventEmitter, OnChanges } from "@angular/core";
 
 @Component({
   moduleId: "goodsInfo",
@@ -7,11 +6,14 @@ import { GoodsService } from "../../service/goods.service";
   templateUrl: "goodsInfo.component.html"
 })
 
-export class GoodsInfoComponent {
+export class GoodsInfoComponent implements OnChanges{
   @Input() public cat:any; //外部传入的类目;
+  @Input() public goodsInfoIpt:any; //编辑时的商品信息;
   @Output() public selectTab = new EventEmitter<string>();
+  @Output() public goodsInfoOut = new EventEmitter<any>();
   public goodsInfo:any = {
     cid: "",
+    cName: "",
     title: "",
     goodsSn: "",
     recPrice: "",
@@ -31,51 +33,21 @@ export class GoodsInfoComponent {
     ]
   };
 
-  constructor(public goodsService: GoodsService){}
-
-  /*
-   * @Description: Check the form data;
-   * @Date: 2017-01-10;
-   */
-  public checkGoodsInfo(goods):boolean {
-    let goodsInfo = goods;
-
-    if(!goodsInfo.title){
-      return false;
-    } else if(!goodsInfo.goodsSn){
-      return false;
-    } else if(!goodsInfo.recPrice || isNaN(goodsInfo.recPrice)){
-      return false;
-    } else if(!goodsInfo.salePrice || isNaN(goodsInfo.salePrice)){
-      return false;
-    }
-
-    return true;
-  }
-
-  /*
-   * @Description: Add new goods;
-   * @Date: 2017-01-10;
-   */
-  public addGoods():void {
-    console.log("add");
-    if(!this.cat || !this.cat.id){
-      return;
-    }else {
+  constructor(){
+    if(this.cat){
       this.goodsInfo.cid = this.cat.id;
-      if(!this.checkGoodsInfo(this.goodsInfo)){
-        return;
-      }
-      this.goodsService.addGoods(this.goodsInfo).subscribe(res => {
-        let data = res.json();
-        if(data.success){
-          this.selectTab.emit("goodsList");
-        }else {
-          alert(data.errorCode + ": " + data.message);
-          console.error(data.errorCode + ": " + data.message);
-        }
-      });
+      this.goodsInfo.cName = this.cat.name;
+    }
+  }
+  ngOnChanges(changes):void {
+    let chg = changes["goodsInfoIpt"];
+    if(chg && chg.currentValue && chg.currentValue != chg.previousValue){
+      this.goodsInfo = this.goodsInfoIpt;
     }
   }
 
+  public getGoodsInfo(){
+    this.goodsInfo.cid = this.cat.id;
+    this.goodsInfoOut.emit(this.goodsInfo);
+  }
 }
