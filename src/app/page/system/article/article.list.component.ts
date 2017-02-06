@@ -34,7 +34,8 @@ export class ArticleListComponent implements OnInit {
   public toastMessage: string;
   //toast 打开|关闭
   public showAlert: boolean = false;
-
+  //显示 隐藏  *
+  public required:boolean =true;
 
   constructor(private articleService: ArticleService) {
   }

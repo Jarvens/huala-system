@@ -56,7 +56,8 @@
             </table>
             <!--分页-->
             <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
-                <ngl-pagination [(page)]="pageOpts.page" [total]="articleListData.total" [perPage]="articleListData.size"
+                <ngl-pagination [(page)]="pageOpts.page" [total]="articleListData.total"
+                                [perPage]="articleListData.size"
                                 [limit]="pageOpts.limit"
                                 boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
                                 nextText="下一页"></ngl-pagination>
@@ -68,13 +69,25 @@
 <!--目录创建模态-->
 <ngl-modal header="目录创建" [(open)]="categoryOpened">
     <div body>
-        <p>Sit nulla est ex deserunt exercitation anim occaecat. Tempor cupidatat consequat elit dolor adipisicing.</p>
-        <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia.</p>
-        <p>Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="目录名称" class="slds-m-top--small">
+                    <input nglFormControl type="text" [required]="required">
+                </ngl-form-element>
+            </div>
+            <div class="slds-size--2-of-12"></div>
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="关键词" class="slds-m-top--small">
+                    <input nglFormControl type="text" [required]="required">
+                </ngl-form-element>
+            </div>
+            <ngl-form-element label="目录描述" class="slds-m-top--small slds-size--1-of-1">
+                <input nglFormControl type="text">
+            </ngl-form-element>
+        </div>
     </div>
     <template ngl-modal-footer>
-        <button class="slds-button slds-button--neutral" (click)="cancel()">Cancel</button>
-        <button class="slds-button slds-button--brand">Save</button>
+        <button class="slds-button slds-button--brand">保存</button>
     </template>
 </ngl-modal>
 
