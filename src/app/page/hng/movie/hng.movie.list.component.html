@@ -1,1 +1,43 @@
-活动列表
+<div class="slds-grid slds-wrap">
+    <div class="slds-size--4-of-12">
+        <seller-little-component></seller-little-component>
+    </div>
+    <div class="slds-size--1-of-12"></div>
+    <div class="slds-size--7-of-12">
+        <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+            <button class="slds-button slds-button--neutral" (click)="exportDataReport()">Excel导出</button>
+            <button class="slds-button slds-button--neutral" (click)="exportDataReport()">Excel导入</button>
+        </div>
+        <div class="slds-scrollable">
+            <table ngl-datatable [data]="activity" trackByKey="rank"
+                   class="slds-max-medium-table--stacked-horizontal">
+                <ngl-datatable-column heading="播放时间" key="time"></ngl-datatable-column>
+                <ngl-datatable-column heading="播放地点" key="address"></ngl-datatable-column>
+                <ngl-datatable-column heading="店铺" key="sellerName"></ngl-datatable-column>
+                <template nglNoRowsOverlay>暂无数据!</template>
+            </table>
+        </div>
+        <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+            电影列表
+        </div>
+        <div class="slds-scrollable">
+            <table ngl-datatable [data]="movieDataList" trackByKey="rank"
+                   class="slds-max-medium-table--stacked-horizontal">
+                <ngl-datatable-column heading="海报" key="sellerId"></ngl-datatable-column>
+                <ngl-datatable-column heading="名称" key="sellerName"></ngl-datatable-column>
+                <ngl-datatable-column heading="导演" key="clerk"></ngl-datatable-column>
+                <ngl-datatable-column heading="演员" key="clerk"></ngl-datatable-column>
+                <ngl-datatable-column heading="类型" key="clerk"></ngl-datatable-column>
+                <ngl-datatable-column heading="统计" key="clerk"></ngl-datatable-column>
+                <template nglNoRowsOverlay>暂无数据!</template>
+            </table>
+        </div>
+        <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+            <ngl-pagination [(page)]="pageOpts.page" [total]="movieDataList.total" [perPage]="pageOpts.size"
+                            [limit]="pageOpts.limit"
+                            boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                            nextText="下一页"></ngl-pagination>
+        </div>
+    </div>
+
+</div>

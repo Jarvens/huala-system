@@ -84,6 +84,7 @@ import {EndTimeCOmponent} from './page/component/dateutil/end.time.component';
 import {QuillEditorComponent} from './page/component/quilleditor/quill.editor.component';
 import {QuillEditor} from './utils/quillEditor/quillEditor';
 import {RecruitHeaderComponent} from './page/component/recruit/recruit.header.component';
+import {SellerLittleComponent} from './page/component/seller/seller.little.component'
 //Directive
 
 /**
@@ -193,7 +194,8 @@ import {RoleService} from './service/role.service';
     HngRecruitListComponent,
     HngRecruitStaticsComponent,
     HngMovieEntryComponent,
-    HngMovieListComponent
+    HngMovieListComponent,
+    SellerLittleComponent
   ],
   imports: [
     BrowserModule,
