@@ -20,6 +20,21 @@ export class ArticleListComponent implements OnInit {
   public placeholder: string = '搜索..文章标题.关键字';
   //搜索关键字
   public key: string;
+  //目录创建模态 打开|关闭
+  public categoryOpened: boolean = false;
+  //文章创建模态 打开|关闭
+  public articleOpened: boolean = false;
+  //prompt 提示消息
+  public promptMessage: string = '';
+  //prompt 打开|关闭
+  public notificationOpen: boolean = false;
+  //toast类型
+  public toastType: string = 'success';
+  //toast消息
+  public toastMessage: string;
+  //toast 打开|关闭
+  public showAlert: boolean = false;
+
 
   constructor(private articleService: ArticleService) {
   }
@@ -58,7 +73,12 @@ export class ArticleListComponent implements OnInit {
 
   //创建目录
   createCategory() {
+    this.categoryOpened = !this.categoryOpened;
+  }
 
+  //创建文章
+  createArticle() {
+    this.articleOpened = !this.articleOpened;
   }
 
   //分页事件
@@ -79,4 +99,27 @@ export class ArticleListComponent implements OnInit {
       this.articleListData = res.json();
     });
   }
+
+  //prompt取消事件
+  cancelPrompt() {
+    this.notificationOpen = !this.notificationOpen;
+  }
+
+  //prompt确认事件
+  confirm() {
+
+  }
+
+  //toast传播事件
+  notifyParamFunction(data: boolean) {
+    this.showAlert = data;
+  }
+
+  //删除按钮点击事件
+  delClick() {
+    this.promptMessage = '您确定要删除该文章吗?';
+    this.notificationOpen = !this.notificationOpen;
+  }
+
+
 }
