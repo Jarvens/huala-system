@@ -17,7 +17,9 @@ export class ArticleListComponent implements OnInit {
   public articleListData: any = {};
   //分页对象
   public pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
-  public placeholder:string ='搜索..文章标题.关键字';
+  public placeholder: string = '搜索..文章标题.关键字';
+  //搜索关键字
+  public key: string;
 
   constructor(private articleService: ArticleService) {
   }
@@ -51,6 +53,7 @@ export class ArticleListComponent implements OnInit {
   //目录点击事件
   getCategoryId(data: any) {
     this.currentCateGoryId = data;
+    this.getArticleList(this.currentCateGoryId, this.pageOpts, this.key);
   }
 
   //创建目录
@@ -59,12 +62,21 @@ export class ArticleListComponent implements OnInit {
   }
 
   //分页事件
-  pageChange(){
-
+  pageChange(data: number) {
+    this.pageOpts.page = data;
+    this.getArticleList(this.currentCateGoryId, this.pageOpts, this.key);
   }
 
   //搜索事件
-  searchByCondition(data:any){
+  searchByCondition(data: string) {
+    this.key = data;
+    this.getArticleList(this.currentCateGoryId, this.pageOpts, this.key);
+  }
 
+  //查询文章
+  getArticleList(cateGoryId: string, page: any, key: string) {
+    this.articleService.getArticleList(cateGoryId, page, key).subscribe(res=> {
+      this.articleListData = res.json();
+    });
   }
 }
