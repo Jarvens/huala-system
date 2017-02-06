@@ -91,7 +91,7 @@ export class HngService {
   }
 
   //根据招聘id查询
-  getRecruitById(id:string){
+  getRecruitById(id:number){
     return this.http.get("/recruit/get-by-id",{id:id});
   }
 }

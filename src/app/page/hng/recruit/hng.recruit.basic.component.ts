@@ -13,7 +13,7 @@ export class HngRecruitBasicComponent implements OnInit {
   //显示|隐藏  *
   public required: boolean = true;
   //招聘模板id
-  public recruitId: string = '';
+  public recruitId: number = 0;
   //公司
   public companyListData: Array<any> = [];
   //岗位
@@ -62,14 +62,12 @@ export class HngRecruitBasicComponent implements OnInit {
     this.showAlert = event;
   }
 
-
-
   //获取链接传递参数
   getParams() {
     this.router.params.forEach((params: Params)=> {
-      let _value = +params['recruitId'];
+      let _value: number = +params['recruitId'];
       this.recruitId = _value;
-      if (_value != 0 && _value != '') {
+      if (_value != 0) {
         this.hngService.getRecruitById(_value).subscribe(res=> {
           this.operaObj = res.json().body;
         });

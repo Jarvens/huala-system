@@ -4,7 +4,7 @@
 <seller-list-common-component></seller-list-common-component>
 <div class="slds-grid slds-wrap">
     <div class="slds-size--1-of-1 slds-align--absolute-center">
-        <a class="slds-button slds-button--neutral" routerLink="../../hng/hng-recruit-basic/">上一步</a>
+        <a class="slds-button slds-button--neutral" [routerLink]="['../../hng-recruit-basic/',recruitId]">上一步</a>
         <a class="slds-button slds-button--brand" [routerLink]="['../../recruit-date/',recruitId]">下一步</a>
     </div>
 </div>

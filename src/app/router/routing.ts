@@ -71,8 +71,8 @@ const routes: Routes = [
       {path: 'order-log', component: OrderLogComponent},
       {path: 'order-refund', component: RefundOrderComponent},
       {path: 'system-role', component: RoleCOmponent},
-      {path: 'recruit-seller/:recruitId', component: RelativeSellerComponent},
-      {path: 'recruit-date/:recruitId',component:RecruitChooseTimeComponent}
+      {path: 'hng/recruit-seller/:recruitId', component: RelativeSellerComponent},
+      {path: 'hng/recruit-date/:recruitId',component:RecruitChooseTimeComponent}
     ]
   },
 ];
