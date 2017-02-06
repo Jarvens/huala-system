@@ -26,9 +26,21 @@
         <div class="slds-scrollable">
             <table ngl-datatable [data]="articleListData.rows" trackByKey="rank"
                    class="slds-max-medium-table--stacked-horizontal">
-                <ngl-datatable-column heading="文章标题" key="title"></ngl-datatable-column>
-                <ngl-datatable-column heading="文章关键词" key="keywords"></ngl-datatable-column>
-                <ngl-datatable-column heading="点击次数" key="lookcount"></ngl-datatable-column>
+                <ngl-datatable-column heading="文章标题" key="title">
+                    <template nglDatatableCell let-value>
+                        <b>{{value}}</b>
+                    </template>
+                </ngl-datatable-column>
+                <ngl-datatable-column heading="文章关键词" key="keywords">
+                    <template nglDatatableCell let-value>
+                        <span class="text-success">{{value}}</span>
+                    </template>
+                </ngl-datatable-column>
+                <ngl-datatable-column heading="点击次数" key="lookcount">
+                    <template nglDatatableCell let-value>
+                        <span class="text-danger">{{value}}</span>
+                    </template>
+                </ngl-datatable-column>
                 <ngl-datatable-column heading="创建人" key="addUser"></ngl-datatable-column>
                 <ngl-datatable-column heading="创建时间" key="addDate"></ngl-datatable-column>
                 <ngl-datatable-column heading="操作" key="">
