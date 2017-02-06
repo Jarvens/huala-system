@@ -59,7 +59,7 @@ const routes: Routes = [
       {path: 'hng/hng-job', component: HngJobComponent},
       {path: 'hng/hng-recruit', component: HngRecruitMainComponent},
       {path: 'hng/hng-movie', component: HngMovieComponent},
-      {path: 'hng/hng-recruit-basic', component: HngRecruitBasicComponent},
+      {path: 'hng/hng-recruit-basic/:recruitId', component: HngRecruitBasicComponent},
       {path: 'supplier-info', component: SuppliersListComponent},
       {path: 'platform', component: EveryDateReportComponent},
       {path: 'finance', component: FinanceListComponent},

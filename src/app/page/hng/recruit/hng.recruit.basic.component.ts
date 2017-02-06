@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params} from '@angular/router';
 import {HngService} from '../../../service/hng.service';
 @Component({
   selector: 'hng-recruit-basic-component',
@@ -33,9 +34,10 @@ export class HngRecruitBasicComponent implements OnInit {
     this.hngService.getAllCompany().subscribe(res=> {
       this.companyListData = res.json().body;
     });
+    this.getParams();
   }
 
-  constructor(private hngService: HngService) {
+  constructor(private hngService: HngService, private router: ActivatedRoute) {
   }
 
   //保存数据
@@ -60,5 +62,19 @@ export class HngRecruitBasicComponent implements OnInit {
     this.showAlert = event;
   }
 
+
+
+  //获取链接传递参数
+  getParams() {
+    this.router.params.forEach((params: Params)=> {
+      let _value = +params['recruitId'];
+      this.recruitId = _value;
+      if (_value != 0 && _value != '') {
+        this.hngService.getRecruitById(_value).subscribe(res=> {
+          this.operaObj = res.json().body;
+        });
+      }
+    })
+  }
 
 }

@@ -30,6 +30,7 @@ export class HngRecruitListComponent implements OnInit {
   public placeholder: string = '搜索..店铺ID..店铺名称';
   //详情模态 打开|关闭
   public recruitOpened: boolean = false;
+  public recruitId: string = '';
 
   constructor(private hngService: HngService) {
   }
@@ -102,6 +103,5 @@ export class HngRecruitListComponent implements OnInit {
     this.recruitOpened = !this.recruitOpened;
     this.operaObj = data;
   }
-
 
 }

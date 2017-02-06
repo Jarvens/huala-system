@@ -89,4 +89,9 @@ export class HngService {
   saveRecruitBasicData(data:any){
     return this.http.post("/recruit/save-recruit",data);
   }
+
+  //根据招聘id查询
+  getRecruitById(id:string){
+    return this.http.get("/recruit/get-by-id",{id:id});
+  }
 }

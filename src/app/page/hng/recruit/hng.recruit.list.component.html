@@ -11,7 +11,7 @@
         <div class="slds-p-horizontal--small slds-large-size--1-of-12">
             <div class="slds-form-element">
                 <div class="slds-form-element__control">
-                    <a [routerLink]="['../hng-recruit-basic']">发布</a>
+                    <a [routerLink]="['../hng-recruit-basic',recruitId]">发布</a>
                 </div>
             </div>
         </div>
@@ -103,7 +103,7 @@
             <template nglDatatableCell let-row="row">
                 <div class="slds-button-group" role="group">
                     <button class="slds-button slds-button--neutral" (click)="detail(row)">详情</button>
-                    <button class="slds-button slds-button--neutral">编辑</button>
+                    <a class="slds-button slds-button--neutral" [routerLink]="['../hng-recruit-basic/',row.id]">编辑</a>
                     <button class="slds-button slds-button--neutral" (click)="delClick(row)">删除</button>
                     <button class="slds-button slds-button--neutral">统计</button>
                 </div>
