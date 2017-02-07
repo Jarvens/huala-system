@@ -1,13 +1,18 @@
-import {Component,OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 @Component({
-  selector:'hng-movie-component',
-  templateUrl:'./hng.movie.component.html'
+  selector: 'hng-movie-component',
+  templateUrl: './hng.movie.component.html'
 })
 
-export class HngMovieComponent implements OnInit{
+export class HngMovieComponent implements OnInit {
+  //当前活动对象
+  currentActiveObj: any = {};
+
   ngOnInit(): void {
   }
 
-  uploadFolder:string ='test';
-
+  getActive(data: any) {
+    this.currentActiveObj = data;
+    console.log("当前活动对象 ->",data);
+  }
 }

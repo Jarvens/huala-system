@@ -11,7 +11,7 @@
             <ngl-datatable-column heading="操作" key="">
                 <template nglDatatableCell let-row="row">
                     <div class="slds-button-group" role="group">
-                        <button class="slds-button slds-button--neutral">编辑</button>
+                        <button class="slds-button slds-button--neutral" (click)="editActive(row)">编辑</button>
                         <button class="slds-button slds-button--neutral" (click)="delClick(row)">删除</button>
                         <button class="slds-button slds-button--neutral" (click)="detail(row)">详情</button>
                     </div>

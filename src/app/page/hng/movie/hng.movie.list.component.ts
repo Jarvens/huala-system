@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {HngService} from '../../../service/hng.service';
 @Component({
   selector: 'hng-movie-list-component',
@@ -36,6 +36,7 @@ export class HngMovieListComponent implements OnInit {
   public voteDataList: any = {};
   //当前影片对象
   public currentMovie: any = {};
+  @Output() outPutCurrentActive = new EventEmitter<any>();
 
   constructor(private hngService: HngService) {
   }
@@ -128,5 +129,10 @@ export class HngMovieListComponent implements OnInit {
   votePageChange(data: number) {
     this.votePageOpts.page = data;
     this.voteList(this.votePageOpts, this.currentMovie.id);
+  }
+
+  //活动编辑事件
+  editActive(data: any) {
+    this.outPutCurrentActive.emit(data);
   }
 }
