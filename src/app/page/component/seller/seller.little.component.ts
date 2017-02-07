@@ -46,4 +46,5 @@ export class SellerLittleComponent implements OnInit {
     this.key = data;
     this.getSellerList(this.pageOpts, this.key);
   }
+
 }

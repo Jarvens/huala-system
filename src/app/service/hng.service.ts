@@ -77,21 +77,30 @@ export class HngService {
   }
 
   //查询岗位 all
-  getAllJob(){
+  getAllJob() {
     return this.http.get("/recruit/all-job");
   }
+
   //查询公司 all
-  getAllCompany(){
+  getAllCompany() {
     return this.http.get("/recruit/all-company");
   }
 
   //保存招聘基本信息
-  saveRecruitBasicData(data:any){
-    return this.http.post("/recruit/save-recruit",data);
+  saveRecruitBasicData(data: any) {
+    return this.http.post("/recruit/save-recruit", data);
   }
 
   //根据招聘id查询
-  getRecruitById(id:number){
-    return this.http.get("/recruit/get-by-id",{id:id});
+  getRecruitById(id: number) {
+    return this.http.get("/recruit/get-by-id", {id: id});
+  }
+
+  //查询影片活动列表
+  getMovieActiveDataList(page: any,key?:string) {
+    if (!page) {
+      page = {page: 1, perpage: 10};
+    }
+    return this.http.get("/preferential/movie-active-list",{page:page.page,size:page.perPage,key:key});
   }
 }
