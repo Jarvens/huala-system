@@ -56,12 +56,12 @@ export class HngMovieListComponent implements OnInit {
   //prompt 确定事件
   confirm() {
     this.notificationOpen = !this.notificationOpen;
-    console.log("确定删除 ->", this.operaActiveObj);
+    this.delActivity();
   }
 
   //toast传播事件
-  notifyParamFunction(event: any) {
-
+  notifyParamFunction(event: boolean) {
+    this.showAlert = event;
   }
 
   //删除按钮点击事件
@@ -80,6 +80,25 @@ export class HngMovieListComponent implements OnInit {
   pageChange(data: any) {
     this.pageOpts.page = data;
     this.getMovieActiveList(this.pageOpts);
+  }
+
+  //删除操作
+  delActivity() {
+    this.hngService.delActive(this.operaActiveObj).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('删除成功', 'success');
+      } else {
+        this.toastFunction('删除失败,请联系管理员', 'error');
+      }
+    });
+  }
+
+  //toast函数
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
   }
 
 }

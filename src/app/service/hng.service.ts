@@ -103,4 +103,9 @@ export class HngService {
     }
     return this.http.get("/preferential/movie-active-list",{page:page.page,size:page.perPage,key:key});
   }
+
+  //删除活动信息
+  delActive(data:any){
+    return this.http.post("/preferential/movie-active-delete",data);
+  }
 }
