@@ -10,7 +10,7 @@ export class HngMovieListComponent implements OnInit {
   public activity: Array<any> = [];
   //影片列表
   public movieDataList: Array<any> = [];
-  //分页对象
+  //活动列表分页对象
   public pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
   //当前商家对象
   public currentSeller: any = {};
@@ -26,6 +26,8 @@ export class HngMovieListComponent implements OnInit {
   public toastMessage: string = '';
   //打开|关闭 toast
   public showAlert: boolean = false;
+  //活动操作对象
+  public operaActiveObj: any = {};
 
   constructor(private hngService: HngService) {
   }
@@ -53,12 +55,31 @@ export class HngMovieListComponent implements OnInit {
 
   //prompt 确定事件
   confirm() {
-
+    this.notificationOpen = !this.notificationOpen;
+    console.log("确定删除 ->", this.operaActiveObj);
   }
 
   //toast传播事件
   notifyParamFunction(event: any) {
 
+  }
+
+  //删除按钮点击事件
+  delClick(data: any) {
+    this.operaActiveObj = data;
+    this.notificationOpen = !this.notificationOpen;
+  }
+
+  //活动详情
+  detail(data: any) {
+    this.activity = data;
+    this.movieDataList = data.movies;
+  }
+
+  //活动列表分页
+  pageChange(data: any) {
+    this.pageOpts.page = data;
+    this.getMovieActiveList(this.pageOpts);
   }
 
 }
