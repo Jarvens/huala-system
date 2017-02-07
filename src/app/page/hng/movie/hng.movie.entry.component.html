@@ -31,11 +31,15 @@
         </div>
         <table ngl-datatable [data]="activityData.rows" trackByKey="rank"
                class="slds-max-medium-table--stacked-horizontal">
-            <ngl-datatable-column heading="活动店铺" key="sellerName">
+            <ngl-datatable-column heading="影片海报" key="sellerName">
                 <template nglDatatableCell let-value>
                     <b>{{value}}</b>
                 </template>
             </ngl-datatable-column>
+            <ngl-datatable-column heading="影片名称" key=""></ngl-datatable-column>
+            <ngl-datatable-column heading="导演" key=""></ngl-datatable-column>
+            <ngl-datatable-column heading="演员" key=""></ngl-datatable-column>
+            <ngl-datatable-column heading="类型" key=""></ngl-datatable-column>
             <ngl-datatable-column heading="操作" key="">
                 <template nglDatatableCell let-row="row">
                     <div class="slds-button-group" role="group">
@@ -49,3 +53,16 @@
         </table>
     </div>
 </div>
+
+<!--影片录入模态-->
+<ngl-modal header="影片信息" [(open)]="opened">
+    <div body>
+        <p>Sit nulla est ex deserunt exercitation anim occaecat. Tempor cupidatat consequat elit dolor adipisicing.</p>
+        <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia.</p>
+        <p>Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
+    </div>
+    <template ngl-modal-footer>
+        <button class="slds-button slds-button--neutral" (click)="cancel()">Cancel</button>
+        <button class="slds-button slds-button--brand">Save</button>
+    </template>
+</ngl-modal>
