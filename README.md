@@ -1,4 +1,4 @@
-#花啦生活管理系统[![Kunlun](https://github.com/Jarvens/huala-system)]
+#花啦生活管理系统[[Kunlun](https://jarvens.github.io/huala-system/)]
 ##待完成
 ###秒杀活动
 ###店铺管理

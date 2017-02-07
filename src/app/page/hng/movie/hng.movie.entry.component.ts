@@ -56,5 +56,10 @@ export class HngMovieEntryComponent implements OnChanges {
 
   }
 
+  //影片删除按钮点击事件
+  delClick(data: any) {
+    this.operaMovieObj = data;
+    this.notificationOpen = !this.notificationOpen;
+  }
 
 }
