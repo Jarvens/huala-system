@@ -21,6 +21,8 @@ export class HngMovieEntryComponent implements OnChanges {
   public toastMessage: string = '';
   //toast 打开|关闭
   public showAlert: boolean = false;
+  //显示|隐藏  *
+  public required: boolean = true;
 
 
   ngOnChanges(changes: SimpleChanges): void {
