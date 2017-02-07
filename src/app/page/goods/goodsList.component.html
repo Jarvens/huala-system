@@ -38,10 +38,10 @@
 
 <ngl-modal header="编辑商品" [(open)]="editorOpened">
   <div body>
-    <goods-info [cat]="cat" [goodsInfoIpt]="editGoodsInfo"></goods-info>
+    <goods-info #goodsInfoComponent [cat]="cat" [goodsInfoIpt]="editGoodsInfo"></goods-info>
   </div>
   <template ngl-modal-footer>
     <button class="slds-button slds-button--neutral" (click)="editorOpened=false;">取&nbsp;&nbsp;消</button>
-    <button class="slds-button slds-button--brand" (click)="confirmEdit()">确&nbsp;&nbsp;定</button>
+    <button class="slds-button slds-button--brand" (click)="confirmEdit(goodsInfoComponent)">确&nbsp;&nbsp;定</button>
   </template>
 </ngl-modal>

@@ -115,11 +115,40 @@ export class GoodsListComponent {
   }
 
   /*
+   * @Description: Check the form data;
+   * @Date: 2017-01-10;
+   */
+  public checkGoodsInfo(goods):boolean {
+    let goodsInfo = goods;
+
+    if(!goodsInfo){
+      return false;
+    }
+
+    if(!goodsInfo.title){
+      alert("请输入商品名称!");
+      return false;
+    } else if(!goodsInfo.goodsSn){
+      alert("请输入商品货号!");
+      return false;
+    } else if(!goodsInfo.recPrice || isNaN(goodsInfo.recPrice)){
+      alert("请输入商品进货价!");
+      return false;
+    } else if(!goodsInfo.salePrice || isNaN(goodsInfo.salePrice)){
+      alert("请输入商品售价!");
+      return false;
+    }
+
+    return true;
+  }
+
+  /*
    * @description: Click to edit goods, it will bring up a editor popup window;
    * @date: 2017-01-11;
    */
   public toEdit(goods):void {
     this.editorOpened = true;
+    console.log(goods);
     this.editGoodsInfo = goods;
   }
 
@@ -127,7 +156,41 @@ export class GoodsListComponent {
    * @description: Confirm to edit goods;
    * @date: 2017-01-11;
    */
-  public confirmEdit():void {
-    console.log("hello");
+  public confirmEdit(goodsInfoComponent):void {
+    let pData = goodsInfoComponent.getGoodsInfo();
+    pData.goodsExtendList = [
+      {
+        metaKey: "info",
+        meta_desc: "商品信息",
+        dataKey: "img_url",
+        dataValue: "",
+        dataDesc: "图片地址",
+        isValid: "1",
+        isFixed: "1"
+      }
+    ];
+    if(pData.picDescription){
+      let picList = "";
+      pData.picDescription.forEach(item => picList += item + ";");
+      picList = picList.substring(0, picList.length - 1);
+      pData.goodsExtendList[0].dataValue = picList;
+    }
+
+    if(!this.checkGoodsInfo(pData)){
+      console.log("goodsInfo hello");
+      return;
+    }
+
+    pData.recPrice *= 100;
+    pData.salePrice *= 100;
+    this.goodsService.updateGoods(pData).subscribe(res => {
+      let data = res.json();
+      if(data.success){
+        console.log(data);
+        this.editorOpened = false;
+        this.editGoodsInfo = {};
+        this.getGoodsByCatId(this.pageOpts.page);
+      }
+    });
   }
 }

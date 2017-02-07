@@ -38,7 +38,7 @@ export class SellerLittleComponent implements OnInit {
 
   //行点击事件
   onRowClick(data: any) {
-    this.targetSeller.emit(data.data);
+    this.targetSeller.emit(data);
   }
 
   //关键字搜索

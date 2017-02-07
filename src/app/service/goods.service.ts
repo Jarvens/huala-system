@@ -37,4 +37,14 @@ export class GoodsService {
 
     return this.http.post(pUrl, data);
   }
+
+  /*
+   * @Description: Update goods;
+   * @Date: 2017-02-6;
+   */
+  updateGoods(data){
+    let pUrl = "/goods/save-goods";
+
+    return this.http.post(pUrl, data);
+  }
 }

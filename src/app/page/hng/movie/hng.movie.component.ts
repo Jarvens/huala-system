@@ -1,24 +1,21 @@
-import {Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 @Component({
   selector: 'hng-movie-component',
   templateUrl: './hng.movie.component.html'
 })
 
-export class HngMovieComponent implements OnInit,OnChanges {
+export class HngMovieComponent implements OnInit {
   //当前活动对象
-  currentActiveObj: any = {};
+  public currentActiveObj: any = {};
+  //tab列
+  public selected: string = 'list';
 
   ngOnInit(): void {
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    let _value = changes['currentActiveObj'];
-    if (_value && _value.currentValue != _value.previousValue) {
-      console.log("改变了->");
-    }
-  }
-
   getActive(data: any) {
     this.currentActiveObj = data;
+    this.selected = 'entry';
+    console.log(data);
   }
 }

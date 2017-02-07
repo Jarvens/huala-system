@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output, Input} from '@angular/core';
+import {Component, EventEmitter, Output, Input, OnChanges} from '@angular/core';
 import {FileUploader} from '../../../utils/file-upload/file-uploader.class';
 import {MyHttp} from '../../../core/http';
 
@@ -10,8 +10,10 @@ import {MyHttp} from '../../../core/http';
   selector: 'img-upload-component',
   templateUrl: 'img.upload.component.html'
 })
-export class ImgUploadComponent {
+export class ImgUploadComponent implements OnChanges {
   serverUrl: string = process.env.ApiUrl;
+  public imgUrl:string = process.env.ImgUrl;
+  @Input() public picUrl:string;
   //文件上传地址成功返回地址
   @Output() uploadAddr = new EventEmitter<string>();
   //文件上传目录
@@ -25,7 +27,14 @@ export class ImgUploadComponent {
 
   constructor(private http: MyHttp) {
   }
+  ngOnChanges(changes):void {
+    let chg = changes["picUrl"];
 
+    if(chg && chg.currentValue && chg.currentValue != chg.previousValue){
+      this.prevFile = this.imgUrl + chg.currentValue;
+      console.log(chg.currentValue)
+    }
+  }
 
   //监听文件变化
   listenFileChange(dom: any) {
@@ -55,6 +64,7 @@ export class ImgUploadComponent {
     this.uploader.uploadAll();
     this.uploader.onSuccessItem = (item: any, response: any, status: any, headers: any)=> {
       let result = JSON.parse(response).body;
+      console.log(result)
       this.uploadAddr.emit(result);
     }
   }

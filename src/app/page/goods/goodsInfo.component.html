@@ -3,7 +3,7 @@
     <label for="input_1" class="slds-form-element__label">商品类目:</label>
     <div class="slds-form-element__control">
       <input type="text" id="input_1" class="slds-input slds-text-color--error"
-             placeholder="商品类目" [(ngModel)]="goodsInfo.cName" disabled>
+             placeholder="商品类目" [(ngModel)]="goodsInfo.cname" disabled>
     </div>
   </div>
   <div class="slds-form-element">
@@ -22,7 +22,9 @@
     <label class="slds-form-element__label">商品主图:</label>
     <div class="slds-form-element__control">
       <div class="slds-size--1-of-2">
-        <img-upload-component></img-upload-component>
+        <img-upload-component (uploadAddr)="goodsInfo.picUrl=$event"
+                              [picUrl]="goodsInfo.picUrl"
+                              [uploadFolder]="goods"></img-upload-component>
       </div>
     </div>
   </div>
@@ -42,10 +44,14 @@
     <label class="slds-form-element__label">详细图片:</label>
     <div class="slds-form-element__control slds-clearfix">
       <div class="slds-size--1-of-2 slds-float--left">
-        <img-upload-component></img-upload-component>
+        <img-upload-component (uploadAddr)="goodsInfo.picDescription[0]=$event"
+                              [picUrl]="goodsInfo.picDescription[0]"
+                              [uploadFolder]="goods"></img-upload-component>
       </div>
       <div class="slds-size--1-of-2 slds-float--left">
-        <img-upload-component></img-upload-component>
+        <img-upload-component (uploadAddr)="goodsInfo.picDescription[1]=$event"
+                              [picUrl]="goodsInfo.picDescription[1]"
+                              [uploadFolder]="goods"></img-upload-component>
       </div>
     </div>
   </div>
