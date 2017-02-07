@@ -97,15 +97,23 @@ export class HngService {
   }
 
   //查询影片活动列表
-  getMovieActiveDataList(page: any,key?:string) {
+  getMovieActiveDataList(page: any, key?: string) {
     if (!page) {
       page = {page: 1, perpage: 10};
     }
-    return this.http.get("/preferential/movie-active-list",{page:page.page,size:page.perPage,key:key});
+    return this.http.get("/preferential/movie-active-list", {page: page.page, size: page.perPage, key: key});
   }
 
   //删除活动信息
-  delActive(data:any){
-    return this.http.post("/preferential/movie-active-delete",data);
+  delActive(data: any) {
+    return this.http.post("/preferential/movie-active-delete", data);
+  }
+
+  //电影活动 统计分页
+  getMovieVote(page: any, id: string) {
+    if (!page) {
+      page = {page: 1, perPage: 10};
+    }
+    return this.http.get("/preferential/statistical", {page: page.page, size: page.perPage, movieId: id});
   }
 }

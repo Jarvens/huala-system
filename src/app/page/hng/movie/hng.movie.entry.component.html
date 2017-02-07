@@ -1,1 +1,51 @@
-电影录入
+<div class="slds-wrap slds-grid">
+    <div class="slds-size--4-of-12">
+        <seller-little-component (targetSeller)="targetFunction($event)"></seller-little-component>
+    </div>
+    <div class="slds-size--1-of-12"></div>
+    <div class="slds-size--7-of-12">
+        <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+            活动创建
+        </div>
+        <div class="slds-srap slds-grid">
+            <div class="slds-form-element" style="padding-top: 20px;">
+                <label class="slds-form-element__label slds-float--left" style="line-height: 2rem;">活动时间</label>
+                <div class="slds-form-element__control slds-float--left">
+                    <input type="text" class="slds-input"/>
+                </div>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-form-element" style="padding-top: 20px;">
+                <label class="slds-form-element__label slds-float--left" style="line-height: 2rem;">活动地点</label>
+                <div class="slds-form-element__control slds-float--left">
+                    <input type="text" class="slds-input"/>
+                </div>
+            </div>
+            <div class="slds-form-element" style="padding-top: 20px;padding-left: 10px;">
+                <label class="slds-form-element__label slds-float--left" style="line-height: 2rem;">店铺</label>
+                <div class="slds-form-element__control slds-float--left">
+                    <input type="text" class="slds-input" readonly/>
+                </div>
+            </div>
+        </div>
+        <table ngl-datatable [data]="activityData.rows" trackByKey="rank"
+               class="slds-max-medium-table--stacked-horizontal">
+            <ngl-datatable-column heading="活动店铺" key="sellerName">
+                <template nglDatatableCell let-value>
+                    <b>{{value}}</b>
+                </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="操作" key="">
+                <template nglDatatableCell let-row="row">
+                    <div class="slds-button-group" role="group">
+                        <button class="slds-button slds-button--neutral">编辑</button>
+                        <button class="slds-button slds-button--neutral" (click)="delClick(row)">删除</button>
+                        <button class="slds-button slds-button--neutral" (click)="detail(row)">详情</button>
+                    </div>
+                </template>
+            </ngl-datatable-column>
+            <template nglNoRowsOverlay>暂无数据!</template>
+        </table>
+    </div>
+</div>

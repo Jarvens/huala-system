@@ -12,6 +12,8 @@ export class HngMovieListComponent implements OnInit {
   public movieDataList: Array<any> = [];
   //活动列表分页对象
   public pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
+  //统计分页对象
+  public votePageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
   //当前商家对象
   public currentSeller: any = {};
   //活动列表
@@ -28,6 +30,12 @@ export class HngMovieListComponent implements OnInit {
   public showAlert: boolean = false;
   //活动操作对象
   public operaActiveObj: any = {};
+  //统计详情  打开|关闭
+  public statisticalOpened: boolean = false;
+  //统计数据
+  public voteDataList: any = {};
+  //当前影片对象
+  public currentMovie: any = {};
 
   constructor(private hngService: HngService) {
   }
@@ -88,6 +96,7 @@ export class HngMovieListComponent implements OnInit {
       let result = res.json();
       if (result.success) {
         this.toastFunction('删除成功', 'success');
+        this.getMovieActiveList(this.pageOpts);
       } else {
         this.toastFunction('删除失败,请联系管理员', 'error');
       }
@@ -101,4 +110,23 @@ export class HngMovieListComponent implements OnInit {
     this.toastType = toastType;
   }
 
+  //统计操作
+  vote(data: any) {
+    this.statisticalOpened = !this.statisticalOpened;
+    this.currentMovie = data;
+    this.voteList(this.votePageOpts, this.currentMovie.id);
+  }
+
+  //统计数据集合
+  voteList(page: any, id: string) {
+    this.hngService.getMovieVote(page, id).subscribe(res=> {
+      this.voteDataList = res.json();
+    });
+  }
+
+  //统计详情分页
+  votePageChange(data: number) {
+    this.votePageOpts.page = data;
+    this.voteList(this.votePageOpts, this.currentMovie.id);
+  }
 }
