@@ -50,6 +50,12 @@
             </ngl-datatable-column>
             <template nglNoRowsOverlay>暂无数据!</template>
         </table>
+        <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+            <div class="slds-button-group" role="group">
+                <button class="slds-button slds-button--neutral" (click)="opened=!opened">录入影片信息</button>
+                <button class="slds-button slds-button--neutral">保存活动信息</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -81,8 +87,8 @@
         </div>
     </div>
     <template ngl-modal-footer>
-        <button class="slds-button slds-button--neutral" (click)="cancel()">Cancel</button>
-        <button class="slds-button slds-button--brand">Save</button>
+        <button class="slds-button slds-button--neutral" (click)="cancles()">取消</button>
+        <button class="slds-button slds-button--brand" (click)="saveMovie()">保存</button>
     </template>
 </ngl-modal>
 

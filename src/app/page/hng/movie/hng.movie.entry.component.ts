@@ -64,4 +64,14 @@ export class HngMovieEntryComponent implements OnChanges {
     this.notificationOpen = !this.notificationOpen;
   }
 
+  //影片录入模态取消事件
+  cancles() {
+    this.opened = !this.opened;
+  }
+
+  //影片保存
+  saveMovie(){
+
+  }
+
 }
