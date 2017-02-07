@@ -12,4 +12,11 @@ export class HngMovieListComponent {
   public movieDataList: Array<any> = [];
   //分页对象
   public pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
+  //当前商家对象
+  public currentSeller: any = {};
+  //商家列表传递事件
+  targetFunction(event: any) {
+
+  }
+
 }
