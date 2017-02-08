@@ -8,13 +8,24 @@ import {PictureService} from '../../../service/picture.service';
 
 export class PictureComponent implements OnInit {
 
-  //选中目录
+  /**
+   * 选中目录
+   * @type {string}
+   */
   folder: string = '';
-  //图片对象
+  /**
+   * 图片对象
+   * @type {{}}
+   */
   pictureList: any = {};
-  //图片地址前缀
+  /**
+   * 图片地址前缀
+   */
   commonImgUrl = process.env.ImgUrl;
-  //分页对象
+  /**
+   * 分页对象
+   * @type {{total: number; limit: number; perPage: number}}
+   */
   pageOpts: any = {total: 0, limit: 3, perPage: 12}
 
   ngOnInit(): void {
@@ -27,7 +38,10 @@ export class PictureComponent implements OnInit {
   constructor(private pictureService: PictureService, private cdr: ChangeDetectorRef) {
   }
 
-  //分页事件
+  /**
+   * 分页事件
+   * @param event
+   */
   pageChange(event) {
     this.pageOpts.page = event;
     this.pictureService.getPictureList(this.pageOpts, this.folder).subscribe(res=> {
