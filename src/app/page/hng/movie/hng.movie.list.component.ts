@@ -115,6 +115,8 @@ export class HngMovieListComponent implements OnInit {
   vote(data: any) {
     this.statisticalOpened = !this.statisticalOpened;
     this.currentMovie = data;
+    console.log("当前对象 - >", data);
+    console.log("当前分页 - >", this.votePageOpts);
     this.voteList(this.votePageOpts, this.currentMovie.id);
   }
 
@@ -122,6 +124,7 @@ export class HngMovieListComponent implements OnInit {
   voteList(page: any, id: string) {
     this.hngService.getMovieVote(page, id).subscribe(res=> {
       this.voteDataList = res.json();
+      console.log("查询结果 - >", res.json());
     });
   }
 

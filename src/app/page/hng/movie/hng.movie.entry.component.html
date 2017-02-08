@@ -29,9 +29,9 @@
                 </div>
             </div>
         </div>
-        <table ngl-datatable [data]="movieData" trackByKey="rank"
+        <table ngl-datatable [data]="movieList" trackByKey="rank"
                class="slds-max-medium-table--stacked-horizontal">
-            <ngl-datatable-column heading="影片海报" key="sellerName">
+            <ngl-datatable-column heading="影片海报" key="url">
                 <template nglDatatableCell let-value>
                     <b>{{value}}</b>
                 </template>
@@ -52,8 +52,9 @@
         </table>
         <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
             <div class="slds-button-group" role="group">
-                <button class="slds-button slds-button--neutral" (click)="opened=!opened">录入影片信息</button>
-                <button class="slds-button slds-button--neutral">保存活动信息</button>
+                <button class="slds-button slds-button--neutral" (click)="opened=!opened;operaMovieObj={};">录入影片信息
+                </button>
+                <button class="slds-button slds-button--brand">保存活动信息</button>
             </div>
         </div>
     </div>
@@ -69,19 +70,19 @@
             <div class="slds-size--2-of-12"></div>
             <div class="slds-size--5-of-12">
                 <ngl-form-element label="店铺" class="slds-m-top--small">
-                    <input nglFormControl type="text" [required]="required">
+                    <input nglFormControl type="text" [required]="required" [(ngModel)]="operaMovieObj.sellerName">
                 </ngl-form-element>
                 <ngl-form-element label="影片名称" class="slds-m-top--small">
-                    <input nglFormControl type="text" [required]="required">
+                    <input nglFormControl type="text" [required]="required" [(ngModel)]="operaMovieObj.name">
                 </ngl-form-element>
                 <ngl-form-element label="演员" class="slds-m-top--small">
-                    <input nglFormControl type="text" [required]="required">
+                    <input nglFormControl type="text" [required]="required" [(ngModel)]="operaMovieObj.actor">
                 </ngl-form-element>
                 <ngl-form-element label="导演" class="slds-m-top--small">
-                    <input nglFormControl type="text" [required]="required">
+                    <input nglFormControl type="text" [required]="required" [(ngModel)]="operaMovieObj.director">
                 </ngl-form-element>
                 <ngl-form-element label="影片类型" class="slds-m-top--small">
-                    <input nglFormControl type="text" [required]="required">
+                    <input nglFormControl type="text" [required]="required" [(ngModel)]="operaMovieObj.type">
                 </ngl-form-element>
             </div>
         </div>

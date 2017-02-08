@@ -8,7 +8,11 @@
 <table ngl-datatable [data]="sellerDataList.rows"
        class="slds-max-medium-table--stacked-horizontal">
     <ngl-datatable-column heading="ID" key="id" sortable></ngl-datatable-column>
-    <ngl-datatable-column heading="名称" key="name" cellClass="slds-truncate"></ngl-datatable-column>
+    <ngl-datatable-column heading="名称" key="name" cellClass="slds-truncate">
+        <template nglDatatableCell let-value>
+            <b class="text-danger">{{value}}</b>
+        </template>
+    </ngl-datatable-column>
     <ngl-datatable-column heading="操作" key="">
         <template nglDatatableCell let-row="row">
             <div class="slds-button-group" role="group">

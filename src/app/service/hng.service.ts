@@ -116,4 +116,10 @@ export class HngService {
     }
     return this.http.get("/preferential/statistical", {page: page.page, size: page.perPage, movieId: id});
   }
+
+  //检查是否参与投票
+  checkStatistic(data:any){
+    return this.http.post("/preferential/check-statistic",data);
+  }
+
 }

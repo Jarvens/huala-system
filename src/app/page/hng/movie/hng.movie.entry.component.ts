@@ -1,4 +1,5 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {HngService} from '../../../service/hng.service';
 @Component({
   selector: 'hng-movie-entry-component',
   templateUrl: './hng.movie.entry.component.html'
@@ -6,7 +7,6 @@ import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 export class HngMovieEntryComponent implements OnChanges {
   //当前活动对象
   @Input() currentActiveObj: any = {};
-  public movieData: Array<any> = [];
   //影片信息模态  打开|关闭
   public opened: boolean = false;
   //影片操作对象
@@ -23,13 +23,21 @@ export class HngMovieEntryComponent implements OnChanges {
   public showAlert: boolean = false;
   //显示|隐藏  *
   public required: boolean = true;
+  //活动影片Set 集合
+  public movieList = new Set<any>();
 
 
   ngOnChanges(changes: SimpleChanges): void {
     let _obj: any = changes['currentActiveObj'];
     if (_obj && _obj.currentValue != _obj.previousValue) {
-      this.movieData = this.currentActiveObj.movies;
+      let that = this;
+      this.currentActiveObj.movies.forEach(function (data: any) {
+        that.movieList.add(data);
+      });
     }
+  }
+
+  constructor(private hngService: HngService) {
   }
 
   //关联商家事件
@@ -50,6 +58,18 @@ export class HngMovieEntryComponent implements OnChanges {
 
   //prompt确认事件
   confirm() {
+    this.notificationOpen = !this.notificationOpen;
+    this.hngService.checkStatistic(this.operaMovieObj).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('删除成功', 'success');
+        //TODO
+        //将该影片从数组中删除
+        this.movieList.delete(this.operaMovieObj);
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
 
   }
 
@@ -70,8 +90,16 @@ export class HngMovieEntryComponent implements OnChanges {
   }
 
   //影片保存
-  saveMovie(){
+  saveMovie() {
+    this.movieList.add(this.operaMovieObj);
+    this.opened = !this.opened;
+  }
 
+  //toast函数
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
   }
 
 }
