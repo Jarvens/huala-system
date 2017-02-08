@@ -41,7 +41,8 @@ export class FinanceListComponent implements OnInit {
   expenditurePageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
   //格式化时间
   _date_formate: string = 'yyyymmdd';
-
+  //当前详情页 日期
+  currentDate: string = '';
   //触发查询操作
   receiveDate(event: any) {
     this.queryDate = event.slice(0, 6);
@@ -76,7 +77,7 @@ export class FinanceListComponent implements OnInit {
 
   //收入详情
   incomeDetail(date: string) {
-    this.incomeOpen = !this.incomeOpen;
+    this.currentDate = date;
     this.financeService.getSql("finance.getFinanceOrder", date, this.incomePageOpts).subscribe(res=> {
       this.incomeList = res.json();
     });
@@ -84,10 +85,22 @@ export class FinanceListComponent implements OnInit {
 
   //支出详情
   expenditureDetail(date: string) {
-    this.expenditureOpen = !this.expenditureOpen;
+    this.currentDate = date;
     this.financeService.getSql("finance.getFinancePay", date, this.expenditurePageOpts).subscribe(res=> {
       this.expenditureList = res.json();
     });
+  }
+
+  //收入详情分页
+  incomePageChange(data: number) {
+    this.incomePageOpts.page = data;
+    this.incomeDetail(this.currentDate);
+  }
+
+  //支出详情分页
+  expenditurePageChange(data: number) {
+    this.expenditurePageOpts.page = data;
+    this.expenditureDetail(this.currentDate);
   }
 
 

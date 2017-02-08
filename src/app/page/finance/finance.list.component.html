@@ -113,8 +113,14 @@
         </ngl-datatable-column>
         <ngl-datatable-column heading="操作" key="操作">
             <template nglDatatableCell let-row="row">
-                <ngl-badge type="info" (click)="incomeDetail(row.date)">收入详情</ngl-badge>
-                <ngl-badge type="success" (click)="expenditureDetail(row.date)">支出详情</ngl-badge>
+                <div class="slds-button-group" role="group">
+                    <button class="slds-button slds-button--neutral"
+                            (click)="incomeDetail(row.date);incomeOpen = !incomeOpen;">收入详情
+                    </button>
+                    <button class="slds-button slds-button--neutral"
+                            (click)="expenditureDetail(row.date);expenditureOpen = !expenditureOpen;">支出详情
+                    </button>
+                </div>
             </template>
         </ngl-datatable-column>
         <!-- No rows overlay -->
@@ -150,11 +156,13 @@
             <!-- No rows overlay -->
             <template nglNoRowsOverlay>暂无数据</template>
         </table>
+        <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+            <ngl-pagination [(page)]="incomePageOpts.page" [total]="incomeList.total" [perPage]="incomePageOpts.perPage"
+                            [limit]="incomePageOpts.limit"
+                            boundaryNumbers="1" #pagination (pageChange)="incomePageChange($event)" previousText="上一页"
+                            nextText="下一页"></ngl-pagination>
+        </div>
     </div>
-    <template ngl-modal-footer>
-        <button class="slds-button slds-button--neutral" (click)="cancel()">Cancel</button>
-        <button class="slds-button slds-button--brand">Save</button>
-    </template>
 </ngl-modal>
 
 <!--支出详情模态-->
@@ -198,11 +206,15 @@
             <!-- No rows overlay -->
             <template nglNoRowsOverlay>暂无数据</template>
         </table>
+        <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+            <ngl-pagination [(page)]="expenditurePageOpts.page" [total]="financeList.total"
+                            [perPage]="expenditurePageOpts.perPage"
+                            [limit]="expenditurePageOpts.limit"
+                            boundaryNumbers="1" #pagination (pageChange)="expenditurePageChange($event)"
+                            previousText="上一页"
+                            nextText="下一页"></ngl-pagination>
+        </div>
     </div>
-    <template ngl-modal-footer>
-        <button class="slds-button slds-button--neutral" (click)="cancel()">Cancel</button>
-        <button class="slds-button slds-button--brand">Save</button>
-    </template>
 </ngl-modal>
 
 <!--Toast提示-->
