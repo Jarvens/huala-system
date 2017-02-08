@@ -6,7 +6,6 @@ import {SellerService} from '../../../service/seller.service';
 })
 
 export class SellerLittleComponent implements OnInit {
-
   //商家data
   public sellerDataList: any = {};
   //搜索关键字

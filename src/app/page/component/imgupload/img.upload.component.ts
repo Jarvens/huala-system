@@ -12,8 +12,8 @@ import {MyHttp} from '../../../core/http';
 })
 export class ImgUploadComponent implements OnChanges {
   serverUrl: string = process.env.ApiUrl;
-  public imgUrl:string = process.env.ImgUrl;
-  @Input() public picUrl:string;
+  public imgUrl: string = process.env.ImgUrl;
+  @Input() public picUrl: string;
   //文件上传地址成功返回地址
   @Output() uploadAddr = new EventEmitter<string>();
   //文件上传目录
@@ -27,10 +27,11 @@ export class ImgUploadComponent implements OnChanges {
 
   constructor(private http: MyHttp) {
   }
-  ngOnChanges(changes):void {
+
+  ngOnChanges(changes): void {
     let chg = changes["picUrl"];
 
-    if(chg && chg.currentValue && chg.currentValue != chg.previousValue){
+    if (chg && chg.currentValue && chg.currentValue != chg.previousValue) {
       this.prevFile = this.imgUrl + chg.currentValue;
       console.log(chg.currentValue)
     }
@@ -64,7 +65,6 @@ export class ImgUploadComponent implements OnChanges {
     this.uploader.uploadAll();
     this.uploader.onSuccessItem = (item: any, response: any, status: any, headers: any)=> {
       let result = JSON.parse(response).body;
-      console.log(result)
       this.uploadAddr.emit(result);
     }
   }

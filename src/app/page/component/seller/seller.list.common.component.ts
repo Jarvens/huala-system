@@ -23,7 +23,6 @@ export class SellerListCommonComponent implements OnInit {
   //搜索提示
   placeholder: string = '搜索  ID  名称 手机号';
 
-
   ngOnInit(): void {
     this.querySellerList(this.searchKey, this.pageOpts, this.keyType);
   }
@@ -39,8 +38,9 @@ export class SellerListCommonComponent implements OnInit {
   }
 
   //异步查询事件
-  searchByCondition(data: any) {
-
+  searchByCondition(data: string) {
+    this.searchKey = data;
+    this.querySellerList(this.searchKey, this.pageOpts, this.keyType);
   }
 
   //行点击事件

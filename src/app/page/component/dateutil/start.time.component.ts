@@ -13,10 +13,8 @@ export class StartTimeComponent {
   @Input() _date_format: string = 'yyyymmdd';
   //初始化当天日期
   date: Date = new Date();
-
   //格式化月份
   monthNames: Array<string> = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
-
   //格式化日期
   dayNamesShort: Array<string> = ['日', '一', '二', '三', '四', '五', '六',];
 

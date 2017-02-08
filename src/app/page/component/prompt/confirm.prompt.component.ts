@@ -4,8 +4,6 @@ import {Component, Input, EventEmitter, Output} from '@angular/core';
   selector: 'confirm-prompt-component',
   templateUrl: './confirm.prompt.component.html'
 })
-
-
 /**
  * Prompt 提示信息
  */
