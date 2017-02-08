@@ -25,7 +25,9 @@ export class SellerSubsidyComponent implements OnInit {
    *
    * @type {{page: number; total: number; limit: number; perPage: number}} 分页对象
    */
-  public pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10}
+  public pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
+
+
   /**
    *
    * @type {string} toast类型
@@ -60,7 +62,49 @@ export class SellerSubsidyComponent implements OnInit {
    *
    * @type {string} 格式化
    */
-  date_formate: string = 'yyyy-mm-dd';
+  public date_formate: string = 'yyyy-mm-dd';
+
+  /**
+   * 当前操作奖励对象
+   * @type {{}}
+   */
+  public currentRewardObj: any = {};
+
+  /**
+   * 奖励修改模态  打开|关闭
+   * @type {boolean}
+   */
+  public rewardOpend: boolean = false;
+
+  /**
+   * 显示 | 隐藏  *
+   * @type {boolean}
+   */
+  public required: boolean = true;
+
+  /**
+   * 修改奖励对象
+   * @type {{}}
+   */
+  public rewardModalObj: any = {};
+
+  /**
+   * 奖励详情订单模态  打开|关闭
+   * @type {boolean}
+   */
+  public orderOpened:boolean = false;
+
+  /**
+   * 订单数据集合
+   * @type {{}}
+   */
+  public orderDataList:any={};
+
+  /**
+   * 订单分页
+   * @type {{page: number; total: number; limit: number; perPage: number}}
+   */
+  orderPageOpts:any={page: 1, total: 0, limit: 3, perPage: 10};
 
   /**
    * 初始化奖励数据
@@ -153,6 +197,40 @@ export class SellerSubsidyComponent implements OnInit {
    */
   send(data: any, type: number) {
     console.log(data);
+  }
+
+  /**
+   * 修改奖励
+   * @param data
+   */
+  modifyReward(data: any) {
+    this.rewardOpend = !this.rewardOpend;
+    this.currentRewardObj = data;
+    this.rewardModalObj.reward = data.amount / 100;
+  }
+
+  /**
+   * 关闭模态
+   */
+  closeModal() {
+    this.rewardOpend = !this.rewardOpend;
+  }
+
+  /**
+   * 保存奖励信息
+   */
+  saveReward() {
+    this.currentRewardObj.reward = this.rewardModalObj.reward * 100;
+    this.currentRewardObj.remark = this.rewardModalObj.remark;
+
+  }
+
+  /**
+   * 订单分页
+   * @param data
+   */
+  orderPageChange(data:number){
+
   }
 
 }
