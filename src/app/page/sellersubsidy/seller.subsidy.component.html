@@ -122,9 +122,9 @@
             </div>
         </div>
     </div>
-    <template ngl-modal-footer *ngIf="!noFooter">
+    <template ngl-modal-footer>
         <button class="slds-button slds-button--neutral" (click)="closeModal()">取消</button>
-        <button class="slds-button slds-button--brand" (click)="saveReward()">保存</button>
+        <button class="slds-button slds-button--brand" (click)="saveReward(1)">发送</button>
     </template>
 </ngl-modal>
 

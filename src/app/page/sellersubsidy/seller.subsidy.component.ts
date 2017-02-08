@@ -155,14 +155,15 @@ export class SellerSubsidyComponent implements OnInit {
    * prompt取消事件
    */
   cancelPrompt() {
-
+    this.notificationOpen = !this.notificationOpen;
   }
 
   /**
    * prompt确定事件
    */
   confirm() {
-
+    console.log("当前奖励对象 ->", this.currentRewardObj);
+    console.log("修改的奖励对象 ->", this.rewardModalObj);
   }
 
   /**
@@ -194,7 +195,10 @@ export class SellerSubsidyComponent implements OnInit {
    * @param type  1:发送   2:拒发
    */
   send(data: any, type: number) {
-    console.log(data);
+    this.notificationOpen = !this.notificationOpen;
+    this.promptMessage = '您确定要发送吗?';
+    this.currentRewardObj = data;
+    this.currentRewardObj.status = type;
   }
 
   /**
@@ -217,10 +221,20 @@ export class SellerSubsidyComponent implements OnInit {
   /**
    * 保存奖励信息
    */
-  saveReward() {
+  saveReward(type: number) {
     this.currentRewardObj.reward = this.rewardModalObj.reward * 100;
     this.currentRewardObj.remark = this.rewardModalObj.remark;
-
+    this.currentRewardObj.status = type;
+    this.rewardOpend = !this.rewardOpend;
+    this.sellerSubsidyService.sendData(this.rewardModalObj).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('发送成功', 'success');
+        this.queryRewardList(this.queryDate, this.pageOpts);
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
   }
 
   /**

@@ -30,13 +30,23 @@ export class SellerSubsidyService {
   /**
    * 查询订单列表
    * @param page
-   * @param data
+   * @param key
+   * @param param
+   * @returns {Observable<Response>}
    */
   getOrderList(page: any, key: string, param: string) {
     if (!page) {
       page = {page: 1, perPage: 10};
     }
     return this.http.get("/tongji/sqlExe", {key: key, param: param, page: page.page, size: page.perPage});
+  }
 
+  /**
+   * 发送奖励数据
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  sendData(data: any) {
+    return this.http.post("/balance/send-reward", data);
   }
 }
