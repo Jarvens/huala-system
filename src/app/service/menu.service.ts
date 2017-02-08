@@ -6,6 +6,10 @@ export class MenuService {
 
   }
 
+  /**
+   * 菜单列表
+   * @returns {Observable<Response>}
+   */
   menuList() {
     return this.http.get("/menu/menu-list");
   }

@@ -5,6 +5,12 @@ export class RoleService {
   constructor(private http: MyHttp) {
   }
 
+  /**
+   * 查询权限列表
+   * @param key
+   * @param page
+   * @returns {Observable<Response>}
+   */
   getRoleList(key: string, page: any) {
     if (!page) {
       page = {page: 1, perPage: 10};

@@ -41,7 +41,13 @@
 
     </ngl-datatable-column>
     <ngl-datatable-column heading="奖励金额" key="amount">
-
+        <template nglDatatableCell let-value>
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <input type="text" class="slds-input" [value]="value/100"/>
+                </div>
+            </div>
+        </template>
     </ngl-datatable-column>
     <ngl-datatable-column heading="实发金额" key="reward">
 
@@ -50,11 +56,24 @@
 
     </ngl-datatable-column>
     <ngl-datatable-column heading="奖励发放" key="offset">
-
+        <template nglDatatableCell let-row="row">
+            <div *ngIf="row.status=='0'" class="slds-button-group" role="group">
+                <button class="slds-button slds-button--brand" (click)="send(row,1)">发放</button>
+                <button class="slds-button slds-button--destructive" (click)="send(row,2)">拒发</button>
+            </div>
+            <div *ngIf="row.status=='1'" class="slds-button-group" role="group">
+                <ngl-badge type="success">已发送</ngl-badge>
+            </div>
+            <div *ngIf="row.status=='1'" class="slds-button-group" role="group">
+                <ngl-badge type="error">拒发</ngl-badge>
+            </div>
+        </template>
     </ngl-datatable-column>
     <ngl-datatable-column heading="操作" key="操作">
         <template nglDatatableCell let-row="row">
-            <ngl-badge type="inverse" class="slds-m-horizontal--large">详情</ngl-badge>
+            <div class="slds-button-group" role="group">
+                <button class="slds-button slds-button--neutral">详情</button>
+            </div>
         </template>
     </ngl-datatable-column>
 
@@ -67,7 +86,8 @@
     <template nglNoRowsOverlay>暂无数据</template>
 </table>
 <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
-    <ngl-pagination [(page)]="pageOpts.page" [total]="rewardList.total" [perPage]="rewardList.size"
+    <ngl-pagination [(page)]="pageOpts.page" [total]="rewardList.total" [perPage]="pageOpts.perPage"
+                    [limit]="pageOpts.limit"
                     boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
                     nextText="下一页"></ngl-pagination>
 </div>

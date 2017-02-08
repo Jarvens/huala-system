@@ -11,27 +11,60 @@ export class SellerSubsidyComponent implements OnInit {
   constructor(private sellerSubsidyService: SellerSubsidyService) {
   }
 
-  //tips  打开|关闭
-  open: boolean = false;
-  //奖励数据对象
-  rewardList: any = {};
-  //分页对象
-  pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10}
-  //toast类型
-  toastType: string = 'success';
-  //toast提示信息
-  toastMessage: string = '';
-  //toast 打开|关闭
-  showAlert: boolean = false;
-  //prompt消息
+  /**
+   *
+   * @type {boolean} tips 打开|关闭
+   */
+  public open: boolean = false;
+  /**
+   *
+   * @type {{}} 奖励数据对象
+   */
+  public rewardList: any = {};
+  /**
+   *
+   * @type {{page: number; total: number; limit: number; perPage: number}} 分页对象
+   */
+  public pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10}
+  /**
+   *
+   * @type {string} toast类型
+   */
+  public toastType: string = 'success';
+  /**
+   *
+   * @type {string} toast提示信息
+   */
+  public toastMessage: string = '';
+  /**
+   *
+   * @type {boolean} toast 打开|关闭
+   */
+  public showAlert: boolean = false;
+  /**
+   *
+   * @type {string} prompt消息
+   */
   promptMessage: string = '';
-  //prompt 打开|关闭
-  notificationOpen: boolean = false;
-  //查询时间
-  queryDate: string = '';
-  //格式化
+  /**
+   *
+   * @type {boolean} prompt 打开|关闭
+   */
+  public notificationOpen: boolean = false;
+  /**
+   *
+   * @type {string} 查询时间
+   */
+  public queryDate: string = '';
+  /**
+   *
+   * @type {string} 格式化
+   */
   date_formate: string = 'yyyy-mm-dd';
-  //初始化奖励数据
+
+  /**
+   * 初始化奖励数据
+   */
   initData() {
     if (this.queryDate == '') {
       this.showAlert = !this.showAlert;
@@ -42,42 +75,59 @@ export class SellerSubsidyComponent implements OnInit {
     this.sellerSubsidyService.initData(this.queryDate).subscribe(res=> {
       let ret = res.json();
       if (ret.success) {
-        this.toastFunction('奖励数据生成成功','success');
+        this.toastFunction('奖励数据生成成功', 'success');
         this.queryRewardList(this.queryDate, this.pageOpts);
       } else {
-        this.toastFunction(ret.message,'error');
+        this.toastFunction(ret.message, 'error');
       }
     });
   }
 
-  //分页事件
+  /**
+   * 分页事件
+   * @param event
+   */
   pageChange(event) {
     this.pageOpts.page = event;
     this.queryRewardList(this.queryDate, this.pageOpts);
   }
 
-  //时间选择事件
+  /**
+   * 时间选择事件
+   * @param event
+   */
   receiveDate(event: any) {
     this.queryDate = event;
     this.queryRewardList(event, this.pageOpts);
   }
 
-  //toast事件传递
-  notifyParamFunction(event:boolean) {
+  /**
+   * toast 传播事件
+   * @param event  打开|关闭
+   */
+  notifyParamFunction(event: boolean) {
     this.showAlert = event;
   }
 
-  //prompt取消事件
+  /**
+   * prompt取消事件
+   */
   cancelPrompt() {
 
   }
 
-  //prompt确定事件
+  /**
+   * prompt确定事件
+   */
   confirm() {
 
   }
 
-  //查询奖励列表
+  /**
+   * 查询奖励列表
+   * @param date
+   * @param page
+   */
   queryRewardList(date: string, page: any) {
     this.sellerSubsidyService.getRewardList(date, page).subscribe(res=> {
       this.rewardList = res.json();
@@ -85,11 +135,24 @@ export class SellerSubsidyComponent implements OnInit {
   }
 
 
-  //toast函数
+  /**
+   *
+   * @param message    toast提示消息
+   * @param toastType  类型
+   */
   toastFunction(message: string, toastType: string) {
     this.showAlert = !this.showAlert;
     this.toastMessage = message;
     this.toastType = toastType;
+  }
+
+  /**
+   * 发送奖励
+   * @param data
+   * @param type  1:发送   2:拒发
+   */
+  send(data: any, type: number) {
+    console.log(data);
   }
 
 }

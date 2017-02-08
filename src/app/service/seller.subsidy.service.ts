@@ -5,10 +5,21 @@ export class SellerSubsidyService {
   constructor(private http: MyHttp) {
   }
 
+  /**
+   * 初始化奖励数据
+   * @param date
+   * @returns {Observable<Response>}
+   */
   initData(date: string) {
     return this.http.post("/balance/seller-reward", {date: date});
   }
 
+  /**
+   * 查询奖励列表
+   * @param date
+   * @param page
+   * @returns {Observable<Response>}
+   */
   getRewardList(date: string, page: any) {
     if (!page) {
       page = {page: 1, perPage: 10};

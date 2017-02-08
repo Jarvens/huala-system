@@ -5,6 +5,11 @@ export class LoginService {
     constructor(private http: MyHttp) {
     }
 
+    /**
+     * 登录
+     * @param user
+     * @returns {Observable<Response>}
+     */
     login(user: any) {
         return this.http.post('/sys/login', user);
     }

@@ -6,7 +6,12 @@ export class BannerService {
 
   }
 
-  //获取banner列表
+  /**
+   * 获取banner列表
+   * @param page
+   * @param searchKey
+   * @returns {Observable<Response>}
+   */
   getBannerList(page: any, searchKey: string) {
     if (!page) {
       page = {page: 1, perPage: 10}
