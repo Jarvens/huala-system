@@ -13,19 +13,40 @@ export class AppVersionComponent implements OnInit {
     this.getAppVersionList(null);
   }
 
-  //app版本集合
+  /**
+   * app版本集合
+   * @type {{}}
+   */
   appVersionList: any = {};
-  //分页对象
-  pageOpts: any = {page:1,total: 0, limit: 3, perPage: 10}
-  //模态显示
+  /**
+   * 分页对象
+   * @type {{page: number; total: number; limit: number; perPage: number}}
+   */
+  pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10}
+  /**
+   * 模态显示
+   * @type {boolean}
+   */
   opened: boolean = false;
-  //Toast提示
+  /**
+   * Toast提示
+   * @type {string}
+   */
   toastMessage: string = '';
-  //类型
+  /**
+   * 类型
+   * @type {string}
+   */
   toastType: string = 'error';
-  //显示|关闭toast
+  /**
+   * 显示|关闭toast
+   * @type {boolean}
+   */
   showAlert: boolean = false;
-  //appObj
+  /**
+   * 当前操作对象
+   * @type {{}}
+   */
   appObj: any = {};
 
   getAppVersionList(page: any) {
@@ -35,7 +56,10 @@ export class AppVersionComponent implements OnInit {
     });
   }
 
-  //分页方法
+  /**
+   * 分页方法
+   * @param event
+   */
   pageChange(event) {
 
   }
@@ -46,12 +70,16 @@ export class AppVersionComponent implements OnInit {
     this.appObj = (<any>Object).assign({}, data);
   }
 
-  //关闭模态
+  /**
+   * 关闭模态
+   */
   cancel() {
     this.opened = !this.opened;
   }
 
-  //保存appVersion版本管理
+  /**
+   * 保存appVersion版本管理
+   */
   saveAppVersion() {
     this.appVersionService.saveAppVersion(this.appObj).subscribe(res=> {
       let ret = res.json();

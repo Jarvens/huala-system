@@ -13,55 +13,113 @@ export class FinanceListComponent implements OnInit {
   constructor(private financeService: FinanceService) {
   }
 
-  //日期对象
+  /**
+   * 日期对象
+   * @type {string}
+   */
   queryDate: string = '';
-  //Toast提示
+  /**
+   * Toast提示
+   * @type {string}
+   */
   toastMessage: string = '请选择日期';
-  //类型
+  /**
+   * 类型
+   * @type {string}
+   */
   toastType: string = 'warning';
-  //显示|关闭toast
+  /**
+   * 显示|关闭toast
+   * @type {boolean}
+   */
   showAlert: boolean = false;
-  //分页对象
+  /**
+   * 分页对象
+   * @type {{page: number; total: number; limit: number; perPage: number}}
+   */
   pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
-  //财务列表对象
+  /**
+   * 财务列表对象
+   * @type {{}}
+   */
   financeList: any = {};
-  //卡片列表对象
+  /**
+   * 卡片列表对象
+   * @type {{}}
+   */
   financeCard: any = {};
-  //收入详情 打开|关闭
+  /**
+   * 收入详情 打开|关闭
+   * @type {boolean}
+   */
   incomeOpen: boolean = false;
-  //支出详情 打开|关闭
+  /**
+   * 支出详情 打开|关闭
+   * @type {boolean}
+   */
   expenditureOpen: boolean = false;
-  //收入详情列表
+  /**
+   * 收入详情列表
+   * @type {{}}
+   */
   incomeList: any = {};
-  //支出详情列表
+  /**
+   * 支出详情列表
+   * @type {{}}
+   */
   expenditureList: any = {};
-  //收入详情分页对象
+  /**
+   * 收入详情分页对象
+   * @type {{page: number; total: number; limit: number; perPage: number}}
+   */
   incomePageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
-  //支出详情分页对象
+  /**
+   * 支出详情分页对象
+   * @type {{page: number; total: number; limit: number; perPage: number}}
+   */
   expenditurePageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
-  //格式化时间
+  /**
+   * 格式化时间
+   * @type {string}
+   * @private
+   */
   _date_formate: string = 'yyyymmdd';
-  //当前详情页 日期
+  /**
+   * 当前详情页 日期
+   * @type {string}
+   */
   currentDate: string = '';
-  //触发查询操作
+
+  /**
+   * 触发查询操作
+   * @param event
+   */
   receiveDate(event: any) {
     this.queryDate = event.slice(0, 6);
     this.getSql();
 
   }
 
-  //toast通知
+  /**
+   * toast通知
+   * @param event
+   */
   notifyParamFunction(event: any) {
     this.showAlert = !this.showAlert;
   }
 
-  //分页事件
+  /**
+   * 分页事件
+   * @param event
+   */
   pageChange(event: any) {
     this.pageOpts.page = event;
     this.getSql();
   }
 
-  //查询
+  /**
+   * 查询
+   */
   getSql() {
     this.financeService.getSql("finance.getFinanceByMonth", this.queryDate, this.pageOpts).subscribe(res=> {
       let ret = res.json();
@@ -75,7 +133,10 @@ export class FinanceListComponent implements OnInit {
 
   }
 
-  //收入详情
+  /**
+   * 收入详情
+   * @param date
+   */
   incomeDetail(date: string) {
     this.currentDate = date;
     this.financeService.getSql("finance.getFinanceOrder", date, this.incomePageOpts).subscribe(res=> {
@@ -83,7 +144,10 @@ export class FinanceListComponent implements OnInit {
     });
   }
 
-  //支出详情
+  /**
+   * 支出详情
+   * @param date
+   */
   expenditureDetail(date: string) {
     this.currentDate = date;
     this.financeService.getSql("finance.getFinancePay", date, this.expenditurePageOpts).subscribe(res=> {
@@ -91,13 +155,19 @@ export class FinanceListComponent implements OnInit {
     });
   }
 
-  //收入详情分页
+  /**
+   * 收入详情分页
+   * @param data
+   */
   incomePageChange(data: number) {
     this.incomePageOpts.page = data;
     this.incomeDetail(this.currentDate);
   }
 
-  //支出详情分页
+  /**
+   * 支出详情分页
+   * @param data
+   */
   expenditurePageChange(data: number) {
     this.expenditurePageOpts.page = data;
     this.expenditureDetail(this.currentDate);
