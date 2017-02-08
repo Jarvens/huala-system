@@ -22,6 +22,8 @@ export class OrderComponent implements OnInit {
   public opened: boolean = false; //显示详情的标记位;
   public curOrder: any; //当前订单;
   public orderList: any = [];
+  public selectedTab:string = "orderBasic"; //所选tab;
+  public orderGoods:any;
   
   constructor(public orderService: OrderService) {
   }
@@ -73,6 +75,13 @@ export class OrderComponent implements OnInit {
   showDetail(orderInfo): void {
     this.opened = true;
     this.curOrder = orderInfo;
+    console.log(orderInfo);
+    this.orderService.getOrderGoods(orderInfo.id).subscribe(res => {
+      let data = res.json();
+      if(data.success){
+        this.orderGoods = data.body.orderGoods;
+      }
+    })
   }
   
   selectScope(event) {

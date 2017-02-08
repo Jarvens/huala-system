@@ -31,6 +31,7 @@ import {PictureComponent} from './page/system/picture/picture.component';
 import {AppVersionComponent} from './page/system/app/app.version.component';
 import {UserComponent} from './page/system/user/user.component';
 import {OrderComponent} from './page/order/order.component';
+import {OrderBasicComponent} from './page/order/orderBasic.component';
 import {MessageComponent} from './page/system/message/message.component';
 import {BalanceComponent} from './page/balance/balance.component';
 import {GoodsComponent} from './page/goods/goods.component';
@@ -149,6 +150,7 @@ import {RoleService} from './service/role.service';
     BreadCrumbsComponent,
     PictureComponent,
     OrderComponent,
+    OrderBasicComponent,
     UserComponent,
     MessageComponent,
     ToastComponent,

@@ -15,4 +15,14 @@ export class OrderService {
     let gUrl = "/order/order-list?page=" + page.page + "&size=" + page.itemsPerPage;
     return this.http.get(gUrl, orderReq);
   }
+
+  /*
+   * @Description: Get order goods by order id;
+   * @Date: 2017-02-08;
+   */
+  getOrderGoods(orderId){
+    let gUrl = "/order/order-goods-list?orderId=" + orderId;
+
+    return this.http.get(gUrl);
+  }
 }
