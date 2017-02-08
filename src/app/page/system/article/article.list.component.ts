@@ -126,9 +126,15 @@ export class ArticleListComponent implements OnInit {
   //保存目录
   saveCategory() {
     this.categoryOpened = !this.categoryOpened;
+    this.toastFunction('保存成功','success');
+  }
+
+
+  //toast函数
+  toastFunction(message: string, toastType: string) {
     this.showAlert = !this.showAlert;
-    this.toastType = 'success';
-    this.toastMessage = '保存成功';
+    this.toastMessage = message;
+    this.toastType = toastType;
   }
 
 }

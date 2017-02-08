@@ -94,7 +94,7 @@ export class HngJobComponent implements OnInit {
   }
 
   //toast消息通知事件
-  notifyParamFunction(event:boolean) {
+  notifyParamFunction(event: boolean) {
     this.showAlert = event;
   }
 
@@ -114,15 +114,11 @@ export class HngJobComponent implements OnInit {
     this.hngService.saveJob(this.operaObj).subscribe(res=> {
       let ret = res.json();
       if (ret.success) {
-        this.toastMessage = '保存成功';
-        this.toastType = 'success';
-        this.showAlert = !this.showAlert;
+        this.toastFunction('保存成功', 'success');
         this.insertOrEditOpen = !this.insertOrEditOpen;
         this.queryJobList(this.key, this.pageOpts);
       } else {
-        this.toastType = 'error';
-        this.toastMessage = ret.message;
-        this.showAlert = !this.showAlert;
+        this.toastFunction(ret.message, 'error');
       }
     });
   }
@@ -131,5 +127,12 @@ export class HngJobComponent implements OnInit {
   create() {
     this.insertOrEditOpen = !this.insertOrEditOpen;
     this.operaObj = {};
+  }
+
+  //toast函数
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
   }
 }

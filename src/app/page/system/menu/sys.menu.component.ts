@@ -58,11 +58,8 @@ export class SysMenuComponent implements OnInit {
 
   //删除菜单
   deleteMenu() {
-    console.log(this.currentMenuObj);
     if (!this.currentMenuObj.id) {
-      this.toastType = 'info';
-      this.toastMessage = '请选择需要删除的菜单';
-      this.showAlert = !this.showAlert;
+      this.toastFunction('请选择需要删除的菜单', 'info');
       return;
     }
     this.notificationOpen = !this.notificationOpen;
@@ -78,21 +75,17 @@ export class SysMenuComponent implements OnInit {
     this.sysMenuService.deleteMenu(this.currentMenuObj).subscribe(res=> {
       let ret = res.json();
       if (ret.success) {
-        this.toastMessage = '删除成功';
-        this.showAlert = !this.showAlert;
-        this.toastType = 'success';
+        this.toastFunction('删除成功', 'success');
         this.currentMenuObj = {};
         this.notificationOpen = !this.notificationOpen;
       } else {
-        this.toastType = 'error';
-        this.toastMessage = ret.message;
-        this.showAlert = !this.showAlert;
+        this.toastFunction(ret.message, 'error');
       }
     });
   }
 
   //toast通知事件
-  notifyParamFunction(event:boolean) {
+  notifyParamFunction(event: boolean) {
     this.showAlert = event;
   }
 
@@ -102,14 +95,18 @@ export class SysMenuComponent implements OnInit {
     this.sysMenuService.editMenu(this.currentMenuObj).subscribe(res=> {
       let ret = res.json();
       if (ret.success) {
-        this.showAlert = !this.showAlert;
-        this.toastMessage = '保存成功';
-        this.toastType = 'success';
+        this.toastFunction('保存成功', 'success');
       } else {
-        this.showAlert = !this.showAlert;
-        this.toastType = 'error';
-        this.toastMessage = ret.message;
+        this.toastFunction(ret.message, 'error');
       }
     });
+  }
+
+
+  //toast函数
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
   }
 }

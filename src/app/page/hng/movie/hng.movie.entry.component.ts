@@ -1,7 +1,6 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {HngService} from '../../../service/hng.service';
 import {isNullOrUndefined} from "util";
-import {isUndefined} from "util";
 @Component({
   selector: 'hng-movie-entry-component',
   templateUrl: './hng.movie.entry.component.html'
@@ -45,6 +44,7 @@ export class HngMovieEntryComponent implements OnChanges {
   //关联商家事件
   targetFunction(data: any) {
     this.currentActiveObj.sellerName = data.name;
+    this.operaMovieObj.sellerId = data.id;
   }
 
   //编辑影片信息
@@ -65,8 +65,6 @@ export class HngMovieEntryComponent implements OnChanges {
       let result = res.json();
       if (result.success) {
         this.toastFunction('删除成功', 'success');
-        //TODO
-        //将该影片从数组中删除
         this.movieList.delete(this.operaMovieObj);
       } else {
         this.toastFunction(result.message, 'error');

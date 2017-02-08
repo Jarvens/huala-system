@@ -118,14 +118,11 @@ export class UserComponent implements OnInit {
     this.userService.deleteUser(this.operaObj).subscribe(res=> {
       let ret = res.json();
       if (ret.success) {
-        this.showAlert = !this.showAlert;
-        this.toastMessage = '删除成功';
+        this.toastFunction('删除成功','success');
         this.notificationOpen = !this.notificationOpen;
         this.getUserList(null, this.pageOpts);
       } else {
-        this.showAlert = !this.showAlert;
-        this.toastMessage = ret.message;
-        this.toastType = 'error';
+        this.toastFunction(ret.message,'error');
         this.notificationOpen = !this.notificationOpen;
       }
     });
@@ -135,13 +132,10 @@ export class UserComponent implements OnInit {
     this.userService.resetPassword(this.operaObj).subscribe(res=> {
       let ret = res.json();
       if (ret.success) {
-        this.showAlert = !this.showAlert;
-        this.toastMessage = '密码重置成功';
+        this.toastFunction('密码重置成功','success');
         this.notificationOpen = !this.notificationOpen;
       } else {
-        this.showAlert = !this.showAlert;
-        this.toastMessage = ret.message;
-        this.toastType = 'error';
+        this.toastFunction(ret.message,'error');
         this.notificationOpen = !this.notificationOpen;
       }
     });
@@ -151,6 +145,14 @@ export class UserComponent implements OnInit {
   edit(data: any) {
     this.operaObj = data;
     this.opened = !this.opened;
+  }
+
+
+  //toast函数
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
   }
 
 }

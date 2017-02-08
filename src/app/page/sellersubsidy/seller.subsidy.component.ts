@@ -42,14 +42,10 @@ export class SellerSubsidyComponent implements OnInit {
     this.sellerSubsidyService.initData(this.queryDate).subscribe(res=> {
       let ret = res.json();
       if (ret.success) {
-        this.showAlert = !this.showAlert;
-        this.toastType = 'success';
-        this.toastMessage = '奖励数据生成成功';
+        this.toastFunction('奖励数据生成成功','success');
         this.queryRewardList(this.queryDate, this.pageOpts);
       } else {
-        this.showAlert = !this.showAlert;
-        this.toastMessage = ret.message;
-        this.toastType = 'error';
+        this.toastFunction(ret.message,'error');
       }
     });
   }
@@ -86,6 +82,14 @@ export class SellerSubsidyComponent implements OnInit {
     this.sellerSubsidyService.getRewardList(date, page).subscribe(res=> {
       this.rewardList = res.json();
     });
+  }
+
+
+  //toast函数
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
   }
 
 }

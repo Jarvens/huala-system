@@ -85,13 +85,9 @@ export class ConfigComponent implements OnInit {
     this.configService.editConfig(this.configEditObj).subscribe(res=> {
       let ret = res.json();
       if (ret.success) {
-        this.toastMessage = "修改成功";
-        this.toastType = "success";
-        this.showAlert = true;
+        this.toastFunction('修改成功', 'success');
       } else {
-        this.toastMessage = "修改失败";
-        this.toastType = "error";
-        this.showAlert = true;
+        this.toastFunction('修改失败', 'error');
       }
     });
   }
@@ -99,6 +95,13 @@ export class ConfigComponent implements OnInit {
   //toast事件
   notifyParamFunction(event) {
     this.showAlert = !this.showAlert;
+  }
+
+  //toast函数
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
   }
 
 }

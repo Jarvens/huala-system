@@ -36,7 +36,6 @@ export class MessageComponent implements OnInit {
   getMessageList(page: any, key: string, type: string, status: string) {
     this.messageService.getMessageList(page, key, type, status).subscribe(res=> {
       this.messageList = res.json();
-      console.log(res.json());
     });
   }
 

@@ -45,14 +45,10 @@ export class HngRecruitBasicComponent implements OnInit {
     this.hngService.saveRecruitBasicData(this.operaObj).subscribe(res=> {
       let ret = res.json();
       if (ret.success) {
-        this.toastType = 'success';
-        this.showAlert = !this.showAlert;
-        this.toastMessage = ret.message;
+        this.toastFunction(ret.message,'success');
         this.recruitId = ret.body;
       } else {
-        this.showAlert = !this.showAlert;
-        this.toastMessage = ret.message;
-        this.toastType = 'error';
+        this.toastFunction(ret.message,'error');
       }
     });
   }
@@ -73,6 +69,14 @@ export class HngRecruitBasicComponent implements OnInit {
         });
       }
     })
+  }
+
+
+  //toast函数
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
   }
 
 }

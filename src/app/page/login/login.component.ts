@@ -35,9 +35,7 @@ export class LoginComponent implements OnInit {
         window.localStorage.setItem("hl-token", ret.token);
         this.router.navigate(['/index/chart']);
       } else {
-        this.toastMessage = ret.message;
-        this.showAlert = !this.showAlert;
-        this.toastType = 'error';
+        this.toastFunction(ret.message,'error');
       }
     });
   }
@@ -46,6 +44,14 @@ export class LoginComponent implements OnInit {
   //toast通知
   notifyParamFunction(event) {
     this.showAlert = !this.showAlert;
+  }
+
+
+  //toast函数
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
   }
 
 }

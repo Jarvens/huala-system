@@ -36,14 +36,20 @@ export class RefundOrderComponent implements OnInit {
   }
 
   exportRefundOrder() {
-    this.toastMessage = '敬请期待...';
-    this.toastType = 'info';
-    this.showAlert = !this.showAlert;
+    this.toastFunction('敬请期待...','info');
   }
 
   //toast传递事件
   notifyParamFunction(event:boolean) {
     this.showAlert = event;
+  }
+
+
+  //toast函数
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
   }
 
 }
