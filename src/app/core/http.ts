@@ -12,12 +12,12 @@ const mergeAuthToken = (options: RequestOptionsArgs)=> {
   newHeaders.set('Content-Type', 'application/json');
   newHeaders.set('token', localStorage.getItem('hl-token'));
   newHeaders.set('city', localStorage.getItem("hualaCity"));
-  if(!localStorage.getItem("hualaCity")) {
+  if (!localStorage.getItem("hualaCity")) {
     alert('请选择城市');
   }
   newOptions.headers = newHeaders;
   return newOptions;
-}
+};
 
 //接口地址
 const ApiUrl = process.env.ApiUrl;
@@ -25,10 +25,10 @@ const ApiUrl = process.env.ApiUrl;
 export class MyHttp {
   private template: string = '<div class="httpOverlay" style="z-index: 9999;background: rgba(0,0,0,.4);width: 100%;height: 100vh;position: fixed;left: 0;top: 0;">' +
     '<div class="row" style="padding-top: 20%;"><div class="col-md-4"></div><div class="col-md-4" style="text-align: center;color:#fff;"><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i></div><div class="col-md-4"></div></div></div>';
-  
+
   constructor(public http: Http, public router?: Router) {
   }
-  
+
   get(url: string, body?: Object, options?: RequestOptionsArgs): Observable<Response> {
     let overlay = $('body .httpOverlay');
     if (overlay.length == 0) {
@@ -50,7 +50,7 @@ export class MyHttp {
       return Observable.throw(error);
     });
   }
-  
+
   post(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
     let overlay = $('body .httpOverlay');
     if (overlay.length == 0) {
@@ -70,19 +70,19 @@ export class MyHttp {
       return Observable.throw(error);
     });
   }
-  
+
   put(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
     return this.http.put(ApiUrl + url, body, mergeAuthToken(options));
   }
-  
+
   delete(url: string, options?: RequestOptionsArgs): Observable<Response> {
     return this.http.delete(ApiUrl + url, mergeAuthToken(options));
   }
-  
+
   patch(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
     return this.http.patch(ApiUrl + url, body, mergeAuthToken(options));
   }
-  
+
   head(url: string, options?: RequestOptionsArgs): Observable<Response> {
     return this.http.head(ApiUrl + url, mergeAuthToken(options));
   }
