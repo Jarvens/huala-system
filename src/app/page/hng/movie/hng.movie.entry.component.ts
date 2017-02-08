@@ -1,5 +1,7 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {HngService} from '../../../service/hng.service';
+import {isNullOrUndefined} from "util";
+import {isUndefined} from "util";
 @Component({
   selector: 'hng-movie-entry-component',
   templateUrl: './hng.movie.entry.component.html'
@@ -29,7 +31,7 @@ export class HngMovieEntryComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     let _obj: any = changes['currentActiveObj'];
-    if (_obj && _obj.currentValue != _obj.previousValue) {
+    if (!isNullOrUndefined(_obj.currentValue.id) && _obj.currentValue != _obj.previousValue) {
       let that = this;
       this.currentActiveObj.movies.forEach(function (data: any) {
         that.movieList.add(data);
