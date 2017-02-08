@@ -37,9 +37,11 @@
         </ngl-datatable-column>
         <ngl-datatable-column heading="操作" key="">
             <template nglDatatableCell let-row="row">
-                <button type="button" nglButton="neutral" (click)="roleDetail()">详情</button>
-                <button class="slds-button slds-button--brand" (click)="grantAuthorization(row)">授权</button>
-                <button class="slds-button slds-button--destructive" (click)="delete(row)">删除</button>
+                <div class="slds-button-group" role="group">
+                    <button type="button" nglButton="neutral" (click)="roleDetail()">详情</button>
+                    <button class="slds-button slds-button--brand" (click)="grantAuthorization(row)">授权</button>
+                    <button class="slds-button slds-button--destructive" (click)="delete(row)">删除</button>
+                </div>
             </template>
         </ngl-datatable-column>
         <template nglNoRowsOverlay>暂无数据!</template>
@@ -59,7 +61,7 @@
 <ngl-modal header="授权模态" [(open)]="authorOpen">
     <div body class="slds-grid slds-picklist--draggable">
         <div class="slds-form-element">
-            <span class="slds-form-element__label" >菜单列表</span>
+            <span class="slds-form-element__label">菜单列表</span>
             <div class="slds-picklist" role="application">
                 <ul aria-describedby="option-drag-label" aria-multiselectable="true"
                     class="slds-picklist__options slds-picklist__options--multi" role="listbox" tabindex="0">
@@ -97,7 +99,7 @@
         <div class="slds-form-element">
             <span class="slds-form-element__label">已授权菜单</span>
             <div class="slds-picklist" role="application">
-                <ul aria-describedby="option-drag-label"  aria-multiselectable="true"
+                <ul aria-describedby="option-drag-label" aria-multiselectable="true"
                     class="slds-picklist__options slds-picklist__options--multi" role="listbox" tabindex="0">
                     <li aria-selected="false" class="slds-picklist__item slds-is-draggable" draggable="true"
                         role="option" tabindex="-1">

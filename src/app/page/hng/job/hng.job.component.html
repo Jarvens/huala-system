@@ -36,9 +36,11 @@
     </ngl-datatable-column>
     <ngl-datatable-column heading="操作" key="">
         <template nglDatatableCell let-row="row">
-            <button class="slds-button slds-button--neutral" (click)="jobDetail(row)">详情</button>
-            <button class="slds-button slds-button--brand" (click)="editFun(row)">编辑</button>
-            <button class="slds-button slds-button--destructive" (click)="deleteFunc(row)">删除</button>
+            <div class="slds-button-group" role="group">
+                <button class="slds-button slds-button--neutral" (click)="jobDetail(row)">详情</button>
+                <button class="slds-button slds-button--brand" (click)="editFun(row)">编辑</button>
+                <button class="slds-button slds-button--destructive" (click)="deleteFunc(row)">删除</button>
+            </div>
         </template>
     </ngl-datatable-column>
     <template nglNoRowsOverlay>暂无数据!</template>
@@ -182,7 +184,7 @@
             </div>
         </div>
     </div>
-    <template ngl-modal-footer >
+    <template ngl-modal-footer>
         <button class="slds-button slds-button--neutral" (click)="save()">保存</button>
     </template>
 </ngl-modal>

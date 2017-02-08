@@ -28,9 +28,11 @@
     <ngl-datatable-column heading="性别" key="sex" cellClass="slds-truncate"></ngl-datatable-column>
     <ngl-datatable-column heading="操作" key="">
         <template nglDatatableCell let-row="row">
-            <button class="slds-button slds-button--hint" (click)="reset(row)">密码重置</button>
-            <button class="slds-button slds-button--brand" (click)="edit(row)">编辑</button>
-            <button class="slds-button slds-button--destructive" (click)="deleteUser(row)">删除</button>
+            <div class="slds-button-group" role="group">
+                <button class="slds-button slds-button--neutral" (click)="reset(row)">密码重置</button>
+                <button class="slds-button slds-button--brand" (click)="edit(row)">编辑</button>
+                <button class="slds-button slds-button--destructive" (click)="deleteUser(row)">删除</button>
+            </div>
         </template>
     </ngl-datatable-column>
     <!-- No rows overlay -->
@@ -50,13 +52,15 @@
         <div class="slds-grid slds-wrap">
             <div class="slds-size--5-of-12">
                 <ngl-form-element label="账号" class="slds-m-top--small">
-                    <input nglFormControl type="text" placeholder="" [required]="required" [(ngModel)]="operaObj.account">
+                    <input nglFormControl type="text" placeholder="" [required]="required"
+                           [(ngModel)]="operaObj.account">
                 </ngl-form-element>
             </div>
             <div class="slds-size--2-of-12"></div>
             <div class="slds-size--5-of-12">
                 <ngl-form-element label="密码" class="slds-m-top--small">
-                    <input nglFormControl type="password" placeholder="" [required]="required" [(ngModel)]="operaObj.password">
+                    <input nglFormControl type="password" placeholder="" [required]="required"
+                           [(ngModel)]="operaObj.password">
                 </ngl-form-element>
             </div>
         </div>
@@ -95,7 +99,8 @@
         <div class="slds-grid slds-wrap">
             <div class="slds-size--5-of-12">
                 <ngl-form-element label="手机号码" class="slds-m-top--small">
-                    <input nglFormControl type="text" placeholder="" [required]="required" [(ngModel)]="operaObj.mobile">
+                    <input nglFormControl type="text" placeholder="" [required]="required"
+                           [(ngModel)]="operaObj.mobile">
                 </ngl-form-element>
             </div>
             <div class="slds-size--2-of-12"></div>
