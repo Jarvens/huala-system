@@ -26,4 +26,17 @@ export class SellerSubsidyService {
     }
     return this.http.get("/balance/seller-reward-list", {date: date, page: page.page, size: page.perPage});
   }
+
+  /**
+   * 查询订单列表
+   * @param page
+   * @param data
+   */
+  getOrderList(page: any, key: string, param: string) {
+    if (!page) {
+      page = {page: 1, perPage: 10};
+    }
+    return this.http.get("/tongji/sqlExe", {key: key, param: param, page: page.page, size: page.perPage});
+
+  }
 }

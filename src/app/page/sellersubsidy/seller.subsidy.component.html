@@ -63,7 +63,7 @@
     <ngl-datatable-column heading="操作" key="操作">
         <template nglDatatableCell let-row="row">
             <div class="slds-button-group" role="group">
-                <button class="slds-button slds-button--neutral">详情</button>
+                <button class="slds-button slds-button--neutral" (click)="detail(row)">详情</button>
             </div>
         </template>
     </ngl-datatable-column>
@@ -134,11 +134,16 @@
         <div class="slds-scrollable">
             <table ngl-datatable [data]="orderDataList.rows" trackByKey="rank"
                    class="slds-max-medium-table--stacked-horizontal">
-                <ngl-datatable-column heading="用户名称" key="date"></ngl-datatable-column>
-                <ngl-datatable-column heading="手机号" key="order_amount"></ngl-datatable-column>
-                <ngl-datatable-column heading="订单ID" key="red_amount"></ngl-datatable-column>
-                <ngl-datatable-column heading="订单金额" key="seller_amount"></ngl-datatable-column>
-                <ngl-datatable-column heading="是否首单" key="auto_income"></ngl-datatable-column>
+                <ngl-datatable-column heading="用户名称" key="consignee"></ngl-datatable-column>
+                <ngl-datatable-column heading="手机号" key="mobile"></ngl-datatable-column>
+                <ngl-datatable-column heading="订单ID" key="order_sn"></ngl-datatable-column>
+                <ngl-datatable-column heading="订单金额" key="order_amount"></ngl-datatable-column>
+                <ngl-datatable-column heading="是否首单" key="first_order_count">
+                    <template nglDatatableCell let-value>
+                        <ngl-badge *ngIf="value=='0'" type="error">非首单</ngl-badge>
+                        <ngl-badge *ngIf="value=='1'" type="error">首单</ngl-badge>
+                    </template>
+                </ngl-datatable-column>
                 <!-- No rows overlay -->
                 <template nglNoRowsOverlay>暂无数据</template>
             </table>

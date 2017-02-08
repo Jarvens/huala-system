@@ -26,8 +26,6 @@ export class SellerSubsidyComponent implements OnInit {
    * @type {{page: number; total: number; limit: number; perPage: number}} 分页对象
    */
   public pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
-
-
   /**
    *
    * @type {string} toast类型
@@ -92,19 +90,19 @@ export class SellerSubsidyComponent implements OnInit {
    * 奖励详情订单模态  打开|关闭
    * @type {boolean}
    */
-  public orderOpened:boolean = false;
+  public orderOpened: boolean = false;
 
   /**
    * 订单数据集合
    * @type {{}}
    */
-  public orderDataList:any={};
+  public orderDataList: any = {};
 
   /**
    * 订单分页
    * @type {{page: number; total: number; limit: number; perPage: number}}
    */
-  orderPageOpts:any={page: 1, total: 0, limit: 3, perPage: 10};
+  orderPageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
 
   /**
    * 初始化奖励数据
@@ -229,8 +227,23 @@ export class SellerSubsidyComponent implements OnInit {
    * 订单分页
    * @param data
    */
-  orderPageChange(data:number){
+  orderPageChange(data: number) {
+    this.orderPageOpts.page = data;
+    this.detail(this.currentRewardObj);
+  }
 
+  /**
+   * 详情
+   * @param data
+   */
+  detail(data: any) {
+    this.orderDataList = {};
+    this.currentRewardObj = data;
+    this.orderOpened = !this.orderOpened;
+    this.sellerSubsidyService.getOrderList(this.orderPageOpts, 'other.getOrderCountDetail',
+      data.sellerId + '--' + this.queryDate).subscribe(res=> {
+      this.orderDataList = res.json();
+    });
   }
 
 }
