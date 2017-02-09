@@ -37,6 +37,8 @@ import {RelativeSellerComponent} from '../page/hng/recruit/hng.recruit.relative.
 import {RecruitChooseTimeComponent} from '../page/hng/recruit/hng.recruit.choosetime.component';
 import {BasicReportComponent} from '../page/basicreport/basic.report.component';
 import {SqlConfigComponent} from '../page/system/sqlconfig/sql.config.component';
+import {SellerGoodsComponent} from '../page/sellerGoods/sellerGoods.component';
+
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
@@ -48,6 +50,7 @@ const routes: Routes = [
       {path: 'banner-main', component: BannerMainComponent},
       {path: 'card-list', component: CardComponent},
       {path: 'seller-info', component: SellerMainComponent},
+      {path: 'seller-goods', component: SellerGoodsComponent},
       {path: 'system-img-manage', component: PictureComponent},
       {path: 'app/app-version-index', component: AppVersionComponent},
       {path: 'order', component: OrderComponent},

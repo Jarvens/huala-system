@@ -59,6 +59,7 @@ import {SellerListCommonComponent} from './page/component/seller/seller.list.com
 import {GoodsAddComponent} from './page/goods/goodsAdd.component';
 import {BasicReportComponent} from './page/basicreport/basic.report.component';
 import {SqlConfigComponent} from './page/system/sqlconfig/sql.config.component';
+import {SellerGoodsComponent} from './page/sellerGoods/sellerGoods.component';
 //惠农购业务
 import {HngCompanyComponent} from './page/hng/company/hng.company.component';
 import {HngJobComponent} from './page/hng/job/hng.job.component';
@@ -186,6 +187,7 @@ import {SqlConfigService} from './service/sql.config.service';
     SellerSubsidyComponent,
     SpikeListComponent,
     SellerAuditComponent,
+    SellerGoodsComponent,
     ConfigComponent,
     SysMenuComponent,
     OrderLogComponent,

@@ -135,4 +135,18 @@ export class HngMovieListComponent implements OnInit {
   editActive(data: any) {
     this.outPutCurrentActive.emit(data);
   }
+
+  /**
+   * 导出
+   */
+  exportDataReport(){
+
+  }
+
+  /**
+   * 导入
+   */
+  importDataReport(){
+
+  }
 }

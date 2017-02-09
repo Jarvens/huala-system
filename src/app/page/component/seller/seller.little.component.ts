@@ -15,6 +15,8 @@ export class SellerLittleComponent implements OnInit {
   //输出
   @Output() targetSeller = new EventEmitter<any>();
 
+  placeholder:string ='搜索...';
+
   constructor(private sellerService: SellerService) {
   }
 
