@@ -126,7 +126,7 @@
             <textarea id="comment-text-input2" class="slds-publisher__input slds-textarea slds-text-longform"
                       placeholder="角色名称…" [(ngModel)]="roleObj.roleName"></textarea>
             <div class="slds-publisher__actions slds-grid slds-grid--align-spread">
-                <button class="slds-button slds-button--brand">save</button>
+                <button class="slds-button slds-button--brand" (click)="createRole()">save</button>
             </div>
         </div>
 
