@@ -73,11 +73,18 @@ export class UserComponent implements OnInit {
    */
   confirmType: string = '';
 
+  /**
+   * 角色集合
+   * @type {Array}
+   */
+  roleDataList: Array<any> = [];
+
   constructor(private userService: UserService, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
     this.getUserList(null, this.key);
+    this.getRoleDataList();
   }
 
   /**
@@ -242,6 +249,15 @@ export class UserComponent implements OnInit {
     this.showAlert = !this.showAlert;
     this.toastMessage = message;
     this.toastType = toastType;
+  }
+
+  /**
+   * 查询角色集合
+   */
+  getRoleDataList() {
+    this.userService.getRoleList().subscribe(res=> {
+      this.roleDataList = res.json();
+    });
   }
 
 }

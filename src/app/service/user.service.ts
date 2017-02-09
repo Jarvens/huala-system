@@ -46,4 +46,12 @@ export class UserService {
     return this.http.post("/role/edit-user",data);
   }
 
+  /**
+   * 查询角色列表
+   * @returns {Observable<Response>}
+   */
+  getRoleList(){
+    return this.http.get("/role/get-role-list");
+  }
+
 }
