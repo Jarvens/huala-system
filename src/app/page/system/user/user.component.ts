@@ -256,7 +256,7 @@ export class UserComponent implements OnInit {
    */
   getRoleDataList() {
     this.userService.getRoleList().subscribe(res=> {
-      this.roleDataList = res.json();
+      this.roleDataList = res.json().body;
     });
   }
 
