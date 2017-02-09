@@ -5,15 +5,24 @@ import {Component} from '@angular/core';
 })
 export class SellerMainComponent {
   selected: string = 'list';
-  //seller-list页面传递过来的seller对象
+  /**
+   * seller-list页面传递过来的seller对象
+   */
   detailFromSellerList: boolean;
   showDetail: boolean = false;
-  //手动触发tab切换事件
+
+  /**
+   * 手动触发tab切换事件
+   * @param event
+   */
   tabChange(event) {
-    
+
   }
-  
-  //通过seller-list页面传递值 自动切换tab页
+
+  /**
+   * 通过seller-list页面传递值 自动切换tab页
+   * @param event
+   */
   switchTabs(event) {
     this.detailFromSellerList = event;
     this.selected = 'detail';

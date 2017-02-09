@@ -5,10 +5,15 @@ import {Component, Input, OnChanges} from '@angular/core';
   styleUrls: ['./seller.detail.component.css']
 })
 export class SellerDetailComponent implements OnChanges {
-  
-  //seller-main页面传递过来的seller对象
+
+  /**
+   * seller-main页面传递过来的seller对象
+   * @type {{}}
+   */
   @Input() detailFromSellerMain: any = {};
-  //图片地址前缀
+  /**
+   * 图片地址前缀
+   */
   commonImgUrl = process.env.ImgUrl;
   
   ngOnChanges(changes): void {
