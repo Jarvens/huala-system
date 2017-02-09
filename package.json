@@ -52,7 +52,6 @@
     "server": "npm run server:dev",
     "start:hmr": "npm run server:dev:hmr",
     "start": "npm run server:dev",
-    "start:prod":"webpack-dev-server --config config/webpack.prod.js --progress --profile --watch --content-base src/",
     "test": "npm run lint && karma start",
     "tslint": "tslint",
     "typedoc": "typedoc",

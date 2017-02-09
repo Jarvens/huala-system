@@ -75,7 +75,23 @@ export class RoleCOmponent implements OnInit {
    */
   roleObj: any = {};
 
+  /**
+   * 左侧容器
+   * @type {Set<any>}
+   */
+  leftContainer = new Set<any>();
 
+  /**
+   * 右侧容器
+   * @type {Set<any>}
+   */
+  rightContainer = new Set<any>();
+
+  /**
+   * 角色 权限集合 {包含拥有菜单 以及所有菜单}
+   * @type {{}}
+   */
+  authorizationMapResullt: any = {};
 
   ngOnInit(): void {
     this.queryRoleList(this.key, this.pageOpts);
@@ -191,8 +207,12 @@ export class RoleCOmponent implements OnInit {
    * Set转List
    * @param data
    */
-  convertSetToList(source:Set<any>){
-
+  convertSetToList(source: Set<any>) {
+    let array: any = [];
+    this.rightContainer.forEach(function (obj: any) {
+      array.push(obj);
+    });
+    this.authorizationMapResullt.authorizationMenu = arry;
   }
 
   /**
@@ -200,9 +220,24 @@ export class RoleCOmponent implements OnInit {
    * @param source
    * @param target
    */
-  convertListToSet(source:Array<any>,target:Set<any>){
+  convertListToSet(source: Array<any>, target: Set<any>) {
+    source.forEach(function (obj: any) {
+      target.add(obj);
+    });
+  }
+
+  /**
+   * 将权限从拥有权限Set集合移除
+   */
+  pullLeft() {
 
   }
 
+  /**
+   * 将权限从所有权限Set集合 添加到有用权限Set集合
+   */
+  pullRight() {
+
+  }
 
 }
