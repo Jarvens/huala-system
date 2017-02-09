@@ -105,6 +105,12 @@ export class SellerSubsidyComponent implements OnInit {
   orderPageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
 
   /**
+   * 当前发送奖励状态
+   * @type {string}
+   */
+  currentStatus: string = '';
+
+  /**
    * 初始化奖励数据
    */
   initData() {
@@ -163,6 +169,7 @@ export class SellerSubsidyComponent implements OnInit {
    */
   confirm() {
     this.notificationOpen = !this.notificationOpen;
+    this.currentRewardObj.status = this.currentStatus;
     this.sellerSubsidyService.sendData(this.currentRewardObj).subscribe(res=> {
       let result = res.json();
       if (result.success) {
@@ -205,7 +212,7 @@ export class SellerSubsidyComponent implements OnInit {
     this.notificationOpen = !this.notificationOpen;
     this.promptMessage = '您确定要发送吗?';
     this.currentRewardObj = data;
-    this.currentRewardObj.status = type;
+    this.currentStatus = type;
   }
 
   /**
