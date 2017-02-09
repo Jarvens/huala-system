@@ -37,7 +37,7 @@
     <ngl-datatable-column heading="奖励金额" key="amount">
         <template nglDatatableCell let-row="row">
             <span class="text-danger">{{row.amount/100|number:'1.2-2'}}</span>
-            <button class="slds-button slds-button--icon-bare" (click)="modifyReward(row)">修改</button>
+            <button *ngIf="row.status=='0'" class="slds-button slds-button--icon-bare" (click)="modifyReward(row)">修改</button>
         </template>
     </ngl-datatable-column>
     <ngl-datatable-column heading="实发金额" key="reward">
