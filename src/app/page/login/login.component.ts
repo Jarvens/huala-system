@@ -8,11 +8,20 @@ import {LoginService} from '../../service/login.service';
 export class LoginComponent implements OnInit {
   token: string = '';
   user: any = {};
-  //Toast提示
+  /**
+   * Toast提示
+   * @type {string}
+   */
   toastMessage: string = '';
-  //类型
+  /**
+   * toast 类型
+   * @type {string}
+   */
   toastType: string = 'error';
-  //显示|关闭toast
+  /**
+   * 显示|关闭toast
+   * @type {boolean}
+   */
   showAlert: boolean = false;
 
   constructor(private router: Router, private loginService: LoginService) {
@@ -27,7 +36,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  //登录
+  /**
+   * 登录
+   */
   login() {
     this.loginService.login(this.user).subscribe(res=> {
       let ret = res.json();
@@ -35,19 +46,26 @@ export class LoginComponent implements OnInit {
         window.localStorage.setItem("hl-token", ret.token);
         this.router.navigate(['/index/chart']);
       } else {
-        this.toastFunction(ret.message,'error');
+        this.toastFunction(ret.message, 'error');
       }
     });
   }
 
 
-  //toast通知
-  notifyParamFunction(event) {
-    this.showAlert = !this.showAlert;
+  /**
+   * toast通知
+   * @param event
+   */
+  notifyParamFunction(event: boolean) {
+    this.showAlert = event;
   }
 
 
-  //toast函数
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
   toastFunction(message: string, toastType: string) {
     this.showAlert = !this.showAlert;
     this.toastMessage = message;

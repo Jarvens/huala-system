@@ -42,20 +42,20 @@
     </ngl-datatable-column>
     <ngl-datatable-column heading="实发金额" key="reward">
         <template nglDatatableCell let-value>
-            <span class="text-success">{{reward/100|number:'1.2-2'}}</span>
+            <span class="text-success">{{value/100|number:'1.2-2'}}</span>
         </template>
     </ngl-datatable-column>
     <ngl-datatable-column heading="备注" key="remark"></ngl-datatable-column>
     <ngl-datatable-column heading="奖励发放" key="offset">
         <template nglDatatableCell let-row="row">
             <div *ngIf="row.status=='0'" class="slds-button-group" role="group">
-                <button class="slds-button slds-button--brand" (click)="send(row,1)">发放</button>
-                <button class="slds-button slds-button--destructive" (click)="send(row,2)">拒发</button>
+                <button class="slds-button slds-button--brand" (click)="send(row,'1')">发放</button>
+                <button class="slds-button slds-button--destructive" (click)="send(row,'2')">拒发</button>
             </div>
             <div *ngIf="row.status=='1'" class="slds-button-group" role="group">
                 <ngl-badge type="success">已发送</ngl-badge>
             </div>
-            <div *ngIf="row.status=='1'" class="slds-button-group" role="group">
+            <div *ngIf="row.status=='2'" class="slds-button-group" role="group">
                 <ngl-badge type="error">拒发</ngl-badge>
             </div>
         </template>
@@ -110,7 +110,7 @@
         <div class="slds-grid slds-wrap">
             <div class="slds-size--1-of-1">
                 <ngl-form-element label="奖励金额" class="slds-m-top--small">
-                    <input nglFormControl type="text" [required]="required" [(ngModel)]="rewardModalObj.reward">
+                    <input nglFormControl type="number" [required]="required" [(ngModel)]="rewardModalObj.reward">
                 </ngl-form-element>
             </div>
         </div>
@@ -136,8 +136,16 @@
                    class="slds-max-medium-table--stacked-horizontal">
                 <ngl-datatable-column heading="用户名称" key="consignee"></ngl-datatable-column>
                 <ngl-datatable-column heading="手机号" key="mobile"></ngl-datatable-column>
-                <ngl-datatable-column heading="订单ID" key="order_sn"></ngl-datatable-column>
-                <ngl-datatable-column heading="订单金额" key="order_amount"></ngl-datatable-column>
+                <ngl-datatable-column heading="订单ID" key="order_sn">
+                    <template nglDatatableCell let-value>
+                        <b>{{value}}</b>
+                    </template>
+                </ngl-datatable-column>
+                <ngl-datatable-column heading="订单金额" key="order_amount">
+                    <template nglDatatableCell let-value>
+                        <span class="text-danger">{{value|number:'1.2-2'}}</span>
+                    </template>
+                </ngl-datatable-column>
                 <ngl-datatable-column heading="是否首单" key="first_order_count">
                     <template nglDatatableCell let-value>
                         <ngl-badge *ngIf="value=='0'" type="error">非首单</ngl-badge>
@@ -148,9 +156,11 @@
                 <template nglNoRowsOverlay>暂无数据</template>
             </table>
             <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
-                <ngl-pagination [(page)]="orderPageOpts.page" [total]="orderDataList.total" [perPage]="orderPageOpts.perPage"
+                <ngl-pagination [(page)]="orderPageOpts.page" [total]="orderDataList.total"
+                                [perPage]="orderPageOpts.perPage"
                                 [limit]="orderPageOpts.limit"
-                                boundaryNumbers="1" #pagination (pageChange)="orderPageChange($event)" previousText="上一页"
+                                boundaryNumbers="1" #pagination (pageChange)="orderPageChange($event)"
+                                previousText="上一页"
                                 nextText="下一页"></ngl-pagination>
             </div>
         </div>
