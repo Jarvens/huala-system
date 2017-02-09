@@ -24,7 +24,7 @@
       <div class="slds-size--1-of-2">
         <img-upload-component (uploadAddr)="goodsInfo.picUrl=$event"
                               [picUrl]="goodsInfo.picUrl"
-                              [uploadFolder]="goods"></img-upload-component>
+                              uploadFolder="goods"></img-upload-component>
       </div>
     </div>
   </div>
@@ -46,12 +46,12 @@
       <div class="slds-size--1-of-2 slds-float--left">
         <img-upload-component (uploadAddr)="goodsInfo.picDescription[0]=$event"
                               [picUrl]="goodsInfo.picDescription[0]"
-                              [uploadFolder]="goods"></img-upload-component>
+                              uploadFolder="goods"></img-upload-component>
       </div>
       <div class="slds-size--1-of-2 slds-float--left">
         <img-upload-component (uploadAddr)="goodsInfo.picDescription[1]=$event"
                               [picUrl]="goodsInfo.picDescription[1]"
-                              [uploadFolder]="goods"></img-upload-component>
+                              uploadFolder="goods"></img-upload-component>
       </div>
     </div>
   </div>

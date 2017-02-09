@@ -77,7 +77,9 @@ export class ArticleListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCateGoryList(this.currentCateGoryId);
+    this.getCateGoryList(this.currentCateGoryId).subscribe(res=>{
+      this.cateGoryArray = res.json().body;
+    });
   }
 
   /**
@@ -85,9 +87,7 @@ export class ArticleListComponent implements OnInit {
    * @param id
    */
   getCateGoryList(id: string) {
-    this.articleService.getArticleListByCategoryId(id).subscribe(res=> {
-      this.cateGoryArray = res.json().body;
-    });
+    return this.articleService.getArticleListByCategoryId(id);
   }
 
 

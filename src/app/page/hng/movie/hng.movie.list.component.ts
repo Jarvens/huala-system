@@ -7,7 +7,7 @@ import {HngService} from '../../../service/hng.service';
 
 export class HngMovieListComponent implements OnInit {
   //活动对象
-  public activity: Array<any> = [];
+  public activity: any = {};
   //影片列表
   public movieDataList: Array<any> = [];
   //活动列表分页对象

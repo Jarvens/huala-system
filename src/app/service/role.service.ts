@@ -35,4 +35,14 @@ export class RoleService {
   getAuthorization(id:number){
     return this.http.get("/role/get-authorization",{roleId:id});
   }
+
+  /**
+   * 保存授权
+   * @param list
+   * @param id
+   * @returns {Observable<Response>}
+   */
+  saveAuthorization(list:Array<any>,id:string){
+    return this.http.post("/role/author_role",{menus:list,roleId:id});
+  }
 }

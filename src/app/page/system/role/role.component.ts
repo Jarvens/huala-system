@@ -92,6 +92,16 @@ export class RoleCOmponent implements OnInit {
    * @type {{}}
    */
   authorizationMapResullt: any = {};
+  /**
+   * 左节点
+   * @type {{}}
+   */
+  leftPoint: any = {};
+  /**
+   * 右节点
+   * @type {{}}
+   */
+  rightPoint: any = {};
 
   ngOnInit(): void {
     this.queryRoleList(this.key, this.pageOpts);
@@ -163,6 +173,7 @@ export class RoleCOmponent implements OnInit {
    */
   grantAuthorization(data: any) {
     this.operaObj = data;
+    this.rightContainer = new Set<any>();
     this.roleService.getAuthorization(data.id).subscribe(res=> {
       this.authorizationMapResullt = res.json();
       this.convertListToSet(this.authorizationMapResullt.menuList, this.leftContainer);
@@ -213,11 +224,11 @@ export class RoleCOmponent implements OnInit {
    * @param data
    */
   convertSetToList(source: Set<any>) {
-    let array: any = [];
+    let array: Array<any> = [];
     this.rightContainer.forEach(function (obj: any) {
       array.push(obj);
     });
-    this.authorizationMapResullt.authorizationMenu = arry;
+    this.authorizationMapResullt.authorizationMenu = array;
   }
 
   /**
@@ -235,14 +246,46 @@ export class RoleCOmponent implements OnInit {
    * 将权限从拥有权限Set集合移除
    */
   pullLeft() {
-
+    this.rightContainer.delete(this.rightPoint);
+    this.convertSetToList(this.rightContainer);
   }
 
   /**
    * 将权限从所有权限Set集合 添加到有用权限Set集合
    */
   pullRight() {
+    if (!this.rightContainer.has(this.leftPoint)) {
+      this.rightContainer.add(this.leftPoint);
+    }
+    this.convertSetToList(this.rightContainer);
+  }
 
+  /**
+   *授权模态取消事件
+   */
+  closeModal() {
+    this.authorOpen = !this.authorOpen;
+  }
+
+
+  /**
+   * 保存 授权
+   */
+  saveAuthorization() {
+    let result: Array<any> = [];
+    this.rightContainer.forEach(function (obj: any) {
+      result.push(obj);
+    });
+    this.roleService.saveAuthorization(result, this.operaObj.id).subscribe(res=> {
+      let t = res.json();
+      if (t.success) {
+        this.toastFunction('权限分配成功', 'success');
+        this.authorOpen = !this.authorOpen;
+      } else {
+        this.toastFunction(t.message, 'error');
+
+      }
+    });
   }
 
 }

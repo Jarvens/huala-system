@@ -9,12 +9,12 @@ export class BasicReportService {
    * 查询报表
    * @returns {Observable<Response>}
    */
-  getReportList(page: any) {
-    if (!page) {
-      page = {page: 1, perPage: 10};
-    }
-    return this.http.get();
-  }
+  // getReportList(page: any) {
+  //   if (!page) {
+  //     page = {page: 1, perPage: 10};
+  //   }
+  //   return this.http.get("");
+  // }
 
 
 }

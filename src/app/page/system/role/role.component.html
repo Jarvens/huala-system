@@ -38,7 +38,7 @@
         <ngl-datatable-column heading="操作" key="">
             <template nglDatatableCell let-row="row">
                 <div class="slds-button-group" role="group">
-                    <button type="button" nglButton="neutral" (click)="roleDetail()">详情</button>
+                    <!--<button type="button" nglButton="neutral" (click)="roleDetail()">详情</button>-->
                     <button class="slds-button slds-button--brand" (click)="grantAuthorization(row)">授权</button>
                     <button class="slds-button slds-button--destructive" (click)="delete(row)">删除</button>
                 </div>
@@ -64,20 +64,21 @@
                 <ul aria-describedby="option-drag-label" aria-multiselectable="true"
                     class="slds-picklist__options slds-picklist__options--multi" role="listbox" tabindex="0">
                     <li aria-selected="false" class="slds-picklist__item slds-is-draggable" draggable="true"
-                        role="option" tabindex="-1" *ngFor="let m of authorizationMapResullt.menuList">
+                        role="option" tabindex="-1" *ngFor="let m of authorizationMapResullt.menuList"
+                        [ngClass]="{'text-danger':  m.id === leftPoint.id}" (click)="leftPoint=m;">
                         <span class="slds-truncate">{{m.name}}</span>
                     </li>
                 </ul>
             </div>
         </div>
-        <div class="slds-grid slds-grid--vertical">
-            <button class="slds-button slds-button--icon-container" title="Up">
+        <div class="slds-grid slds-grid--vertical slds-grid--align-center">
+            <button class="slds-button slds-button--icon-container" title="Up" (click)="pullRight()">
                 <svg class="slds-button__icon" aria-hidden="true">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
                          xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#right"></use>
                 </svg>
             </button>
-            <button class="slds-button slds-button--icon-container" title="Down">
+            <button class="slds-button slds-button--icon-container" title="Down" (click)="pullLeft()">
                 <svg class="slds-button__icon" aria-hidden="true">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
                          xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#left"></use>
@@ -90,16 +91,17 @@
                 <ul aria-describedby="option-drag-label" aria-multiselectable="true"
                     class="slds-picklist__options slds-picklist__options--multi" role="listbox" tabindex="0">
                     <li aria-selected="false" class="slds-picklist__item slds-is-draggable" draggable="true"
-                        role="option" tabindex="-1" *ngFor="let au of authorizationMapResullt.authorizationMenu">
+                        role="option" tabindex="-1" *ngFor="let au of authorizationMapResullt.authorizationMenu"
+                        [ngClass]="{'text-danger': au.id===rightPoint.id}" (click)="rightPoint=au;">
                         <span class="slds-truncate">{{au.name}}</span>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-    <template ngl-modal-footer *ngIf="!noFooter">
-        <button class="slds-button slds-button--neutral" (click)="cancel()">取消</button>
-        <button class="slds-button slds-button--brand">保存</button>
+    <template ngl-modal-footer>
+        <button class="slds-button slds-button--neutral" (click)="closeModal()">取消</button>
+        <button class="slds-button slds-button--brand" (click)="saveAuthorization()">保存</button>
     </template>
 </ngl-modal>
 <!--prompt-->
@@ -119,6 +121,5 @@
                 <button class="slds-button slds-button--brand" (click)="createRole()">save</button>
             </div>
         </div>
-
     </div>
 </ngl-modal>

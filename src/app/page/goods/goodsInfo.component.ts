@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges } from "@angular/core";
+import {Component, Input, Output, EventEmitter, OnChanges, SimpleChange} from "@angular/core";
 
 @Component({
   moduleId: "goodsInfo",
@@ -39,7 +39,7 @@ export class GoodsInfoComponent implements OnChanges{
       this.goodsInfo.cname = this.cat.name;
     }
   }
-  ngOnChanges(changes):void {
+  ngOnChanges(changes:any ):void {
     let chg = changes["goodsInfoIpt"];
 
     if(chg && chg.currentValue && chg.currentValue != chg.previousValue){
