@@ -22,7 +22,7 @@ export class AppVersionComponent implements OnInit {
    * 分页对象
    * @type {{page: number; total: number; limit: number; perPage: number}}
    */
-  pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10}
+  pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
   /**
    * 模态显示
    * @type {boolean}

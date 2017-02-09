@@ -7,6 +7,17 @@ import {BasicReportService} from '../../service/basic.report.service';
 
 export class BasicReportComponent {
 
+  /**
+   * sql集合
+   * @type {{}}
+   */
+  sqlDataList: any = {};
+
   constructor(private basicReportService: BasicReportService) {
   }
+
+  getSqlList() {
+
+  }
+
 }

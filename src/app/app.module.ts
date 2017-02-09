@@ -58,6 +58,7 @@ import {SpikeEntryComponent} from './page/spike/spike.entry.component';
 import {SellerListCommonComponent} from './page/component/seller/seller.list.common.component';
 import {GoodsAddComponent} from './page/goods/goodsAdd.component';
 import {BasicReportComponent} from './page/basicreport/basic.report.component';
+import {SqlConfigComponent} from './page/system/sqlconfig/sql.config.component';
 //惠农购业务
 import {HngCompanyComponent} from './page/hng/company/hng.company.component';
 import {HngJobComponent} from './page/hng/job/hng.job.component';
@@ -125,6 +126,7 @@ import {OrderLogService} from './service/order.log.service';
 import {RefundOrderService} from './service/refund.order.service';
 import {RoleService} from './service/role.service';
 import {BasicReportService} from './service/basic.report.service';
+import {SqlConfigService} from './service/sql.config.service';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -200,7 +202,8 @@ import {BasicReportService} from './service/basic.report.service';
     HngMovieEntryComponent,
     HngMovieListComponent,
     SellerLittleComponent,
-    BasicReportComponent
+    BasicReportComponent,
+    SqlConfigComponent
   ],
   imports: [
     BrowserModule,
@@ -240,7 +243,8 @@ import {BasicReportService} from './service/basic.report.service';
     OrderLogService,
     RefundOrderService,
     RoleService,
-    BasicReportService
+    BasicReportService,
+    SqlConfigService
   ]
 })
 export class AppModule {

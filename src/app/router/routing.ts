@@ -36,6 +36,7 @@ import {SpikeMainComponent} from '../page/spike/spike.main.component';
 import {RelativeSellerComponent} from '../page/hng/recruit/hng.recruit.relative.seller.component';
 import {RecruitChooseTimeComponent} from '../page/hng/recruit/hng.recruit.choosetime.component';
 import {BasicReportComponent} from '../page/basicreport/basic.report.component';
+import {SqlConfigComponent} from '../page/system/sqlconfig/sql.config.component';
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
@@ -74,7 +75,8 @@ const routes: Routes = [
       {path: 'system-role', component: RoleCOmponent},
       {path: 'report', component: BasicReportComponent},
       {path: 'hng/recruit-seller/:recruitId', component: RelativeSellerComponent},
-      {path: 'hng/recruit-date/:recruitId', component: RecruitChooseTimeComponent}
+      {path: 'hng/recruit-date/:recruitId', component: RecruitChooseTimeComponent},
+      {path: 'sql/sql-index',component: SqlConfigComponent}
     ]
   },
 ];
