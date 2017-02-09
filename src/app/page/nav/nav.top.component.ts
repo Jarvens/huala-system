@@ -43,7 +43,6 @@ export class NavTopComponent implements OnInit {
     this.dropdownOpen = false;
     this.selectedCity = city.name;
     localStorage.setItem("hualaCity", city.city);
-    console.log(localStorage.getItem("hualaCity"));
     this.router.navigateByUrl("/");
   }
 
