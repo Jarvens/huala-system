@@ -161,9 +161,14 @@ export class RoleCOmponent implements OnInit {
   /**
    * 授权按钮
    */
-  grantAuthorization() {
+  grantAuthorization(data: any) {
+    this.operaObj = data;
+    this.roleService.getAuthorization(data.id).subscribe(res=> {
+      this.authorizationMapResullt = res.json();
+      this.convertListToSet(this.authorizationMapResullt.menuList, this.leftContainer);
+      this.convertListToSet(this.authorizationMapResullt.authorizationMenu, this.rightContainer);
+    });
     this.authorOpen = !this.authorOpen;
-
   }
 
   /**

@@ -64,16 +64,8 @@
                 <ul aria-describedby="option-drag-label" aria-multiselectable="true"
                     class="slds-picklist__options slds-picklist__options--multi" role="listbox" tabindex="0">
                     <li aria-selected="false" class="slds-picklist__item slds-is-draggable" draggable="true"
-                        role="option" tabindex="-1">
-                        <span class="slds-truncate">Option 2</span>
-                    </li>
-                    <li aria-selected="false" class="slds-picklist__item slds-is-draggable" draggable="true"
-                        role="option" tabindex="-1">
-                        <span class="slds-truncate">Option 3</span>
-                    </li>
-                    <li aria-selected="false" class="slds-picklist__item slds-is-draggable" draggable="true"
-                        role="option" tabindex="-1">
-                        <span class="slds-truncate">Option 6</span>
+                        role="option" tabindex="-1" *ngFor="let m of authorizationMapResullt.menuList">
+                        <span class="slds-truncate">{{m.name}}</span>
                     </li>
                 </ul>
             </div>
@@ -84,14 +76,12 @@
                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
                          xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#right"></use>
                 </svg>
-                <span class="slds-assistive-text">Move Selection to Second Category</span>
             </button>
             <button class="slds-button slds-button--icon-container" title="Down">
                 <svg class="slds-button__icon" aria-hidden="true">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
                          xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#left"></use>
                 </svg>
-                <span class="slds-assistive-text">Move Selection to First Category</span>
             </button>
         </div>
         <div class="slds-form-element">
@@ -100,8 +90,8 @@
                 <ul aria-describedby="option-drag-label" aria-multiselectable="true"
                     class="slds-picklist__options slds-picklist__options--multi" role="listbox" tabindex="0">
                     <li aria-selected="false" class="slds-picklist__item slds-is-draggable" draggable="true"
-                        role="option" tabindex="-1">
-                        <span class="slds-truncate">Option 5</span>
+                        role="option" tabindex="-1" *ngFor="let au of authorizationMapResullt.authorizationMenu">
+                        <span class="slds-truncate">{{au.name}}</span>
                     </li>
                 </ul>
             </div>
