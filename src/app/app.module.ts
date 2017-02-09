@@ -57,6 +57,7 @@ import {SpikeMainComponent} from './page/spike/spike.main.component';
 import {SpikeEntryComponent} from './page/spike/spike.entry.component';
 import {SellerListCommonComponent} from './page/component/seller/seller.list.common.component';
 import {GoodsAddComponent} from './page/goods/goodsAdd.component';
+import {BasicReportComponent} from './page/basicreport/basic.report.component';
 //惠农购业务
 import {HngCompanyComponent} from './page/hng/company/hng.company.component';
 import {HngJobComponent} from './page/hng/job/hng.job.component';
@@ -197,7 +198,8 @@ import {RoleService} from './service/role.service';
     HngRecruitStaticsComponent,
     HngMovieEntryComponent,
     HngMovieListComponent,
-    SellerLittleComponent
+    SellerLittleComponent,
+    BasicReportComponent
   ],
   imports: [
     BrowserModule,

@@ -143,7 +143,7 @@
                 </ngl-datatable-column>
                 <ngl-datatable-column heading="订单金额" key="order_amount">
                     <template nglDatatableCell let-value>
-                        <span class="text-danger">{{value|number:'1.2-2'}}</span>
+                        <span class="text-danger">{{value/100|number:'1.2-2'}}</span>
                     </template>
                 </ngl-datatable-column>
                 <ngl-datatable-column heading="是否首单" key="first_order_count">

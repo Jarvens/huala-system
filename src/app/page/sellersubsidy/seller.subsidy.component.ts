@@ -270,6 +270,7 @@ export class SellerSubsidyComponent implements OnInit {
     this.sellerSubsidyService.getOrderList(this.orderPageOpts, 'other.getOrderCountDetail',
       data.sellerId + '--' + this.queryDate).subscribe(res=> {
       this.orderDataList = res.json();
+      console.log("查询结果集 ->",res.json());
     });
   }
 
