@@ -128,7 +128,16 @@ export class UserComponent implements OnInit {
    * 保存用户
    */
   saveUser() {
-
+    this.userService.saveUser(this.operaObj).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('保存成功', 'success');
+        this.opened = !this.opened;
+      } else {
+        this.toastFunction(result.message, 'error');
+        this.opened = !this.opened;
+      }
+    });
   }
 
   /**
