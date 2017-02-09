@@ -25,4 +25,14 @@ export class OrderService {
 
     return this.http.get(gUrl);
   }
+
+  /*
+   * @Description: Get order log by order id;
+   * @Date: 2017-02-09;
+   */
+  getOrderLog(orderId){
+    let gUrl = "/order/order-log-list?orderId=" + orderId;
+
+    return this.http.get(gUrl);
+  }
 }

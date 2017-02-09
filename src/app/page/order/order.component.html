@@ -62,6 +62,9 @@
       <template ngl-tab heading="基本信息" nglTabId="orderBasic">
         <order-basic [orderBasic]="curOrder" [orderGoods]="orderGoods"></order-basic>
       </template>
+      <template ngl-tab heading="订单日志" nglTabId="orderLog">
+        <order-log [orderLog]="orderLog"></order-log>
+      </template>
     </ngl-tabs>
   </div>
   <template ngl-modal-footer>

@@ -50,7 +50,7 @@ import {SpikeListComponent} from './page/spike/spike.list.component';
 import {SellerAuditComponent} from './page/selleraudit/seller.audit.component';
 import {ConfigComponent} from './page/system/config/config.component';
 import {SysMenuComponent} from './page/system/menu/sys.menu.component';
-import {OrderLogComponent} from './page/orderlog/order.log.component';
+import {OrderLogComponent} from './page/order/orderLog.component';
 import {RefundOrderComponent} from './page/refundorder/refund.order.component';
 import {RoleCOmponent} from './page/system/role/role.component';
 import {SpikeMainComponent} from './page/spike/spike.main.component';

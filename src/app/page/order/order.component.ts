@@ -24,6 +24,7 @@ export class OrderComponent implements OnInit {
   public orderList: any = [];
   public selectedTab:string = "orderBasic"; //所选tab;
   public orderGoods:any;
+  public orderLog:any;
   
   constructor(public orderService: OrderService) {
   }
@@ -73,14 +74,21 @@ export class OrderComponent implements OnInit {
    * @modified date: 2016/12/30.
    */
   showDetail(orderInfo): void {
+    let orderId = orderInfo.id;
     this.opened = true;
     this.curOrder = orderInfo;
-    console.log(orderInfo);
-    this.orderService.getOrderGoods(orderInfo.id).subscribe(res => {
+    this.selectedTab = "orderBasic";
+    this.orderService.getOrderGoods(orderId).subscribe(res => {
       let data = res.json();
       if(data.success){
         this.orderGoods = data.body.orderGoods;
       }
+    });
+    
+    this.orderService.getOrderLog(orderId).subscribe(res => {
+      let data = res.json();
+
+      this.orderLog = data;
     })
   }
   

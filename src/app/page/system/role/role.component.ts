@@ -57,9 +57,26 @@ export class RoleCOmponent implements OnInit {
    */
   authorOpen: boolean = false;
 
+  /**
+   * 新增角色  打开|关闭
+   * @type {boolean}
+   */
+  roleModalOpened: boolean = false;
+
+  /**
+   * 搜索关键字
+   * @type {string}
+   */
+  key: string = '';
+
+  /**
+   * 创建角色对象
+   * @type {{}}
+   */
+  roleObj: any = {};
 
   ngOnInit(): void {
-    this.queryRoleList('', this.pageOpts);
+    this.queryRoleList(this.key, this.pageOpts);
   }
 
   constructor(private roleService: RoleService) {
@@ -82,7 +99,7 @@ export class RoleCOmponent implements OnInit {
    */
   pageChange(event: any) {
     this.pageOpts.page = event;
-    this.queryRoleList('', this.pageOpts);
+    this.queryRoleList(this.key, this.pageOpts);
   }
 
   /**
@@ -134,16 +151,37 @@ export class RoleCOmponent implements OnInit {
    * 搜索方法
    * @param data
    */
-  searchByCondition(data: any) {
-
+  searchByCondition(data: string) {
+    this.key = data;
+    this.queryRoleList(this.key, this.pageOpts);
   }
 
   /**
-   * 新增
+   * 新增角色
    */
-  add() {
-
+  createRole() {
+    this.roleModalOpened = !this.roleModalOpened;
+    this.roleService.createRole(this.roleObj).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('新增角色成功', 'success');
+        this.queryRoleList(this.key, this.pageOpts);
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
   }
 
+
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
+  }
 
 }
