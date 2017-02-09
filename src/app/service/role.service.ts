@@ -26,4 +26,13 @@ export class RoleService {
   createRole(data:any){
     return this.http.post("/role/create-role",data);
   }
+
+  /**
+   * 角色详情
+   * @param id
+   * @returns {Observable<Response>}
+   */
+  getAuthorization(id:number){
+    return this.http.get("/role/get-authorization",{roleId:id});
+  }
 }

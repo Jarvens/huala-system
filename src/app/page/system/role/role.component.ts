@@ -75,6 +75,8 @@ export class RoleCOmponent implements OnInit {
    */
   roleObj: any = {};
 
+
+
   ngOnInit(): void {
     this.queryRoleList(this.key, this.pageOpts);
   }
@@ -145,6 +147,7 @@ export class RoleCOmponent implements OnInit {
    */
   grantAuthorization() {
     this.authorOpen = !this.authorOpen;
+
   }
 
   /**
@@ -183,5 +186,23 @@ export class RoleCOmponent implements OnInit {
     this.toastMessage = message;
     this.toastType = toastType;
   }
+
+  /**
+   * Set转List
+   * @param data
+   */
+  convertSetToList(source:Set<any>){
+
+  }
+
+  /**
+   * List转换Set
+   * @param source
+   * @param target
+   */
+  convertListToSet(source:Array<any>,target:Set<any>){
+
+  }
+
 
 }

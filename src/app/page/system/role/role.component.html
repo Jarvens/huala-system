@@ -47,7 +47,6 @@
         <template nglNoRowsOverlay>暂无数据!</template>
     </table>
 </div>
-
 <!--底部分页-->
 <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
     <ngl-pagination [(page)]="pageOpts.page" [total]="roleList.total" [perPage]="roleList.size"
@@ -55,11 +54,10 @@
                     boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
                     nextText="下一页"></ngl-pagination>
 </div>
-
-
 <!--授权模态-->
-<ngl-modal header="授权模态" [(open)]="authorOpen">
+<ngl-modal header="角色授权" [(open)]="authorOpen">
     <div body class="slds-grid slds-picklist--draggable">
+        <div class="slds-size--1-of-12"></div>
         <div class="slds-form-element">
             <span class="slds-form-element__label">菜单列表</span>
             <div class="slds-picklist" role="application">
@@ -109,9 +107,11 @@
             </div>
         </div>
     </div>
+    <template ngl-modal-footer *ngIf="!noFooter">
+        <button class="slds-button slds-button--neutral" (click)="cancel()">取消</button>
+        <button class="slds-button slds-button--brand">保存</button>
+    </template>
 </ngl-modal>
-
-
 <!--prompt-->
 <confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancelPrompt()"
                           (confirmFunction)="confirm()"></confirm-prompt-component>
