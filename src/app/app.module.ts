@@ -124,6 +124,7 @@ import {SysMenuService} from './service/sys.menu.service';
 import {OrderLogService} from './service/order.log.service';
 import {RefundOrderService} from './service/refund.order.service';
 import {RoleService} from './service/role.service';
+import {BasicReportService} from './service/basic.report.service';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -238,7 +239,8 @@ import {RoleService} from './service/role.service';
     SysMenuService,
     OrderLogService,
     RefundOrderService,
-    RoleService
+    RoleService,
+    BasicReportService
   ]
 })
 export class AppModule {
