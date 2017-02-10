@@ -114,10 +114,10 @@
         <ngl-datatable-column heading="操作" key="操作">
             <template nglDatatableCell let-row="row">
                 <div class="slds-button-group" role="group">
-                    <button class="slds-button slds-button--neutral"
+                    <button class="slds-button slds-button--brand"
                             (click)="incomeDetail(row.date);incomeOpen = !incomeOpen;">收入详情
                     </button>
-                    <button class="slds-button slds-button--neutral"
+                    <button class="slds-button slds-button--destructive"
                             (click)="expenditureDetail(row.date);expenditureOpen = !expenditureOpen;">支出详情
                     </button>
                 </div>

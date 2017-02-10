@@ -39,6 +39,6 @@ export class QuillEditorComponent {
    * @param text
    */
   onContentChanged({quill, html, text}) {
-    console.log(html,text);
+    console.log(html);
   }
 }
