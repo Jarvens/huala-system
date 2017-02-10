@@ -22,7 +22,6 @@ export class SellerDetailComponent implements OnChanges {
       return;
     }
     if (change.currentValue != change.previousValue) {
-      console.log("调用根据店铺id查询方法");
     }
   }
   

@@ -27,14 +27,6 @@
             </div>
           </span>
         </li>
-        <!--<li class="nav-item active">-->
-            <!--<a [nglPopover]="tip1" (click)="tipChange('bottom')" class="nav-link dropdown-toggle" [nglPopover]="tip1"-->
-               <!--[nglPopoverPlacement]="placement" [nglOpen]="tipOpen"><i class="fa fa-bell"></i><span-->
-                    <!--class="caret"></span></a>-->
-            <!--<template #tip1>-->
-                <!--<i>infoTips</i>-->
-            <!--</template>-->
-        <!--</li>-->
         <li class="nav-item active dropdown">
             <a [nglPopover]="tip" (click)="settingChange('bottom')" class="nav-link dropdown-toggle" [nglPopover]="tip"
                [nglPopoverPlacement]="placement" [nglOpen]="settingOpen"><i class="fa fa-gear"></i></a>
@@ -52,17 +44,24 @@
 <ngl-modal header="修改密码" [(open)]="opened" class="small-modal">
     <div body>
         <ngl-form-element label="原始密码"  class="slds-m-top--small">
-            <input nglFormControl type="text" [required]="required">
+            <input nglFormControl type="text" [required]="required" [(ngModel)]="passwordObj.oldPassword">
         </ngl-form-element>
         <ngl-form-element label="新密码"  class="slds-m-top--small">
-            <input nglFormControl type="text" [required]="required">
+            <input nglFormControl type="text" [required]="required" [(ngModel)]="passwordObj.newPassword">
         </ngl-form-element>
         <ngl-form-element label="确认密码"  class="slds-m-top--small">
-            <input nglFormControl type="text" [required]="required">
+            <input nglFormControl type="text" [required]="required" [(ngModel)]="passwordObj.confirmPassword">
         </ngl-form-element>
     </div>
     <template ngl-modal-footer >
         <button class="slds-button slds-button--neutral" (click)="cancel()">取消</button>
-        <button class="slds-button slds-button--brand">保存</button>
+        <button class="slds-button slds-button--brand" (click)="updatePassword()">保存</button>
     </template>
 </ngl-modal>
+
+<!--prompt-->
+<confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancelPrompt()"
+                          (confirmFunction)="confirm()"></confirm-prompt-component>
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>
