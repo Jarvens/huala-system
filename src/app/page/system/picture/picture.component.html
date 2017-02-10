@@ -1,3 +1,13 @@
+<!--头部信息-->
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <div class="slds-wrap slds-grid">
+        <div class="slds-size--1-of-1">
+            图片管理
+        </div>
+    </div>
+</div>
+
+
 <div class="row">
     <div class="card">
         <div class="card-block">
@@ -17,6 +27,7 @@
     </div>
 </div>
 <div class="row">
-    <ngl-pagination [(page)]="pageOpts.page" [total]="pictureList.total" [perPage]="pageOpts.size" [limit]="pageOpts.limit"
+    <ngl-pagination [(page)]="pageOpts.page" [total]="pictureList.total" [perPage]="pageOpts.size"
+                    [limit]="pageOpts.limit"
                     boundaryNumbers="1" #pagination (pageChange)="pageChange($event)"></ngl-pagination>
 </div>

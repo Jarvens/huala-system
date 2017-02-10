@@ -49,9 +49,9 @@
     <template nglNoRowsOverlay>暂无数据!</template>
 </table>
 <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
-    <ngl-pagination [(page)]="pageOpts.page" [total]="balanceList.total" [perPage]="pageOpts.size"
+    <ngl-pagination [(page)]="pageOpts.page" [total]="balanceList.total" [perPage]="pageOpts.perPage"
                     [limit]="pageOpts.limit"
-                    boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                    boundaryNumbers="1" #pagination1 (pageChange)="pageChange($event)" previousText="上一页"
                     nextText="下一页"></ngl-pagination>
 </div>
 <!--结算详情列表模态-->

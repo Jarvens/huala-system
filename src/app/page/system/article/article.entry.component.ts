@@ -64,7 +64,7 @@ export class ArticleEntryComponent {
    * Toast传播事件
    * @param data
    */
-  notifyParamFunction(data: booean) {
+  notifyParamFunction(data: boolean) {
     this.showAlert = data;
   }
 

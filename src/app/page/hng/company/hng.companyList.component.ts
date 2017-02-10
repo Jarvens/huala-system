@@ -17,6 +17,7 @@ export class HngCompanyListComponent implements OnInit {
   public editorOpened:boolean = false; //whether to show editor;
   public editCompanyInfo:any;
   public curOpCompany:any;
+  public placeholder:string ='搜索...';
 
   constructor(public hngService: HngService){}
 
