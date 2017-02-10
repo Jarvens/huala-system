@@ -81,17 +81,17 @@
         <div class="slds-grid slds-wrap">
             <div class="slds-size--5-of-12">
                 <ngl-form-element label="目录名称" class="slds-m-top--small">
-                    <input nglFormControl type="text" [required]="required">
+                    <input nglFormControl type="text" [required]="required" [(ngModel)]="currentCategory.cateName">
                 </ngl-form-element>
             </div>
             <div class="slds-size--2-of-12"></div>
             <div class="slds-size--5-of-12">
                 <ngl-form-element label="关键词" class="slds-m-top--small">
-                    <input nglFormControl type="text" [required]="required">
+                    <input nglFormControl type="text" [required]="required" [(ngModel)]="currentCategory.keyword">
                 </ngl-form-element>
             </div>
             <ngl-form-element label="目录描述" class="slds-m-top--small slds-size--1-of-1">
-                <input nglFormControl type="text">
+                <input nglFormControl type="text" [(ngModel)]="currentCategory.description">
             </ngl-form-element>
         </div>
     </div>

@@ -80,6 +80,12 @@ export class ArticleListComponent implements OnInit {
   public currentArticleObj: any = {};
 
   /**
+   * 当前目录对象
+   * @type {{}}
+   */
+  currentCategory: any = {};
+
+  /**
    * 文章操作对象集合
    * @type {Set<any>}
    */
@@ -221,8 +227,16 @@ export class ArticleListComponent implements OnInit {
    * 保存目录
    */
   saveCategory() {
-    this.categoryOpened = !this.categoryOpened;
-    this.toastFunction('保存成功', 'success');
+    this.currentCategory.topId = this.currentCateGoryId;
+    this.articleService.saveCateGory(this.currentCategory).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('创建成功', 'success');
+        this.categoryOpened = !this.categoryOpened;
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
   }
 
 

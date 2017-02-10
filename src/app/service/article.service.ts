@@ -44,4 +44,13 @@ export class ArticleService {
     return this.http.post("/article/article-delete",data);
   }
 
+  /**
+   * 保存文章目录
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  saveCateGory(data:any){
+    return this.http.post("/article/category-create",data);
+  }
+
 }
