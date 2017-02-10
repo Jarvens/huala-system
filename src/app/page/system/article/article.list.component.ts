@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit,Output,EventEmitter} from '@angular/core';
 import {ArticleService} from '../../../service/article.service';
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
@@ -84,6 +84,12 @@ export class ArticleListComponent implements OnInit {
    * @type {{}}
    */
   currentCategory: any = {};
+
+  /**
+   * 向上溢出  用于预览，修改
+   * @type {EventEmitter<any>}
+   */
+  @Output() eventEmit = new EventEmitter<any>();
 
   /**
    * 文章操作对象集合
@@ -289,6 +295,14 @@ export class ArticleListComponent implements OnInit {
       result.push(obj);
     });
     return result;
+  }
+
+  /**
+   * 文章预览  文章编辑
+   * @param data
+   */
+  emitObj(data: any) {
+    this.eventEmit.emit(data);
   }
 
 }

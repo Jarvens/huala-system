@@ -5,6 +5,17 @@ import {Component} from '@angular/core';
 })
 
 export class ArticleComponent {
-    
-    selected: boolean = true;
+
+    /**
+     * tab 当前选择id
+     * @type {string}
+     */
+    selected: string = 'list';
+
+    /**
+     * 当前文章对象
+     * @type {{}}
+     */
+    articleObj:any={};
+
 }
