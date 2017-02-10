@@ -283,7 +283,6 @@ export class RoleCOmponent implements OnInit {
         this.authorOpen = !this.authorOpen;
       } else {
         this.toastFunction(t.message, 'error');
-
       }
     });
   }

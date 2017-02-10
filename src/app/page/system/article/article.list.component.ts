@@ -73,11 +73,23 @@ export class ArticleListComponent implements OnInit {
    */
   public required: boolean = true;
 
+  /**
+   * 当前文章对象
+   * @type {{}}
+   */
+  public currentArticleObj: any = {};
+
+  /**
+   * 文章操作对象集合
+   * @type {Set<any>}
+   */
+  public articleHashSet = new Set<any>();
+
   constructor(private articleService: ArticleService) {
   }
 
   ngOnInit(): void {
-    this.getCateGoryList(this.currentCateGoryId).subscribe(res=>{
+    this.getCateGoryList(this.currentCateGoryId).subscribe(res=> {
       this.cateGoryArray = res.json().body;
     });
   }
@@ -176,7 +188,10 @@ export class ArticleListComponent implements OnInit {
    * prompt确认事件
    */
   confirm() {
-
+    let array: Array<any> = [];
+    array = this.convertSetToList(this.articleHashSet);
+    console.log("转化->",array);
+    console.log("去删除");
   }
 
   /**
@@ -187,8 +202,16 @@ export class ArticleListComponent implements OnInit {
     this.showAlert = data;
   }
 
-  //删除按钮点击事件
+  /**
+   * 删除按钮点击事件
+   */
   delClick() {
+    if (this.articleHashSet.size == 0) {
+      this.toastMessage = '请选择需要删除的文章';
+      this.toastType = 'info';
+      this.showAlert = !this.showAlert;
+      return;
+    }
     this.promptMessage = '您确定要删除该文章吗?';
     this.notificationOpen = !this.notificationOpen;
   }
@@ -212,6 +235,34 @@ export class ArticleListComponent implements OnInit {
     this.showAlert = !this.showAlert;
     this.toastMessage = message;
     this.toastType = toastType;
+  }
+
+  deleteArticle(data: any) {
+  }
+
+  /**
+   *
+   * @param data
+   */
+  check(data: any) {
+    if (!this.articleHashSet.has(data)) {
+      this.articleHashSet.add(data);
+    } else {
+      this.articleHashSet.delete(data);
+    }
+  }
+
+  /**
+   * Set 转换为 List
+   * @param sources
+   * @param target
+   */
+  convertSetToList(sources: Set<any>) {
+    let result: Array<any> = [];
+    sources.forEach(function (obj: any) {
+      result.push(obj);
+    });
+    return result;
   }
 
 }
