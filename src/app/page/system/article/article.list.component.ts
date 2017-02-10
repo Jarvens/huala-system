@@ -188,6 +188,7 @@ export class ArticleListComponent implements OnInit {
    * prompt确认事件
    */
   confirm() {
+    this.notificationOpen = !this.notificationOpen;
     let array: Array<any> = [];
     array = this.convertSetToList(this.articleHashSet);
     this.deleteArticle(array);
