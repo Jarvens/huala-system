@@ -100,20 +100,6 @@
     </template>
 </ngl-modal>
 
-<!--文章创建模态-->
-
-<ngl-modal header="目录创建" [(open)]="articleOpened">
-    <div body>
-        <p>Sit nulla est ex deserunt exercitation anim occaecat. Tempor cupidatat consequat elit dolor adipisicing.</p>
-        <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia.</p>
-        <p>Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
-    </div>
-    <template ngl-modal-footer>
-        <button class="slds-button slds-button--neutral" (click)="cancel()">Cancel</button>
-        <button class="slds-button slds-button--brand">Save</button>
-    </template>
-</ngl-modal>
-
 <!--prompt-->
 <confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancelPrompt()"
                           (confirmFunction)="confirm()"></confirm-prompt-component>

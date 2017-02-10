@@ -1,5 +1,13 @@
 <div class="slds-grid slds-wrap slds-align--absolute-center">
+    <div class="slds-grid slds-wrap slds-size--1-of-1 ">
+        <div class="slds-button-group" role="group">
+            <button class="slds-button slds-button--neutral" (click)="saveArticle()">发布文章</button>
+        </div>
+    </div>
     <div class="slds-size--8-of-12">
+        <ngl-form-element label="目录" class="slds-m-top--small">
+            <input nglFormControl type="text" [required]="required" [(ngModel)]="cateObj.name" disabled>
+        </ngl-form-element>
         <ngl-form-element label="标题" class="slds-m-top--small">
             <input nglFormControl type="text" [required]="required" [(ngModel)]="articleObj.title">
         </ngl-form-element>
@@ -12,9 +20,9 @@
         </ngl-form-element>
         <quill-editor-component [editorContent]="articleObj.content" (emitContent)="articleObj.content=$event"></quill-editor-component>
     </div>
-    <!--保存文章-->
-    <div class="slds-grid slds-wrap">
-
-    </div>
 </div>
 <!--文章预览-->
+
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>

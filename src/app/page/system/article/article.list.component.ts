@@ -1,7 +1,8 @@
-import {Component, OnInit,Output,EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {ArticleService} from '../../../service/article.service';
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
+import {isNullOrUndefined} from "util";
 @Component({
   selector: 'article-list-component',
   templateUrl: './article.list.component.html'
@@ -14,10 +15,6 @@ export class ArticleListComponent implements OnInit {
    * @type {Array}
    */
   public cateGoryArray: Array<any> = [];
-  /**
-   * 当前目录id
-   */
-  public currentCateGoryId: string;
   /**
    * 文章集合
    * @type {{}}
@@ -38,11 +35,6 @@ export class ArticleListComponent implements OnInit {
    * @type {boolean}
    */
   public categoryOpened: boolean = false;
-  /**
-   * 文章创建模态 打开|关闭
-   * @type {boolean}
-   */
-  public articleOpened: boolean = false;
   /**
    * prompt 提示消息
    * @type {string}
@@ -86,10 +78,16 @@ export class ArticleListComponent implements OnInit {
   currentCategory: any = {};
 
   /**
-   * 向上溢出  用于预览，修改
+   * 向上溢出文章  用于预览，修改
    * @type {EventEmitter<any>}
    */
   @Output() eventEmit = new EventEmitter<any>();
+
+  /**
+   * 向上溢出目录
+   * @type {EventEmitter<any>}
+   */
+  @Output() eventEmitCate = new EventEmitter<any>();
 
   /**
    * 文章操作对象集合
@@ -101,7 +99,7 @@ export class ArticleListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCateGoryList(this.currentCateGoryId).subscribe(res=> {
+    this.getCateGoryList(this.currentCategory.id).subscribe(res=> {
       this.cateGoryArray = res.json().body;
     });
   }
@@ -141,8 +139,8 @@ export class ArticleListComponent implements OnInit {
    * @param data
    */
   getCategoryId(data: any) {
-    this.currentCateGoryId = data.data.id;
-    this.getArticleList(this.currentCateGoryId, this.pageOpts, this.key);
+    this.currentCategory = data.data;
+    this.getArticleList(this.currentCategory.id, this.pageOpts, this.key);
   }
 
   /**
@@ -156,7 +154,13 @@ export class ArticleListComponent implements OnInit {
    * 创建文章
    */
   createArticle() {
-    this.articleOpened = !this.articleOpened;
+    if (isNullOrUndefined(this.currentCategory.id)) {
+      this.toastFunction('请选择文章目录', 'info');
+      return;
+    }
+    this.eventEmitCate.emit(this.currentCategory);
+    this.eventEmit.emit(this.currentArticleObj);
+
   }
 
   /**
@@ -165,7 +169,7 @@ export class ArticleListComponent implements OnInit {
    */
   pageChange(data: number) {
     this.pageOpts.page = data;
-    this.getArticleList(this.currentCateGoryId, this.pageOpts, this.key);
+    this.getArticleList(this.currentCategory.id, this.pageOpts, this.key);
   }
 
   /**
@@ -174,7 +178,7 @@ export class ArticleListComponent implements OnInit {
    */
   searchByCondition(data: string) {
     this.key = data;
-    this.getArticleList(this.currentCateGoryId, this.pageOpts, this.key);
+    this.getArticleList(this.currentCategory.id, this.pageOpts, this.key);
   }
 
   /**
@@ -233,7 +237,7 @@ export class ArticleListComponent implements OnInit {
    * 保存目录
    */
   saveCategory() {
-    this.currentCategory.topId = this.currentCateGoryId;
+    this.currentCategory.topId = this.currentCategory.id;
     this.articleService.saveCateGory(this.currentCategory).subscribe(res=> {
       let result = res.json();
       if (result.success) {
@@ -303,6 +307,7 @@ export class ArticleListComponent implements OnInit {
    */
   emitObj(data: any) {
     this.eventEmit.emit(data);
+    this.eventEmitCate.emit(this.currentCategory);
   }
 
 }

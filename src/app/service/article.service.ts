@@ -53,4 +53,13 @@ export class ArticleService {
     return this.http.post("/article/category-create",data);
   }
 
+  /**
+   * 发布文章
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  saveArticle(data:any){
+    return this.http.post("/article/publish-article",data);
+  }
+
 }

@@ -1,4 +1,4 @@
-import {Component, OnChanges} from '@angular/core';
+import {Component} from '@angular/core';
 @Component({
   selector: 'article-component',
   templateUrl: './article.component.html'
@@ -19,6 +19,11 @@ export class ArticleComponent {
   articleObj: any;
 
   /**
+   *当前目录对象
+   */
+  cateObj: any;
+
+  /**
    * 赋值
    * @param data
    */
@@ -28,11 +33,21 @@ export class ArticleComponent {
   }
 
   /**
+   * 创建文章
+   * @param data
+   */
+  copyCate(data: any) {
+    this.selected = 'entry';
+    this.cateObj = data;
+  }
+
+  /**
    * 手动触发 切换tab 选项
    * @param data
    */
   change(data: any) {
     this.articleObj = {};
   }
+
 
 }
