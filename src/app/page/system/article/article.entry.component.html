@@ -10,8 +10,10 @@
             <template nglFormLabel><i>描述</i></template>
             <textarea nglFormControl [required]="required" [(ngModel)]="articleObj.description"></textarea>
         </ngl-form-element>
-        <quill-editor-component></quill-editor-component>
+        <quill-editor-component [editorContent]="articleObj.content" (emitContent)="articleObj.content=$event"></quill-editor-component>
     </div>
+    <div class="slds-grid slds-wrap">
 
+    </div>
 </div>
 <!--文章预览-->

@@ -27,7 +27,6 @@ export class HngcompanyInfoComponent implements OnChanges{
 
   ngOnChanges(changes){
     let company = changes['companyInput'];
-    console.log(company.currentValue);
     if(company && company.currentValue && company.currentValue != company.previousValue){
       this.companyInfo = company.currentValue;
     }

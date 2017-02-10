@@ -3,7 +3,7 @@ import {Component, Input} from '@angular/core';
   selector: 'article-entry-component',
   templateUrl: './article.entry.component.html'
 })
-export class ArticleEntryComponent {
+export class ArticleEntryComponent{
   /**
    * 文章对象
    * @type {{}}
@@ -14,4 +14,5 @@ export class ArticleEntryComponent {
    * @type {boolean}
    */
   required: boolean = true;
+
 }

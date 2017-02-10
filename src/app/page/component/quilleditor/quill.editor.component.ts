@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 @Component({
   selector: 'quill-editor-component',
   templateUrl: './quill.editor.component.html'
@@ -9,17 +9,18 @@ export class QuillEditorComponent {
    * 内容
    * @type {string}
    */
-  editorContent: string = ``;
+  @Input() editorContent: string = ``;
   /**
    * placeholder
    * @type {{placeholder: string}}
    */
   editorConfig: any = {placeholder: "输入公告内容,支持html"};
+
   /**
-   * 文章对象
-   * @type {{}}
+   * 向上溢出  文章内容
+   * @type {EventEmitter<string>}
    */
-  @Input() articleObj: any = {};
+  @Output() emitContent = new EventEmitter<string>();
 
   constructor() {
   }
@@ -38,5 +39,6 @@ export class QuillEditorComponent {
    * @param text
    */
   onContentChanged({quill, html, text}) {
+    console.log(html,text);
   }
 }

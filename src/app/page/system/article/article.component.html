@@ -1,8 +1,8 @@
-<ngl-tabs [(selected)]="selected">
+<ngl-tabs [(selected)]="selected" (selectedChange)="change($event)">
     <template ngl-tab heading="文章列表" nglTabId="list">
-        <article-list-component (eventEmit)="articleObj=$event"></article-list-component>
+        <article-list-component (eventEmit)="copyObj($event)"></article-list-component>
     </template>
     <template ngl-tab heading="文章录入" nglTabId="entry">
-        <article-entry-component></article-entry-component>
+        <article-entry-component [articleObj]="articleObj"></article-entry-component>
     </template>
 </ngl-tabs>
