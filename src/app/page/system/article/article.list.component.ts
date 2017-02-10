@@ -190,8 +190,7 @@ export class ArticleListComponent implements OnInit {
   confirm() {
     let array: Array<any> = [];
     array = this.convertSetToList(this.articleHashSet);
-    console.log("转化->",array);
-    console.log("去删除");
+    this.deleteArticle(array);
   }
 
   /**
@@ -237,7 +236,19 @@ export class ArticleListComponent implements OnInit {
     this.toastType = toastType;
   }
 
-  deleteArticle(data: any) {
+  /**
+   * 删除文章
+   * @param data
+   */
+  deleteArticle(data: Array<any>) {
+    this.articleService.deleteArticle(data).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('删除成功', 'success');
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
   }
 
   /**

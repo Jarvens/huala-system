@@ -35,4 +35,13 @@ export class ArticleService {
 
   }
 
+  /**
+   * 删除文章
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  deleteArticle(data:Array<any>){
+    return this.http.post("/article/article-delete",data);
+  }
+
 }
