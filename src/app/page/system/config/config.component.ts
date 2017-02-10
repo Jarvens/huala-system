@@ -143,6 +143,7 @@ export class ConfigComponent implements OnInit {
       let ret = res.json();
       if (ret.success) {
         this.toastFunction('修改成功', 'success');
+        this.configOpen = !this.configOpen;
       } else {
         this.toastFunction('修改失败', 'error');
       }
