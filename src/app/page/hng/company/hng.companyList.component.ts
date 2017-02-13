@@ -126,6 +126,6 @@ export class HngCompanyListComponent implements OnInit {
    */
   searchByCondition(data:string){
     this.searchKey = data;
-    this.getCompanies()
+    this.getCompanies(1);
   }
 }

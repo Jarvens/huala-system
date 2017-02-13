@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {MyHttp} from '../core/http';
 @Injectable()
-export class SpikeService{
-  constructor(private http:MyHttp){}
+export class SpikeService {
+  constructor(private http: MyHttp) {
+  }
 
-  getSpikeList(){
+  getSpikeList() {
     return this.http.get('/spike/activity-list');
   }
 
@@ -13,8 +14,21 @@ export class SpikeService{
    * @param data
    * @returns {Observable<Response>}
    */
-  saveSpike(data:any){
-    return this.http.post('/spike/modify-spike-goods',data);
+  saveSpike(data: any) {
+    return this.http.post('/spike/modify-spike-goods', data);
+  }
+
+  /**
+   * 根据店铺id 查询商品列表
+   * @param id
+   * @param page
+   * @returns {Observable<Response>}
+   */
+  getSellerGoods(id: number, page: any) {
+    if (!page) {
+      page = {page: 1, perpage: 10};
+    }
+    return this.http.get('/spike/seller-goods-list?sellerId=' +id+"&pageNum="+page.page+"&pageSize="+page.perPage);
   }
 
 }
