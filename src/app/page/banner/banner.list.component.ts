@@ -56,7 +56,7 @@ export class BannerListComponent implements OnInit {
   }
   
   //删除提示
-  delConfirm(event) {
+  delConfirm(event:any) {
     this.delFlag = !this.delFlag;
   }
   

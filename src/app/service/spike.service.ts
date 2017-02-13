@@ -8,4 +8,13 @@ export class SpikeService{
     return this.http.get('/spike/activity-list');
   }
 
+  /**
+   * 保存 秒杀信息
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  saveSpike(data:any){
+    return this.http.post('/spike/modify-spike-goods',data);
+  }
+
 }

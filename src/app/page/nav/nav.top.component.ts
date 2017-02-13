@@ -15,6 +15,7 @@ export class NavTopComponent implements OnInit {
   required: boolean = true;
   dropdownOpen: boolean = false;
   selectedCity: string = '请选择';
+  placement: string;
   cities: Array<any> = [
     {city: "330100", name: "杭州"},
     {city: "500100", name: "重庆"},
@@ -170,7 +171,7 @@ export class NavTopComponent implements OnInit {
         this.opened = !this.opened;
         this.toastFunction('修改密码成功', 'success');
         localStorage.removeItem('hl-token');
-        this.router.navigate('/login');
+        this.router.navigate(['/login']);
       } else {
         this.notificationOpen = !this.notificationOpen;
         this.toastFunction(result.message, 'error');

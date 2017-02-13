@@ -29,7 +29,9 @@
         </ngl-datatable-column>
         <ngl-datatable-column heading="操作" key="">
             <template nglDatatableCell let-row="row">
-                <ngl-badge type="error" (click)="delConfirm()"><i class="fa fa-times"></i>删除</ngl-badge>
+                <div class="slds-button-group" role="group">
+                    <button class="slds-button slds-button--destructive" (click)="delConfirm(row)">删除</button>
+                </div>
             </template>
         </ngl-datatable-column>
         <template nglNoRowsOverlay>暂无数据!</template>

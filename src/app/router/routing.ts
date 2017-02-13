@@ -29,7 +29,6 @@ import {SellerSubsidyComponent} from '../page/sellersubsidy/seller.subsidy.compo
 import {SellerAuditComponent} from '../page/selleraudit/seller.audit.component';
 import {ConfigComponent} from '../page/system/config/config.component';
 import {SysMenuComponent} from '../page/system/menu/sys.menu.component';
-//import {OrderLogComponent} from '../page/orderlog/order.log.component';
 import {RefundOrderComponent} from '../page/refundorder/refund.order.component';
 import {RoleCOmponent} from '../page/system/role/role.component';
 import {SpikeMainComponent} from '../page/spike/spike.main.component';
@@ -38,7 +37,7 @@ import {RecruitChooseTimeComponent} from '../page/hng/recruit/hng.recruit.choose
 import {BasicReportComponent} from '../page/basicreport/basic.report.component';
 import {SqlConfigComponent} from '../page/system/sqlconfig/sql.config.component';
 import {SellerGoodsComponent} from '../page/sellerGoods/sellerGoods.component';
-
+import {SellerMainEnterComponent} from '../page/sellercomponent/seller.main.enter.component';
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
@@ -73,7 +72,7 @@ const routes: Routes = [
       {path: 'seller-auth', component: SellerAuditComponent},
       {path: 'system-sysconfig', component: ConfigComponent},
       {path: 'system-menu', component: SysMenuComponent},
-      // {path: 'order-log', component: OrderLogComponent},
+      {path: 'order-log', component: SellerMainEnterComponent},
       {path: 'order-refund', component: RefundOrderComponent},
       {path: 'system-role', component: RoleCOmponent},
       {path: 'report', component: BasicReportComponent},

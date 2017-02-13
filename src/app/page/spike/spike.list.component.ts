@@ -58,6 +58,10 @@ export class SpikeListComponent implements OnInit {
    * @type {boolean}
    */
   showAlert: boolean = false;
+  /**
+   * 图片前缀
+   */
+  commonImgUrl = process.env.ImgUrl;
 
 
   /**
@@ -94,6 +98,45 @@ export class SpikeListComponent implements OnInit {
    */
   notifyParamFunction(data: any) {
 
+  }
+
+  /**
+   * 关闭编辑模态
+   */
+  cancel() {
+    this.opened = !this.opened;
+  }
+
+  /**
+   * 编辑
+   */
+  confirmEdit(){
+    this.operaObj.startTime = new Date(this.operaObj.startTime);
+    this.operaObj.endTime = new Date(this.operaObj.endTime);
+    this.operaObj.priceRole = this.operaObj.priceRole *100;
+    this.operaObj.salePrice = this.operaObj.salePrice *100;
+    this.operaObj.defaultCount = this.operaObj.totalCount;
+    this.spikeService.saveSpike(this.operaObj).subscribe(res=>{
+      let result = res.json();
+      if(result.success){
+        this.toastFunction('保存成功','success');
+        this.opened = !this.opened;
+        this.getSpikeList();
+      }else{
+        this.toastFunction(result.message,'error');
+      }
+    });
+  }
+
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
   }
 
 }

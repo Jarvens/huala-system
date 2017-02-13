@@ -28,7 +28,7 @@ export class HngCompanyListComponent implements OnInit {
   public getCompanies(pageNum){
     let gData = {
       page: 1,
-      size: 15,
+      size: 10,
       searchKey: this.searchKey
     };
 
@@ -46,7 +46,6 @@ export class HngCompanyListComponent implements OnInit {
         perPage: 10,
         page: data.page
       };
-      console.log(data);
     });
   }
 
@@ -73,7 +72,6 @@ export class HngCompanyListComponent implements OnInit {
    */
   public toEdit(company){
     this.curOpCompany = company;
-    console.log(this.curOpCompany);
     this.editorOpened = true;
   }
 
@@ -120,5 +118,14 @@ export class HngCompanyListComponent implements OnInit {
         this.getCompanies(this.pageOpts.page);
       }
     });
+  }
+
+  /**
+   * 条件搜索
+   * @param data
+   */
+  searchByCondition(data:string){
+    this.searchKey = data;
+    this.getCompanies()
   }
 }

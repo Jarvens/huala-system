@@ -28,7 +28,6 @@ export class HngService {
    */
   getCompanies(data) {
     let gUrl = "/recruit/list-company";
-
     return this.http.get(gUrl, data);
   }
 
