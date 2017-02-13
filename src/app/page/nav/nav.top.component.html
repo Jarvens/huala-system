@@ -29,7 +29,7 @@
         </li>
         <li class="nav-item active dropdown">
             <a [nglPopover]="tip" (click)="settingChange('bottom')" class="nav-link dropdown-toggle" [nglPopover]="tip"
-                [nglOpen]="settingOpen"><i class="fa fa-gear"></i></a>
+               [nglPopoverPlacement]="placement" [nglOpen]="settingOpen"><i class="fa fa-gear"></i></a>
             <template #tip>
                 <ul class="setting-tip">
                     <li (click)="openModifyPassword()">修改密码</li>

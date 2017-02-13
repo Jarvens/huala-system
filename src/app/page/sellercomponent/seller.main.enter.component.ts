@@ -14,5 +14,6 @@ export class SellerMainEnterComponent {
 
   copySeller(data: any) {
     this.currentSeller = data;
+    console.log('草拟吗');
   }
 }

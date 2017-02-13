@@ -7,15 +7,20 @@
     <table ngl-datatable [data]="goodsDataList.rows" trackByKey="rank"
            class="slds-max-medium-table--stacked-horizontal">
         <ngl-datatable-column heading="id" key="id"></ngl-datatable-column>
-        <ngl-datatable-column heading="标题" key="title"></ngl-datatable-column>
         <ngl-datatable-column heading="图片" key="picUrl">
             <template nglDatatableCell let-value>
                 <img [src]="commonImgUrl+value" style="width: 60px;height: 60px;">
             </template>
         </ngl-datatable-column>
+        <ngl-datatable-column heading="标题" key="title"></ngl-datatable-column>
         <ngl-datatable-column heading="售价" key="salePrice">
             <template nglDatatableCell let-value>
                 {{value/100|number:'1.2-2'}}
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="操作" key="">
+            <template nglDatatableCell let-row="row">
+                <button class="slds-button slds-button--brand" (click)="edit(row)">编辑</button>
             </template>
         </ngl-datatable-column>
         <template nglNoRowsOverlay>暂无数据!</template>
@@ -27,3 +32,14 @@
                     boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
                     nextText="下一页"></ngl-pagination>
 </div>
+
+<!--秒杀模态-->
+<ngl-modal header="秒杀商品设置" [(open)]="spikeOpen">
+    <div body>
+        这是秒杀模态
+    </div>
+    <template ngl-modal-footer>
+        <button class="slds-button slds-button--neutral" (click)="cancel()">取消</button>
+        <button class="slds-button slds-button--brand">保存</button>
+    </template>
+</ngl-modal>

@@ -30,6 +30,12 @@ export class SellerGoodsComponent implements OnChanges {
    */
   pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 7};
 
+  /**
+   * 打开|关闭 秒杀模态
+   * @type {boolean}
+   */
+  spikeOpen: boolean = false;
+
   constructor(private spikeService: SpikeService) {
   }
 
@@ -52,13 +58,38 @@ export class SellerGoodsComponent implements OnChanges {
 
   }
 
+  /**
+   * 根据店铺id 查询 商品列表
+   * @param id
+   * @param page
+   */
   getGoodsList(id: number, page: any) {
     this.spikeService.getSellerGoods(id, page).subscribe(res=> {
       this.goodsDataList = res.json();
     });
   }
 
+  /**
+   * 分页事件
+   * @param data
+   */
   pageChange(data: number) {
+    this.pageOpts.page = data;
+    this.getGoodsList(this.currentSeller.id, this.pageOpts);
+  }
 
+  /**
+   * 选择秒杀活动商品
+   * @param data
+   */
+  edit(data: any) {
+    this.spikeOpen = !this.spikeOpen;
+  }
+
+  /**
+   * 关闭模态
+   */
+  cancel() {
+    this.spikeOpen = !this.spikeOpen;
   }
 }
