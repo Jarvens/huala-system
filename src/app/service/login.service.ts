@@ -16,9 +16,11 @@ export class LoginService {
 
   updatePassword(data: any) {
     return this.http.post("/role/modify-password",
-      {oldPassword: data.oldPassword,
+      {
+        oldPassword: data.oldPassword,
         newpassword: data.newPassword,
-        confirmPassword: data.confirPassword});
+        confirmPassword: data.confirPassword
+      });
   }
 
 }

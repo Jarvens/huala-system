@@ -20,7 +20,7 @@ const ApiUrlTest = '//apitest.huala.com';
 const ApiUrl = 'http://localhost:8111/xiaopai';
 //正式环境
 // const ApiUrl ='//api.huala.com';
-const ImgUrl = '//wxtest.huala.com/hlman-pic'
+const ImgUrl = '//wxtest.huala.com/hlman-pic';
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
@@ -31,7 +31,7 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
     ENV: ENV,
     HMR: HMR,
     ApiUrl: ApiUrl,
-    commonsUrl: ImgUrl
+    ImgUrl: ImgUrl
 });
 
 /**
@@ -120,7 +120,7 @@ module.exports = function (options) {
                     'NODE_ENV': JSON.stringify(METADATA.ENV),
                     'HMR': METADATA.HMR,
                     'ApiUrl': JSON.stringify(METADATA.ApiUrl),
-                    'commonsUrl:': JSON.stringify(METADATA.commonsUrl)
+                    'ImgUrl': JSON.stringify(METADATA.ImgUrl)
                 }
             }),
             
