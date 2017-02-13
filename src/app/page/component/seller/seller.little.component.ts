@@ -62,7 +62,6 @@ export class SellerLittleComponent implements OnInit {
    */
   onRowClick(data: any) {
     this.targetSeller.emit(data);
-    console.log('我点击了');
   }
 
   /**

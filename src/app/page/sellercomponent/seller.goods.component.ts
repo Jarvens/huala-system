@@ -36,6 +36,17 @@ export class SellerGoodsComponent implements OnChanges {
    */
   spikeOpen: boolean = false;
 
+  /**
+   * 当前选中商品
+   * @type {{}}
+   */
+  currentGoods: any = {};
+  /**
+   * 显示 |隐藏 *
+   * @type {boolean}
+   */
+  required:boolean = true;
+
   constructor(private spikeService: SpikeService) {
   }
 
@@ -84,6 +95,8 @@ export class SellerGoodsComponent implements OnChanges {
    */
   edit(data: any) {
     this.spikeOpen = !this.spikeOpen;
+    this.currentGoods = data;
+    console.log("当前商品 ->", data);
   }
 
   /**
@@ -91,5 +104,12 @@ export class SellerGoodsComponent implements OnChanges {
    */
   cancel() {
     this.spikeOpen = !this.spikeOpen;
+  }
+
+  /**
+   * 保存秒杀信息
+   */
+  saveSpike() {
+
   }
 }

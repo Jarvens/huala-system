@@ -14,4 +14,8 @@ export class SpikeMainComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  tabChange(data:any){
+    this.selected = data.id;
+  }
+
 }

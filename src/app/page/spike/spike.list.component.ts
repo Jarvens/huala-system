@@ -6,12 +6,6 @@ import {SpikeService} from '../../service/spike.service';
 })
 
 export class SpikeListComponent implements OnInit {
-  ngOnInit(): void {
-    this.getSpikeList();
-  }
-
-  constructor(private spikeService: SpikeService) {
-  }
 
   /**
    * 秒杀商品对象
@@ -64,6 +58,12 @@ export class SpikeListComponent implements OnInit {
   commonImgUrl = process.env.ImgUrl;
 
 
+  ngOnInit(): void {
+    this.getSpikeList();
+  }
+
+  constructor(private spikeService: SpikeService) {
+  }
   /**
    * 获取秒杀商品列表
    */

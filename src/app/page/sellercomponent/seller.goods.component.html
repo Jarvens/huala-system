@@ -36,10 +36,68 @@
 <!--秒杀模态-->
 <ngl-modal header="秒杀商品设置" [(open)]="spikeOpen">
     <div body>
-        这是秒杀模态
+        <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+            <thead>
+            <tr class="slds-text-title--caps">
+                <th scope="col">
+                    <div class="slds-truncate">店铺id</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate">店铺名称</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate">商品名称</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate">商品零售价</div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row" data-label="Opportunity Name">
+                    <div class="slds-truncate" title="Cloudhub">{{currentGoods.id}}</div>
+                </th>
+                <td data-label="Account Name">
+                    <div class="slds-truncate" title="Cloudhub">{{currentGoods.sellerName}}</div>
+                </td>
+                <td data-label="Close Date">
+                    <div class="slds-truncate" title="4/14/2015">{{currentGoods.title}}</div>
+                </td>
+                <td data-label="Prospecting">
+                    <div class="slds-truncate" title="Prospecting">{{currentGoods.salePrice/100|number:'1.2-2'}}</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="slds-wrap slds-grid slds-align--absolute-center">
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="秒杀价格"  class="slds-m-top--small">
+                    <input nglFormControl type="text" [required]="required">
+                </ngl-form-element>
+            </div>
+            <div class="slds-size--2-of-12"></div>
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="秒杀库存" class="slds-m-top--small">
+                    <input nglFormControl type="number" [required]="required">
+                </ngl-form-element>
+            </div>
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="开始时间" class="slds-m-top--small">
+                    <input nglFormControl type="text" [required]="required">
+                </ngl-form-element>
+            </div>
+            <div class="slds-size--2-of-12"></div>
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="结束时间" class="slds-m-top--small">
+                    <input nglFormControl type="text" [required]="required">
+                </ngl-form-element>
+            </div>
+        </div>
+
     </div>
     <template ngl-modal-footer>
         <button class="slds-button slds-button--neutral" (click)="cancel()">取消</button>
-        <button class="slds-button slds-button--brand">保存</button>
+        <button class="slds-button slds-button--brand" (click)="saveSpike()">保存</button>
     </template>
 </ngl-modal>

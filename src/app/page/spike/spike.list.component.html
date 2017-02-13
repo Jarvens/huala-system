@@ -1,7 +1,6 @@
 <div class="slds-scrollable">
     <table ngl-datatable [data]="spikeArray" trackByKey="rank"
            class="slds-max-medium-table--stacked-horizontal">
-        <!--<ngl-datatable-column heading="ID" key="id" sortable></ngl-datatable-column>-->
         <ngl-datatable-column heading="名称" key="title">
             <template nglDatatableCell let-value>
                 <ngl-badge type="info">{{value}}</ngl-badge>
@@ -25,12 +24,12 @@
         </ngl-datatable-column>
         <ngl-datatable-column heading="开始时间" key="startTime">
             <template nglDatatableCell let-value>
-                <span class="text-success">{{value|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                <span class="text-success">{{value}}</span>
             </template>
         </ngl-datatable-column>
         <ngl-datatable-column heading="结束时间" key="endTime">
             <template nglDatatableCell let-value>
-                <span class="text-success">{{value|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                <span class="text-success">{{value}}</span>
             </template>
         </ngl-datatable-column>
         <ngl-datatable-column heading="库存" key="defaultCount">
