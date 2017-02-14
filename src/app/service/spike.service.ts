@@ -25,7 +25,7 @@ export class SpikeService {
    * @param page
    * @returns {Observable<Response>}
    */
-  getSellerGoods(id?: number, page: any) {
+  getSellerGoods(id: number, page: any) {
     if (!page) {
       page = {page: 1, perpage: 10};
     }

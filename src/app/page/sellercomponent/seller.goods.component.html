@@ -3,7 +3,7 @@
                       [placeHolder]="placeholder"
                       (searchKey)="searchByCondition($event)"></search-component>
 </div>
-<div class="slds-wrap slds-grid">
+<div class="slds-scrollable">
     <table ngl-datatable [data]="goodsDataList.rows" trackByKey="rank"
            class="slds-max-medium-table--stacked-horizontal">
         <ngl-datatable-column heading="选择" key="" *ngIf="showCheckBox">

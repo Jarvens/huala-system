@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {SellerService} from '../../service/seller.service';
 @Component({
   selector: 'seller-main-enter-component',
   templateUrl: './seller.main.enter.component.html'
@@ -6,6 +7,7 @@ import {Component} from '@angular/core';
 
 export class SellerMainEnterComponent {
 
+  commonsUrl: string = process.env.ImgUrl;
   /**
    * 当前店铺对象
    * @type {{}}
@@ -59,8 +61,12 @@ export class SellerMainEnterComponent {
    */
   goodsResultArray: Array<any> = [];
 
+  constructor(private sellerService: SellerService) {
+  }
+
   copySeller(data: any) {
     this.currentSeller = data;
+    console.log(data);
   }
 
   isShow() {
@@ -78,7 +84,7 @@ export class SellerMainEnterComponent {
    * prompt确定事件
    */
   confirm() {
-
+    this.deleteGoods();
   }
 
   /**
@@ -93,7 +99,13 @@ export class SellerMainEnterComponent {
    * 批量删除 按钮事件
    */
   muiltyDel() {
+    let length = this.goodsResultArray.length;
+    if (length == 0) {
+      this.toastFunction('请选择需要删除的商品', 'info');
+      return;
+    }
     this.notificationOpen = !this.notificationOpen;
+
   }
 
   /**
@@ -122,5 +134,26 @@ export class SellerMainEnterComponent {
     return array;
   }
 
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
+  }
+
+  /**
+   * 删除商品信息
+   */
+  deleteGoods() {
+    let data: Array<any> = [];
+    this.goodsResultArray.forEach(function (obj: any) {
+      data.push({id: obj, model: 'D'});
+    });
+    //this.sellerService.updateSellerGoods()
+  }
 
 }

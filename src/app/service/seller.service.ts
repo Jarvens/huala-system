@@ -42,4 +42,13 @@ export class SellerService {
       {page: page.page, size: page.perPage, sellerId: id, searchKey: key});
   }
 
+  /**
+   * 批量删除商品信息
+   * @param array
+   * @returns {Observable<Response>}
+   */
+  updateSellerGoods(array:Array<any>){
+    return this.http.post('/seller/updae-goods-list',array);
+  }
+
 }

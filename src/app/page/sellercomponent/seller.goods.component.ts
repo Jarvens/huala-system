@@ -74,7 +74,7 @@ export class SellerGoodsComponent implements OnChanges {
     let result = changes['currentSeller'];
     let show = changes['showCheckBox'];
     if (result.currentValue.id != result.previousValue.id) {
-      this.getGoodsList(this.currentSeller.id, this.pageOpts);
+      this.getGoodsList(this.currentSeller.id, this.pageOpts,this.key);
     }
   }
 
@@ -92,7 +92,7 @@ export class SellerGoodsComponent implements OnChanges {
    * @param id
    * @param page
    */
-  getGoodsList(id: number, page: any) {
+  getGoodsList(id: number, page: any,key:string) {
     this.sellerService.getSellerGoodsDataList(id, page, this.key).subscribe(res=> {
       this.goodsDataList = res.json();
     });
