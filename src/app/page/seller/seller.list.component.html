@@ -31,10 +31,12 @@
         </template>
     </ngl-datatable-column>
     <ngl-datatable-column heading="电话" key="phone"></ngl-datatable-column>
-    <ngl-datatable-column heading="操作" key="">
-        <div class="slds-button-group" role="group">
-            <button class="slds-button slds-button--neutral" (click)="operator(row)">操作</button>
-        </div>
+    <ngl-datatable-column heading="操作" key="" *ngIf="showBtn">
+        <template nglDatatableCell let-row="row">
+            <div class="slds-button-group" role="group">
+                <button class="slds-button slds-button--neutral" (click)="operator(row)">操作</button>
+            </div>
+        </template>
     </ngl-datatable-column>
     <!-- No rows overlay -->
     <template nglNoRowsOverlay>暂无数据!</template>

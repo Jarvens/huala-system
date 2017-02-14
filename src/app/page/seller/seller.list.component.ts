@@ -21,6 +21,12 @@ export class SellerListComponent implements OnInit {
    * @type {number}
    */
   @Input() debounce: number = 2000;
+
+  /**
+   * 显示|隐藏 操作按钮
+   * @type {boolean}
+   */
+  @Input() showBtn:boolean = true;
   /**
    * 商家列表
    * @type {{}}
