@@ -1,127 +1,57 @@
-import {Component, OnInit,EventEmitter, Output} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {SellerService} from '../../service/seller.service';
-import {INglDatatableSort, INglDatatableRowClick} from 'ng-lightning/ng-lightning';
 @Component({
   selector: 'seller-list-component',
   templateUrl: './seller.list.component.html'
 })
+
 export class SellerListComponent implements OnInit {
-  /**
-   * 店铺列表对象
-   * @type {{}}
-   */
+  //显示|隐藏  复选框
+  @Input() openCheckBox: boolean = true;
+  //显示|隐藏  搜索框选项图标
+  @Input() openConditionIcon: boolean = true;
+  //搜索延迟时间  毫秒
+  @Input() debounce: number = 2000;
+  //商家列表
   sellerList: any = {};
-  /**
-   * 分页对象
-   * @type {{total: number; limit: number; perPage: number}}
-   */
-  pageOpts: any = {total: 0, limit: 3, perPage: 10};
-  /**
-   * 是否展示提示信息
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
-  /**
-   * 搜索关键字
-   * @type {string}
-   */
+  //分页对象
+  pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
+  //搜索关键字
   searchKey: string = '';
-  /**
-   * 全部:0   所属人:1
-   * @type {string}
-   */
+  //全部:0   所属人:1
   keyType: string = '0';
+  //搜索提示
   placeholder: string = '搜索  ID  名称 手机号';
-  @Output() sellerDetail = new EventEmitter<any>();
-  @Output() showDetail = new EventEmitter<boolean>();
+
+  ngOnInit(): void {
+    this.querySellerList(this.searchKey, this.pageOpts, this.keyType);
+  }
 
   constructor(private sellerService: SellerService) {
   }
 
-  ngOnInit(): void {
-    this.getSellerList(null, this.searchKey, '', this.keyType);
-  }
-
-  /**
-   * 打开Toast
-   */
-  show() {
-    this.showAlert = true;
-  }
-
-  /**
-   * Table点击事件  并且向上传递seller对象
-   * @param $event
-   */
-  onRowClick($event: INglDatatableRowClick) {
-  }
-
-  /**
-   * 关闭Toast
-   */
-  onClose() {
-    this.showAlert = false;
-  }
-
-  /**
-   * 搜索方法
-   * @param event
-   */
-  searchByCondition(event) {
-    this.searchKey = event;
-    this.getSellerList(this.pageOpts, this.searchKey, '', this.keyType);
-  }
-
-  /**
-   * 下拉选项参数
-   * @param event
-   */
-  selectScope(event: any) {
-    this.keyType = event.type;
-  }
-
-  /**
-   * 分页事件
-   * @param event
-   */
-  pageChange(event) {
-    this.pageOpts.page = event;
-    this.getSellerList(this.pageOpts, this.searchKey, '', this.keyType);
-  }
-
-  /**
-   * 获取店铺列表
-   * @param page
-   * @param searchKey
-   * @param status
-   * @param keyType
-   */
-  getSellerList(page: any, searchKey: string, status: string, keyType: string) {
-    this.sellerService.getSellerList(page, searchKey, status, keyType).subscribe(res=> {
+  //查询商家列表
+  querySellerList(key: string, page: any, keyType: string) {
+    this.sellerService.getSellerList(page, key, keyType).subscribe(res=> {
       this.sellerList = res.json();
     });
   }
 
-  /**
-   * 数据排序
-   * @param event
-   */
-  onSort(event: INglDatatableSort) {
-
-    /**
-     *
-     * event对象为
-     * key:排序关键字
-     * order:排序
-     */
+  //异步查询事件
+  searchByCondition(data: string) {
+    this.searchKey = data;
+    this.querySellerList(this.searchKey, this.pageOpts, this.keyType);
   }
 
-  /**
-   * 店铺详情 向上传递对象
-   * @param value
-   */
-  sellerDetailInfo(value) {
-    this.sellerDetail.emit(value);
-    this.showDetail.emit(true);
+  //行点击事件
+  onRowClick(event: any) {
+
   }
+
+  //分页事件
+  pageChange(event: any) {
+    this.pageOpts.page = event;
+    this.querySellerList(this.searchKey, this.pageOpts, this.keyType);
+  }
+
 }

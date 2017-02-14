@@ -55,7 +55,6 @@ import {RefundOrderComponent} from './page/refundorder/refund.order.component';
 import {RoleCOmponent} from './page/system/role/role.component';
 import {SpikeMainComponent} from './page/spike/spike.main.component';
 import {SpikeEntryComponent} from './page/spike/spike.entry.component';
-import {SellerListCommonComponent} from './page/component/seller/seller.list.common.component';
 import {GoodsAddComponent} from './page/goods/goodsAdd.component';
 import {BasicReportComponent} from './page/basicreport/basic.report.component';
 import {SqlConfigComponent} from './page/system/sqlconfig/sql.config.component';
@@ -198,7 +197,6 @@ import {SqlConfigService} from './service/sql.config.service';
     RoleCOmponent,
     SpikeMainComponent,
     SpikeEntryComponent,
-    SellerListCommonComponent,
     RecruitHeaderComponent,
     RelativeSellerComponent,
     RecruitChooseTimeComponent,
