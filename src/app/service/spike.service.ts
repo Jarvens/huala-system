@@ -41,4 +41,13 @@ export class SpikeService {
     return this.http.post('/spike/delete-spike-goods',data.id);
   }
 
+  /**
+   * 保存秒杀活动
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  settingSpike(data:any){
+    return this.http.post('/spike/setting-spike',data);
+  }
+
 }

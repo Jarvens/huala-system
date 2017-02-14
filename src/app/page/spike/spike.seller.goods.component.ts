@@ -1,11 +1,11 @@
 import {Component, Input, SimpleChanges} from '@angular/core';
 import {SpikeService} from '../../service/spike.service';
 @Component({
-  selector:'spike-seller-goods-component',
-  templateUrl:'./spike.seller.goods.component.html'
+  selector: 'spike-seller-goods-component',
+  templateUrl: './spike.seller.goods.component.html'
 })
 
-export class SpikeSellerGoodsComponent{
+export class SpikeSellerGoodsComponent {
   placeholder: string = '搜索..商品名称';
   /**
    * 图片前缀
@@ -43,7 +43,31 @@ export class SpikeSellerGoodsComponent{
    * 显示 |隐藏 *
    * @type {boolean}
    */
-  required:boolean = true;
+  required: boolean = true;
+
+  /**
+   * 当前操作对象
+   * @type {{}}
+   */
+  operaObj: any = {};
+
+  /**
+   * toast类型
+   * @type {string}
+   */
+  toastType: string = 'success';
+
+  /**
+   * toast提示消息
+   * @type {string}
+   */
+  toastMessage: string = '';
+
+  /**
+   * 打开|关闭  toast
+   * @type {boolean}
+   */
+  showAlert: boolean = false;
 
   constructor(private spikeService: SpikeService) {
   }
@@ -108,6 +132,36 @@ export class SpikeSellerGoodsComponent{
    * 保存秒杀信息
    */
   saveSpike() {
+    this.operaObj.startTime = new Date(this.operaObj.startTime);
+    this.operaObj.endTime = new Date(this.operaObj.endTime);
+    this.operaObj.priceRole = this.operaObj.priceRole * 100;
+    this.spikeService.settingSpike(this.operaObj).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('设置成功', 'success');
+        this.spikeOpen = !this.spikeOpen;
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
+  }
 
+  /**
+   * toast传播事件
+   * @param data
+   */
+  notifyParamFunction(data: boolean) {
+    this.showAlert = data;
+  }
+
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
   }
 }
