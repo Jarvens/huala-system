@@ -51,4 +51,13 @@ export class SellerService {
     return this.http.post('/seller/updae-goods-list',array);
   }
 
+  /**
+   * 获取店铺扩展信息
+   * @param id
+   * @returns {Observable<Response>}
+   */
+  getSellerExt(id:number){
+    return this.http.get('/seller/seller-basic-info?sellerId='+id);
+  }
+
 }

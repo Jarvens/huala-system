@@ -11,11 +11,14 @@
                             <dt class="slds-item--label slds-text-color--weak slds-truncate">店铺名称:</dt>
                             <dd class="slds-item--detail slds-truncate">{{sellerObj.name}}</dd>
                             <dt class="slds-item--label slds-text-color--weak slds-truncate" >店铺状态:</dt>
-                            <dd class="slds-item--detail slds-truncate text-danger">营业中</dd>
+                            <dd class="slds-item--detail slds-truncate text-danger" *ngIf="sellerObj.isDelete=='0'">营业中</dd>
+                            <dd class="slds-item--detail slds-truncate text-danger" *ngIf="sellerObj.isDelete=='1'">删除</dd>
+                            <dd class="slds-item--detail slds-truncate text-danger" *ngIf="sellerObj.isDelete=='2'">审核中</dd>
+                            <dd class="slds-item--detail slds-truncate text-danger" *ngIf="sellerObj.isDelete=='3'">审核失败</dd>
                             <dt class="slds-item--label slds-text-color--weak slds-truncate" >店铺类型:</dt>
-                            <dd class="slds-item--detail slds-truncate text-danger">烟店</dd>
+                            <dd class="slds-item--detail slds-truncate text-danger">{{sellerObj.sellerType=='1'|threeElementExpression:'烟店;超市'}}</dd>
                             <dt class="slds-item--label slds-text-color--weak slds-truncate" >联系电话:</dt>
-                            <dd class="slds-item--detail slds-truncate text-danger">18651869151</dd>
+                            <dd class="slds-item--detail slds-truncate text-danger">{{sellerObj.phone}}</dd>
                         </dl>
                     </div>
                 </div>
@@ -34,7 +37,7 @@
 <!--tab列-->
 <ngl-tabs [(selected)]="selected">
     <template ngl-tab heading="商家信息" nglTabId="sellerInfo">
-        <seller-combination-component></seller-combination-component>
+        <seller-combination-component [currentSeller]="sellerObj"></seller-combination-component>
     </template>
     <template ngl-tab heading="结算管理" nglTabId="balance">
         <seller-balance-component></seller-balance-component>

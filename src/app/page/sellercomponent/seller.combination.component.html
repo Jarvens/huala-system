@@ -1,1 +1,96 @@
-店铺组合信息
+<div class="slds-grid slds-wrap">
+    <div class="slds-size--5-of-12">
+        <div class="slds-panel slds-grid slds-grid--vertical slds-nowrap">
+            <div class="slds-form--stacked slds-grow slds-scrollable--y">
+                <div class="slds-panel__section">
+                    <h3 class="slds-text-heading--small slds-m-bottom--medium">基本信息</h3>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <span class="slds-form-element__label">店铺名称</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static text-danger"><b>{{currentSeller.name}}</b></span>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <span class="slds-form-element__label">重复信息</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static slds-text-longform">身份证号重复(817,837,838,839,862,863,867,870,881,882,883</span>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <span class="slds-form-element__label">联系方式</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static text-success">18651869151</span>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <span class="slds-form-element__label">店铺地址</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static text-danger">杭州市滨江区滨盛路1785号</span>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <span class="slds-form-element__label">营业时间</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static">2017-09-09</span>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <span class="slds-form-element__label">审核时间</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static">2017-09-09</span>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <span class="slds-form-element__label">经纬度</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static">120.208139|30.21332</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slds-size--2-of-12"></div>
+    <div class="slds-size--5-of-12">
+        <div class="slds-panel slds-grid slds-grid--vertical slds-nowrap">
+            <div class="slds-form--stacked slds-grow slds-scrollable--y">
+                <div class="slds-panel__section">
+                    <h3 class="slds-text-heading--small slds-m-bottom--medium">附加信息</h3>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom"
+                         *ngFor="let ext of sellerExt.rows">
+                        <button class="slds-button slds-button--icon slds-button--icon-small slds-float--right"
+                                title="Remove" (click)="editExt(ext)">
+                            <svg class="slds-button__icon slds-button__icon--hint" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#edit"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Remove</span>
+                        </button>
+                        <span class="slds-form-element__label">{{ext.dataDesc}}</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static">{{ext.dataValue}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--扩展信息编辑模态-->
+<ngl-modal [(open)]="editOpened">
+    <div body>
+        <div class="slds-media slds-comment slds-hint-parent">
+            <label class="slds-form-element__label">{{operaExtObj.dataDesc}}</label>
+            <div class="slds-media__body">
+                <div class="slds-publisher slds-publisher--discussion">
+                                <textarea id="comment-text-input2" class="slds-publisher__input slds-textarea slds-text-longform"
+                                          placeholder="角色名称…" [(ngModel)]="operaExtObj.dataValue"></textarea>
+                    <div class="slds-publisher__actions slds-grid slds-grid--align-spread">
+                        <button class="slds-button slds-button--brand" (click)="saveExt()">save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ngl-modal>
+
