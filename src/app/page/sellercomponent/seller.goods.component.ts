@@ -1,4 +1,4 @@
-import {Component, OnChanges, Input, SimpleChanges} from '@angular/core';
+import {Component, OnChanges, Input,Output,EventEmitter} from '@angular/core';
 import {SellerService} from '../../service/seller.service';
 @Component({
   selector: 'seller-goods-component',
@@ -25,6 +25,16 @@ export class SellerGoodsComponent implements OnChanges {
    */
   @Input() currentSeller: any = {};
   /**
+   * 显示|隐藏  复选框
+   * @type {boolean}
+   */
+  @Input() showCheckBox: boolean = false;
+  /**
+   * 当前选择商品
+   * @type {EventEmitter<any>}
+   */
+  @Output() emitGoods = new EventEmitter<any>();
+  /**
    * 分页对象
    * @type {{page: number; total: number; limit: number; perPage: number}}
    */
@@ -45,13 +55,13 @@ export class SellerGoodsComponent implements OnChanges {
    * 显示 |隐藏 *
    * @type {boolean}
    */
-  required:boolean = true;
+  required: boolean = true;
 
   /**
    * 搜索关键字
    * @type {string}
    */
-  key:string ='';
+  key: string = '';
 
   constructor(private sellerService: SellerService) {
   }
@@ -60,8 +70,9 @@ export class SellerGoodsComponent implements OnChanges {
    * 监听 当前店铺对象发生改变
    * @param changes
    */
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(changes: any): void {
     let result = changes['currentSeller'];
+    let show = changes['showCheckBox'];
     if (result.currentValue.id != result.previousValue.id) {
       this.getGoodsList(this.currentSeller.id, this.pageOpts);
     }
@@ -73,7 +84,7 @@ export class SellerGoodsComponent implements OnChanges {
    */
   searchByCondition(data: string) {
     this.key = data;
-    this.getGoodsList(this.currentSeller.id,this.pageOpts,this.key);
+    this.getGoodsList(this.currentSeller.id, this.pageOpts, this.key);
   }
 
   /**
@@ -82,7 +93,7 @@ export class SellerGoodsComponent implements OnChanges {
    * @param page
    */
   getGoodsList(id: number, page: any) {
-    this.sellerService.getSellerGoodsDataList(id, page,this.key).subscribe(res=> {
+    this.sellerService.getSellerGoodsDataList(id, page, this.key).subscribe(res=> {
       this.goodsDataList = res.json();
     });
   }
@@ -93,11 +104,11 @@ export class SellerGoodsComponent implements OnChanges {
    */
   pageChange(data: number) {
     this.pageOpts.page = data;
-    this.getGoodsList(this.currentSeller.id, this.pageOpts,this.key);
+    this.getGoodsList(this.currentSeller.id, this.pageOpts, this.key);
   }
 
   /**
-   * 选择秒杀活动商品
+   * 编辑商品信息
    * @param data
    */
   edit(data: any) {
@@ -113,10 +124,7 @@ export class SellerGoodsComponent implements OnChanges {
     this.spikeOpen = !this.spikeOpen;
   }
 
-  /**
-   * 保存秒杀信息
-   */
-  saveSpike() {
-
+  selectGoods(data:any){
+    this.emitGoods.emit(data);
   }
 }

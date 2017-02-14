@@ -6,6 +6,13 @@
 <div class="slds-wrap slds-grid">
     <table ngl-datatable [data]="goodsDataList.rows" trackByKey="rank"
            class="slds-max-medium-table--stacked-horizontal">
+        <ngl-datatable-column heading="选择" key="" *ngIf="showCheckBox">
+            <template nglDatatableCell let-row="row">
+                <ngl-form-checkbox style="display: inline-block;">
+                    <input nglFormControl type="checkbox" (click)="selectGoods(row)"/>
+                </ngl-form-checkbox>
+            </template>
+        </ngl-datatable-column>
         <ngl-datatable-column heading="名称" key="title"></ngl-datatable-column>
         <ngl-datatable-column heading="货号" key="goodsSn"></ngl-datatable-column>
         <ngl-datatable-column heading="所属类目" key="cname"></ngl-datatable-column>

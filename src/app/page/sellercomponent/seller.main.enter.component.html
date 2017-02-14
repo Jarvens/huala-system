@@ -17,15 +17,23 @@
                 </div>
                 <div class="slds-col slds-no-flex slds-grid slds-align-top">
                     <div class="slds-button-group" role="group">
-                        <button class="slds-button slds-button--neutral">新增</button>
+                        <button class="slds-button slds-button--brand">新增</button>
                         <button class="slds-button slds-button--neutral">默认导入</button>
                         <button class="slds-button slds-button--neutral">商品导入</button>
-                        <button class="slds-button slds-button--neutral">批量删除</button>
+                        <button class="slds-button slds-button--destructive" (click)="muiltyDel()">批量删除</button>
                     </div>
                 </div>
             </div>
         </div>
-        <seller-goods-component [currentSeller]="currentSeller"></seller-goods-component>
+        <seller-goods-component (emitGoods)="receiveGoods($event)" [showCheckBox]="showCheckBox" [currentSeller]="currentSeller"></seller-goods-component>
     </div>
 </div>
+
+
+<!--prompt-->
+<confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancelPrompt()"
+                          (confirmFunction)="confirm()"></confirm-prompt-component>
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>
 
