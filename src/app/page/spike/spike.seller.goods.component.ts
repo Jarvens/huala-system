@@ -1,13 +1,11 @@
-import {Component, OnChanges, Input, SimpleChanges} from '@angular/core';
-import {SellerService} from '../../service/seller.service';
+import {Component, Input, SimpleChanges} from '@angular/core';
+import {SpikeService} from '../../service/spike.service';
 @Component({
-  selector: 'seller-goods-component',
-  templateUrl: './seller.goods.component.html'
+  selector:'spike-seller-goods-component',
+  templateUrl:'./spike.seller.goods.component.html'
 })
 
-export class SellerGoodsComponent implements OnChanges {
-
-
+export class SpikeSellerGoodsComponent{
   placeholder: string = '搜索..商品名称';
   /**
    * 图片前缀
@@ -47,13 +45,7 @@ export class SellerGoodsComponent implements OnChanges {
    */
   required:boolean = true;
 
-  /**
-   * 搜索关键字
-   * @type {string}
-   */
-  key:string ='';
-
-  constructor(private sellerService: SellerService) {
+  constructor(private spikeService: SpikeService) {
   }
 
   /**
@@ -72,8 +64,7 @@ export class SellerGoodsComponent implements OnChanges {
    * @param data
    */
   searchByCondition(data: string) {
-    this.key = data;
-    this.getGoodsList(this.currentSeller.id,this.pageOpts,this.key);
+
   }
 
   /**
@@ -82,7 +73,7 @@ export class SellerGoodsComponent implements OnChanges {
    * @param page
    */
   getGoodsList(id: number, page: any) {
-    this.sellerService.getSellerGoodsDataList(id, page,this.key).subscribe(res=> {
+    this.spikeService.getSellerGoods(id, page).subscribe(res=> {
       this.goodsDataList = res.json();
     });
   }
@@ -93,7 +84,7 @@ export class SellerGoodsComponent implements OnChanges {
    */
   pageChange(data: number) {
     this.pageOpts.page = data;
-    this.getGoodsList(this.currentSeller.id, this.pageOpts,this.key);
+    this.getGoodsList(this.currentSeller.id, this.pageOpts);
   }
 
   /**

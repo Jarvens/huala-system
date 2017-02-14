@@ -49,7 +49,7 @@ const routes: Routes = [
       {path: 'banner-main', component: BannerMainComponent},
       {path: 'card-list', component: CardComponent},
       {path: 'seller-info', component: SellerMainComponent},
-      {path: 'seller-goods', component: SellerGoodsComponent},
+      {path: 'seller-goods', component: SellerMainEnterComponent},
       {path: 'system-img-manage', component: PictureComponent},
       {path: 'app/app-version-index', component: AppVersionComponent},
       {path: 'order', component: OrderComponent},

@@ -6,19 +6,13 @@
 <div class="slds-wrap slds-grid">
     <table ngl-datatable [data]="goodsDataList.rows" trackByKey="rank"
            class="slds-max-medium-table--stacked-horizontal">
-        <ngl-datatable-column heading="名称" key="title"></ngl-datatable-column>
-        <ngl-datatable-column heading="货号" key="goodsSn"></ngl-datatable-column>
-        <ngl-datatable-column heading="所属类目" key="cname"></ngl-datatable-column>
+        <ngl-datatable-column heading="id" key="id"></ngl-datatable-column>
         <ngl-datatable-column heading="图片" key="picUrl">
             <template nglDatatableCell let-value>
                 <img [src]="commonImgUrl+value" style="width: 60px;height: 60px;">
             </template>
         </ngl-datatable-column>
-        <ngl-datatable-column heading="协议价" key="recPrice">
-            <template nglDatatableCell let-value>
-                {{value/100|number:'1.2-2'}}
-            </template>
-        </ngl-datatable-column>
+        <ngl-datatable-column heading="标题" key="title"></ngl-datatable-column>
         <ngl-datatable-column heading="售价" key="salePrice">
             <template nglDatatableCell let-value>
                 {{value/100|number:'1.2-2'}}

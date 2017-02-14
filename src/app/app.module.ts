@@ -76,6 +76,7 @@ import {HngRecruitListComponent} from './page/hng/recruit/hng.recruit.list.compo
 import {HngRecruitStaticsComponent} from './page/hng/recruit/hng.recruit.statics.component';
 import {HngMovieEntryComponent} from './page/hng/movie/hng.movie.entry.component';
 import {HngMovieListComponent} from './page/hng/movie/hng.movie.list.component';
+import {SpikeSellerGoodsComponent} from './page/spike/spike.seller.goods.component';
 /**
  *
  * 公用组件
@@ -209,7 +210,8 @@ import {SqlConfigService} from './service/sql.config.service';
     BasicReportComponent,
     SqlConfigComponent,
     SellerMainEnterComponent,
-    SellerGoodsComponent
+    SellerGoodsComponent,
+    SpikeSellerGoodsComponent
   ],
   imports: [
     BrowserModule,
