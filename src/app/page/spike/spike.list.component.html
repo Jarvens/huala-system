@@ -44,8 +44,10 @@
         </ngl-datatable-column>
         <ngl-datatable-column heading="操作" key="">
             <template nglDatatableCell let-row="row">
-                <button class="slds-button slds-button--brand" (click)="edit(row)">编辑</button>
-                <button class="slds-button slds-button--destructive" (click)="delSpike(row)">删除</button>
+                <div class="slds-button-group" role="group">
+                    <button class="slds-button slds-button--brand" (click)="edit(row)">编辑</button>
+                    <button class="slds-button slds-button--destructive" (click)="delSpike(row)">删除</button>
+                </div>
             </template>
         </ngl-datatable-column>
         <template nglNoRowsOverlay>暂无数据!</template>
