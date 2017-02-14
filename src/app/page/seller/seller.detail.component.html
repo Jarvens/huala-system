@@ -1,1 +1,51 @@
-店铺详情
+<div class="slds-page-header">
+    <div class="slds-grid">
+        <div class="slds-col slds-has-flexi-truncate">
+            <div class="slds-media slds-no-space slds-grow">
+                <div class="slds-media__figure">
+                    <img [src]="commonImgUrl+sellerObj.imgUrl" style="width: 80px;height: 80px;" alt="店铺头像">
+                </div>
+                <div class="slds-media__body">
+                    <div class="slds-tile__detail slds-text-body--large">
+                        <dl class="slds-list--horizontal slds-wrap">
+                            <dt class="slds-item--label slds-text-color--weak slds-truncate">店铺名称:</dt>
+                            <dd class="slds-item--detail slds-truncate">{{sellerObj.name}}</dd>
+                            <dt class="slds-item--label slds-text-color--weak slds-truncate" >店铺状态:</dt>
+                            <dd class="slds-item--detail slds-truncate text-danger">营业中</dd>
+                            <dt class="slds-item--label slds-text-color--weak slds-truncate" >店铺类型:</dt>
+                            <dd class="slds-item--detail slds-truncate text-danger">烟店</dd>
+                            <dt class="slds-item--label slds-text-color--weak slds-truncate" >联系电话:</dt>
+                            <dd class="slds-item--detail slds-truncate text-danger">18651869151</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-col slds-no-flex slds-grid slds-align-top">
+            <div class="slds-button-group" role="group">
+                <button class="slds-button slds-button--brand">开店</button>
+                <button class="slds-button slds-button--neutral">关店</button>
+                <button class="slds-button slds-button--neutral">上线</button>
+                <button class="slds-button slds-button--destructive">下线</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--tab列-->
+<ngl-tabs [(selected)]="selected">
+    <template ngl-tab heading="商家信息" nglTabId="sellerInfo">
+        <seller-combination-component></seller-combination-component>
+    </template>
+    <template ngl-tab heading="结算管理" nglTabId="balance">
+        <seller-balance-component></seller-balance-component>
+    </template>
+    <template ngl-tab heading="转账提现" nglTabId="transferAccount">
+        <seller-transfer-account-component></seller-transfer-account-component>
+    </template>
+    <template ngl-tab heading="银行卡" nglTabId="bank">
+        <seller-bank-component></seller-bank-component>
+    </template>
+    <template ngl-tab heading="卡券" nglTabId="card">
+        <seller-card-component></seller-card-component>
+    </template>
+</ngl-tabs>

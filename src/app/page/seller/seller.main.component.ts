@@ -9,7 +9,12 @@ export class SellerMainComponent {
    * seller-list页面传递过来的seller对象
    */
   detailFromSellerList: boolean;
-  showDetail: boolean = false;
+
+  /**
+   * 当前店铺对象
+   * @type {{}}
+   */
+  currentSeller: any = {};
 
   /**
    * 手动触发tab切换事件
@@ -26,5 +31,13 @@ export class SellerMainComponent {
   switchTabs(event) {
     this.detailFromSellerList = event;
     this.selected = 'detail';
+  }
+
+  /**
+   * 拷贝对象
+   * @param data
+   */
+  copySeller(data: any) {
+    this.currentSeller = data;
   }
 }

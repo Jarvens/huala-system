@@ -91,6 +91,11 @@ import {QuillEditorComponent} from './page/component/quilleditor/quill.editor.co
 import {QuillEditor} from './utils/quillEditor/quillEditor';
 import {RecruitHeaderComponent} from './page/component/recruit/recruit.header.component';
 import {SellerLittleComponent} from './page/component/seller/seller.little.component'
+import {SellerCombinationComponent} from './page/sellercomponent/seller.combination.component';
+import {SellerBalanceComponent} from './page/sellercomponent/seller.balance.component';
+import {SellerTransferAccountComponent} from './page/sellercomponent/seller.transfer.account.component';
+import {SellerBankComponent} from './page/sellercomponent/seller.bank.component';
+import {SellerCardComponent} from './page/sellercomponent/seller.card.component';
 //Directive
 
 /**
@@ -209,7 +214,12 @@ import {SqlConfigService} from './service/sql.config.service';
     SqlConfigComponent,
     SellerMainEnterComponent,
     SellerGoodsComponent,
-    SpikeSellerGoodsComponent
+    SpikeSellerGoodsComponent,
+    SellerCombinationComponent,
+    SellerBalanceComponent,
+    SellerTransferAccountComponent,
+    SellerBankComponent,
+    SellerCardComponent
   ],
   imports: [
     BrowserModule,

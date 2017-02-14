@@ -10,19 +10,27 @@ export class SellerDetailComponent implements OnChanges {
    * seller-main页面传递过来的seller对象
    * @type {{}}
    */
-  @Input() detailFromSellerMain: any = {};
+  @Input() sellerObj: any = {};
   /**
    * 图片地址前缀
    */
   commonImgUrl = process.env.ImgUrl;
-  
-  ngOnChanges(changes): void {
-    let change: any = changes['detailFromSellerMain'];
+
+  /**
+   * 当前选中tab
+   * @type {string}
+   */
+  selected: string = 'sellerInfo';
+
+  ngOnChanges(changes: any): void {
+    let change: any = changes['sellerObj'];
     if (!change.currentValue) {
       return;
     }
-    if (change.currentValue != change.previousValue) {
+    if (change.currentValue.id != change.previousValue.id) {
+      console.log('发生改变了 ... ->');
+      console.log(this.sellerObj);
     }
   }
-  
+
 }
