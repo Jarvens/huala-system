@@ -31,7 +31,7 @@ export class SpikeListComponent implements OnInit {
    * prompt提示消息
    * @type {string}
    */
-  promptMessage: string = '';
+  promptMessage: string = '您确定要删除该活动吗?';
   /**
    * 打开|关闭 prompt
    * @type {boolean}
@@ -57,13 +57,13 @@ export class SpikeListComponent implements OnInit {
    */
   commonImgUrl = process.env.ImgUrl;
 
-
   ngOnInit(): void {
     this.getSpikeList();
   }
 
   constructor(private spikeService: SpikeService) {
   }
+
   /**
    * 获取秒杀商品列表
    */
@@ -82,22 +82,30 @@ export class SpikeListComponent implements OnInit {
    * prompt取消事件
    */
   cancelPrompt() {
-
+    this.notificationOpen = !this.notificationOpen;
   }
 
   /**
    * prompt确认事件
    */
   confirm() {
-
+    this.notificationOpen = !this.notificationOpen;
+    this.spikeService.delSpike(this.operaObj).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('删除成功', 'success');
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
   }
 
   /**
    * toast传播事件
    * @param data
    */
-  notifyParamFunction(data: any) {
-
+  notifyParamFunction(data: boolean) {
+    this.showAlert = data;
   }
 
   /**
@@ -110,20 +118,20 @@ export class SpikeListComponent implements OnInit {
   /**
    * 编辑
    */
-  confirmEdit(){
+  confirmEdit() {
     this.operaObj.startTime = new Date(this.operaObj.startTime);
     this.operaObj.endTime = new Date(this.operaObj.endTime);
-    this.operaObj.priceRole = this.operaObj.priceRole *100;
-    this.operaObj.salePrice = this.operaObj.salePrice *100;
+    this.operaObj.priceRole = this.operaObj.priceRole * 100;
+    this.operaObj.salePrice = this.operaObj.salePrice * 100;
     this.operaObj.defaultCount = this.operaObj.totalCount;
-    this.spikeService.saveSpike(this.operaObj).subscribe(res=>{
+    this.spikeService.saveSpike(this.operaObj).subscribe(res=> {
       let result = res.json();
-      if(result.success){
-        this.toastFunction('保存成功','success');
+      if (result.success) {
+        this.toastFunction('保存成功', 'success');
         this.opened = !this.opened;
         this.getSpikeList();
-      }else{
-        this.toastFunction(result.message,'error');
+      } else {
+        this.toastFunction(result.message, 'error');
       }
     });
   }
@@ -139,4 +147,12 @@ export class SpikeListComponent implements OnInit {
     this.toastType = toastType;
   }
 
+  /**
+   * 删除秒杀活动
+   */
+  delSpike(data: any) {
+    this.notificationOpen = !this.notificationOpen;
+    this.operaObj = data;
+
+  }
 }

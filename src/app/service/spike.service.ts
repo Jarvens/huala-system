@@ -32,4 +32,13 @@ export class SpikeService {
     return this.http.get('/spike/seller-goods-list?sellerId=' +id+"&pageNum="+page.page+"&pageSize="+page.perPage);
   }
 
+  /**
+   * 删除秒杀活动
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  delSpike(data:any){
+    return this.http.post('/spike/delete-spike-goods',data.id);
+  }
+
 }
