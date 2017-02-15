@@ -40,7 +40,7 @@
         <seller-combination-component [currentSeller]="sellerObj"></seller-combination-component>
     </template>
     <template ngl-tab heading="结算管理" nglTabId="balance">
-        <seller-balance-component></seller-balance-component>
+        <seller-balance-component [currentSeller]="sellerObj"></seller-balance-component>
     </template>
     <template ngl-tab heading="转账提现" nglTabId="transferAccount">
         <seller-transfer-account-component></seller-transfer-account-component>

@@ -74,8 +74,8 @@ export class SellerService {
    * @param id
    * @returns {Observable<Response>}
    */
-  getRepeat(id:number){
-    return  this.http.get('/seller/check-info?sellerId='+id);
+  getRepeat(id: number) {
+    return this.http.get('/seller/check-info?sellerId=' + id);
   }
 
   /**
@@ -83,8 +83,32 @@ export class SellerService {
    * @param data
    * @returns {Observable<Response>}
    */
-  updateSellerExtInfo(data:any){
-    return this.http.post('/seller/update-seller',data);
+  updateSellerExtInfo(data: any) {
+    return this.http.post('/seller/update-seller', data);
+  }
+
+  /**
+   * 根据店铺id 查询店铺结算信息
+   * @param id
+   * @returns {Observable<Response>}
+   */
+  getSellerBalance(id: number) {
+    return this.http.get('/seller/seller-amount-count?sellerId=' + id);
+  }
+
+  /**
+   * 查询店铺结算详情
+   * @param page
+   * @param id
+   * @param type
+   * @returns {Observable<Response>}
+   */
+  getBalanceDataList(page: any, id: number, type: string) {
+    if (!page) {
+      page = {page: 1, perPage: 10};
+    }
+    return this.http.get('/seller/seller-balance-list',
+      {page: page.page, size: page.perPage, sellerId: id, keyType: type});
   }
 
 }
