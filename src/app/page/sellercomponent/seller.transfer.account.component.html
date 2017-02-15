@@ -3,7 +3,7 @@
         <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
             <search-component showIcon="false" debounce="2000" placeHolder="搜索..id 手机 名称"
                               (searchKey)="searchByCondition($event)"></search-component>
-            <button class="slds-button slds-button--brand">同步</button>
+            <button class="slds-button slds-button--brand" (click)="syncAccount()">同步</button>
         </div>
     </div>
     <div class="slds-size--6-of-12">
@@ -56,3 +56,8 @@
                     boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
                     nextText="下一页"></ngl-pagination>
 </div>
+
+
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>

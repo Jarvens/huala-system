@@ -32,6 +32,24 @@ export class SellerTransferAccountComponent implements OnChanges {
 
   @Input() currentSeller: any = {};
 
+  /**
+   * 打开|关闭toast
+   * @type {boolean}
+   */
+  showAlert:boolean = false;
+
+  /**
+   * toast类型
+   * @type {string}
+   */
+  toastType:string='success';
+
+  /**
+   * toast提示消息
+   * @type {string}
+   */
+  toastMessage:string ='';
+
 
   constructor(private sellerService: SellerService) {
   }
@@ -79,7 +97,40 @@ export class SellerTransferAccountComponent implements OnChanges {
    * 查询按钮
    */
   search() {
-    console.log('查询-->',this.type);
     this.getTransferDataList(this.pageOpts, this.key, this.currentSeller.id, this.type);
+  }
+
+  /**
+   * 账户同步
+   */
+  syncAccount(){
+    this.sellerService.syncAccountData(this.currentSeller.id).subscribe(res=>{
+      let result = res.json();
+      console.log(res.json());
+      if(result.success){
+        this.toastFunction('同步成功','success');
+      }else{
+        this.toastFunction(result.message,'error');
+      }
+    });
+  }
+
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
+  }
+
+  /**
+   * toast传播事件
+   * @param data
+   */
+  notifyParamFunction(data:boolean){
+    this.showAlert = data;
   }
 }

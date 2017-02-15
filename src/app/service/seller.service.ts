@@ -144,4 +144,13 @@ export class SellerService {
     return this.http.get('/seller/seller-xyl-account',
       {key: key, page: page.page, size: page.perPage, sellerId: id, type: type});
   }
+
+  /**
+   * 账户同步
+   * @param id
+   * @returns {Observable<Response>}
+   */
+  syncAccountData(id:number){
+    return this.http.post('/seller/seller-xyl-account-sync?sellerId='+id);
+  }
 }
