@@ -25,7 +25,8 @@ export class OrderComponent implements OnInit {
   public selectedTab:string = "orderBasic"; //所选tab;
   public orderGoods:any;
   public orderLog:any;
-  
+  public sellerObj:any={};
+  public showBtn:boolean = false;
   constructor(public orderService: OrderService) {
   }
   
@@ -78,6 +79,7 @@ export class OrderComponent implements OnInit {
     this.opened = true;
     this.curOrder = orderInfo;
     this.selectedTab = "orderBasic";
+    this.sellerObj.id = orderInfo.sellerId;
     this.orderService.getOrderGoods(orderId).subscribe(res => {
       let data = res.json();
       if(data.success){

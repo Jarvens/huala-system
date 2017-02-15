@@ -63,6 +63,12 @@ export class SellerCombinationComponent implements OnChanges {
   imgSources: string;
 
   /**
+   * 显示|隐藏  修改按钮
+   * @type {boolean}
+   */
+  @Input() showBtn:boolean=true;
+
+  /**
    * 打开|关闭  图片模态
    * @type {boolean}
    */

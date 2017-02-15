@@ -101,7 +101,7 @@
                     <h3 class="slds-text-heading--small slds-m-bottom--medium">附加信息</h3>
                     <div class="slds-form-element slds-hint-parent slds-has-divider--bottom"
                          *ngFor="let ext of sellerExt.rows">
-                        <button class="slds-button slds-button--icon slds-button--icon-small slds-float--right"
+                        <button class="slds-button slds-button--icon slds-button--icon-small slds-float--right" *ngIf="showBtn"
                                 title="Remove" (click)="editExt(ext)">
                             <svg class="slds-button__icon slds-button__icon--hint" aria-hidden="true">
                                 <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#edit"></use>

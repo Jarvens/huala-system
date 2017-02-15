@@ -56,7 +56,7 @@
                   previousText="上一页" nextText="下一页"></ngl-pagination>
 </div>
 
-<ngl-modal header="订单详情" [(open)]="opened">
+<ngl-modal header="订单详情" [(open)]="opened" size="large">
   <div body *ngIf="curOrder">
     <ngl-tabs [(selected)]="selectedTab">
       <template ngl-tab heading="基本信息" nglTabId="orderBasic">
@@ -64,6 +64,9 @@
       </template>
       <template ngl-tab heading="订单日志" nglTabId="orderLog">
         <order-log [orderLog]="orderLog"></order-log>
+      </template>
+      <template ngl-tab heading="店铺信息" nglTabId="sellerInfo">
+        <seller-combination-component [currentSeller]="sellerObj" [showBtn]="showBtn"></seller-combination-component>
       </template>
     </ngl-tabs>
   </div>

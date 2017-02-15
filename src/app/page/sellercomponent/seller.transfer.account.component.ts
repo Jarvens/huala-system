@@ -106,7 +106,6 @@ export class SellerTransferAccountComponent implements OnChanges {
   syncAccount(){
     this.sellerService.syncAccountData(this.currentSeller.id).subscribe(res=>{
       let result = res.json();
-      console.log(res.json());
       if(result.success){
         this.toastFunction('同步成功','success');
       }else{
