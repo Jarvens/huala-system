@@ -57,6 +57,17 @@ export class SellerCombinationComponent implements OnChanges {
    */
   showAlert: boolean = false;
 
+  /**
+   * 当前图片
+   */
+  imgSources: string;
+
+  /**
+   * 打开|关闭  图片模态
+   * @type {boolean}
+   */
+  imgOpened: boolean = false;
+
   constructor(private sellerService: SellerService) {
   }
 
@@ -151,5 +162,15 @@ export class SellerCombinationComponent implements OnChanges {
     this.showAlert = !this.showAlert;
     this.toastMessage = message;
     this.toastType = toastType;
+  }
+
+  /**
+   * 查看图片大图
+   * @param data
+   */
+  openImg(data: any) {
+    console.log(data);
+    this.imgSources = data.srcElement.currentSrc;
+    this.imgOpened = !this.imgOpened;
   }
 }

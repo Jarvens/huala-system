@@ -22,6 +22,18 @@ export class SellerDetailComponent implements OnChanges {
    */
   selected: string = 'sellerInfo';
 
+  /**
+   * 店铺修改模态 打开|关闭
+   * @type {boolean}
+   */
+  sellerInfoOpened: boolean = false;
+
+  /**
+   * 显示|隐藏 *
+   * @type {boolean}
+   */
+  required: boolean = true;
+
   ngOnChanges(changes: any): void {
     let change: any = changes['sellerObj'];
     if (!change.currentValue) {
@@ -31,6 +43,20 @@ export class SellerDetailComponent implements OnChanges {
       console.log('发生改变了 ... ->');
       console.log(this.sellerObj);
     }
+  }
+
+  /**
+   * 修改店铺信息
+   */
+  editSellerInfo() {
+    this.sellerInfoOpened = !this.sellerInfoOpened;
+  }
+
+  /**
+   * 关闭修改模态
+   */
+  cancel() {
+    this.sellerInfoOpened = !this.sellerInfoOpened;
   }
 
 }

@@ -26,6 +26,7 @@
         </div>
         <div class="slds-col slds-no-flex slds-grid slds-align-top">
             <div class="slds-button-group" role="group">
+                <button class="slds-button slds-button--neutral" (click)="editSellerInfo()">修改</button>
                 <button class="slds-button slds-button--brand">开店</button>
                 <button class="slds-button slds-button--neutral">关店</button>
                 <button class="slds-button slds-button--neutral">上线</button>
@@ -52,3 +53,65 @@
         <seller-card-component></seller-card-component>
     </template>
 </ngl-tabs>
+
+<!--店铺基本信息修改模态-->
+<ngl-modal header="店铺信息修改" [(open)]="sellerInfoOpened">
+    <div body>
+        <div class="slds-wrap slds-grid">
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="店铺名称"  class="slds-m-top--small">
+                    <input nglFormControl type="text"  [required]="required">
+                </ngl-form-element>
+            </div>
+            <div class="slds-size--2-of-12"></div>
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="店铺别名"  class="slds-m-top--small">
+                    <input nglFormControl type="text"  [required]="required">
+                </ngl-form-element>
+            </div>
+        </div>
+        <div class="slds-wrap slds-grid">
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="联系方式"  class="slds-m-top--small">
+                    <input nglFormControl type="text"  [required]="required">
+                </ngl-form-element>
+            </div>
+            <div class="slds-size--2-of-12"></div>
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="店铺地址"  class="slds-m-top--small">
+                    <input nglFormControl type="text"  [required]="required">
+                </ngl-form-element>
+            </div>
+        </div>
+        <div class="slds-wrap slds-grid">
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="开店时间"  class="slds-m-top--small">
+                    <input nglFormControl type="text"  [required]="required">
+                </ngl-form-element>
+            </div>
+            <div class="slds-size--2-of-12"></div>
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="关店时间"  class="slds-m-top--small">
+                    <input nglFormControl type="text"  [required]="required">
+                </ngl-form-element>
+            </div>
+        </div>
+        <div class="slds-wrap slds-grid">
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="店铺经度"  class="slds-m-top--small">
+                    <input nglFormControl type="text"  [required]="required">
+                </ngl-form-element>
+            </div>
+            <div class="slds-size--2-of-12"></div>
+            <div class="slds-size--5-of-12">
+                <ngl-form-element label="店铺纬度"  class="slds-m-top--small">
+                    <input nglFormControl type="text"  [required]="required">
+                </ngl-form-element>
+            </div>
+        </div>
+    </div>
+    <template ngl-modal-footer>
+        <button class="slds-button slds-button--neutral" (click)="cancel()">取消</button>
+        <button class="slds-button slds-button--brand">保存</button>
+    </template>
+</ngl-modal>
