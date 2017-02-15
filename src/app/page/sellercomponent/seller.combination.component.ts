@@ -8,6 +8,7 @@ import {SellerService} from '../../service/seller.service';
 
 export class SellerCombinationComponent implements OnChanges {
 
+  commonsUrls: string = process.env.ImgUrl;
   /**
    * 当前店铺对象
    * @type {{}}
@@ -32,6 +33,30 @@ export class SellerCombinationComponent implements OnChanges {
    */
   editOpened: boolean = false;
 
+  /**
+   * 店铺重复信息
+   * @type {string}
+   */
+  repeatInfo: string = '';
+
+  /**
+   * toast类型
+   * @type {string}
+   */
+  toastType: string = 'success';
+
+  /**
+   * toast提示消息
+   * @type {string}
+   */
+  toastMessage: string = '';
+
+  /**
+   * 打开|关闭 toast
+   * @type {boolean}
+   */
+  showAlert: boolean = false;
+
   constructor(private sellerService: SellerService) {
   }
 
@@ -45,7 +70,10 @@ export class SellerCombinationComponent implements OnChanges {
       return;
     }
     if (value.currentValue.id != value.previousValue.id) {
-      this.getSellerExt(this.currentSeller.id);
+      let id = this.currentSeller.id;
+      this.getSellerExt(id);
+      this.getSellerInfo(id);
+      this.getRepeat(id);
     }
   }
 
@@ -56,6 +84,27 @@ export class SellerCombinationComponent implements OnChanges {
   getSellerExt(id: number) {
     this.sellerService.getSellerExt(id).subscribe(res=> {
       this.sellerExt = res.json();
+
+    });
+  }
+
+  /**
+   * 根据店铺id  获取店铺基本信息
+   * @param id
+   */
+  getSellerInfo(id: number) {
+    this.sellerService.getSellerInfo(id).subscribe(res=> {
+      this.currentSeller = res.json();
+    });
+  }
+
+  /**
+   * 查询店铺重复信息
+   * @param id
+   */
+  getRepeat(id: number) {
+    this.sellerService.getRepeat(id).subscribe(res=> {
+      this.repeatInfo = res.json().body;
     });
   }
 
@@ -73,6 +122,34 @@ export class SellerCombinationComponent implements OnChanges {
    * 保存店铺扩展信息
    */
   saveExt() {
+    console.log(this.operaExtObj);
+    this.sellerService.updateSellerExtInfo(this.operaExtObj).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('修改成功', 'success');
+        this.editOpened = !this.editOpened;
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
+  }
 
+  /**
+   * toast传递事件
+   * @param data
+   */
+  notifyParamFunction(data: boolean) {
+    this.showAlert = data;
+  }
+
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
   }
 }

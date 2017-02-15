@@ -47,8 +47,8 @@ export class SellerService {
    * @param array
    * @returns {Observable<Response>}
    */
-  updateSellerGoods(array:Array<any>){
-    return this.http.post('/seller/updae-goods-list',array);
+  updateSellerGoods(array: Array<any>) {
+    return this.http.post('/seller/updae-goods-list', array);
   }
 
   /**
@@ -56,8 +56,35 @@ export class SellerService {
    * @param id
    * @returns {Observable<Response>}
    */
-  getSellerExt(id:number){
-    return this.http.get('/seller/seller-basic-info?sellerId='+id);
+  getSellerExt(id: number) {
+    return this.http.get('/seller/seller-basic-info?sellerId=' + id);
+  }
+
+  /**
+   * 查询店铺基本信息
+   * @param id
+   * @returns {Observable<Response>}
+   */
+  getSellerInfo(id: number) {
+    return this.http.get('/seller/seller-info', {sellerId: id});
+  }
+
+  /**
+   * 获取店铺重复信息
+   * @param id
+   * @returns {Observable<Response>}
+   */
+  getRepeat(id:number){
+    return  this.http.get('/seller/check-info?sellerId='+id);
+  }
+
+  /**
+   * 修改店铺扩展信息
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  updateSellerExtInfo(data:any){
+    return this.http.post('/seller/update-seller',data);
   }
 
 }

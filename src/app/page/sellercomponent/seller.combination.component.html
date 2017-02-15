@@ -3,22 +3,23 @@
         <div class="slds-col slds-has-flexi-truncate">
             <div class="slds-media slds-no-space slds-grow">
                 <div class="slds-media__figure">
-                    <img [src]="" style="width: 80px;height: 80px;" alt="二维码">
+                    <img [src]="currentSeller.qrcodUrl" style="width: 80px;height: 80px;" alt="二维码">
                 </div>
                 <div class="slds-media__figure">
-                    <img [src]="" style="width: 80px;height: 80px;" alt="扫码">
+                    <img [src]="currentSeller.scanUrl" style="width: 80px;height: 80px;" alt="扫码">
                 </div>
                 <div class="slds-media__figure">
-                    <img [src]="" style="width: 80px;height: 80px;" alt="身份证">
+                    <img [src]="commonsUrls+currentSeller.idCardImg" style="width: 80px;height: 80px;" alt="身份证">
                 </div>
                 <div class="slds-media__figure">
-                    <img [src]="" style="width: 80px;height: 80px;" alt="营业执照">
+                    <img [src]="commonsUrls+currentSeller.businesslicenseimg" style="width: 80px;height: 80px;"
+                         alt="营业执照">
                 </div>
                 <div class="slds-media__figure">
-                    <img [src]="" style="width: 80px;height: 80px;" alt="货架">
+                    <img [src]="commonsUrls+currentSeller.goodsShelfUrl" style="width: 80px;height: 80px;" alt="货架">
                 </div>
                 <div class="slds-media__figure">
-                    <img [src]="" style="width: 80px;height: 80px;" alt="店铺">
+                    <img [src]="commonsUrls+currentSeller.imgUrl" style="width: 80px;height: 80px;" alt="店铺">
                 </div>
             </div>
         </div>
@@ -39,37 +40,37 @@
                     <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
                         <span class="slds-form-element__label">重复信息</span>
                         <div class="slds-form-element__control">
-                            <span class="slds-form-element__static slds-text-longform">身份证号重复(817,837,838,839,862,863,867,870,881,882,883</span>
+                            <span class="slds-form-element__static slds-text-longform">{{repeatInfo}}</span>
                         </div>
                     </div>
                     <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
                         <span class="slds-form-element__label">联系方式</span>
                         <div class="slds-form-element__control">
-                            <span class="slds-form-element__static text-success">18651869151</span>
+                            <span class="slds-form-element__static text-success">{{currentSeller.phone}}</span>
                         </div>
                     </div>
                     <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
                         <span class="slds-form-element__label">店铺地址</span>
                         <div class="slds-form-element__control">
-                            <span class="slds-form-element__static text-danger">杭州市滨江区滨盛路1785号</span>
+                            <span class="slds-form-element__static text-danger">{{currentSeller.address}}</span>
                         </div>
                     </div>
                     <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
                         <span class="slds-form-element__label">营业时间</span>
                         <div class="slds-form-element__control">
-                            <span class="slds-form-element__static">2017-09-09</span>
+                            <span class="slds-form-element__static">{{currentSeller.openTime}}--{{currentSeller.endTime}}</span>
                         </div>
                     </div>
                     <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
                         <span class="slds-form-element__label">审核时间</span>
                         <div class="slds-form-element__control">
-                            <span class="slds-form-element__static">2017-09-09</span>
+                            <span class="slds-form-element__static">{{currentSeller.enterTime}}</span>
                         </div>
                     </div>
                     <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
                         <span class="slds-form-element__label">经纬度</span>
                         <div class="slds-form-element__control">
-                            <span class="slds-form-element__static">120.208139|30.21332</span>
+                            <span class="slds-form-element__static">{{currentSeller.lng}}|{{currentSeller.lat}}</span>
                         </div>
                     </div>
                 </div>
@@ -109,8 +110,8 @@
             <label class="slds-form-element__label">{{operaExtObj.dataDesc}}</label>
             <div class="slds-media__body">
                 <div class="slds-publisher slds-publisher--discussion">
-                                <textarea id="comment-text-input2" class="slds-publisher__input slds-textarea slds-text-longform"
-                                          placeholder="角色名称…" [(ngModel)]="operaExtObj.dataValue"></textarea>
+                    <textarea id="comment-text-input2" class="slds-publisher__input slds-textarea slds-text-longform"
+                              [(ngModel)]="operaExtObj.dataValue"></textarea>
                     <div class="slds-publisher__actions slds-grid slds-grid--align-spread">
                         <button class="slds-button slds-button--brand" (click)="saveExt()">save</button>
                     </div>
@@ -119,4 +120,8 @@
         </div>
     </div>
 </ngl-modal>
+
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>
 
