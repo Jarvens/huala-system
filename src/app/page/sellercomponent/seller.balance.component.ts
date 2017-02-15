@@ -30,7 +30,59 @@ export class SellerBalanceComponent implements OnChanges {
    */
   pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
 
-  key: string = '';
+  /**
+   * 结算类型
+   * @type {string}
+   */
+  key: string = 'all';
+
+  /**
+   * prompt提示消息
+   * @type {string}
+   */
+  promptMessage: string = '您确定要进行结算吗?';
+
+  /**
+   * prompt打开|关闭
+   * @type {boolean}
+   */
+  notificationOpen: boolean = false;
+
+  /**
+   * toast类型
+   * @type {string}
+   */
+  toastType: string = 'success';
+
+  /**
+   * toast提示消息
+   * @type {string}
+   */
+  toastMessage: string = '';
+
+  /**
+   * 打开|关闭 toast
+   * @type {boolean}
+   */
+  showAlert: boolean = false;
+
+  /**
+   * 当前操作结算对象
+   * @type {{}}
+   */
+  operaBalanceObj: any = {};
+
+  /**
+   * 账户调整  打开|关闭
+   * @type {boolean}
+   */
+  adjustOpened: boolean = false;
+
+  /**
+   * 调整对象
+   * @type {{}}
+   */
+  adjustObj: any = {};
 
   constructor(private sellerService: SellerService) {
   }
@@ -77,8 +129,103 @@ export class SellerBalanceComponent implements OnChanges {
    * 发送结算信息
    * @param data
    */
-  sendBalance(data:any){
-
+  sendBalance(data: any) {
+    this.notificationOpen = !this.notificationOpen;
+    this.operaBalanceObj = data;
   }
 
+  /**
+   * 分页
+   * @param data
+   */
+  pageChange(data: number) {
+    this.pageOpts.page = data;
+  }
+
+  /**
+   * 查询按钮事件
+   */
+  search() {
+    this.getSellerBalanceDataList(this.pageOpts, this.currentSeller.id, this.key);
+  }
+
+  /**
+   * 账户调整
+   */
+  adjustmentAccount() {
+    this.adjustOpened = !this.adjustOpened;
+  }
+
+  /**
+   * prompt取消事件
+   */
+  cancelPrompt() {
+    this.notificationOpen = !this.notificationOpen;
+  }
+
+  /**
+   * prompt确认事件
+   */
+  confirm() {
+    this.notificationOpen = !this.notificationOpen;
+    this.sellerService.sendBalance(this.operaBalanceObj).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('发送成功', 'success');
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
+  }
+
+  /**
+   * toast传播事件
+   * @param data
+   */
+  notifyParamFunction(data: boolean) {
+    this.showAlert = !this.showAlert;
+  }
+
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
+  }
+
+
+  /**
+   * 关闭 调整窗口
+   */
+  closeAdjustModal() {
+    this.adjustOpened = !this.adjustOpened;
+  }
+
+  /**
+   * 保存调整信息
+   */
+  saveAdjust() {
+    this.adjustObj.sellerId=this.currentSeller.id;
+    if(!this.adjustObj.type){
+      this.toastFunction('请选择调整类型','info');
+      return;
+    }
+    if(!this.adjustObj.amount){
+      this.toastFunction('请填写调整金额','info');
+      return ;
+    }
+    this.sellerService.adjustmentAccount(this.adjustObj).subscribe(res=>{
+      let result = res.json();
+      if(result.success){
+        this.toastFunction('调整成功','success');
+        this.adjustOpened =!this.adjustOpened;
+      }else{
+        this.toastFunction(result.message,'error');
+      }
+    });
+  }
 }

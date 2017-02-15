@@ -111,4 +111,21 @@ export class SellerService {
       {page: page.page, size: page.perPage, sellerId: id, keyType: type});
   }
 
+  /**
+   * 发送结算信息
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  sendBalance(data:any){
+    return this.http.post('/seller/seller-xyl-balance-send',data);
+  }
+
+  /**
+   * 账户调整
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  adjustmentAccount(data:any){
+    return this.http.post('/balance/account-adjustment',data);
+  }
 }
