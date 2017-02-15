@@ -4,9 +4,15 @@ import {Component, OnInit} from '@angular/core';
     templateUrl: './index.component.html'
 })
 export class IndexComponent implements OnInit {
-    //父级菜单接收
+    /**
+     * 父级菜单接收
+     * @type {string}
+     */
     recieveParentMenu: string = '';
-    //子级菜单接收
+    /**
+     * 子级菜单接收
+     * @type {string}
+     */
     recieveChildrenMenu: string = '';
 
     ngOnInit(): void {

@@ -8,7 +8,7 @@
 <table ngl-datatable [data]="sellerList.rows" trackByKey="rank"
        (onRowClick)="onRowClick($event)"
        class="slds-max-medium-table--stacked-horizontal">
-    <ngl-datatable-column heading="选择" key="">
+    <ngl-datatable-column heading="选择" key="" *ngIf="openCheckBox">
         <template nglDatatableCell let-value>
             <ngl-form-checkbox style="display: inline-block;">
                 <input nglFormControl type="checkbox"/>

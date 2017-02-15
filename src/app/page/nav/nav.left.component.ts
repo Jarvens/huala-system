@@ -7,11 +7,27 @@ import {MenuService} from '../../service/menu.service';
 })
 
 export class NavLeftComponent implements OnInit {
-    //父节点菜单
+    /**
+     * 父节点菜单
+     * @type {EventEmitter<string>}
+     */
     @Output() parentMenu = new EventEmitter<string>();
-    //子节点菜单
+
+    /**
+     * 子节点菜单
+     * @type {string}
+     */
     @Output() childrenMenu: any = '';
+    /**
+     * 菜单集合
+     * @type {Array}
+     */
     menuList: Array<any> = [];
+
+    /**
+     * 当前选中菜单
+     * @type {string}
+     */
     currentMenuId: string = '';
 
     ngOnInit(): void {

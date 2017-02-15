@@ -11,16 +11,33 @@ import {MyHttp} from '../../../core/http';
   templateUrl: 'img.upload.component.html'
 })
 export class ImgUploadComponent implements OnChanges {
+
   serverUrl: string = process.env.ApiUrl;
+
   public imgUrl: string = process.env.ImgUrl;
+
   @Input() public picUrl: string;
-  //文件上传地址成功返回地址
+  /**
+   * 文件上传地址成功返回地址
+   * @type {EventEmitter<string>}
+   */
   @Output() uploadAddr = new EventEmitter<string>();
-  //文件上传目录
+
+  /**
+   * 文件上传目录
+   */
   @Input() uploadFolder: string;
-  //预览文件Base64地址
+
+  /**
+   * 预览文件Base64地址
+   * @type {string}
+   */
   prevFile: string = '';
-  //初始化文件上传
+
+  /**
+   * 初始化文件上传
+   * @type {FileUploader}
+   */
   uploader: FileUploader = new FileUploader({
     url: this.serverUrl + "/uploadImg.json?imgType=" + this.uploadFolder
   });
@@ -55,12 +72,17 @@ export class ImgUploadComponent implements OnChanges {
 
   }
 
-  //选择图片触发  input  type=file
+  /**
+   * 选择图片触发  input  type=file
+   * @param dom
+   */
   openFileSelect(dom: any) {
     dom.click();
   }
 
-  //上传
+  /**
+   * 上传
+   */
   uploadAll() {
     this.uploader.uploadAll();
     this.uploader.onSuccessItem = (item: any, response: any, status: any, headers: any)=> {
@@ -69,7 +91,10 @@ export class ImgUploadComponent implements OnChanges {
     }
   }
 
-  //重新选择
+  /**
+   * 重新选择
+   * @param $dom
+   */
   reSelect($dom) {
     $dom.click();
   }

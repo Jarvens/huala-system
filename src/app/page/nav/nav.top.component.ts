@@ -9,7 +9,15 @@ import {LoginService} from '../../service/login.service';
 })
 
 export class NavTopComponent implements OnInit {
+  /**
+   * 打开|关闭 设置模态
+   * @type {boolean}
+   */
   settingOpen: boolean = false;
+  /**
+   * tips 打开|挂壁
+   * @type {boolean}
+   */
   tipOpen: boolean = false;
   opened: boolean = false;
   required: boolean = true;
