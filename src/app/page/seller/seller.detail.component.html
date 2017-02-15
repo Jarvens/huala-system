@@ -44,7 +44,7 @@
         <seller-balance-component [currentSeller]="sellerObj"></seller-balance-component>
     </template>
     <template ngl-tab heading="转账提现" nglTabId="transferAccount">
-        <seller-transfer-account-component></seller-transfer-account-component>
+        <seller-transfer-account-component [currentSeller]="sellerObj"></seller-transfer-account-component>
     </template>
     <template ngl-tab heading="银行卡" nglTabId="bank">
         <seller-bank-component></seller-bank-component>

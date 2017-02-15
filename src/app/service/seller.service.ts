@@ -116,8 +116,8 @@ export class SellerService {
    * @param data
    * @returns {Observable<Response>}
    */
-  sendBalance(data:any){
-    return this.http.post('/seller/seller-xyl-balance-send',data);
+  sendBalance(data: any) {
+    return this.http.post('/seller/seller-xyl-balance-send', data);
   }
 
   /**
@@ -125,7 +125,23 @@ export class SellerService {
    * @param data
    * @returns {Observable<Response>}
    */
-  adjustmentAccount(data:any){
-    return this.http.post('/balance/account-adjustment',data);
+  adjustmentAccount(data: any) {
+    return this.http.post('/balance/account-adjustment', data);
+  }
+
+  /**
+   * 查询转账提现列表
+   * @param page
+   * @param key
+   * @param id
+   * @param type
+   * @returns {Observable<Response>}
+   */
+  getTransferDataList(page: any, key: string, id: number, type: string) {
+    if (!page) {
+      page = {page: 1, perPage: 10};
+    }
+    return this.http.get('/seller/seller-xyl-account',
+      {key: key, page: page.page, size: page.perPage, sellerId: id, type: type});
   }
 }
