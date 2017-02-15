@@ -12,7 +12,7 @@
 
 * [百度地图](https://leftstick.github.io/angular2-baidu-map/)
 
-* [webpackage框架](https://angularclass.github.io/angular2-webpack-starter/)
+* [webpack框架](https://angularclass.github.io/angular2-webpack-starter/)
 
 
 
