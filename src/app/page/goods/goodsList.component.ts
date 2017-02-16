@@ -18,7 +18,7 @@ export class GoodsListComponent {
   public editGoodsInfo:any;
 
   constructor(public goodsService:GoodsService) {
-    this.imgUrl = window["ImgUrl"];
+    this.imgUrl = process.env.ImgUrl;
   }
 
   ngOnChanges(changes) {

@@ -14,7 +14,7 @@
     </ngl-datatable-column>
     <ngl-datatable-column heading="商品图片" key="picUrl">
         <template nglDatatableCell let-row="row">
-            <img [src]="imgUrl + row.picUrl + '?s=200x200'" alt="商品图片">
+            <img [src]="imgUrl + row.picUrl + '?s=220x220'" alt="商品图片" style="width: 80px;height: 80px;">
         </template>
     </ngl-datatable-column>
     <ngl-datatable-column heading="进货价" key="recPrice"></ngl-datatable-column>
