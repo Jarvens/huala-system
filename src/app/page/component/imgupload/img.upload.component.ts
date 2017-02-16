@@ -84,6 +84,7 @@ export class ImgUploadComponent implements OnChanges {
    * 上传
    */
   uploadAll() {
+    console.log('打印上传参数 ->',this.uploader.options);
     this.uploader.uploadAll();
     this.uploader.onSuccessItem = (item: any, response: any, status: any, headers: any)=> {
       let result = JSON.parse(response).body;

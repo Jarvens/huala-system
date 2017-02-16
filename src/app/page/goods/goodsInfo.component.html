@@ -22,7 +22,7 @@
     <label class="slds-form-element__label">商品主图:</label>
     <div class="slds-form-element__control">
       <div class="slds-size--1-of-2">
-        <img-upload-component (uploadAddr)="goodsInfo.picUrl=$event"
+        <img-upload-component (uploadAddr)="goodsInfo.picUrl=$event;printResult($event)"
                               [picUrl]="goodsInfo.picUrl"
                               uploadFolder="goods"></img-upload-component>
       </div>
