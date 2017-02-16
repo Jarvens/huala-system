@@ -35,6 +35,24 @@ export class ImgUploadComponent implements OnChanges {
   prevFile: string = '';
 
   /**
+   * 打开 关闭 toast
+   * @type {boolean}
+   */
+  showAlert: boolean = false;
+
+  /**
+   * toast类型
+   * @type {string}
+   */
+  toastType: string = 'success';
+
+  /**
+   * toast提示消息
+   * @type {string}
+   */
+  toastMessage: string = '';
+
+  /**
    * 初始化文件上传
    * @type {FileUploader}
    */
@@ -55,7 +73,7 @@ export class ImgUploadComponent implements OnChanges {
 
     let address = changes['uploadFolder'];
     if (address.currentValue != address.previousValue) {
-       this.uploader.setOptions({url: this.serverUrl + "/uploadImg.json?imgType=" + this.uploadFolder});
+      this.uploader.setOptions({url: this.serverUrl + "/uploadImg.json?imgType=" + this.uploadFolder});
 
     }
   }
@@ -90,11 +108,16 @@ export class ImgUploadComponent implements OnChanges {
    * 上传
    */
   uploadAll() {
-    console.log('打印上传参数 ->', this.uploader.options);
     this.uploader.uploadAll();
     this.uploader.onSuccessItem = (item: any, response: any, status: any, headers: any)=> {
       let result = JSON.parse(response).body;
-      this.uploadAddr.emit(result);
+      if (status == 200) {
+        this.toastFunction('上传成功', 'success');
+        this.uploadAddr.emit(result);
+      } else {
+        this.toastFunction('上传失败', 'error');
+        console.log('错误信息返回 --->', response);
+      }
     }
   }
 
@@ -105,5 +128,25 @@ export class ImgUploadComponent implements OnChanges {
   reSelect($dom) {
     $dom.click();
   }
+
+  /**
+   * toast传播事件
+   * @param data
+   */
+  notifyParamFunction(data: boolean) {
+    this.showAlert = data;
+  }
+
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
+  }
+
 
 }
