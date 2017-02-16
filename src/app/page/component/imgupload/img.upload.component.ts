@@ -52,6 +52,12 @@ export class ImgUploadComponent implements OnChanges {
       this.prevFile = this.imgUrl + chg.currentValue;
       console.log(chg.currentValue)
     }
+
+    let address = changes['uploadFolder'];
+    if (address.currentValue != address.previousValue) {
+       this.uploader.setOptions({url: this.serverUrl + "/uploadImg.json?imgType=" + this.uploadFolder});
+
+    }
   }
 
   //监听文件变化
@@ -84,7 +90,7 @@ export class ImgUploadComponent implements OnChanges {
    * 上传
    */
   uploadAll() {
-    console.log('打印上传参数 ->',this.uploader.options);
+    console.log('打印上传参数 ->', this.uploader.options);
     this.uploader.uploadAll();
     this.uploader.onSuccessItem = (item: any, response: any, status: any, headers: any)=> {
       let result = JSON.parse(response).body;

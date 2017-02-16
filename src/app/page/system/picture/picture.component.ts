@@ -40,6 +40,24 @@ export class PictureComponent implements OnInit {
    */
   currentImg: string = '';
 
+  /**
+   * 图片上传 打开|关闭
+   * @type {boolean}
+   */
+  uploadOpened: boolean = false;
+
+  /**
+   * 上传目标目录
+   * @type {string}
+   */
+  targetFolder:string ='goods';
+
+  /**
+   * 图片上传 返回字符串
+   * @type {string}
+   */
+  uploadResult:string ='';
+
   ngOnInit(): void {
     this.pictureService.getPictureList(null, this.folder).subscribe(res=> {
       this.pictureList = res.json();
@@ -100,5 +118,13 @@ export class PictureComponent implements OnInit {
     this.pictureService.getPictureList(null, this.folder).subscribe(res=> {
       this.pictureList = res.json();
     });
+  }
+
+  /**
+   * 关闭图片上传
+   */
+  closeUpload() {
+    this.uploadOpened = !this.uploadOpened;
+    console.log(this.targetFolder);
   }
 }
