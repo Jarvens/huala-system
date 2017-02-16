@@ -26,7 +26,15 @@ export class SellerListComponent implements OnInit {
    * 显示|隐藏 操作按钮
    * @type {boolean}
    */
-  @Input() showBtn:boolean = true;
+  @Input() showBtn: boolean = true;
+
+  @Input() status: string;
+
+  /**
+   * 审核模态 打开|关闭
+   * @type {boolean}
+   */
+  authOpened: boolean = false;
   /**
    * 商家列表
    * @type {{}}
@@ -53,8 +61,29 @@ export class SellerListComponent implements OnInit {
    */
   placeholder: string = '搜索  ID  名称 手机号';
 
+  /**
+   * 审核原因
+   * @type {string}
+   */
+  reason: string = '';
+  /**
+   * 当前店铺
+   * @type {{}}
+   */
+  currentSeller: any = {};
+
+  /**
+   * 默认商品
+   * @type {boolean}
+   */
+  defaultGoods: boolean = true;
+
+  toastType: string = 'success';
+  toastMessage: string = '';
+  showAlert: boolean = false;
+
   ngOnInit(): void {
-    this.querySellerList(this.searchKey, this.pageOpts, this.keyType);
+    this.querySellerList(this.searchKey, this.pageOpts, this.status, this.keyType);
   }
 
   constructor(private sellerService: SellerService) {
@@ -66,8 +95,8 @@ export class SellerListComponent implements OnInit {
    * @param page
    * @param keyType
    */
-  querySellerList(key: string, page: any, keyType: string) {
-    this.sellerService.getSellerList(page, key, keyType).subscribe(res=> {
+  querySellerList(key: string, page: any, status: string, keyType: string) {
+    this.sellerService.getSellerList(page, key, status, keyType).subscribe(res=> {
       this.sellerList = res.json();
     });
   }
@@ -78,7 +107,7 @@ export class SellerListComponent implements OnInit {
    */
   searchByCondition(data: string) {
     this.searchKey = data;
-    this.querySellerList(this.searchKey, this.pageOpts, this.keyType);
+    this.querySellerList(this.searchKey, this.pageOpts, this.status, this.keyType);
   }
 
   /**
@@ -95,11 +124,65 @@ export class SellerListComponent implements OnInit {
    */
   pageChange(event: any) {
     this.pageOpts.page = event;
-    this.querySellerList(this.searchKey, this.pageOpts, this.keyType);
+    this.querySellerList(this.searchKey, this.pageOpts, this.status, this.keyType);
   }
 
-  operator(){
+  /**
+   * 操作按钮事件
+   * @param data
+   */
+  operator(data: any) {
+    this.currentSeller = data;
+    this.authOpened = !this.authOpened;
+  }
 
+  /**
+   * 店铺审核
+   * @param auth
+   */
+  authSeller(auth: string) {
+    let data: any = {};
+    data.id = this.currentSeller.id;
+    data.sellerStatus = auth;
+    data.desc = this.reason;
+    data.sales = this.defaultGoods;
+    this.sellerService.authSeller(data).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('审核成功', 'success');
+        this.authOpened = !this.authOpened;
+        this.querySellerList(this.searchKey, this.pageOpts, this.status, this.keyType);
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
+  }
+
+  /**
+   * 默认商品  checkbox事件
+   */
+  uncheck() {
+    this.defaultGoods = !this.defaultGoods;
+  }
+
+  /**
+   * toast传播事件
+   * @param data
+   */
+  notifyParamFunction(data: boolean) {
+    this.showAlert = data;
+  }
+
+
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
   }
 
 }

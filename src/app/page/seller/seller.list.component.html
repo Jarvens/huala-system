@@ -48,3 +48,47 @@
                     boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
                     nextText="下一页"></ngl-pagination>
 </div>
+
+
+<!--审核操作模态-->
+<ngl-modal header="店铺审核" [(open)]="authOpened" size="large">
+    <div body>
+        <seller-combination-component [currentSeller]="currentSeller" [showBtn]="false"></seller-combination-component>
+    </div>
+    <template ngl-modal-footer>
+        <div class="slds-wrap slds-grid">
+            <div class="slds-size--6-of-12">
+                <div class="slds-p-horizontal--small slds-large-size-2-of-12">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label slds-float--left" style="line-height: 2rem">审核备注</label>
+                        <div class="slds-form-element__control slds-float--left">
+                            <div class="slds-select_container">
+                                <select class="slds-select" [(ngModel)]="reason">
+                                    <option [value]="'姓名、身份账号、微信号信息无效'">姓名、身份账号、微信号信息无效</option>
+                                    <option [value]="'身份证照片不清晰'">身份证照片不清晰</option>
+                                    <option [value]="'店铺照片不清晰'">店铺照片不清晰</option>
+                                    <option [value]="'店铺不存在'">店铺不存在</option>
+                                    <option [value]="'客服电话为无效'">客服电话为无效</option>
+                                    <option [value]="'店铺营业时间，起送、配送费无效'">店铺营业时间，起送、配送费无效</option>
+                                    <option [value]="'银行卡信息无效'">银行卡信息无效</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-size--6-of-12">
+                <ngl-form-checkbox label="上架默认商品" class="slds-m-top--small">
+                    <input nglFormControl type="checkbox" [(ngModel)]="defaultGoods" (click)="uncheck($event)"/>
+                </ngl-form-checkbox>
+            </div>
+        </div>
+
+        <button class="slds-button slds-button--destructive" (click)="authSeller('auth')">审核不通过</button>
+        <button class="slds-button slds-button--brand" (click)="authSeller('unauth')">审核通过</button>
+    </template>
+</ngl-modal>
+
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>

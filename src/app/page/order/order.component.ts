@@ -170,7 +170,7 @@ export class OrderComponent implements OnInit {
    * 搜索订单
    */
   search() {
-    this.getOrderList(this.pageOpts);
+    this.getOrderList(null);
   }
 
   /**

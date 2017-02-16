@@ -5,7 +5,10 @@ import {Component} from '@angular/core';
 })
 
 export class SellerAuditComponent{
-
+  /**
+   * 显示 隐藏 复选框
+   * @type {boolean}
+   */
   openCheckBox:boolean=false;
 
 }

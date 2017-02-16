@@ -153,4 +153,13 @@ export class SellerService {
   syncAccountData(id:number){
     return this.http.post('/seller/seller-xyl-account-sync?sellerId='+id);
   }
+
+  /**
+   * 店铺审核
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  authSeller(data:any){
+    return this.http.post('/seller/seller-auth',data);
+  }
 }

@@ -88,6 +88,11 @@
                 <ngl-badge type="warning" *ngIf="row.orderStatus != 'have_done'">{{row.orderStatusStr}}</ngl-badge>
             </template>
         </ngl-datatable-column>
+        <ngl-datatable-column heading="订单类型" key="orderTypeStr">
+            <template nglDatatableCell let-value>
+                <span class="text-success">{{value}}</span>
+            </template>
+        </ngl-datatable-column>
         <ngl-datatable-column heading="操作">
             <template nglDatatableCell let-row="row">
                 <button class="slds-button slds-button--brand slds-button--small" (click)="showDetail(row)">详情
