@@ -9,6 +9,10 @@ import {OrderService} from "../../service/order.service";
   templateUrl: "./order.component.html"
 })
 export class OrderComponent implements OnInit {
+  /**
+   * 订单查询条件
+   * @type {{keyType: string; orderType: string; orderStatus: string; searchKey: string; startTime: string; endTime: string}}
+   */
   public orderReq: any = {
     keyType: "all",
     orderType: "0",
@@ -16,39 +20,82 @@ export class OrderComponent implements OnInit {
     searchKey: "",
     startTime: "",
     endTime: ""
-  }; //订单查询条件;
-  public placeholder: string = '这是搜索提示信息'; //搜索提示
-  public pageOpts: any = {total: 100, limit: 5, perPage: 10, page: 1}; //分页对象
-  public opened: boolean = false; //显示详情的标记位;
+  };
+  /**
+   * 搜索提示
+   * @type {string}
+   */
+  public placeholder: string = '这是搜索提示信息';
+
+  /**
+   * 分页对象
+   * @type {{total: number; limit: number; perPage: number; page: number}}
+   */
+  public pageOpts: any = {total: 100, limit: 5, perPage: 10, page: 1};
+
+  /**
+   * 显示详情的标记位
+   * @type {boolean}
+   */
+  public opened: boolean = false;
+
   public curOrder: any; //当前订单;
+
   public orderList: any = [];
-  public selectedTab:string = "orderBasic"; //所选tab;
-  public orderGoods:any;
-  public orderLog:any;
-  public sellerObj:any={};
-  public showBtn:boolean = false;
+
+  public selectedTab: string = "orderBasic"; //所选tab;
+
+  public orderGoods: any;
+
+  public orderLog: any;
+
+  public sellerObj: any = {};
+
+  public showBtn: boolean = false;
+
+  /**
+   * 格式化时间
+   * @type {string}
+   * @private
+   */
+  _date_formate: string = 'yyyy-mm-dd';
+  /**
+   * toast类型
+   * @type {string}
+   */
+  toastType: string = 'success';
+  /**
+   * toast提示消息
+   * @type {string}
+   */
+  toastMessage: string = '';
+  /**
+   * 打开关闭toast
+   * @type {boolean}
+   */
+  showAlert: boolean = false;
+
   constructor(public orderService: OrderService) {
   }
-  
+
   ngOnInit(): void {
     this.getOrderList(null);
   }
-  
-  /*
-   * @description: Get orders list by page number.
-   * @params: Number(pageNum).
-   * @modified date: 2016/12/29/.
+
+  /**
+   * 查询订单列表
+   * @param pageNum
    */
   getOrderList(pageNum: any): void {
     let pData: any = {
       page: 1,
       itemsPerPage: 10
     };
-    
+
     if (pageNum) {
       pData.page = pageNum;
     }
-    
+
     this.orderService.getOrderList(this.orderReq, pData).subscribe(res => {
       let data = res.json();
       this.orderList = data.rows;
@@ -68,7 +115,7 @@ export class OrderComponent implements OnInit {
       });
     });
   }
-  
+
   /*
    * @description: Show order detail.
    * @params: orderInfo.
@@ -82,28 +129,84 @@ export class OrderComponent implements OnInit {
     this.sellerObj.id = orderInfo.sellerId;
     this.orderService.getOrderGoods(orderId).subscribe(res => {
       let data = res.json();
-      if(data.success){
+      if (data.success) {
         this.orderGoods = data.body.orderGoods;
       }
     });
-    
+
     this.orderService.getOrderLog(orderId).subscribe(res => {
       let data = res.json();
-
       this.orderLog = data;
     })
   }
-  
+
   selectScope(event) {
-    
+
   }
-  
+
   searchByCondition(event) {
-    
-  }
-
-  //导出订单
-  exportOrder(){
 
   }
+
+  /**
+   * 导出订单
+   */
+  exportOrder() {
+    if (this.orderReq.keyType == 'all'
+      && this.orderReq.searchKey == ''
+      && this.orderReq.orderStatus == 'all'
+      && this.orderReq.startTime == ''
+      && this.orderReq.endTime == '') {
+      this.toastFunction('请至少选择一个查询条件进行导出', 'info');
+      return;
+    }
+    location.href = process.env.ApiUrl + '/order/export-order?citys=' + localStorage.getItem('hualaCity') +
+      "&searchKey=" + this.orderReq.searchKey + "&keyType=" + this.orderReq.keyType +
+      "&orderType=" + this.orderReq.orderType + "&orderStatus=" + this.orderReq.orderStatus +
+      "&startTime=" + this.orderReq.startTime + "&endTime=" + this.orderReq.endTime;
+  }
+
+  /**
+   * 搜索订单
+   */
+  search() {
+    this.getOrderList(this.pageOpts);
+  }
+
+  /**
+   * toast传播事件
+   * @param data
+   */
+  notifyParamFunction(data: boolean) {
+    this.showAlert = data;
+  }
+
+  /**
+   * 接收开始时间
+   * @param data
+   */
+  receiveDate(data: any) {
+    this.orderReq.startTime = data;
+  }
+
+  /**
+   * 接收结束时间
+   * @param data
+   */
+  receiveEndTime(data: any) {
+    this.orderReq.endTime = data;
+  }
+
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
+  }
+
+
 }

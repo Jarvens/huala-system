@@ -7,10 +7,16 @@
         <div class="slds-form-element">
             <div class="slds-form-element__control slds-float--left">
                 <div class="slds-select_container">
-                    <select class="slds-select">
-                        <option [value]="0">订单状态</option>
-                        <option [value]="1">未开始</option>
-                        <option [value]="2">已结束</option>
+                    <select class="slds-select" [(ngModel)]="orderReq.orderStatus">
+                        <option value="no_pay">未付款</option>
+                        <option value="have_pay">已付款</option>
+                        <option value="shipping">派送中</option>
+                        <option value="shipping_done">派送完成</option>
+                        <option value="wait_take">待自提</option>
+                        <option value="have_done">已完成</option>
+                        <option value="return_goods">已退货</option>
+                        <option value="cancel">已取消</option>
+                        <option value="close">已关闭</option>
                     </select>
                 </div>
             </div>
@@ -18,40 +24,36 @@
         <div class="slds-form-element">
             <div class="slds-form-element__control slds-float--left">
                 <div class="slds-select_container">
-                    <select class="slds-select">
-                        <option [value]="0">订单类型</option>
-                        <option [value]="1">未开始</option>
-                        <option [value]="2">已结束</option>
+                    <select class="slds-select" [(ngModel)]="orderReq.orderType">
+                        <option [value]="1">实时单</option>
+                        <option [value]="2">预约单</option>
+                        <option [value]="3">代客单</option>
+                        <option [value]="4">村淘单</option>
+                        <option [value]="5">扫码单</option>
+                        <option [value]="6">赊销单</option>
+                        <option [value]="7">秒杀单</option>
+                        <option [value]="8">新掌柜</option>
+                        <option value="first">首单</option>
                     </select>
                 </div>
             </div>
         </div>
         <div class="slds-form-element">
-            <div class="slds-form-element__control slds-float--left">
-                <div class="slds-select_container">
-                    <select class="slds-select">
-                        <option [value]="0">订单类型</option>
-                        <option [value]="1">未开始</option>
-                        <option [value]="2">已结束</option>
-                    </select>
-                </div>
+            <div class="slds-form-element_control slds-float--left" style="padding-left: 20px;">
+                <label class="slds-form-element__label" >开始时间</label>
+                <start-time-component (_startTime)="receiveDate($event)" [_date_format]="_date_formate"></start-time-component>
             </div>
         </div>
         <div class="slds-form-element">
-            <div class="slds-form-element__control slds-float--left">
-                <div class="slds-select_container">
-                    <select class="slds-select">
-                        <option [value]="0">搜索条件</option>
-                        <option [value]="1">未开始</option>
-                        <option [value]="2">已结束</option>
-                    </select>
-                </div>
+            <div class="slds-form-element_control slds-float--left" style="padding-left: 20px;">
+                <label class="slds-form-element__label" >结束时间</label>
+                <start-time-component (_startTime)="receiveEndTime($event)" [_date_format]="_date_formate"></start-time-component>
             </div>
         </div>
     </div>
     <div class="slds-size--4-of-12">
         <button type="button" nglButton="neutral" (click)="exportOrder()">导出订单</button>
-        <button type="button" nglButton="neutral" (click)="exportOrder()">搜索</button>
+        <button type="button" nglButton="neutral" (click)="search()">搜索</button>
     </div>
 
 </div>
@@ -126,3 +128,7 @@
         <button class="slds-button slds-button--neutral" (click)="opened=false;">关闭</button>
     </template>
 </ngl-modal>
+
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>
