@@ -2,7 +2,7 @@
 <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
     <div class="slds-wrap slds-grid">
         <div class="slds-size--1-of-1">
-            图片管理
+            <button class="slds-button slds-button--neutral" (click)="returnPreviousFolder()">返回上级目录</button>
         </div>
     </div>
 </div>
@@ -11,7 +11,7 @@
         <div class="slds-grid slds-wrap">
             <div class="slds-box--small slds-text-align--center slds-size--2-of-12"
                  *ngFor="let picture of pictureList.children">
-                <a>
+                <a (click)="folderClick(picture)">
                     <ngl-icon *ngIf="picture.hasChildren==true" icon="image" category="doctype" size="large"
                               class="large"></ngl-icon>
                 </a>
@@ -34,16 +34,16 @@
 
 <!--图片详情模态-->
 <ngl-modal header="图片" [(open)]="opened">
-    <div body>
-        <img [src]="currentImg" alt="">
+    <div body class="slds-align--absolute-center">
+        <img [src]="currentImg">
     </div>
     <template ngl-modal-footer>
         <div class="slds-p-horizontal--small slds-large-size-4-of-12">
             <div class="slds-form-element">
                 <label class="slds-form-element__label slds-float--left" style="line-height: 2rem">图片地址</label>
-                <div class="slds-form-element__control slds-float--left">
-                    <div class="slds-form-element__control slds-size--6-of-12">
-                        <input type="text"  class="slds-input" [(ngModel)]="currentImg" />
+                <div class="slds-form-element__control slds-float--left slds-size--6-of-12">
+                    <div class="slds-form-element__control slds-size--1-of-1">
+                        <input type="text" class="slds-input" [(ngModel)]="currentImg"/>
                     </div>
                 </div>
             </div>

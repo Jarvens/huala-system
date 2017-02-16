@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PictureService} from '../../../service/picture.service';
 @Component({
   selector: 'picture-component',
@@ -43,11 +43,10 @@ export class PictureComponent implements OnInit {
   ngOnInit(): void {
     this.pictureService.getPictureList(null, this.folder).subscribe(res=> {
       this.pictureList = res.json();
-      this.cdr.detectChanges();
     });
   }
 
-  constructor(private pictureService: PictureService, private cdr: ChangeDetectorRef) {
+  constructor(private pictureService: PictureService) {
   }
 
   /**
@@ -58,13 +57,48 @@ export class PictureComponent implements OnInit {
     this.pageOpts.page = event;
     this.pictureService.getPictureList(this.pageOpts, this.folder).subscribe(res=> {
       this.pictureList = res.json();
-      this.cdr.detectChanges();
     });
   }
 
+  /**
+   * 打开 图片详情模态
+   * @param data
+   */
   openModal(data: any) {
     this.opened = !this.opened;
     this.currentImg = data.srcElement.currentSrc;
   }
 
+  /**
+   * 关闭模态
+   */
+  cancel() {
+    this.opened = !this.opened;
+  }
+
+  /**
+   * 目录点击事件
+   * @param data
+   */
+  folderClick(data: any) {
+    this.folder = data.id + '/'
+    this.pictureService.getPictureList(null, this.folder).subscribe(res=> {
+      this.pictureList = res.json();
+    });
+  }
+
+  /**
+   * 返回上级目录
+   */
+  returnPreviousFolder() {
+    let currentFolder: string = '';
+    let folderList: Array<string> = this.folder.split('/');
+    for (var i = 0; i < folderList.length - 2; i++) {
+      currentFolder += folderList[i] + '/';
+    }
+    this.folder = currentFolder;
+    this.pictureService.getPictureList(null, this.folder).subscribe(res=> {
+      this.pictureList = res.json();
+    });
+  }
 }
