@@ -1,55 +1,152 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnChanges} from '@angular/core';
+import {OrderService} from '../../service/order.service';
 @Component({
   selector: 'refund-order-component',
   templateUrl: './refund.order.component.html'
 })
 
-export class RefundOrderComponent implements OnInit {
+export class RefundOrderComponent implements OnInit,OnChanges {
 
-  placeholder: string = '搜索..订单编号..手机号';
-  //搜索关键字
-  key: string = '';
-  //订单列表
-  refundOrderList: any = {};
-  //显示|隐藏  时间选项卡
-  showTime: boolean = false;
-  //时间格式
-  date_formate: string = 'yyyy-mm-dd';
-  //toast打开|关闭
-  showAlert: boolean = false;
-  //toast类型
-  toastType: string = '';
-  //toast消息
+  /**
+   * 当前订单对象
+   * @type {{}}
+   */
+  @Input() currentOrder: any = {};
+
+  /**
+   * 退款商品集合
+   * @type {Array}
+   */
+  refundGoodsDataList: Array<any> = [];
+
+  /**
+   * 退款单
+   * @type {{}}
+   */
+  refundOrder: any = {};
+
+  /**
+   * 退款金额
+   * @type {string}
+   */
+  refundGoodsAmount: string = '';
+
+  /**
+   * 订单优惠集合
+   * @type {Array}
+   */
+  orderCoupon: Array<any> = [];
+
+  /**
+   * 确认退款金额
+   */
+  returnOrderAmount: number = 0;
+
+  /**
+   * 退运费金额
+   */
+  freightAmount: number = 0;
+
+  toastType: string = 'success';
   toastMessage: string = '';
+  showAlert: boolean = false;
 
+  /**
+   * 初始化方法
+   */
   ngOnInit(): void {
   }
 
-  //异步搜索
-  searchByCondition(event) {
-
+  constructor(private orderService: OrderService) {
   }
 
-  //时间选择事件
-  dateChange(event) {
-    console.log(event);
+  ngOnChanges(changes: any): void {
+    let value = changes['currentOrder'];
+    if (!value) {
+      return;
+    }
+    if (value.currentValue.id != value.previousValue.id) {
+      this.getRefundOrder(this.currentOrder.id);
+    }
   }
 
-  exportRefundOrder() {
-    this.toastFunction('敬请期待...','info');
+  /**
+   * 根据订单id  查询退款商品 以及退款单
+   * @param id
+   */
+  getRefundOrder(id: number) {
+    this.orderService.refundOrder(id).subscribe(res=> {
+      this.refundGoodsDataList = res.json().body.returnGoods;
+      this.refundGoodsAmount = res.json().body.returnAmount;
+      this.refundOrder = res.json().body.refundOrder;
+    });
   }
 
-  //toast传递事件
-  notifyParamFunction(event:boolean) {
-    this.showAlert = event;
+  /**
+   * 财务打款
+   */
+  pullFinance() {
+    this.orderService.pullFinance(this.refundOrder, this.refundGoodsDataList).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('打款成功', 'success');
+        this.getRefundOrder(this.currentOrder.id);
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
+  }
+
+  /**
+   * 生成退款单
+   */
+  createRefundOrder() {
+    this.orderService.createReturnOrder(this.currentOrder, this.returnOrderAmount * 100, this.freightAmount * 100,
+      this.refundGoodsAmount).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('退款单生成成功', 'success');
+        this.getRefundOrder(this.currentOrder.id);
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
+  }
+
+  /**
+   * 退款单修改
+   */
+  editRefundOrder() {
+    this.orderService.updateRefundOrder(this.refundOrder, this.returnOrderAmount * 100, this.freightAmount * 100)
+    .subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('修改退款单成功', 'success');
+        this.getRefundOrder(this.currentOrder.id);
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
   }
 
 
-  //toast函数
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
   toastFunction(message: string, toastType: string) {
     this.showAlert = !this.showAlert;
     this.toastMessage = message;
     this.toastType = toastType;
+  }
+
+  /**
+   * toast传播事件
+   * @param data
+   */
+  notifyParamFunction(data: boolean) {
+    this.showAlert = data;
   }
 
 }

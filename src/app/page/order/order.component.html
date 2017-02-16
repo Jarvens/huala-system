@@ -117,6 +117,9 @@
                 <seller-combination-component [currentSeller]="sellerObj"
                                               [showBtn]="showBtn"></seller-combination-component>
             </template>
+            <template ngl-tab heading="退款处理" nglTabId="refundOrder">
+                <refund-order-component [currentOrder]="curOrder"></refund-order-component>
+            </template>
         </ngl-tabs>
     </div>
     <template ngl-modal-footer>
