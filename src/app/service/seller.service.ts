@@ -151,7 +151,7 @@ export class SellerService {
    * @returns {Observable<Response>}
    */
   syncAccountData(id:number){
-    return this.http.post('/seller/seller-xyl-account-sync?sellerId='+id);
+    return this.http.get('/seller/seller-xyl-account-sync?sellerId='+id);
   }
 
   /**

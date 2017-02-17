@@ -9,8 +9,11 @@ export class CardService {
    * 查询卡券列表
    * @param conditions
    */
-  public getCardList(conditions: any) {
-
+  getCardList(page: any, card: any) {
+    if (!page) {
+      page = {page: 1, perPage: 10};
+    }
+    return this.http.post('/card/card-list?page='+page.page+'&size='+page.perPage,card);
   }
 
 }

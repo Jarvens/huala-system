@@ -29,7 +29,7 @@ export class RefundOrderComponent implements OnInit,OnChanges {
    * 退款金额
    * @type {string}
    */
-  refundGoodsAmount: string = '';
+  refundGoodsAmount: number = 0;
 
   /**
    * 订单优惠集合
