@@ -145,3 +145,11 @@
         <button class="slds-button slds-button--brand" (click)="cancel()">保存</button>
     </template>
 </ngl-modal>
+
+
+<!--prompt-->
+<confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancelPrompt()"
+                          (confirmFunction)="confirm()"></confirm-prompt-component>
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>

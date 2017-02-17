@@ -96,7 +96,6 @@ import {SellerCombinationComponent} from './page/sellercomponent/seller.combinat
 import {SellerBalanceComponent} from './page/sellercomponent/seller.balance.component';
 import {SellerTransferAccountComponent} from './page/sellercomponent/seller.transfer.account.component';
 import {SellerBankComponent} from './page/sellercomponent/seller.bank.component';
-import {SellerCardComponent} from './page/sellercomponent/seller.card.component';
 //Directive
 
 /**
@@ -220,7 +219,6 @@ import {SqlConfigService} from './service/sql.config.service';
     SellerBalanceComponent,
     SellerTransferAccountComponent,
     SellerBankComponent,
-    SellerCardComponent,
     CardInfoComponent
   ],
   imports: [

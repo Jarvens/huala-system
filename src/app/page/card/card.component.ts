@@ -46,7 +46,7 @@ export class CardComponent implements OnInit {
    * 当前卡券对象
    * @type {{}}
    */
-  currentCard:any={};
+  currentCard: any = {};
 
   /**
    * 编辑卡券  打开|关闭
@@ -58,7 +58,37 @@ export class CardComponent implements OnInit {
    * 搜索关键字
    * @type {string}
    */
-  searchKey:string ='';
+  searchKey: string = '';
+
+  /**
+   * 打开|关闭 prompt
+   * @type {boolean}
+   */
+  notificationOpen: boolean = false;
+
+  /**
+   * prompt提示信息
+   * @type {string}
+   */
+  promptMessage: string = '您确定要删除该卡券吗?';
+
+  /**
+   * toast类型
+   * @type {string}
+   */
+  toastType: string = 'success';
+
+  /**
+   * toast提示信息
+   * @type {string}
+   */
+  toastMessage: string = '';
+
+  /**
+   * toast 打开|关闭
+   * @type {boolean}
+   */
+  showAlert: boolean = false;
 
   constructor(private cardService: CardService) {
   }
@@ -100,7 +130,7 @@ export class CardComponent implements OnInit {
    * 条件搜索
    * @param data
    */
-  searchByCondition(data:string){
+  searchByCondition(data: string) {
     this.searchKey = data;
   }
 
@@ -108,8 +138,24 @@ export class CardComponent implements OnInit {
    * 接收 seller-list选中的店铺
    * @param data
    */
-  showData(data:any){
-    console.log('选择店铺 ->',data);
+  showData(data: any) {
+    console.log('选择店铺 ->', data);
+  }
+
+  cancelPrompt() {
+
+  }
+
+  confirm() {
+
+  }
+
+  /**
+   * toast传播事件
+   * @param data
+   */
+  notifyParamFunction(data: boolean) {
+    this.showAlert = data;
   }
 
 }
