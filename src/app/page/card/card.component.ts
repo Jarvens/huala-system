@@ -6,15 +6,28 @@ import {CardService} from '../../service/card.service';
 })
 export class CardComponent implements OnInit {
 
-  //卡券对象
+  /**
+   * 卡券对象
+   * @type {{}}
+   */
   cardDataList: any = {};
 
-  //分页对象
+  /**
+   * 分页对象
+   * @type {{page: number; total: number; limit: number; perPage: number}}
+   */
   pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10}
 
-  //查询条件对象
+  /**
+   * 查询条件对象
+   * @type {{types: string}}
+   */
   condiitons: any = {types: '0'};
 
+  /**
+   * placeholder
+   * @type {string}
+   */
   placeholder: string = '店铺..卡券';
 
   /**
@@ -40,6 +53,12 @@ export class CardComponent implements OnInit {
    * @type {boolean}
    */
   editOpned: boolean = false;
+
+  /**
+   * 搜索关键字
+   * @type {string}
+   */
+  searchKey:string ='';
 
   constructor(private cardService: CardService) {
   }
@@ -75,6 +94,22 @@ export class CardComponent implements OnInit {
   edit(data: any) {
     this.editOpned = !this.editOpned;
     this.currentCard = data;
+  }
+
+  /**
+   * 条件搜索
+   * @param data
+   */
+  searchByCondition(data:string){
+    this.searchKey = data;
+  }
+
+  /**
+   * 接收 seller-list选中的店铺
+   * @param data
+   */
+  showData(data:any){
+    console.log('选择店铺 ->',data);
   }
 
 }

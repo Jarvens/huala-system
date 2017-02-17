@@ -25,7 +25,6 @@ export class CardInfoComponent implements OnChanges {
 
 
   ngOnChanges(changes: any): void {
-
     let value: any = changes['editObj'];
     if (value.currentValue != value.previousValue) {
       console.log('当前卡券对象 ->', this.editObj);

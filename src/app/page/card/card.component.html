@@ -126,7 +126,7 @@
             </div>
             <div class="slds-size--1-of-12"></div>
             <div class="slds-size--7-of-12">
-                <seller-list-component></seller-list-component>
+                <seller-list-component [showBtn]="false" (refSource)="showData($event)"></seller-list-component>
             </div>
         </div>
     </div>

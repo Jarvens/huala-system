@@ -118,8 +118,16 @@
           <table ngl-datatable [data]="orderGoods">
             <ngl-datatable-column heading="商品名称" key="goodsName"></ngl-datatable-column>
             <ngl-datatable-column heading="供应商名称" key="supplierName"></ngl-datatable-column>
-            <ngl-datatable-column heading="原价" key="recPrice"></ngl-datatable-column>
-            <ngl-datatable-column heading="售价" key="salePrice"></ngl-datatable-column>
+            <ngl-datatable-column heading="原价" key="recPrice">
+              <template nglDatatableCell let-value>
+                {{value/100|number:'1.2-2'}}
+              </template>
+            </ngl-datatable-column>
+            <ngl-datatable-column heading="售价" key="salePrice">
+              <template nglDatatableCell let-value>
+                {{value/100|number:'1.2-2'}}
+              </template>
+            </ngl-datatable-column>
             <ngl-datatable-column heading="数量" key="goodsNumber"></ngl-datatable-column>
             <ngl-datatable-column heading="状态" key="goodsName">
               <template nglDatatableCell let-row="row">

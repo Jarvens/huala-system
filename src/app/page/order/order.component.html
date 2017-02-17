@@ -75,10 +75,26 @@
                 <ngl-badge type="info">{{row.mobile}}</ngl-badge>
             </template>
         </ngl-datatable-column>
-        <ngl-datatable-column heading="商品金额" key="goodAmount"></ngl-datatable-column>
-        <ngl-datatable-column heading="运费金额" key="shippingAmount"></ngl-datatable-column>
-        <ngl-datatable-column heading="优惠金额" key="discountAmount"></ngl-datatable-column>
-        <ngl-datatable-column heading="订单金额" key="orderAmount"></ngl-datatable-column>
+        <ngl-datatable-column heading="商品金额" key="goodAmount">
+            <template nglDatatableCell let-value>
+                {{value|number:'1.2-2'}}
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="运费金额" key="shippingAmount">
+            <template nglDatatableCell let-value>
+                {{value|number:'1.2-2'}}
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="优惠金额" key="discountAmount">
+            <template nglDatatableCell let-value>
+                {{value|number:'1.2-2'}}
+            </template>
+        </ngl-datatable-column>
+        <ngl-datatable-column heading="订单金额" key="orderAmount">
+            <template nglDatatableCell let-value>
+                {{value|number:'1.2-2'}}
+            </template>
+        </ngl-datatable-column>
         <!--<ngl-datatable- column heading="支付金额" key="payAmount"></ngl-datatable-column>-->
         <ngl-datatable-column heading="付款日期" key="payTime"></ngl-datatable-column>
         <!--<ngl-datatable-column heading="完成日期" key="shippingTime"></ngl-datatable-column>-->

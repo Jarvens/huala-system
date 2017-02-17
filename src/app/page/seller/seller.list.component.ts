@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {SellerService} from '../../service/seller.service';
 @Component({
   selector: 'seller-list-component',
@@ -29,6 +29,17 @@ export class SellerListComponent implements OnInit {
   @Input() showBtn: boolean = true;
 
   @Input() status: string;
+  /**
+   * 向上溢出
+   * @type {EventEmitter<any>}
+   */
+  @Output() refSource = new EventEmitter<any>();
+
+  /**
+   * 店铺Set集合
+   * @type {Set<any>}
+   */
+  sellerSet = new Set<any>();
 
   /**
    * 审核模态 打开|关闭
@@ -183,6 +194,31 @@ export class SellerListComponent implements OnInit {
     this.showAlert = !this.showAlert;
     this.toastMessage = message;
     this.toastType = toastType;
+  }
+
+  /**
+   * 向上溢出方法
+   * @param data
+   */
+  emitMethod(data: any) {
+    if (this.sellerSet.has(data.id)) {
+      this.sellerSet.delete(data.id);
+    } else {
+      this.sellerSet.add(data.id);
+    }
+    this.refSource.emit(this.convertSetToList(this.sellerSet));
+  }
+
+  /**
+   * Set转换List
+   * @param source
+   */
+  convertSetToList(source: Set<any>) {
+    let array: Array<any> = [];
+    source.forEach(function (value: any) {
+      array.push(value);
+    });
+    return array;
   }
 
 }

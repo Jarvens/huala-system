@@ -9,9 +9,9 @@
        (onRowClick)="onRowClick($event)"
        class="slds-max-medium-table--stacked-horizontal">
     <ngl-datatable-column heading="选择" key="" *ngIf="openCheckBox">
-        <template nglDatatableCell let-value>
+        <template nglDatatableCell let-row="row">
             <ngl-form-checkbox style="display: inline-block;">
-                <input nglFormControl type="checkbox"/>
+                <input nglFormControl type="checkbox" (click)="emitMethod(row)"/>
             </ngl-form-checkbox>
         </template>
     </ngl-datatable-column>
