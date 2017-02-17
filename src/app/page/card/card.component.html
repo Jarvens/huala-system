@@ -36,7 +36,7 @@
         <button class="slds-button slds-button--brand">搜索</button>
     </div>
     <div class="slds-size--1-of-12">
-        <button class="slds-button slds-button--brand">新增</button>
+        <button class="slds-button slds-button--brand" (click)="createOpened=!createOpened">新增</button>
     </div>
 </div>
 <div class="slds-scrollable">
@@ -115,4 +115,23 @@
                     [limit]="pageOpts.limit"
                     boundaryNumbers="1" #pagination (pageChange)="pageChange($event)"
                     previousText="上一页" nextText="下一页"></ngl-pagination>
+</div>
+
+<!--新增卡券模态-->
+<ngl-modal header="新增卡券" [(open)]="createOpened" size="large">
+    <div body>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size--3-of-12">
+                这是卡券内容
+            </div>
+            <div class="slds-size--2-of-12"></div>
+            <div class="slds-size--7-of-12">
+                <seller-list-component></seller-list-component>
+            </div>
+        </div>
     </div>
+    <template ngl-modal-footer>
+        <button class="slds-button slds-button--neutral" (click)="cancel()">关闭</button>
+        <button class="slds-button slds-button--brand">保存</button>
+    </template>
+</ngl-modal>

@@ -17,6 +17,12 @@ export class CardComponent implements OnInit {
 
   placeholder: string = '店铺..卡券';
 
+  /**
+   * 新增卡券  打开|关闭
+   * @type {boolean}
+   */
+  createOpened: boolean = false;
+
   constructor(private cardService: CardService) {
   }
 

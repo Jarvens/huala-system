@@ -58,6 +58,7 @@ import {SpikeEntryComponent} from './page/spike/spike.entry.component';
 import {GoodsAddComponent} from './page/goods/goodsAdd.component';
 import {BasicReportComponent} from './page/basicreport/basic.report.component';
 import {SqlConfigComponent} from './page/system/sqlconfig/sql.config.component';
+import {CardInfoComponent} from './page/card/card.info.component';
 //店铺组件化入口类
 import {SellerMainEnterComponent} from './page/sellercomponent/seller.main.enter.component';
 import {SellerGoodsComponent} from './page/sellercomponent/seller.goods.component';
@@ -219,7 +220,8 @@ import {SqlConfigService} from './service/sql.config.service';
     SellerBalanceComponent,
     SellerTransferAccountComponent,
     SellerBankComponent,
-    SellerCardComponent
+    SellerCardComponent,
+    CardInfoComponent
   ],
   imports: [
     BrowserModule,
