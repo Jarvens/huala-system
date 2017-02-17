@@ -47,7 +47,7 @@
                 <b>{{value}}</b>
             </template>
         </ngl-datatable-column>
-        <ngl-datatable-column heading="类型" key="issue">
+        <ngl-datatable-column heading="发放类型" key="issue">
             <template nglDatatableCell let-value>
                 <span class="text-success" *ngIf="value=='0'">发放</span>
                 <span class="text-info" *ngIf="value=='1'">抽取</span>
@@ -101,7 +101,7 @@
             <template nglDatatableCell let-row="row">
                 <div class="slds-button-group" role="group">
                     <button class="slds-button slds-button--destructive" (click)="detail(row)">删除</button>
-                    <button class="slds-button slds-button--brand" (click)="detail(row)">编辑</button>
+                    <button class="slds-button slds-button--brand" (click)="edit(row)">编辑</button>
                 </div>
             </template>
         </ngl-datatable-column>
@@ -121,10 +121,10 @@
 <ngl-modal header="新增卡券" [(open)]="createOpened" size="large">
     <div body>
         <div class="slds-grid slds-wrap">
-            <div class="slds-size--3-of-12">
-                这是卡券内容
+            <div class="slds-size--4-of-12">
+                <card-info-component></card-info-component>
             </div>
-            <div class="slds-size--2-of-12"></div>
+            <div class="slds-size--1-of-12"></div>
             <div class="slds-size--7-of-12">
                 <seller-list-component></seller-list-component>
             </div>
@@ -132,6 +132,16 @@
     </div>
     <template ngl-modal-footer>
         <button class="slds-button slds-button--neutral" (click)="cancel()">关闭</button>
-        <button class="slds-button slds-button--brand">保存</button>
+    </template>
+</ngl-modal>
+
+<!--编辑模态-->
+<ngl-modal header="卡券编辑" [(open)]="editOpned">
+    <div body>
+        <card-info-component [editObj]="currentCard"></card-info-component>
+    </div>
+    <template ngl-modal-footer>
+        <button class="slds-button slds-button--neutral" (click)="cancel()">关闭</button>
+        <button class="slds-button slds-button--brand" (click)="cancel()">保存</button>
     </template>
 </ngl-modal>

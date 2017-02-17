@@ -23,6 +23,24 @@ export class CardComponent implements OnInit {
    */
   createOpened: boolean = false;
 
+  /**
+   * 操作对象
+   * @type {{}}
+   */
+  operaObj: any = {};
+
+  /**
+   * 当前卡券对象
+   * @type {{}}
+   */
+  currentCard:any={};
+
+  /**
+   * 编辑卡券  打开|关闭
+   * @type {boolean}
+   */
+  editOpned: boolean = false;
+
   constructor(private cardService: CardService) {
   }
 
@@ -48,6 +66,15 @@ export class CardComponent implements OnInit {
    */
   pageChange(data: number) {
     this.pageOpts.page = data;
+  }
+
+  /**
+   * 编辑事件
+   * @param data
+   */
+  edit(data: any) {
+    this.editOpned = !this.editOpned;
+    this.currentCard = data;
   }
 
 }
