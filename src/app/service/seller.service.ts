@@ -162,4 +162,18 @@ export class SellerService {
   authSeller(data:any){
     return this.http.post('/seller/seller-auth',data);
   }
+
+  /**
+   * 修改店铺状态
+   * @param sellerList
+   * @param status
+   * @returns {Observable<Response>}
+   */
+  updateSellerStatus(sellerList:Array<number>,status:string){
+    let array:Array<number>=[];
+    sellerList.forEach(res=>{
+      array.push({id:res,sellerStatus:status});
+    });
+    return this.http.post('/seller/seller-status',array);
+  }
 }

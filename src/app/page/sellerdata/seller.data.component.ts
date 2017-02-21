@@ -33,22 +33,6 @@ export class SellerDataComponent implements OnInit {
   outLineSeller: boolean = true;
   open: boolean = false;
   /**
-   * 店铺类型 测试店铺|下线店铺
-   * @type {{value: string; name: string}[]}
-   */
-  items: Array<any> = [{value: '测试店铺', name: '测试店铺'}, {value: '下线店铺', name: '下线店铺'}];
-  /**
-   * 是否允许下拉列表多选
-   * @type {boolean}
-   */
-  multiple: boolean = true;
-  /**
-   * select下拉框 打开|关闭
-   * @type {boolean}
-   */
-  multipleOpen: boolean = false;
-  pick: any = [];
-  /**
    * 格式化时间
    * @type {string}
    * @private
@@ -105,14 +89,6 @@ export class SellerDataComponent implements OnInit {
   exportExcel() {
     let city = localStorage.getItem("hualaCity");
     this.sellerDataService.exportExcel(city, this.queryDate, this.testSeller, this.outLineSeller);
-  }
-
-  /**
-   * 下拉选择框-> 轮询
-   * @returns {string}
-   */
-  get pickLabel() {
-    return this.pick && this.pick.length ? `${this.pick.length}种类型` : '请选择';
   }
 
 

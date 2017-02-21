@@ -148,7 +148,6 @@ export class GoodsListComponent {
    */
   public toEdit(goods):void {
     this.editorOpened = true;
-    console.log(goods);
     this.editGoodsInfo = goods;
   }
 
@@ -177,7 +176,6 @@ export class GoodsListComponent {
     }
 
     if(!this.checkGoodsInfo(pData)){
-      console.log("goodsInfo hello");
       return;
     }
 
@@ -186,7 +184,6 @@ export class GoodsListComponent {
     this.goodsService.updateGoods(pData).subscribe(res => {
       let data = res.json();
       if(data.success){
-        console.log(data);
         this.editorOpened = false;
         this.editGoodsInfo = {};
         this.getGoodsByCatId(this.pageOpts.page);

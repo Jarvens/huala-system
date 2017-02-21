@@ -118,12 +118,6 @@
                     nextText="下一页"></ngl-pagination>
 </div>
 
-<!--多选下拉-->
-<ngl-picklist [data]="items" [(nglPick)]="pick" [(open)]="multipleOpen" [nglPickMultiple]="multiple" filter="value">
-    <span class="slds-truncate">{{ pickLabel }}</span>
-    <template nglPicklistItem let-item>{{item.value}}</template>
-</ngl-picklist>
-
 <!--tips-->
 <template #tip>
     <div class="slds-text-title--caps">报表参数详解</div>

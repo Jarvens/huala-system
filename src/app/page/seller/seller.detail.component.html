@@ -27,10 +27,10 @@
         <div class="slds-col slds-no-flex slds-grid slds-align-top">
             <div class="slds-button-group" role="group">
                 <button class="slds-button slds-button--neutral" (click)="editSellerInfo()">修改</button>
-                <button class="slds-button slds-button--brand">开店</button>
-                <button class="slds-button slds-button--neutral">关店</button>
-                <button class="slds-button slds-button--neutral">上线</button>
-                <button class="slds-button slds-button--destructive">下线</button>
+                <button class="slds-button slds-button--neutral" (click)="sellerStatus('0')">开店</button>
+                <button class="slds-button slds-button--neutral" (click)="sellerStatus('1')">关店</button>
+                <button class="slds-button slds-button--neutral" (click)="sellerStatus('open')">上线</button>
+                <button class="slds-button slds-button--neutral" (click)="sellerStatus('close')">下线</button>
             </div>
         </div>
     </div>
@@ -115,3 +115,7 @@
         <button class="slds-button slds-button--brand">保存</button>
     </template>
 </ngl-modal>
+
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>

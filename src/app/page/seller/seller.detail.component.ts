@@ -1,4 +1,5 @@
 import {Component, Input, OnChanges} from '@angular/core';
+import {SellerService} from '../../service/seller.service';
 @Component({
   selector: 'seller-detail-component',
   templateUrl: './seller.detail.component.html',
@@ -34,6 +35,25 @@ export class SellerDetailComponent implements OnChanges {
    */
   required: boolean = true;
 
+  /**
+   * toast类型
+   * @type {string}
+   */
+  toastType: string = 'success';
+  /**
+   * toast提示消息
+   * @type {string}
+   */
+  toastMessage: string = '';
+  /**
+   * 打开|关闭 toast
+   * @type {boolean}
+   */
+  showAlert: boolean = false;
+
+  constructor(private sellerService: SellerService) {
+  }
+
   ngOnChanges(changes: any): void {
     let change: any = changes['sellerObj'];
     if (!change.currentValue) {
@@ -57,6 +77,33 @@ export class SellerDetailComponent implements OnChanges {
    */
   cancel() {
     this.sellerInfoOpened = !this.sellerInfoOpened;
+  }
+
+  /**
+   * 开关店铺 | 上下线店铺
+   */
+  sellerStatus(status: string) {
+    let array: Array<number> = [];
+    array.push(this.sellerObj.id);
+    this.sellerService.updateSellerStatus(array, status).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('修改成功', 'success');
+      } else {
+        this.toastFunction('修改失败', 'error');
+      }
+    });
+  }
+
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
   }
 
 }
