@@ -116,6 +116,7 @@ export class CardComponent implements OnInit {
    */
   pageChange(data: number) {
     this.pageOpts.page = data;
+    this.getCardList(this.pageOpts, this.conditions);
   }
 
   /**
@@ -127,8 +128,13 @@ export class CardComponent implements OnInit {
     this.currentCard = data;
   }
 
+  /**
+   * 删除按钮操作事件
+   * @param data
+   */
   del(data: any) {
     this.notificationOpen = !this.notificationOpen;
+    this.operaObj = data;
   }
 
   /**
@@ -152,8 +158,20 @@ export class CardComponent implements OnInit {
     this.notificationOpen = !this.notificationOpen;
   }
 
+  /**
+   * prompt确定事件
+   */
   confirm() {
-
+    this.notificationOpen = !this.notificationOpen;
+    this.cardService.deleteCard(this.operaObj.id).subscribe(res=> {
+      let result = res.json();
+      if (result.errorCode == 'success') {
+        this.toastFunction('删除卡券成功', 'success');
+        this.getCardList(this.pageOpts, this.conditions);
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
   }
 
   /**
@@ -185,6 +203,18 @@ export class CardComponent implements OnInit {
    */
   search() {
     this.getCardList(this.pageOpts, this.conditions);
+  }
+
+
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
   }
 
 }

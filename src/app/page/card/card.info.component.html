@@ -64,7 +64,7 @@
 <div class="slds-size--1-of-1 slds-grid">
     <div class="slds-size--5-of-12">
         <ngl-form-element label="满可用" class="slds-m-top--small">
-            <input nglFormControl type="number" [required]="required" [(ngModel)]="editObj.sumStr">
+            <input nglFormControl type="number" [required]="required" [(ngModel)]="editObj.sumsStr">
         </ngl-form-element>
     </div>
     <div class="slds-size--2-of-12"></div>
@@ -82,7 +82,11 @@
 </ngl-form-element>
 <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none">
     <div class="slds-align--absolute-center">
-        <button class="slds-button slds-button--brand">保存</button>
+        <button class="slds-button slds-button--brand" (click)="saveCard()">保存</button>
     </div>
 </div>
+
+<!--Toast-->
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
+                 [showAlert]="showAlert"></toast-component>
 

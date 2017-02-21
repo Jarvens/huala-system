@@ -1,10 +1,11 @@
-import {Component, Input, OnChanges} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {CardService} from '../../service/card.service';
 @Component({
   selector: 'card-info-component',
   templateUrl: './card.info.component.html'
 })
 
-export class CardInfoComponent implements OnChanges {
+export class CardInfoComponent {
 
 
   /**
@@ -25,16 +26,57 @@ export class CardInfoComponent implements OnChanges {
    */
   @Input() sellerArray: Array<any> = [];
 
+  toastType: string = 'success';
+  toastMessage: string = '';
+  showAlert: boolean = false;
+
+  constructor(private cardService: CardService) {
+  }
+
   showData(data: any) {
 
   }
 
+  /**
+   * 保存卡券列表
+   */
+  saveCard() {
+    let self: any = this.editObj;
+    if (self.type == '3' || (self.type == '1' && self.sellerItems == '1')) {
+      self.sellerIds = [0];
+    } else {
+      self.sellerIds = this.sellerArray;
+    }
 
-  ngOnChanges(changes: any): void {
-    let value: any = changes['editObj'];
-    // if (value.currentValue != value.previousValue) {
-    //   console.log('当前卡券对象 ->', this.editObj);
-    // }
+    this.cardService.saveCard(this.editObj).subscribe(res=> {
+      console.log('返回结果  -->',res.json());
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('保存卡券成功', 'success');
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
+
+  }
+
+  /**
+   * toast通知事件
+   * @param data
+   */
+  notifyParamFunction(data: boolean) {
+    this.showAlert = data;
+  }
+
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
   }
 
 }
