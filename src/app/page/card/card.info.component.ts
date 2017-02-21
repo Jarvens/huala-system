@@ -19,6 +19,12 @@ export class CardInfoComponent implements OnChanges {
    */
   @Input() editObj: any = {};
 
+  /**
+   * 选择店铺集合
+   * @type {Array}
+   */
+  @Input() sellerArray: Array<any> = [];
+
   showData(data: any) {
 
   }
@@ -26,9 +32,9 @@ export class CardInfoComponent implements OnChanges {
 
   ngOnChanges(changes: any): void {
     let value: any = changes['editObj'];
-    if (value.currentValue != value.previousValue) {
-      console.log('当前卡券对象 ->', this.editObj);
-    }
+    // if (value.currentValue != value.previousValue) {
+    //   console.log('当前卡券对象 ->', this.editObj);
+    // }
   }
 
 }

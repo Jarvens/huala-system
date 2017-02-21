@@ -78,7 +78,11 @@
     <input nglFormControl type="text" [(ngModel)]="editObj.content">
 </ngl-form-element>
 <ngl-form-element label="平台承担金额" class="slds-m-top--small">
-    <input nglFormControl type="number"  [required]="required" [(ngModel)]="editObj.platformPriceStr">
+    <input nglFormControl type="number" [required]="required" [(ngModel)]="editObj.platformPriceStr">
 </ngl-form-element>
-
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none">
+    <div class="slds-align--absolute-center">
+        <button class="slds-button slds-button--brand">保存</button>
+    </div>
+</div>
 

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit,} from '@angular/core';
 import {CardService} from '../../service/card.service';
 @Component({
   selector: 'card-component',
@@ -84,7 +84,13 @@ export class CardComponent implements OnInit {
    */
   showAlert: boolean = false;
 
-  _date_formate:string ='yyyy-mm-dd';
+  _date_formate: string = 'yyyy-mm-dd';
+
+  /**
+   * 选择店铺集合
+   * @type {Array}
+   */
+  sellerArray: Array<any> = [];
 
   constructor(private cardService: CardService) {
   }
@@ -101,7 +107,6 @@ export class CardComponent implements OnInit {
   getCardList(page: any, conditions: any) {
     this.cardService.getCardList(page, conditions).subscribe(res=> {
       this.cardDataList = res.json();
-      console.log(res.json())
     });
   }
 
@@ -132,7 +137,7 @@ export class CardComponent implements OnInit {
    */
   searchByCondition(data: string) {
     this.conditions.sellerName = data;
-    this.getCardList(this.pageOpts,this.conditions);
+    this.getCardList(this.pageOpts, this.conditions);
   }
 
   /**
@@ -140,7 +145,7 @@ export class CardComponent implements OnInit {
    * @param data
    */
   showData(data: any) {
-    console.log('选择店铺 ->', data);
+    this.sellerArray = data;
   }
 
   cancelPrompt() {
@@ -178,8 +183,8 @@ export class CardComponent implements OnInit {
   /**
    * 搜索按钮事件
    */
-  search(){
-    this.getCardList(this.pageOpts,this.conditions);
+  search() {
+    this.getCardList(this.pageOpts, this.conditions);
   }
 
 }

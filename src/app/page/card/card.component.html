@@ -128,7 +128,7 @@
     <div body>
         <div class="slds-grid slds-wrap">
             <div class="slds-size--4-of-12">
-                <card-info-component></card-info-component>
+                <card-info-component [sellerArray]="sellerArray"></card-info-component>
             </div>
             <div class="slds-size--1-of-12"></div>
             <div class="slds-size--7-of-12">
@@ -136,9 +136,6 @@
             </div>
         </div>
     </div>
-    <template ngl-modal-footer>
-        <button class="slds-button slds-button--neutral" (click)="cancel()">关闭</button>
-    </template>
 </ngl-modal>
 
 <!--编辑模态-->
@@ -146,10 +143,6 @@
     <div body>
         <card-info-component [editObj]="currentCard"></card-info-component>
     </div>
-    <template ngl-modal-footer>
-        <button class="slds-button slds-button--neutral" (click)="cancel()">关闭</button>
-        <button class="slds-button slds-button--brand" (click)="cancel()">保存</button>
-    </template>
 </ngl-modal>
 <!--prompt-->
 <confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancelPrompt()"
