@@ -22,7 +22,7 @@ export class CardComponent implements OnInit {
    * 查询条件对象
    * @type {{types: string}}
    */
-  condiitons: any = {types: '0'};
+  conditions: any = {types: '0'};
 
   /**
    * placeholder
@@ -55,12 +55,6 @@ export class CardComponent implements OnInit {
   editOpned: boolean = false;
 
   /**
-   * 搜索关键字
-   * @type {string}
-   */
-  searchKey: string = '';
-
-  /**
    * 打开|关闭 prompt
    * @type {boolean}
    */
@@ -90,11 +84,13 @@ export class CardComponent implements OnInit {
    */
   showAlert: boolean = false;
 
+  _date_formate:string ='yyyy-mm-dd';
+
   constructor(private cardService: CardService) {
   }
 
   ngOnInit(): void {
-    this.getCardList(this.pageOpts, this.condiitons);
+    this.getCardList(this.pageOpts, this.conditions);
   }
 
   /**
@@ -126,12 +122,17 @@ export class CardComponent implements OnInit {
     this.currentCard = data;
   }
 
+  del(data: any) {
+    this.notificationOpen = !this.notificationOpen;
+  }
+
   /**
    * 条件搜索
    * @param data
    */
   searchByCondition(data: string) {
-    this.searchKey = data;
+    this.conditions.sellerName = data;
+    this.getCardList(this.pageOpts,this.conditions);
   }
 
   /**
@@ -143,7 +144,7 @@ export class CardComponent implements OnInit {
   }
 
   cancelPrompt() {
-
+    this.notificationOpen = !this.notificationOpen;
   }
 
   confirm() {
@@ -156,6 +157,29 @@ export class CardComponent implements OnInit {
    */
   notifyParamFunction(data: boolean) {
     this.showAlert = data;
+  }
+
+  /**
+   * 接收开始时间
+   * @param data
+   */
+  receiveStartTime(data: any) {
+    this.conditions.startTimeStr = data;
+  }
+
+  /**
+   * 接收结束时间
+   * @param data
+   */
+  receiveEndTime(data: any) {
+    this.conditions.endTimeStr = data;
+  }
+
+  /**
+   * 搜索按钮事件
+   */
+  search(){
+    this.getCardList(this.pageOpts,this.conditions);
   }
 
 }

@@ -1,13 +1,15 @@
 <!--头部搜索-->
 <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
-    <search-component (selectScope)="selectScope($event)" [showIcon]="false" [debounce]="2000"
-                      [placeHolder]="placeholder"
-                      (searchKey)="searchByCondition($event)"></search-component>
+    <div class="slds-size--4-of-12">
+        <search-component [showIcon]="false" [debounce]="2000"
+                          [placeHolder]="placeholder"
+                          (searchKey)="searchByCondition($event)"></search-component>
+    </div>
     <div class="slds-size--6-of-12">
         <div class="slds-form-element">
             <div class="slds-form-element__control slds-float--left">
                 <div class="slds-select_container">
-                    <select class="slds-select" [(ngModel)]="condiitons.types">
+                    <select class="slds-select" [(ngModel)]="conditions.types">
                         <option [value]="1">全部</option>
                         <option [value]="2">优惠券</option>
                         <option [value]="3">红包</option>
@@ -18,14 +20,14 @@
             </div>
         </div>
         <div class="slds-form-element">
-            <div class="slds-form-element_control slds-float--left" style="padding-left: 20px;">
+            <div class="slds-form-element_control slds-float--left">
                 <label class="slds-form-element__label">开始时间</label>
-                <start-time-component (_startTime)="receiveDate($event)"
+                <start-time-component (_startTime)="receiveStartTime($event)"
                                       [_date_format]="_date_formate"></start-time-component>
             </div>
         </div>
         <div class="slds-form-element">
-            <div class="slds-form-element_control slds-float--left" style="padding-left: 20px;">
+            <div class="slds-form-element_control slds-float--left">
                 <label class="slds-form-element__label">结束时间</label>
                 <start-time-component (_startTime)="receiveEndTime($event)"
                                       [_date_format]="_date_formate"></start-time-component>
@@ -33,7 +35,7 @@
         </div>
     </div>
     <div class="slds-size--1-of-12">
-        <button class="slds-button slds-button--brand">搜索</button>
+        <button class="slds-button slds-button--brand" (click)="search()">搜索</button>
     </div>
     <div class="slds-size--1-of-12">
         <button class="slds-button slds-button--brand" (click)="createOpened=!createOpened">新增</button>
@@ -59,7 +61,11 @@
                 <span class="text-danger" *ngIf="value=='1'">已作废</span>
             </template>
         </ngl-datatable-column>
-        <ngl-datatable-column heading="发放商家" key="sellerName"></ngl-datatable-column>
+        <ngl-datatable-column heading="发放商家" key="sellerName">
+            <template nglDatatableCell let-value>
+                <span class="slds-truncate">{{value}}</span>
+            </template>
+        </ngl-datatable-column>
         <ngl-datatable-column heading="类型" key="type">
             <template nglDatatableCell let-value>
                 <span *ngIf="value=='1'">优惠券</span>
@@ -100,7 +106,7 @@
         <ngl-datatable-column heading="操作" key="">
             <template nglDatatableCell let-row="row">
                 <div class="slds-button-group" role="group">
-                    <button class="slds-button slds-button--destructive" (click)="detail(row)">删除</button>
+                    <button class="slds-button slds-button--destructive" (click)="del(row)">删除</button>
                     <button class="slds-button slds-button--brand" (click)="edit(row)">编辑</button>
                 </div>
             </template>
@@ -145,8 +151,6 @@
         <button class="slds-button slds-button--brand" (click)="cancel()">保存</button>
     </template>
 </ngl-modal>
-
-
 <!--prompt-->
 <confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancelPrompt()"
                           (confirmFunction)="confirm()"></confirm-prompt-component>
