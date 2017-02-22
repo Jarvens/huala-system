@@ -176,4 +176,21 @@ export class SellerService {
     });
     return this.http.post('/seller/seller-status',array);
   }
+
+  /**
+   * 查询银行卡列表信息
+   * @returns {Observable<Response>}
+   */
+  getBankDataList(){
+    return this.http.get('/seller/get_bank_list');
+  }
+
+  /**
+   * 查询用户列表
+   * @param id
+   * @returns {Observable<Response>}
+   */
+  getBankUserDataList(id:number){
+    return this.http.get('/seller/xyl-user-list',{id:id});
+  }
 }

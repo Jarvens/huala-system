@@ -47,7 +47,7 @@
         <seller-transfer-account-component [currentSeller]="sellerObj"></seller-transfer-account-component>
     </template>
     <template ngl-tab heading="银行卡" nglTabId="bank">
-        <seller-bank-component></seller-bank-component>
+        <seller-bank-component [currentSeller]="sellerObj"></seller-bank-component>
     </template>
     <template ngl-tab heading="卡券" nglTabId="card">
         <card-component></card-component>
