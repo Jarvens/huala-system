@@ -204,4 +204,14 @@ export class SellerService {
     return this.http.post('/seller/update-user?type=' + type, userInfo);
   }
 
+  /**
+   * 修改银行卡信息
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  updateBankInfo(data: any) {
+    return this.http.post('/seller/reg-update-xyl-user', data);
+  }
+
+
 }

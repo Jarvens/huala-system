@@ -54,7 +54,7 @@
             </div>
             <div class="slds-size--5-of-12">
                 <ngl-form-element label="持卡人手机号" class="slds-m-top--small">
-                    <input nglFormControl type="text" [(ngModel)]="bankObj.mobile" required="required">
+                    <input nglFormControl type="text" [(ngModel)]="currentObj.mobile" required="required">
                 </ngl-form-element>
             </div>
             <div class="slds-size--2-of-2 slds-align--absolute-center">
@@ -129,7 +129,7 @@
             <textarea id="comment-text-input2" class="slds-publisher__input slds-textarea slds-text-longform"
                       placeholder="账号" [(ngModel)]="currentObj.account"></textarea>
             <div class="slds-publisher__actions slds-grid slds-grid--align-spread">
-                <button class="slds-button slds-button--brand" (click)="updateUser(currentObj,'change-user')">save</button>
+                <button class="slds-button slds-button--brand" (click)="resetPassword(currentObj,'change-user')">save</button>
                 <button class="slds-button slds-button--neutral" (click)="cancel()">cancel</button>
             </div>
         </div>

@@ -55,7 +55,7 @@ export class SellerBankComponent implements OnChanges,OnInit {
    * prompt提示消息
    * @type {string}
    */
-  promptMessage: string = '您确定要重置密码吗?';
+  promptMessage: string = '您确定要继续操作吗?';
 
   /**
    * 打开  |关闭 prompt
@@ -127,7 +127,7 @@ export class SellerBankComponent implements OnChanges,OnInit {
    */
   updateBank(data: any) {
     this.bankObj = data.billInfo;
-    this.bankObj.mobile = data.mobile;
+    this.currentObj = data;
     this.openEdit = !this.openEdit;
   }
 
@@ -203,7 +203,17 @@ export class SellerBankComponent implements OnChanges,OnInit {
    * 保存银行卡信息
    */
   saveBank(data: any) {
-    console.log('打印对象 ->', data);
+    this.currentObj.billInfo = this.bankObj;
+    this.sellerService.updateBankInfo(this.currentObj).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('保存成功', 'success');
+        this.getUserListData(this.currentSeller.id);
+        this.openEdit = !this.openEdit;
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
   }
 
 }
