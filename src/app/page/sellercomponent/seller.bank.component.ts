@@ -39,6 +39,47 @@ export class SellerBankComponent implements OnChanges,OnInit {
    */
   bankObj: any = {};
 
+  /**
+   * 修改账号模态 打开|关闭
+   * @type {boolean}
+   */
+  editAccountOpened: boolean = false;
+
+  /**
+   * 当前编辑对象
+   * @type {{}}
+   */
+  currentObj: any = {};
+
+  /**
+   * prompt提示消息
+   * @type {string}
+   */
+  promptMessage: string = '您确定要重置密码吗?';
+
+  /**
+   * 打开  |关闭 prompt
+   * @type {boolean}
+   */
+  notificationOpen: boolean = false;
+  /**
+   * toast提示类型
+   * @type {string}
+   */
+  toastType: string = 'success';
+  /**
+   * toast提示消息
+   * @type {string}
+   */
+  toastMessage: string = '';
+  /**
+   * 打开 |关闭 toast
+   * @type {boolean}
+   */
+  showAlert: boolean = false;
+
+  type: string = '';
+
   constructor(private sellerService: SellerService) {
   }
 
@@ -85,10 +126,84 @@ export class SellerBankComponent implements OnChanges,OnInit {
    * 修改银行卡信息
    */
   updateBank(data: any) {
-
-    console.log('打印银行卡信息 ->',data);
-    this.bankObj = data;
+    this.bankObj = data.billInfo;
+    this.bankObj.mobile = data.mobile;
     this.openEdit = !this.openEdit;
+  }
+
+  /**
+   * 修改账号
+   */
+  updateAccount(data: any) {
+    this.currentObj = data;
+    this.editAccountOpened = !this.editAccountOpened;
+  }
+
+
+  /**
+   * prompt取消事件
+   */
+  cancelPrompt() {
+    this.notificationOpen = !this.notificationOpen;
+  }
+
+  /**
+   * prompt确认事件
+   */
+  confirm() {
+    this.notificationOpen = !this.notificationOpen;
+    this.sellerService.updateUser(this.currentObj, this.type).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('修改成功', 'success');
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
+  }
+
+  /**
+   * toast传播事件
+   * @param data
+   */
+  notifyParamFunction(data: boolean) {
+    this.showAlert = data;
+  }
+
+  /**
+   * 重置密码按钮事件
+   */
+  resetPassword(data: any, type) {
+    this.currentObj = data;
+    this.notificationOpen = !this.notificationOpen;
+    this.currentObj.sellerId = this.currentSeller.id;
+    this.type = type;
+  }
+
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
+  }
+
+
+  /**
+   * 修改密码取消事件
+   */
+  cancel() {
+    this.editAccountOpened = !this.editAccountOpened;
+  }
+
+  /**
+   * 保存银行卡信息
+   */
+  saveBank(data: any) {
+    console.log('打印对象 ->', data);
   }
 
 }

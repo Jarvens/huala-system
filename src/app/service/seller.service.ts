@@ -150,8 +150,8 @@ export class SellerService {
    * @param id
    * @returns {Observable<Response>}
    */
-  syncAccountData(id:number){
-    return this.http.get('/seller/seller-xyl-account-sync?sellerId='+id);
+  syncAccountData(id: number) {
+    return this.http.get('/seller/seller-xyl-account-sync?sellerId=' + id);
   }
 
   /**
@@ -159,8 +159,8 @@ export class SellerService {
    * @param data
    * @returns {Observable<Response>}
    */
-  authSeller(data:any){
-    return this.http.post('/seller/seller-auth',data);
+  authSeller(data: any) {
+    return this.http.post('/seller/seller-auth', data);
   }
 
   /**
@@ -169,19 +169,19 @@ export class SellerService {
    * @param status
    * @returns {Observable<Response>}
    */
-  updateSellerStatus(sellerList:Array<number>,status:string){
-    let array:Array<number>=[];
-    sellerList.forEach(res=>{
-      array.push({id:res,sellerStatus:status});
+  updateSellerStatus(sellerList: Array<number>, status: string) {
+    let array: Array<number> = [];
+    sellerList.forEach(res=> {
+      array.push({id: res, sellerStatus: status});
     });
-    return this.http.post('/seller/seller-status',array);
+    return this.http.post('/seller/seller-status', array);
   }
 
   /**
    * 查询银行卡列表信息
    * @returns {Observable<Response>}
    */
-  getBankDataList(){
+  getBankDataList() {
     return this.http.get('/seller/get_bank_list');
   }
 
@@ -190,7 +190,18 @@ export class SellerService {
    * @param id
    * @returns {Observable<Response>}
    */
-  getBankUserDataList(id:number){
-    return this.http.get('/seller/xyl-user-list',{id:id});
+  getBankUserDataList(id: number) {
+    return this.http.get('/seller/xyl-user-list', {id: id});
   }
+
+  /**
+   * 修改用户信息
+   * @param userInfo
+   * @param type
+   * @returns {Observable<Response>}
+   */
+  updateUser(userInfo: any, type: string) {
+    return this.http.post('/seller/update-user?type=' + type, userInfo);
+  }
+
 }
