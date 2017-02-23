@@ -148,7 +148,15 @@ export class RoleCOmponent implements OnInit {
    * prompt确定事件
    */
   confirm() {
-
+    this.notificationOpen=!this.notificationOpen;
+    this.roleService.deleteRole(this.operaObj).subscribe(res=>{
+      let result = res.json();
+      if(result.success){
+        this.toastFunction('删除成功','success');
+      }else{
+        this.toastFunction(result.message,'error');
+      }
+    });
   }
 
   /**

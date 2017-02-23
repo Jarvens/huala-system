@@ -45,4 +45,13 @@ export class RoleService {
   saveAuthorization(list:Array<any>,id:string){
     return this.http.post("/role/author_role",{menus:list,roleId:id});
   }
+
+  /**
+   * 删除角色
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  deleteRole(data:any){
+    return this.http.post('/role/delete-role',data);
+  }
 }

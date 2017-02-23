@@ -49,7 +49,7 @@ export class MessageComponent implements OnInit {
    * 条件搜索
    * @param event
    */
-  searchByCondition(event) {
+  searchByCondition(event:string) {
     this.getMessageList(this.pageOpts, event, this.type, this.smsStatus);
   }
 
