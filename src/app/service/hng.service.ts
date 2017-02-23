@@ -110,8 +110,8 @@ export class HngService {
    * @param data
    * @returns {Observable<Response>}
    */
-  saveRelation(data:any){
-    return this.http.post('/recruit/save-relation',data);
+  saveRelation(data: any) {
+    return this.http.post('/recruit/save-relation', data);
   }
 
   /**
@@ -119,8 +119,8 @@ export class HngService {
    * @param data
    * @returns {Observable<Response>}
    */
-  saveRecruitDate(data:any){
-    return this.http.post('/recruit/save-time',{startTime:data.startTime,endTime:data.endTime,Id:data.id});
+  saveRecruitDate(data: any) {
+    return this.http.post('/recruit/save-time', {startTime: data.startTime, endTime: data.endTime, Id: data.id});
   }
 
   /**
@@ -137,8 +137,8 @@ export class HngService {
    * @param id
    * @returns {Observable<Response>}
    */
-  getRecruitSeller(id:number){
-    return this.http.get('/recruit/relation-seller',{id:id});
+  getRecruitSeller(id: number) {
+    return this.http.get('/recruit/relation-seller', {id: id});
   }
 
   /**
@@ -183,6 +183,23 @@ export class HngService {
    */
   checkStatistic(data: any) {
     return this.http.post("/preferential/check-statistic", data);
+  }
+
+  getStatics(condition: any, page: any) {
+    if (!page) {
+      page = {page: 1, perPage: 10};
+    }
+    return this.http.get('/recruit/statistic', {
+      recruitId: condition.id,
+      companyId: condition.companyId,
+      jobId: condition.jobId,
+      startTime: condition.startTime,
+      applyStartTime: condition.applyStartTime,
+      applyEndTime: condition.applyEndTime,
+      page: page.page,
+      size: page.perPage,
+      key: condition.key
+    });
   }
 
 }

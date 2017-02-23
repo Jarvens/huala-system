@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {HngService} from '../../../service/hng.service';
 @Component({
   selector: 'hng-recruit-list-component',
@@ -31,6 +31,8 @@ export class HngRecruitListComponent implements OnInit {
   //详情模态 打开|关闭
   public recruitOpened: boolean = false;
   public recruitId: number = 0;
+  @Output() tabSelect = new EventEmitter<string>();
+  @Output() currentRecruit = new EventEmitter<any>();
 
   constructor(private hngService: HngService) {
   }
@@ -101,4 +103,8 @@ export class HngRecruitListComponent implements OnInit {
     });
   }
 
+  statics(data: any) {
+    this.tabSelect.emit('statics');
+    this.currentRecruit.emit(data);
+  }
 }

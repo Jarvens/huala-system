@@ -1,11 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input, OnChanges} from '@angular/core';
 import {HngService} from '../../../service/hng.service';
 @Component({
   selector: 'hng-recruit-statics-component',
   templateUrl: './hng.recruit.statics.component.html'
 })
 
-export class HngRecruitStaticsComponent implements OnInit {
+export class HngRecruitStaticsComponent implements OnInit,OnChanges {
+
 
   /**
    * 公司数据
@@ -25,7 +26,25 @@ export class HngRecruitStaticsComponent implements OnInit {
    */
   conditions: any = {};
 
+  /**
+   * 统计数据
+   * @type {{}}
+   */
+  staticsData: any = {};
+
   placeholder: string = '店铺id..店铺名称';
+
+  /**
+   * 分页
+   * @type {{page: number; total: number; limit: number; perPage: number}}
+   */
+  pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
+
+  /**
+   * 当前招聘对象
+   * @type {{}}
+   */
+  @Input() recruitObj = {};
 
   constructor(private hngService: HngService) {
   }
@@ -38,6 +57,18 @@ export class HngRecruitStaticsComponent implements OnInit {
     this.hngService.getAllJob().subscribe(res=> {
       this.jobDataList = res.json().body;
     });
+  }
+
+
+  ngOnChanges(changes: any): void {
+    let _value = changes['recruitObj'];
+    if (!_value) {
+      return;
+    }
+    if (_value.currentValue != _value.previousValue) {
+      this.conditions.id = _value.id;
+      this.getStatics();
+    }
   }
 
   /**
@@ -53,6 +84,24 @@ export class HngRecruitStaticsComponent implements OnInit {
    */
   exportExcel() {
 
+  }
+
+  /**
+   * 查询统计数据
+   */
+  getStatics() {
+    this.hngService.getStatics(this.conditions, this.pageOpts).subscribe(res=> {
+      this.staticsData = res.json();
+    });
+  }
+
+  /**
+   * 分页
+   * @param data
+   */
+  pageChange(data: number) {
+    this.pageOpts.page = data;
+    this.getStatics();
   }
 
 }

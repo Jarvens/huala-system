@@ -61,3 +61,25 @@
         </div>
     </div>
 </div>
+<div class="slds-scrollable">
+    <table ngl-datatable [data]="staticsData.rows" trackByKey="rank"
+           class="slds-max-medium-table--stacked-horizontal">
+        <ngl-datatable-column heading="序号" key="id"></ngl-datatable-column>
+        <ngl-datatable-column heading="招聘编码" key="recruitCode"></ngl-datatable-column>
+        <ngl-datatable-column heading="商家" key="sellerName"></ngl-datatable-column>
+        <ngl-datatable-column heading="开始时间" key="startTime"></ngl-datatable-column>
+        <ngl-datatable-column heading="申请公司" key="companyName"></ngl-datatable-column>
+        <ngl-datatable-column heading="申请岗位" key="jobName"></ngl-datatable-column>
+        <ngl-datatable-column heading="申请时间" key="applyTime"></ngl-datatable-column>
+        <ngl-datatable-column heading="申请人" key="applyName"></ngl-datatable-column>
+        <ngl-datatable-column heading="联系电话" key="applyPhone"></ngl-datatable-column>
+        <template nglNoRowsOverlay>暂无数据!</template>
+    </table>
+</div>
+<!--底部分页-->
+<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
+    <ngl-pagination [(page)]="pageOpts.page" [total]="staticsData.total" [perPage]="pageOpts.perPage"
+                    [limit]="pageOpts.limit"
+                    boundaryNumbers="1" #pagination (pageChange)="pageChange($event)" previousText="上一页"
+                    nextText="下一页"></ngl-pagination>
+</div>
