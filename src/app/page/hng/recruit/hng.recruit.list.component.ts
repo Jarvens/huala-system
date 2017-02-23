@@ -75,11 +75,6 @@ export class HngRecruitListComponent implements OnInit {
     this.notificationOpen = event;
   }
 
-  //导出Excel
-  exportExcel() {
-
-  }
-
   //删除事件
   delClick(data: any) {
     this.operaObj = data;

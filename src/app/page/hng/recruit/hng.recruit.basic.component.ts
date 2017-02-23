@@ -60,12 +60,13 @@ export class HngRecruitBasicComponent implements OnInit {
 
   //获取链接传递参数
   getParams() {
+    let that = this;
     this.router.params.forEach((params: Params)=> {
       let _value: number = +params['recruitId'];
       this.recruitId = _value;
       if (_value != 0) {
-        this.hngService.getRecruitById(_value).subscribe(res=> {
-          this.operaObj = res.json().body;
+        that.hngService.getRecruitById(_value).subscribe(res=> {
+          that.operaObj = res.json().body;
         });
       }
     })
