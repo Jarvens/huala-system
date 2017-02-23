@@ -115,12 +115,30 @@ export class HngService {
   }
 
   /**
+   * 保存招聘时间
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  saveRecruitDate(data:any){
+    return this.http.post('/recruit/save-time',{startTime:data.startTime,endTime:data.endTime,Id:data.id});
+  }
+
+  /**
    * 根据招聘id查询
    * @param id
    * @returns {Observable<Response>}
    */
   getRecruitById(id: number) {
     return this.http.get("/recruit/get-by-id", {id: id});
+  }
+
+  /**
+   * 查询招聘详情
+   * @param id
+   * @returns {Observable<Response>}
+   */
+  getRecruitSeller(id:number){
+    return this.http.get('/recruit/relation-seller',{id:id});
   }
 
   /**

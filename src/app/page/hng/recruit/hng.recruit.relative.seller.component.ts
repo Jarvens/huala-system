@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {HngService} from '../../../service/hng.service';
-import {_keyValueDiffersFactory} from "@angular/core/src/application_module";
 @Component({
   selector: 'relative-seller',
   templateUrl: './hng.recruit.relative.seller.component.html'
@@ -61,8 +60,8 @@ export class RelativeSellerComponent implements OnInit {
    * 选择店铺
    * @param data
    */
-  relationSeller(data: any) {
-    console.log(this.data);
+  relationSeller(data: Array<any>) {
+    console.log(data);
     this.operaObj.hSellers = data;
   }
 
@@ -86,7 +85,6 @@ export class RelativeSellerComponent implements OnInit {
    * 保存数据
    */
   saveData() {
-    console.log(this.operaObj.toString());
     this.hngService.saveRelation(this.operaObj).subscribe(res=> {
       let result = res.json();
       if (result.success) {

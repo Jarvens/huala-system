@@ -201,10 +201,10 @@ export class SellerListComponent implements OnInit {
    * @param data
    */
   emitMethod(data: any) {
-    if (this.sellerSet.has(data.id)) {
-      this.sellerSet.delete(data.id);
+    if (this.sellerSet.has(data)) {
+      this.sellerSet.delete(data);
     } else {
-      this.sellerSet.add(data.id);
+      this.sellerSet.add(data);
     }
     this.refSource.emit(this.convertSetToList(this.sellerSet));
   }

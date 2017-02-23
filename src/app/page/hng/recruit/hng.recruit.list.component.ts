@@ -96,6 +96,9 @@ export class HngRecruitListComponent implements OnInit {
   detail(data: any) {
     this.recruitOpened = !this.recruitOpened;
     this.operaObj = data;
+    this.hngService.getRecruitSeller(data.id).subscribe(res=> {
+      this.operaObj.hSellers = res.json().body;
+    });
   }
 
 }
