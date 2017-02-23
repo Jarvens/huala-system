@@ -53,7 +53,6 @@ export class HngRecruitListComponent implements OnInit {
   }
 
   querySellerDataByBtn() {
-    console.log(this.conditions);
     this.hngService.getRecruitData(this.pageOpts, this.conditions).subscribe(res=> {
       this.hngRecruitDataList = res.json();
     });

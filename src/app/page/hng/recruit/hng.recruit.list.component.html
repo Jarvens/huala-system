@@ -103,8 +103,8 @@
             <template nglDatatableCell let-row="row">
                 <div class="slds-button-group" role="group">
                     <button class="slds-button slds-button--neutral" (click)="detail(row)">详情</button>
-                    <a class="slds-button slds-button--neutral" [routerLink]="['../hng-recruit-basic/',row.id]">编辑</a>
-                    <button class="slds-button slds-button--neutral" (click)="delClick(row)">删除</button>
+                    <a class="slds-button slds-button--brand" [routerLink]="['../hng-recruit-basic/',row.id]">编辑</a>
+                    <button class="slds-button slds-button--destructive" (click)="delClick(row)">删除</button>
                     <button class="slds-button slds-button--neutral">统计</button>
                 </div>
             </template>
