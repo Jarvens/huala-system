@@ -73,7 +73,11 @@ export class HngRecruitBasicComponent implements OnInit {
   }
 
 
-  //toast函数
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
   toastFunction(message: string, toastType: string) {
     this.showAlert = !this.showAlert;
     this.toastMessage = message;

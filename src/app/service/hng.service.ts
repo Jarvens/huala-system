@@ -106,6 +106,15 @@ export class HngService {
   }
 
   /**
+   * 保存招聘店铺信息
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  saveRelation(data:any){
+    return this.http.post('/recruit/save-relation',data);
+  }
+
+  /**
    * 根据招聘id查询
    * @param id
    * @returns {Observable<Response>}

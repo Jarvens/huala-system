@@ -26,6 +26,30 @@ export class RelativeSellerComponent implements OnInit {
    */
   operaObj: any = {};
 
+  /**
+   * toast类型
+   * @type {string}
+   */
+  toastType: string = 'success';
+
+  /**
+   * toast提示消息
+   * @type {string}
+   */
+  toastMessage: string = '';
+
+  /**
+   * 打开|关闭 toast
+   * @type {boolean}
+   */
+  showAlert: boolean = false;
+
+  /**
+   * 显示|隐藏 保存按钮
+   * @type {boolean}
+   */
+  showSavBtn: boolean = false;
+
   ngOnInit(): void {
     this.getParams();
   }
@@ -38,7 +62,8 @@ export class RelativeSellerComponent implements OnInit {
    * @param data
    */
   relationSeller(data: any) {
-    console.log('打印当前关联店铺 ->', data);
+    console.log(this.data);
+    this.operaObj.hSellers = data;
   }
 
   /**
@@ -56,4 +81,41 @@ export class RelativeSellerComponent implements OnInit {
       }
     });
   }
+
+  /**
+   * 保存数据
+   */
+  saveData() {
+    console.log(this.operaObj.toString());
+    this.hngService.saveRelation(this.operaObj).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('关联成功', 'success');
+        this.showSavBtn = !this.showSavBtn;
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
+  }
+
+
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
+  toastFunction(message: string, toastType: string) {
+    this.showAlert = !this.showAlert;
+    this.toastMessage = message;
+    this.toastType = toastType;
+  }
+
+  /**
+   * toast传播事件
+   * @param data
+   */
+  notifyParamFunction(data: boolean) {
+    this.showAlert = data;
+  }
+
 }
