@@ -203,8 +203,9 @@ export class SellerBankComponent implements OnChanges,OnInit {
    * 保存银行卡信息
    */
   saveBank(data: any) {
-    this.currentObj.billInfo = this.bankObj;
-    this.sellerService.updateBankInfo(this.currentObj).subscribe(res=> {
+    this.currentObj.sellerId = this.currentSeller.id;
+    data.billInfo = this.bankObj;
+    this.sellerService.updateBankInfo(data).subscribe(res=> {
       let result = res.json();
       if (result.success) {
         this.toastFunction('保存成功', 'success');
