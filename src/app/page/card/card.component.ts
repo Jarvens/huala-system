@@ -1,4 +1,5 @@
 import {Component, OnInit,} from '@angular/core';
+import {ToastMessage} from '../../domain/prompt.enum';
 import {CardService} from '../../service/card.service';
 @Component({
   selector: 'card-component',

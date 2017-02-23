@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BalanceService} from '../../service/balance.service';
+import {ToastMessage} from '../../domain/prompt.enum';
 @Component({
   selector: 'balance-component',
   templateUrl: './balance.component.html'
@@ -24,7 +25,7 @@ export class BalanceComponent implements OnInit {
   //提示框 打开|关闭
   notificationOpen: boolean = false;
   //提示框 提示信息
-  promptMessage: string = '确定要立即结算吗?';
+  promptMessage: string = ToastMessage.Balance;
   //结算对象
   settleMentObject: any = {};
   //Toast提示
@@ -74,7 +75,8 @@ export class BalanceComponent implements OnInit {
   //结算详情列表分页
   modalPageChanges(event) {
     this.modalPageOpts.page = event;
-    this.balanceService.getBalanceDetailList(this.modalPageOpts, this.detailQueryOpts.date, this.detailQueryOpts.balanceType).subscribe(res=> {
+    this.balanceService.getBalanceDetailList(this.modalPageOpts, this.detailQueryOpts.date,
+      this.detailQueryOpts.balanceType).subscribe(res=> {
       this.balanceDetailList = res.json();
     });
   }

@@ -202,4 +202,19 @@ export class HngService {
     });
   }
 
+  /**
+   * 统计报表下载
+   * @param condition
+   */
+  downLoadStatic(condition: any) {
+    location.href = process.env.ApiUrl + '/recruit/download-excel?recruitId='
+      + condition.id + "&companyId="
+      + condition.companyId + "&jobId="
+      + condition.jobId + "&startTime="
+      + condition.startTime + "&applyStartTime="
+      + condition.applyStartTime + "&applyEndTime="
+      + condition.applyEndTime + "&key="
+      + condition.key;
+  }
+
 }

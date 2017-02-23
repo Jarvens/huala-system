@@ -83,7 +83,7 @@ export class HngRecruitStaticsComponent implements OnInit,OnChanges {
    * excel导出
    */
   exportExcel() {
-
+    this.hngService.downLoadStatic(this.conditions);
   }
 
   /**

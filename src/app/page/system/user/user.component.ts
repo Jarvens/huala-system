@@ -1,12 +1,24 @@
 import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import {UserService} from '../../../service/user.service';
+import {PromptEnum} from '../../../domain/prompt.enum';
+import {ToastEntity} from '../../../domain/toast';
+import {PromptEntity} from '../../../domain/prompt';
 @Component({
   selector: 'user-component',
   templateUrl: './user.component.html'
 })
 
 export class UserComponent implements OnInit {
-
+  /**
+   * prompt封装对象
+   * @type {Prompt}
+   */
+  prompt: PromptEntity = new PromptEntity;
+  /**
+   * toast封装对象
+   * @type {ToastEntity}
+   */
+  toast: ToastEntity = new ToastEntity;
   /**
    * 搜索条件
    * @type {string}
@@ -42,31 +54,6 @@ export class UserComponent implements OnInit {
    * @type {{}}
    */
   operaObj: any = {};
-  /**
-   * prompt提示信息
-   * @type {string}
-   */
-  promptMessage: string = '';
-  /**
-   * prompt 打开|关闭
-   * @type {boolean}
-   */
-  notificationOpen: boolean = false;
-  /**
-   * toast类型
-   * @type {string}
-   */
-  toastType: string = 'success';
-  /**
-   * toast提示信息
-   * @type {string}
-   */
-  toastMessage: string = '';
-  /**
-   * toast打开|关闭
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
   /**
    * confirm类型
    * @type {string}
@@ -152,8 +139,8 @@ export class UserComponent implements OnInit {
    */
   reset(data: any) {
     this.operaObj = data;
-    this.notificationOpen = !this.notificationOpen;
-    this.promptMessage = '您确定要重置吗?';
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
+    this.prompt.promptMessage = PromptEnum.Reset;
     this.confirmType = 'reset';
   }
 
@@ -161,7 +148,7 @@ export class UserComponent implements OnInit {
    * prompt取消事件
    */
   cancelPrompt() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   /**
@@ -181,7 +168,7 @@ export class UserComponent implements OnInit {
    * @param event
    */
   notifyParamFunction(event: boolean) {
-    this.showAlert = event;
+    this.toast.showAlert = event;
   }
 
   /**
@@ -204,11 +191,11 @@ export class UserComponent implements OnInit {
       let ret = res.json();
       if (ret.success) {
         this.toastFunction('删除成功', 'success');
-        this.notificationOpen = !this.notificationOpen;
+        this.prompt.notificationOpen = !this.prompt.notificationOpen;
         this.getUserList(null, this.pageOpts);
       } else {
         this.toastFunction(ret.message, 'error');
-        this.notificationOpen = !this.notificationOpen;
+        this.prompt.notificationOpen = !this.prompt.notificationOpen;
       }
     });
   }
@@ -221,10 +208,10 @@ export class UserComponent implements OnInit {
       let ret = res.json();
       if (ret.success) {
         this.toastFunction('密码重置成功', 'success');
-        this.notificationOpen = !this.notificationOpen;
+        this.prompt.notificationOpen = !this.prompt.notificationOpen;
       } else {
         this.toastFunction(ret.message, 'error');
-        this.notificationOpen = !this.notificationOpen;
+        this.prompt.notificationOpen = !this.prompt.notificationOpen;
       }
     });
   }
@@ -245,9 +232,9 @@ export class UserComponent implements OnInit {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
   /**
