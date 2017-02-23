@@ -142,7 +142,6 @@ export class UserComponent implements OnInit {
         this.opened = !this.opened;
       } else {
         this.toastFunction(result.message, 'error');
-        this.opened = !this.opened;
       }
     });
   }
