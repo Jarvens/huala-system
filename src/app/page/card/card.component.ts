@@ -1,5 +1,6 @@
 import {Component, OnInit,} from '@angular/core';
-import {ToastMessage} from '../../domain/prompt.enum';
+import {ToastEntity} from '../../domain/toast';
+import {PromptEntity} from '../../domain/prompt';
 import {CardService} from '../../service/card.service';
 @Component({
   selector: 'card-component',
@@ -54,37 +55,8 @@ export class CardComponent implements OnInit {
    * @type {boolean}
    */
   editOpned: boolean = false;
-
-  /**
-   * 打开|关闭 prompt
-   * @type {boolean}
-   */
-  notificationOpen: boolean = false;
-
-  /**
-   * prompt提示信息
-   * @type {string}
-   */
-  promptMessage: string = '您确定要删除该卡券吗?';
-
-  /**
-   * toast类型
-   * @type {string}
-   */
-  toastType: string = 'success';
-
-  /**
-   * toast提示信息
-   * @type {string}
-   */
-  toastMessage: string = '';
-
-  /**
-   * toast 打开|关闭
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
-
+  toast:ToastEntity = new ToastEntity;
+  prompt:PromptEntity = new PromptEntity('您确定要删除吗?');
   _date_formate: string = 'yyyy-mm-dd';
 
   /**
@@ -134,7 +106,7 @@ export class CardComponent implements OnInit {
    * @param data
    */
   del(data: any) {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
     this.operaObj = data;
   }
 
@@ -156,14 +128,14 @@ export class CardComponent implements OnInit {
   }
 
   cancelPrompt() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   /**
    * prompt确定事件
    */
   confirm() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
     this.cardService.deleteCard(this.operaObj.id).subscribe(res=> {
       let result = res.json();
       if (result.errorCode == 'success') {
@@ -180,7 +152,7 @@ export class CardComponent implements OnInit {
    * @param data
    */
   notifyParamFunction(data: boolean) {
-    this.showAlert = data;
+    this.toast.showAlert = data;
   }
 
   /**
@@ -213,9 +185,9 @@ export class CardComponent implements OnInit {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
 }

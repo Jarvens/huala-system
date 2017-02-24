@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {CardService} from '../../service/card.service';
+import {ToastEntity} from '../../domain/toast';
 @Component({
   selector: 'card-info-component',
   templateUrl: './card.info.component.html'
@@ -25,11 +26,7 @@ export class CardInfoComponent {
    * @type {Array}
    */
   @Input() sellerArray: Array<any> = [];
-
-  toastType: string = 'success';
-  toastMessage: string = '';
-  showAlert: boolean = false;
-
+  toast:ToastEntity = new ToastEntity;
   constructor(private cardService: CardService) {
   }
 
@@ -49,7 +46,6 @@ export class CardInfoComponent {
     }
 
     this.cardService.saveCard(this.editObj).subscribe(res=> {
-      console.log('返回结果  -->',res.json());
       let result = res.json();
       if (result.success) {
         this.toastFunction('保存卡券成功', 'success');
@@ -65,7 +61,7 @@ export class CardInfoComponent {
    * @param data
    */
   notifyParamFunction(data: boolean) {
-    this.showAlert = data;
+    this.toast.showAlert = data;
   }
 
   /**
@@ -74,9 +70,9 @@ export class CardInfoComponent {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
 }

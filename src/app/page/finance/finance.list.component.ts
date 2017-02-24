@@ -1,38 +1,19 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FinanceService} from '../../service/finance.service';
+import {ToastEntity} from '../../domain/toast';
 @Component({
   selector: 'finance-list-component',
   templateUrl: './finance.list.component.html',
   styleUrls: ['/finance.list.component.css']
 })
 
-export class FinanceListComponent implements OnInit {
-  ngOnInit(): void {
-  }
-
-  constructor(private financeService: FinanceService) {
-  }
-
+export class FinanceListComponent {
+  toast:ToastEntity = new ToastEntity;
   /**
    * 日期对象
    * @type {string}
    */
   queryDate: string = '';
-  /**
-   * Toast提示
-   * @type {string}
-   */
-  toastMessage: string = '请选择日期';
-  /**
-   * 类型
-   * @type {string}
-   */
-  toastType: string = 'warning';
-  /**
-   * 显示|关闭toast
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
   /**
    * 分页对象
    * @type {{page: number; total: number; limit: number; perPage: number}}
@@ -90,6 +71,8 @@ export class FinanceListComponent implements OnInit {
    */
   currentDate: string = '';
 
+  constructor(private financeService: FinanceService) {
+  }
   /**
    * 触发查询操作
    * @param event
@@ -105,7 +88,7 @@ export class FinanceListComponent implements OnInit {
    * @param event
    */
   notifyParamFunction(event: any) {
-    this.showAlert = !this.showAlert;
+    this.toast.showAlert = !this.toast.showAlert;
   }
 
   /**
