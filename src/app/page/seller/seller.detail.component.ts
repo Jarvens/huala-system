@@ -1,5 +1,6 @@
 import {Component, Input, OnChanges} from '@angular/core';
 import {SellerService} from '../../service/seller.service';
+import {ToastEntity} from '../../domain/toast';
 @Component({
   selector: 'seller-detail-component',
   templateUrl: './seller.detail.component.html',
@@ -7,6 +8,10 @@ import {SellerService} from '../../service/seller.service';
 })
 export class SellerDetailComponent implements OnChanges {
 
+  /**
+   * toast封装实体
+   */
+  toast:ToastEntity;
   /**
    * seller-main页面传递过来的seller对象
    * @type {{}}
@@ -34,22 +39,6 @@ export class SellerDetailComponent implements OnChanges {
    * @type {boolean}
    */
   required: boolean = true;
-
-  /**
-   * toast类型
-   * @type {string}
-   */
-  toastType: string = 'success';
-  /**
-   * toast提示消息
-   * @type {string}
-   */
-  toastMessage: string = '';
-  /**
-   * 打开|关闭 toast
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
 
   constructor(private sellerService: SellerService) {
   }
@@ -101,9 +90,17 @@ export class SellerDetailComponent implements OnChanges {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
+  }
+
+  /**
+   * toast传播事件
+   * @param data
+   */
+  notifyParamFunction(data:boolean){
+    this.toast.showAlert = data;
   }
 
 }

@@ -122,8 +122,8 @@
 </ngl-modal>
 
 <!--prompt-->
-<confirm-prompt-component [promptMessage]="promptMessage" [isOpen]="notificationOpen" (cancelFunction)="cancel()"
+<confirm-prompt-component [promptMessage]="prompt.promptMessage" [isOpen]="prompt.notificationOpen" (cancelFunction)="cancel()"
                           (confirmFunction)="confirm()"></confirm-prompt-component>
 <!--Toast-->
-<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toastType" [toastMessage]="toastMessage"
-                 [showAlert]="showAlert"></toast-component>
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toast.toastType" [toastMessage]="toast.toastMessage"
+                 [showAlert]="toast.showAlert"></toast-component>

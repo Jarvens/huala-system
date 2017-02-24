@@ -169,10 +169,10 @@ export class SellerService {
    * @param status
    * @returns {Observable<Response>}
    */
-  updateSellerStatus(sellerList: Array<number>, status: string) {
-    let array: Array<number> = [];
-    sellerList.forEach(res=> {
-      array.push({id: res, sellerStatus: status});
+  updateSellerStatus(sellerList: Array<any>, status: string) {
+    let array: Array<any> = [];
+    sellerList.forEach(function(value:any){
+      array.push({id:value,sellerStatus:status});
     });
     return this.http.post('/seller/seller-status', array);
   }
