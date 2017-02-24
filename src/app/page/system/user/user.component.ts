@@ -1,6 +1,5 @@
 import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import {UserService} from '../../../service/user.service';
-import {PromptEnum} from '../../../domain/prompt.enum';
 import {ToastEntity} from '../../../domain/toast';
 import {PromptEntity} from '../../../domain/prompt';
 @Component({
@@ -13,12 +12,12 @@ export class UserComponent implements OnInit {
    * prompt封装对象
    * @type {Prompt}
    */
-  prompt: PromptEntity = new PromptEntity;
+  prompt: PromptEntity;
   /**
    * toast封装对象
    * @type {ToastEntity}
    */
-  toast: ToastEntity = new ToastEntity;
+  toast: ToastEntity;
   /**
    * 搜索条件
    * @type {string}
@@ -140,7 +139,7 @@ export class UserComponent implements OnInit {
   reset(data: any) {
     this.operaObj = data;
     this.prompt.notificationOpen = !this.prompt.notificationOpen;
-    this.prompt.promptMessage = PromptEnum.Reset;
+    this.prompt.promptMessage = '您确定要重置密码吗?';
     this.confirmType = 'reset';
   }
 
@@ -176,8 +175,8 @@ export class UserComponent implements OnInit {
    * @param data
    */
   deleteUser(data: any) {
-    this.notificationOpen = !this.notificationOpen;
-    this.promptMessage = '您确定要删除该用户吗?';
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
+    this.prompt.promptMessage = '您确定要删除该用户吗?';
     this.confirmType = 'delete';
     this.operaObj = data;
   }

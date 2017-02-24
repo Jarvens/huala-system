@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ConfigService} from '../../../service/config.service';
+import {ToastEntity} from '../../../domain/toast';
+import {PromptEntity} from '../../../domain/prompt';
+import {PromptEnum} from '../../../domain/prompt.enum';
 @Component({
   selector: 'config-component',
   templateUrl: './config.component.html'
@@ -43,31 +46,18 @@ export class ConfigComponent implements OnInit {
    * @type {{}}
    */
   configEditObj: any = {};
+
   /**
-   * prompt提示消息
-   * @type {string}
+   * prompt封装实体
+   * @type {PromptEntity}
    */
-  promptMessage: string = '您确定要修改吗？';
+  prompt: PromptEntity;
+
   /**
-   * prompt打开|关闭
-   * @type {boolean}
+   * toast封装实体
+   * @type {ToastEntity}
    */
-  notificationOpen: boolean = false;
-  /**
-   * toast类型
-   * @type {string}
-   */
-  toastType: string = 'success';
-  /**
-   * toast消息
-   * @type {string}
-   */
-  toastMessage: string = '编辑成功';
-  /**
-   * toast打开|关闭
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
+  toast: ToastEntity;
   /**
    * 显示|隐藏  *
    * @type {boolean}
@@ -124,21 +114,21 @@ export class ConfigComponent implements OnInit {
    * 模态编辑按钮
    */
   confirmEdit() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   /**
    * prompt取消
    */
   cancelPrompt() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   /**
    * 确认修改
    */
   confirm() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
     this.configService.editConfig(this.configEditObj).subscribe(res=> {
       let ret = res.json();
       if (ret.success) {
@@ -154,8 +144,8 @@ export class ConfigComponent implements OnInit {
    * toast事件
    * @param event
    */
-  notifyParamFunction(event) {
-    this.showAlert = !this.showAlert;
+  notifyParamFunction(event: boolean) {
+    this.toast.showAlert = event;
   }
 
   /**
@@ -164,9 +154,9 @@ export class ConfigComponent implements OnInit {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
 }

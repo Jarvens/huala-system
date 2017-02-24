@@ -43,5 +43,7 @@ export class PromptEntity {
     this._icon = value;
   }
 
-
+  constructor(promptMessage: string) {
+    this._promptMessage = promptMessage;
+  }
 }

@@ -1,5 +1,6 @@
 import {Component, ChangeDetectorRef, OnInit} from '@angular/core';
 import {AppVersionService} from '../../../service/app.version.service';
+import {ToastEntity} from '../../../domain/toast';
 @Component({
   selector: 'app-component',
   templateUrl: 'app.version.component.html'
@@ -28,21 +29,12 @@ export class AppVersionComponent implements OnInit {
    * @type {boolean}
    */
   opened: boolean = false;
+
   /**
-   * Toast提示
-   * @type {string}
+   * toast封装实体
+   * @type {ToastEntity}
    */
-  toastMessage: string = '';
-  /**
-   * 类型
-   * @type {string}
-   */
-  toastType: string = 'error';
-  /**
-   * 显示|关闭toast
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
+  toast: ToastEntity = new ToastEntity;
   /**
    * 当前操作对象
    * @type {{}}
@@ -52,7 +44,6 @@ export class AppVersionComponent implements OnInit {
   getAppVersionList(page: any) {
     this.appVersionService.getAppList(page).subscribe(res=> {
       this.appVersionList = res.json();
-      console.log(res.json());
     });
   }
 
@@ -60,8 +51,9 @@ export class AppVersionComponent implements OnInit {
    * 分页方法
    * @param event
    */
-  pageChange(event) {
-
+  pageChange(event: number) {
+    this.pageOpts.page = event;
+    this.getAppVersionList(this.pageOpts);
   }
 
   //打开模态
@@ -84,15 +76,23 @@ export class AppVersionComponent implements OnInit {
     this.appVersionService.saveAppVersion(this.appObj).subscribe(res=> {
       let ret = res.json();
       if (ret.success) {
-        this.toastMessage = '保存成功';
-        this.showAlert = !this.showAlert;
-        this.toastType = 'success';
+        this.toastFunction('保存成功', 'success');
       } else {
-        this.toastMessage = ret.message;
-        this.showAlert = !this.showAlert;
-        this.toastType = 'error';
+        this.toastFunction(ret.message, 'error');
       }
     });
   }
+
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
+  toastFunction(message: string, toastType: string) {
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
+  }
+
 
 }
