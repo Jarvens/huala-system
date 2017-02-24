@@ -75,7 +75,7 @@ export class HngRecruitStaticsComponent implements OnInit,OnChanges {
    * 条件搜索
    * @param data
    */
-  querySellerDataByBtn(data: string) {
+  querySellerDataByBtn() {
 
   }
 
@@ -102,6 +102,14 @@ export class HngRecruitStaticsComponent implements OnInit,OnChanges {
   pageChange(data: number) {
     this.pageOpts.page = data;
     this.getStatics();
+  }
+
+  /**
+   * 条件搜索
+   * @param data
+   */
+  searchByCondition(data:string){
+
   }
 
 }
