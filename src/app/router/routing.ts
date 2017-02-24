@@ -5,7 +5,6 @@ import {LoginComponent} from '../page/login/login.component';
 import {IndexComponent} from '../page/index/inde.component';
 import {ActivityComponent} from '../page/activtity/activity.component';
 import {ChartComponent} from '../page/chart/chart.component';
-import {BannerMainComponent} from '../page/banner/banner.main.component';
 import {CardComponent} from '../page/card/card.component';
 import {SellerMainComponent} from '../page/seller/seller.main.component';
 import {PictureComponent} from '../page/system/picture/picture.component';
@@ -38,6 +37,7 @@ import {BasicReportComponent} from '../page/basicreport/basic.report.component';
 import {SqlConfigComponent} from '../page/system/sqlconfig/sql.config.component';
 import {SellerGoodsComponent} from '../page/sellercomponent/seller.goods.component';
 import {SellerMainEnterComponent} from '../page/sellercomponent/seller.main.enter.component';
+import {BannerListComponent} from "../page/banner/banner.list.component";
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
@@ -46,7 +46,7 @@ const routes: Routes = [
     children: [
       {path: 'act-list', component: ActivityComponent},
       {path: 'chart', component: ChartComponent},
-      {path: 'banner-main', component: BannerMainComponent},
+      {path: 'banner-main', component: BannerListComponent},
       {path: 'card-list', component: CardComponent},
       {path: 'seller-info', component: SellerMainComponent},
       {path: 'seller-goods', component: SellerMainEnterComponent},
@@ -78,7 +78,7 @@ const routes: Routes = [
       {path: 'report', component: BasicReportComponent},
       {path: 'hng/recruit-seller/:recruitId', component: RelativeSellerComponent},
       {path: 'hng/recruit-date/:recruitId', component: RecruitChooseTimeComponent},
-      {path: 'sql/sql-index',component: SqlConfigComponent}
+      {path: 'sql/sql-index', component: SqlConfigComponent}
     ]
   },
 ];
