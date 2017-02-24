@@ -119,7 +119,7 @@ export class HngMovieListComponent implements OnInit {
    * @param event
    */
   notifyParamFunction(event: boolean) {
-    this.showAlert = event;
+    this.toast.showAlert = event;
   }
 
   /**

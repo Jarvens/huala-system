@@ -63,7 +63,7 @@ export class HngRecruitListComponent implements OnInit {
   confirm() {
     this.prompt.notificationOpen = !this.prompt.notificationOpen;
     this.toast.showAlert = !this.toast.showAlert;
-    this.toastMessage = '删除成功';
+    this.toast.toastMessage = '删除成功';
   }
 
   //Toast传播事件

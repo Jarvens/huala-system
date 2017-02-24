@@ -112,7 +112,7 @@ export class SellerBalanceComponent implements OnChanges {
    * @param data
    */
   sendBalance(data: any) {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
     this.operaBalanceObj = data;
   }
 

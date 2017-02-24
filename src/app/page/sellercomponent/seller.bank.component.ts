@@ -171,7 +171,7 @@ export class SellerBankComponent implements OnChanges,OnInit {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.toast.showAlert = !this.showAlert;
+    this.toast.showAlert = !this.toast.showAlert;
     this.toast.toastMessage = message;
     this.toast.toastType = toastType;
   }
