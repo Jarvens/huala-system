@@ -2,6 +2,8 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {ArticleService} from '../../../service/article.service';
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
+import {PromptEntity} from '../../../domain/prompt';
+import {ToastEntity} from '../../../domain/toast';
 import {isNullOrUndefined} from "util";
 @Component({
   selector: 'article-list-component',
@@ -10,6 +12,14 @@ import {isNullOrUndefined} from "util";
 
 export class ArticleListComponent implements OnInit {
 
+  /**
+   * toast封装实体
+   */
+  toast:ToastEntity;
+  /**
+   * prompt封装实体
+   */
+  prompt:PromptEntity;
   /**
    * 文章目录列表
    * @type {Array}
@@ -35,30 +45,6 @@ export class ArticleListComponent implements OnInit {
    * @type {boolean}
    */
   public categoryOpened: boolean = false;
-  /**
-   * prompt 提示消息
-   * @type {string}
-   */
-  public promptMessage: string = '';
-  /**
-   * prompt 打开|关闭
-   * @type {boolean}
-   */
-  public notificationOpen: boolean = false;
-  /**
-   * toast类型
-   * @type {string}
-   */
-  public toastType: string = 'success';
-  /**
-   * toast消息
-   */
-  public toastMessage: string;
-  /**
-   * toast 打开|关闭
-   * @type {boolean}
-   */
-  public showAlert: boolean = false;
   /**
    * 显示 隐藏  *
    * @type {boolean}
@@ -197,14 +183,14 @@ export class ArticleListComponent implements OnInit {
    * prompt取消事件
    */
   cancelPrompt() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   /**
    * prompt确认事件
    */
   confirm() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
     let array: Array<any> = [];
     array = this.convertSetToList(this.articleHashSet);
     this.deleteArticle(array);
@@ -215,7 +201,7 @@ export class ArticleListComponent implements OnInit {
    * @param data
    */
   notifyParamFunction(data: boolean) {
-    this.showAlert = data;
+    this.toast.showAlert = data;
   }
 
   /**
@@ -223,13 +209,13 @@ export class ArticleListComponent implements OnInit {
    */
   delClick() {
     if (this.articleHashSet.size == 0) {
-      this.toastMessage = '请选择需要删除的文章';
-      this.toastType = 'info';
-      this.showAlert = !this.showAlert;
+      this.toast.toastMessage = '请选择需要删除的文章';
+      this.toast.toastType = 'info';
+      this.toast.showAlert = !this.toast.showAlert;
       return;
     }
-    this.promptMessage = '您确定要删除该文章吗?';
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.promptMessage = '您确定要删除该文章吗?';
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
 
@@ -256,9 +242,9 @@ export class ArticleListComponent implements OnInit {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
   /**

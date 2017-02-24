@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ConfigService} from '../../../service/config.service';
 import {ToastEntity} from '../../../domain/toast';
 import {PromptEntity} from '../../../domain/prompt';
-import {PromptEnum} from '../../../domain/prompt.enum';
 @Component({
   selector: 'config-component',
   templateUrl: './config.component.html'

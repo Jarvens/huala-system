@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SysMenuService} from '../../../service/sys.menu.service';
+import {ToastEntity} from '../../../domain/toast';
+import {PromptEntity} from '../../../domain/prompt';
 @Component({
   selector: 'sys-menu-component',
   templateUrl: './sys.menu.component.html'
@@ -15,6 +17,14 @@ export class SysMenuComponent implements OnInit {
   constructor(private sysMenuService: SysMenuService) {
   }
 
+  /**
+   * toast封装实体
+   */
+  toast:ToastEntity;
+  /**
+   * prompt封装实体
+   */
+  prompt:PromptEntity;
   /**
    * 菜单列表
    * @type {Array}
@@ -35,34 +45,6 @@ export class SysMenuComponent implements OnInit {
    * @type {{}}
    */
   currentMenuObj: any = {};
-  /**
-   * prompt提示信息
-   * @type {string}
-   */
-  promptMessage: string = '确定要删除吗?';
-  /**
-   * prompt 打开|关闭
-   * @type {boolean}
-   */
-  notificationOpen: boolean = false;
-  /**
-   * toast类型
-   * @type {string}
-   */
-  toastType: string = 'success';
-  /**
-   * toastMessage 提示信息
-   * @type {string}
-   */
-  toastMessage: string = '';
-  /**
-   * tosat 打开|关闭
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
-
-
-
 
   /**
    * 打开子菜单
@@ -99,14 +81,14 @@ export class SysMenuComponent implements OnInit {
       this.toastFunction('请选择需要删除的菜单', 'info');
       return;
     }
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   /**
    * prompt取消事件
    */
   cancelPrompt() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   /**
@@ -118,7 +100,7 @@ export class SysMenuComponent implements OnInit {
       if (ret.success) {
         this.toastFunction('删除成功', 'success');
         this.currentMenuObj = {};
-        this.notificationOpen = !this.notificationOpen;
+        this.prompt.notificationOpen = !this.prompt.notificationOpen;
       } else {
         this.toastFunction(ret.message, 'error');
       }
@@ -130,7 +112,7 @@ export class SysMenuComponent implements OnInit {
    * @param event
    */
   notifyParamFunction(event: boolean) {
-    this.showAlert = event;
+    this.toast.showAlert = event;
   }
 
 
@@ -155,8 +137,8 @@ export class SysMenuComponent implements OnInit {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 }

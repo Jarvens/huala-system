@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {ArticleService} from '../../../service/article.service';
+import {ToastEntity} from '../../../domain/toast';
 @Component({
   selector: 'article-entry-component',
   templateUrl: './article.entry.component.html'
@@ -9,6 +10,10 @@ export class ArticleEntryComponent {
   constructor(private articleService: ArticleService) {
   }
 
+  /**
+   * toast封装实体
+   */
+  toast:ToastEntity;
   /**
    * 文章对象
    * @type {{}}
@@ -26,24 +31,6 @@ export class ArticleEntryComponent {
    * @type {boolean}
    */
   required: boolean = true;
-
-  /**
-   * toast类型
-   * @type {string}
-   */
-  toastType: string = 'success';
-
-  /**
-   * toast提示消息
-   * @type {string}
-   */
-  toastMessage: string = '';
-
-  /**
-   * 打开 |关闭 toast
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
 
   /**
    * 保存文章
@@ -65,7 +52,7 @@ export class ArticleEntryComponent {
    * @param data
    */
   notifyParamFunction(data: boolean) {
-    this.showAlert = data;
+    this.toast.showAlert = data;
   }
 
   /**
@@ -74,9 +61,9 @@ export class ArticleEntryComponent {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
 }

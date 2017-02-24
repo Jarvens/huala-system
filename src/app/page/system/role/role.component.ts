@@ -1,11 +1,22 @@
 import {Component, OnInit} from '@angular/core';
 import {RoleService} from '../../../service/role.service';
+import {ToastEntity} from '../../../domain/toast';
+import {PromptEntity} from '../../../domain/prompt';
 @Component({
   selector: 'role-component',
   templateUrl: './role.component.html'
 })
 export class RoleCOmponent implements OnInit {
 
+  /**
+   * toast封装实体
+   */
+  toast:ToastEntity;
+
+  /**
+   * prompt封装实体
+   */
+  prompt:PromptEntity;
   /**
    * 角色列表
    * @type {{}}
@@ -21,31 +32,6 @@ export class RoleCOmponent implements OnInit {
    * @type {string}
    */
   placeholder: string = '搜索..名称';
-  /**
-   * prompt提示消息
-   * @type {string}
-   */
-  promptMessage: string = '您确定要删除该角色吗?';
-  /**
-   * prompt 打开|关闭
-   * @type {boolean}
-   */
-  notificationOpen: boolean = false;
-  /**
-   * toast 打开|关闭
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
-  /**
-   * toast 类型
-   * @type {string}
-   */
-  toastType: string = 'success';
-  /**
-   * toast消息提示
-   * @type {string}
-   */
-  toastMessage: string = '';
   /**
    * 操作对象
    * @type {{}}
@@ -141,14 +127,14 @@ export class RoleCOmponent implements OnInit {
    * prompt取消事件
    */
   cancelPrompt() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   /**
    * prompt确定事件
    */
   confirm() {
-    this.notificationOpen=!this.notificationOpen;
+    this.prompt.notificationOpen=!this.prompt.notificationOpen;
     this.roleService.deleteRole(this.operaObj).subscribe(res=>{
       let result = res.json();
       if(result.success){
@@ -164,7 +150,7 @@ export class RoleCOmponent implements OnInit {
    * @param event
    */
   notifyParamFunction(event: boolean) {
-    this.showAlert = event;
+    this.toast.showAlert = event;
   }
 
   /**
@@ -172,7 +158,7 @@ export class RoleCOmponent implements OnInit {
    * @param data
    */
   delete(data: any) {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
     this.operaObj = data;
   }
 
@@ -222,9 +208,9 @@ export class RoleCOmponent implements OnInit {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
   /**
