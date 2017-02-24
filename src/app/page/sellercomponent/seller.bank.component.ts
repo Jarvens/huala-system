@@ -1,5 +1,7 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {SellerService} from '../../service/seller.service';
+import {ToastEntity} from '../../domain/toast';
+import {PromptEntity} from '../../domain/prompt';
 @Component({
   selector: 'seller-bank-component',
   templateUrl: './seller.bank.component.html'
@@ -51,35 +53,18 @@ export class SellerBankComponent implements OnChanges,OnInit {
    */
   currentObj: any = {};
 
-  /**
-   * prompt提示消息
-   * @type {string}
-   */
-  promptMessage: string = '您确定要继续操作吗?';
-
-  /**
-   * 打开  |关闭 prompt
-   * @type {boolean}
-   */
-  notificationOpen: boolean = false;
-  /**
-   * toast提示类型
-   * @type {string}
-   */
-  toastType: string = 'success';
-  /**
-   * toast提示消息
-   * @type {string}
-   */
-  toastMessage: string = '';
-  /**
-   * 打开 |关闭 toast
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
-
   type: string = '';
 
+  /**
+   * toast封装实体
+   * @type {ToastEntity}
+   */
+  toast:ToastEntity = new ToastEntity;
+  /**
+   * prompt封装实体
+   * @type {PromptEntity}
+   */
+  prompt:PromptEntity = new PromptEntity('您确定要重置吗?');
   constructor(private sellerService: SellerService) {
   }
 
@@ -144,14 +129,14 @@ export class SellerBankComponent implements OnChanges,OnInit {
    * prompt取消事件
    */
   cancelPrompt() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   /**
    * prompt确认事件
    */
   confirm() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
     this.sellerService.updateUser(this.currentObj, this.type).subscribe(res=> {
       let result = res.json();
       if (result.success) {
@@ -167,7 +152,7 @@ export class SellerBankComponent implements OnChanges,OnInit {
    * @param data
    */
   notifyParamFunction(data: boolean) {
-    this.showAlert = data;
+    this.toast.showAlert = data;
   }
 
   /**
@@ -175,7 +160,7 @@ export class SellerBankComponent implements OnChanges,OnInit {
    */
   resetPassword(data: any, type) {
     this.currentObj = data;
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
     this.currentObj.sellerId = this.currentSeller.id;
     this.type = type;
   }
@@ -186,9 +171,9 @@ export class SellerBankComponent implements OnChanges,OnInit {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
 

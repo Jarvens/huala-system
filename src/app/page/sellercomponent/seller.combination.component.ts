@@ -1,5 +1,6 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {SellerService} from '../../service/seller.service';
+import {ToastEntity} from '../../domain/toast';
 @Component({
   selector: 'seller-combination-component',
   templateUrl: './seller.combination.component.html',
@@ -40,24 +41,6 @@ export class SellerCombinationComponent implements OnChanges {
   repeatInfo: string = '';
 
   /**
-   * toast类型
-   * @type {string}
-   */
-  toastType: string = 'success';
-
-  /**
-   * toast提示消息
-   * @type {string}
-   */
-  toastMessage: string = '';
-
-  /**
-   * 打开|关闭 toast
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
-
-  /**
    * 当前图片
    */
   imgSources: string;
@@ -67,6 +50,12 @@ export class SellerCombinationComponent implements OnChanges {
    * @type {boolean}
    */
   @Input() showBtn:boolean=true;
+
+  /**
+   * toast封装实体
+   * @type {ToastEntity}
+   */
+  toast:ToastEntity = new ToastEntity;
 
   /**
    * 打开|关闭  图片模态
@@ -139,7 +128,6 @@ export class SellerCombinationComponent implements OnChanges {
    * 保存店铺扩展信息
    */
   saveExt() {
-    console.log(this.operaExtObj);
     this.sellerService.updateSellerExtInfo(this.operaExtObj).subscribe(res=> {
       let result = res.json();
       if (result.success) {
@@ -156,7 +144,7 @@ export class SellerCombinationComponent implements OnChanges {
    * @param data
    */
   notifyParamFunction(data: boolean) {
-    this.showAlert = data;
+    this.toast.showAlert = data;
   }
 
   /**
@@ -165,9 +153,9 @@ export class SellerCombinationComponent implements OnChanges {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
   /**
@@ -175,7 +163,6 @@ export class SellerCombinationComponent implements OnChanges {
    * @param data
    */
   openImg(data: any) {
-    console.log(data);
     this.imgSources = data.srcElement.currentSrc;
     this.imgOpened = !this.imgOpened;
   }

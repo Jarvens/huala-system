@@ -1,5 +1,7 @@
 import {Component, Input, OnChanges} from '@angular/core';
 import {SellerService} from '../../service/seller.service';
+import {ToastEntity} from '../../domain/toast';
+import {PromptEntity} from '../../domain/prompt';
 @Component({
   selector: 'seller-balance-component',
   templateUrl: './seller.balance.component.html'
@@ -37,36 +39,6 @@ export class SellerBalanceComponent implements OnChanges {
   key: string = 'all';
 
   /**
-   * prompt提示消息
-   * @type {string}
-   */
-  promptMessage: string = '您确定要进行结算吗?';
-
-  /**
-   * prompt打开|关闭
-   * @type {boolean}
-   */
-  notificationOpen: boolean = false;
-
-  /**
-   * toast类型
-   * @type {string}
-   */
-  toastType: string = 'success';
-
-  /**
-   * toast提示消息
-   * @type {string}
-   */
-  toastMessage: string = '';
-
-  /**
-   * 打开|关闭 toast
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
-
-  /**
    * 当前操作结算对象
    * @type {{}}
    */
@@ -84,6 +56,16 @@ export class SellerBalanceComponent implements OnChanges {
    */
   adjustObj: any = {};
 
+  /**
+   * toast封装实体
+   * @type {ToastEntity}
+   */
+  toast:ToastEntity = new ToastEntity;
+  /**
+   * prompt封装实体
+   * @type {PromptEntity}
+   */
+  prompt:PromptEntity = new PromptEntity('您确定要结算吗?');
   constructor(private sellerService: SellerService) {
   }
 
@@ -160,14 +142,14 @@ export class SellerBalanceComponent implements OnChanges {
    * prompt取消事件
    */
   cancelPrompt() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   /**
    * prompt确认事件
    */
   confirm() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
     this.sellerService.sendBalance(this.operaBalanceObj).subscribe(res=> {
       let result = res.json();
       if (result.success) {
@@ -183,7 +165,7 @@ export class SellerBalanceComponent implements OnChanges {
    * @param data
    */
   notifyParamFunction(data: boolean) {
-    this.showAlert = !this.showAlert;
+    this.toast.showAlert = !this.toast.showAlert;
   }
 
   /**
@@ -192,9 +174,9 @@ export class SellerBalanceComponent implements OnChanges {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
 
