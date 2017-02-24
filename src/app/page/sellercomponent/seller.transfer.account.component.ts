@@ -1,5 +1,6 @@
 import {Component, Input, OnChanges} from '@angular/core';
 import {SellerService} from '../../service/seller.service';
+import {ToastEntity} from '../../domain/toast';
 @Component({
   selector: 'seller-transfer-account-component',
   templateUrl: './seller.transfer.account.component.html'
@@ -30,25 +31,13 @@ export class SellerTransferAccountComponent implements OnChanges {
    */
   type: string = 'all';
 
+  /**
+   * toast封装实体
+   * @type {ToastEntity}
+   */
+  toast:ToastEntity = new ToastEntity;
+
   @Input() currentSeller: any = {};
-
-  /**
-   * 打开|关闭toast
-   * @type {boolean}
-   */
-  showAlert:boolean = false;
-
-  /**
-   * toast类型
-   * @type {string}
-   */
-  toastType:string='success';
-
-  /**
-   * toast提示消息
-   * @type {string}
-   */
-  toastMessage:string ='';
 
 
   constructor(private sellerService: SellerService) {
@@ -120,9 +109,9 @@ export class SellerTransferAccountComponent implements OnChanges {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
   /**
@@ -130,6 +119,6 @@ export class SellerTransferAccountComponent implements OnChanges {
    * @param data
    */
   notifyParamFunction(data:boolean){
-    this.showAlert = data;
+    this.toast.showAlert = data;
   }
 }

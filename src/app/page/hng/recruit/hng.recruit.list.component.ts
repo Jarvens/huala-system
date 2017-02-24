@@ -1,5 +1,7 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {HngService} from '../../../service/hng.service';
+import {ToastEntity} from '../../../domain/toast';
+import {PromptEntity} from '../../../domain/prompt';
 @Component({
   selector: 'hng-recruit-list-component',
   templateUrl: './hng.recruit.list.component.html'
@@ -13,16 +15,6 @@ export class HngRecruitListComponent implements OnInit {
   public pageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
   //查询条件对象
   public conditions: any = {};
-  //prompt提示信息
-  public promptMessage: string = '您却定要删除吗?';
-  //打开|关闭 prompt
-  public notificationOpen: boolean = false;
-  //toast类型
-  public toastType: string = 'success';
-  //toast提示消息
-  public toastMessage: string = '';
-  //toast 打开|关闭
-  public showAlert: boolean = false;
   //操作对象
   public operaObj: any = {};
   public companyListData: Array<any> = [];
@@ -31,6 +23,8 @@ export class HngRecruitListComponent implements OnInit {
   //详情模态 打开|关闭
   public recruitOpened: boolean = false;
   public recruitId: number = 0;
+  toast:ToastEntity = new ToastEntity;
+  prompt:PromptEntity = new PromptEntity('您确定要删除吗?');
   @Output() tabSelect = new EventEmitter<string>();
   @Output() currentRecruit = new EventEmitter<any>();
 
@@ -62,25 +56,25 @@ export class HngRecruitListComponent implements OnInit {
 
   //prompt取消事件
   cancelPrompt() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   //prompt确定事件
   confirm() {
-    this.notificationOpen = !this.notificationOpen;
-    this.showAlert = !this.showAlert;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
+    this.toast.showAlert = !this.toast.showAlert;
     this.toastMessage = '删除成功';
   }
 
   //Toast传播事件
   notifyParamFunction(event: boolean) {
-    this.notificationOpen = event;
+    this.prompt.notificationOpen = event;
   }
 
   //删除事件
   delClick(data: any) {
     this.operaObj = data;
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   //删除数据操作

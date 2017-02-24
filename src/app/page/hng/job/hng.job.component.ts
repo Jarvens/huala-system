@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HngService} from '../../../service/hng.service';
+import {ToastEntity} from '../../../domain/toast';
+import {PromptEntity} from '../../../domain/prompt';
 @Component({
   selector: 'hng-job-component',
   templateUrl: './hng.job.component.html'
@@ -20,18 +22,14 @@ export class HngJobComponent implements OnInit {
   //搜索条件
   key: string = '';
   placeholder: string = '搜索..岗位名称..联系人..电话';
-  //prompt 打开|关闭
-  notificationOpen: boolean = false;
-  //prompt 提示信息
-  promptMessage: string = '您确定要删除该岗位吗?';
   //操作对象
   operaObj: any = {};
-  //toast类型
-  toastType: string = 'success';
-  //toast信息
-  toastMessage: string = '';
-  //toast显示|关闭
-  showAlert: boolean = false;
+  prompt:PromptEntity = new PromptEntity('您确定要删除吗?');
+  /**
+   * toast
+   * @type {ToastEntity}
+   */
+  toast:ToastEntity = new ToastEntity;
   //详情模态 打开|关闭
   jobDetaiOpen: boolean = false;
   //新增|编辑   打开|关闭
@@ -60,23 +58,19 @@ export class HngJobComponent implements OnInit {
 
   //prompt取消事件
   cancelPrompt() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   //prompt确定事件
   confirm() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
     this.hngService.deleteJob(this.operaObj).subscribe(res=> {
       let ret = res.json();
       if (ret.success) {
-        this.toastType = 'success';
-        this.toastMessage = '删除成功';
-        this.showAlert = !this.showAlert;
+        this.toastFunction('删除成功','success');
         this.queryJobList(this.key, this.pageOpts);
       } else {
-        this.toastType = 'error';
-        this.toastMessage = ret.message;
-        this.showAlert = !this.showAlert;
+        this.toastFunction(ret.message,'error');
       }
     });
   }
@@ -84,7 +78,7 @@ export class HngJobComponent implements OnInit {
   //删除事件
   deleteFunc(data: any) {
     this.operaObj = data;
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   //编辑事件
@@ -95,7 +89,7 @@ export class HngJobComponent implements OnInit {
 
   //toast消息通知事件
   notifyParamFunction(event: boolean) {
-    this.showAlert = event;
+    this.toast.showAlert = event;
   }
 
   //岗位详情
@@ -131,8 +125,8 @@ export class HngJobComponent implements OnInit {
 
   //toast函数
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 }

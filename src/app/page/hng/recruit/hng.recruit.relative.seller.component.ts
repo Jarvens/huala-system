@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {HngService} from '../../../service/hng.service';
+import {ToastEntity} from '../../../domain/toast';
 @Component({
   selector: 'relative-seller',
   templateUrl: './hng.recruit.relative.seller.component.html'
@@ -25,24 +26,7 @@ export class RelativeSellerComponent implements OnInit {
    */
   operaObj: any = {};
 
-  /**
-   * toast类型
-   * @type {string}
-   */
-  toastType: string = 'success';
-
-  /**
-   * toast提示消息
-   * @type {string}
-   */
-  toastMessage: string = '';
-
-  /**
-   * 打开|关闭 toast
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
-
+  toast:ToastEntity = new ToastEntity;
   /**
    * 显示|隐藏 保存按钮
    * @type {boolean}
@@ -61,7 +45,6 @@ export class RelativeSellerComponent implements OnInit {
    * @param data
    */
   relationSeller(data: Array<any>) {
-    console.log(data);
     this.operaObj.hSellers = data;
   }
 
@@ -103,9 +86,9 @@ export class RelativeSellerComponent implements OnInit {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
   /**
@@ -113,7 +96,7 @@ export class RelativeSellerComponent implements OnInit {
    * @param data
    */
   notifyParamFunction(data: boolean) {
-    this.showAlert = data;
+    this.toast.showAlert = data;
   }
 
 }

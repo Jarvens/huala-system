@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, OnChanges} from '@angular/core';
 import {OrderService} from '../../service/order.service';
+import {ToastEntity} from '../../domain/toast';
 @Component({
   selector: 'refund-order-component',
   templateUrl: './refund.order.component.html'
@@ -47,10 +48,11 @@ export class RefundOrderComponent implements OnInit,OnChanges {
    */
   freightAmount: number = 0;
 
-  toastType: string = 'success';
-  toastMessage: string = '';
-  showAlert: boolean = false;
-
+  /**
+   * toast封装实体
+   * @type {ToastEntity}
+   */
+  toast:ToastEntity = new ToastEntity;
   /**
    * 初始化方法
    */
@@ -136,9 +138,9 @@ export class RefundOrderComponent implements OnInit,OnChanges {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
   /**
@@ -146,7 +148,7 @@ export class RefundOrderComponent implements OnInit,OnChanges {
    * @param data
    */
   notifyParamFunction(data: boolean) {
-    this.showAlert = data;
+    this.toast.showAlert = data;
   }
 
 }

@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {SellerService} from '../../service/seller.service';
+import {ToastEntity} from '../../domain/toast';
+import {PromptEntity} from '../../domain/prompt';
 @Component({
   selector: 'seller-main-enter-component',
   templateUrl: './seller.main.enter.component.html'
@@ -21,35 +23,6 @@ export class SellerMainEnterComponent {
   showCheckBox: boolean = true;
 
   /**
-   * prompt提示信息
-   * @type {string}
-   */
-  promptMessage: string = '您确定要删除吗?';
-
-  /**
-   * 打开 |关闭  prompt
-   * @type {boolean}
-   */
-  notificationOpen: boolean = false;
-
-  /**
-   * toast 类型
-   * @type {string}
-   */
-  toastType: string = 'success';
-  /**
-   * toast 提示信息
-   * @type {string}
-   */
-  toastMessage: string = '';
-
-  /**
-   * 打开 |关闭 toast
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
-
-  /**
    * 操作对象集合
    * @type {Set<any>}
    */
@@ -61,12 +34,22 @@ export class SellerMainEnterComponent {
    */
   goodsResultArray: Array<any> = [];
 
+  /**
+   * toast封装实体
+   * @type {ToastEntity}
+   */
+  toast:ToastEntity = new ToastEntity;
+  /**
+   * prompt封装实体
+   * @type {PromptEntity}
+   */
+  prompt:PromptEntity = new PromptEntity('您确定要删除吗?');
+
   constructor(private sellerService: SellerService) {
   }
 
   copySeller(data: any) {
     this.currentSeller = data;
-    console.log(data);
   }
 
   isShow() {
@@ -77,7 +60,7 @@ export class SellerMainEnterComponent {
    * prompt关闭事件
    */
   cancelPrompt() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   /**
@@ -92,7 +75,7 @@ export class SellerMainEnterComponent {
    * @param data
    */
   notifyParamFunction(data: boolean) {
-    this.showAlert = data;
+    this.toast.showAlert = data;
   }
 
   /**
@@ -104,7 +87,7 @@ export class SellerMainEnterComponent {
       this.toastFunction('请选择需要删除的商品', 'info');
       return;
     }
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
 
   }
 
@@ -140,9 +123,9 @@ export class SellerMainEnterComponent {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
   /**

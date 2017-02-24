@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {SellerService} from '../../service/seller.service';
+import {ToastEntity} from '../../domain/toast';
 @Component({
   selector: 'seller-list-component',
   templateUrl: './seller.list.component.html'
@@ -89,9 +90,11 @@ export class SellerListComponent implements OnInit {
    */
   defaultGoods: boolean = true;
 
-  toastType: string = 'success';
-  toastMessage: string = '';
-  showAlert: boolean = false;
+  /**
+   * toast封装实体
+   * @type {ToastEntity}
+   */
+  toast:ToastEntity = new ToastEntity;
 
   ngOnInit(): void {
     this.querySellerList(this.searchKey, this.pageOpts, this.status, this.keyType);
@@ -181,7 +184,7 @@ export class SellerListComponent implements OnInit {
    * @param data
    */
   notifyParamFunction(data: boolean) {
-    this.showAlert = data;
+    this.toast.showAlert = data;
   }
 
 
@@ -191,9 +194,9 @@ export class SellerListComponent implements OnInit {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
   /**

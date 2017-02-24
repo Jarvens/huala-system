@@ -11,7 +11,7 @@ export class SellerDetailComponent implements OnChanges {
   /**
    * toast封装实体
    */
-  toast:ToastEntity;
+  toast:ToastEntity = new ToastEntity;
   /**
    * seller-main页面传递过来的seller对象
    * @type {{}}

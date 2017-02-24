@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {LoginService} from '../../service/login.service';
+import {ToastEntity} from '../../domain/toast';
 @Component({
   selector: 'login-component',
   templateUrl: 'login.component.html'
@@ -9,20 +10,10 @@ export class LoginComponent implements OnInit {
   token: string = '';
   user: any = {};
   /**
-   * Toast提示
-   * @type {string}
+   * toast封装实体
+   * @type {ToastEntity}
    */
-  toastMessage: string = '';
-  /**
-   * toast 类型
-   * @type {string}
-   */
-  toastType: string = 'error';
-  /**
-   * 显示|关闭toast
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
+  toast:ToastEntity = new ToastEntity;
 
   constructor(private router: Router, private loginService: LoginService) {
   }
@@ -57,7 +48,7 @@ export class LoginComponent implements OnInit {
    * @param event
    */
   notifyParamFunction(event: boolean) {
-    this.showAlert = event;
+    this.toast.showAlert = event;
   }
 
 
@@ -67,9 +58,9 @@ export class LoginComponent implements OnInit {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
 }

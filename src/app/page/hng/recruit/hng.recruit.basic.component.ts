@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {HngService} from '../../../service/hng.service';
+import {ToastEntity} from '../../../domain/toast';
 @Component({
   selector: 'hng-recruit-basic-component',
   templateUrl: './hng.recruit.basic.component.html'
@@ -20,12 +21,7 @@ export class HngRecruitBasicComponent implements OnInit {
   public jobListData: Array<any> = [];
   //操作对象
   public operaObj: any = {};
-  //toast类型
-  public toastType: string = 'success';
-  //toast消息
-  public toastMessage: string = '';
-  //打开|关闭 toast
-  public showAlert: boolean = false;
+  toast:ToastEntity = new ToastEntity;
 
   ngOnInit(): void {
     this.hngService.getAllJob().subscribe(res=> {
@@ -55,7 +51,7 @@ export class HngRecruitBasicComponent implements OnInit {
 
   //toast传播事件
   notifyParamFunction(event: boolean) {
-    this.showAlert = event;
+    this.toast.showAlert = event;
   }
 
   //获取链接传递参数
@@ -79,9 +75,9 @@ export class HngRecruitBasicComponent implements OnInit {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
 }

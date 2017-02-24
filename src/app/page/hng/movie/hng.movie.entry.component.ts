@@ -1,5 +1,7 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {HngService} from '../../../service/hng.service';
+import {ToastEntity} from '../../../domain/toast';
+import {PromptEntity} from '../../../domain/prompt';
 import {isNullOrUndefined} from "util";
 @Component({
   selector: 'hng-movie-entry-component',
@@ -21,31 +23,7 @@ export class HngMovieEntryComponent implements OnChanges {
    * @type {{}}
    */
   public operaMovieObj: any = {};
-  /**
-   * prompt提示消息
-   * @type {string}
-   */
-  public promptMessage: string = '你确定要删除该影片吗?';
-  /**
-   * prompt 打开|关闭
-   * @type {boolean}
-   */
-  public notificationOpen: boolean = false;
-  /**
-   * toast类型
-   * @type {string}
-   */
-  public toastType: string = 'success';
-  /**
-   * toast提示消息
-   * @type {string}
-   */
-  public toastMessage: string = '';
-  /**
-   * toast 打开|关闭
-   * @type {boolean}
-   */
-  public showAlert: boolean = false;
+
   /**
    * 显示|隐藏  *
    * @type {boolean}
@@ -57,6 +35,16 @@ export class HngMovieEntryComponent implements OnChanges {
    */
   public movieList = new Set<any>();
 
+  /**
+   * toast封装实体
+   * @type {ToastEntity}
+   */
+  toast:ToastEntity = new ToastEntity;
+  /**
+   * prompt封装实体
+   * @type {PromptEntity}
+   */
+  prompt:PromptEntity = new PromptEntity('您确定要删除吗?');
 
   ngOnChanges(changes: SimpleChanges): void {
     let _obj: any = changes['currentActiveObj'];
@@ -93,14 +81,14 @@ export class HngMovieEntryComponent implements OnChanges {
    * prompt取消事件
    */
   cancelPrompt() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   /**
    * prompt确认事件
    */
   confirm() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
     this.hngService.checkStatistic(this.operaMovieObj).subscribe(res=> {
       let result = res.json();
       if (result.success) {
@@ -126,7 +114,7 @@ export class HngMovieEntryComponent implements OnChanges {
    */
   delClick(data: any) {
     this.operaMovieObj = data;
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   /**
@@ -150,9 +138,9 @@ export class HngMovieEntryComponent implements OnChanges {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
 }

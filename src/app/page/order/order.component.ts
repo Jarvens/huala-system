@@ -3,6 +3,7 @@
  */
 import {Component, OnInit} from "@angular/core";
 import {OrderService} from "../../service/order.service";
+import {ToastEntity} from '../../domain/toast';
 @Component({
   moduleId: "OrderManage",
   selector: "order",
@@ -59,21 +60,12 @@ export class OrderComponent implements OnInit {
    * @private
    */
   _date_formate: string = 'yyyy-mm-dd';
+
   /**
-   * toast类型
-   * @type {string}
+   * toast封装实体
+   * @type {ToastEntity}
    */
-  toastType: string = 'success';
-  /**
-   * toast提示消息
-   * @type {string}
-   */
-  toastMessage: string = '';
-  /**
-   * 打开关闭toast
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
+  toast:ToastEntity = new ToastEntity;
 
   constructor(public orderService: OrderService) {
   }
@@ -178,7 +170,7 @@ export class OrderComponent implements OnInit {
    * @param data
    */
   notifyParamFunction(data: boolean) {
-    this.showAlert = data;
+    this.toast.showAlert = data;
   }
 
   /**
@@ -203,9 +195,9 @@ export class OrderComponent implements OnInit {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
 

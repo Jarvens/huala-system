@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HngService} from '../../../service/hng.service';
 import {ActivatedRoute, Params} from '@angular/router';
+import {ToastEntity} from '../../../domain/toast';
 @Component({
   selector: 'choose-time',
   templateUrl: './hng.recruit.choosetime.component.html'
@@ -21,29 +22,12 @@ export class RecruitChooseTimeComponent implements OnInit {
    * @type {string}
    */
   recruitId: number = 0;
-
+  toast:ToastEntity = new ToastEntity;
   /**
    * 当前招聘对象
    * @type {{}}
    */
   operaObj: any = {};
-
-  /**
-   * toast类型
-   * @type {string}
-   */
-  toastType: string = 'success';
-  /**
-   * toast提示消息
-   * @type {string}
-   */
-  toastMessage: string = '';
-
-  /**
-   * 打开|关闭 toast
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
 
   constructor(private hngService: HngService, private router: ActivatedRoute,) {
   }
@@ -89,7 +73,6 @@ export class RecruitChooseTimeComponent implements OnInit {
    * @param data
    */
   saveData() {
-    console.log(this.operaObj);
     this.hngService.saveRecruitDate(this.operaObj).subscribe(res=> {
       let result = res.json();
       if (result.success) {
@@ -105,7 +88,7 @@ export class RecruitChooseTimeComponent implements OnInit {
    * @param data
    */
   notifyParamFunction(data: boolean) {
-    this.showAlert = data;
+    this.toast.showAlert = data;
   }
 
   /**
@@ -114,8 +97,8 @@ export class RecruitChooseTimeComponent implements OnInit {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 }

@@ -1,11 +1,23 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {HngService} from '../../../service/hng.service';
+import {ToastEntity} from '../../../domain/toast';
+import {PromptEntity} from '../../../domain/prompt';
 @Component({
   selector: 'hng-movie-list-component',
   templateUrl: './hng.movie.list.component.html'
 })
 
 export class HngMovieListComponent implements OnInit {
+  /**
+   * toast封装实体
+   * @type {ToastEntity}
+   */
+  toast:ToastEntity = new ToastEntity;
+  /**
+   *
+   * @type {PromptEntity}
+   */
+  prompt:PromptEntity = new PromptEntity('您确定要删除吗?');
   /**
    * 活动对象
    * @type {{}}
@@ -36,31 +48,6 @@ export class HngMovieListComponent implements OnInit {
    * @type {{}}
    */
   public activityData: any = {};
-  /**
-   * prompt 提示消息
-   * @type {string}
-   */
-  public promptMessage: string = '你确定要删除该活动吗?';
-  /**
-   * prompt 打开|关闭
-   * @type {boolean}
-   */
-  public notificationOpen: boolean = false;
-  /**
-   * toast 类型
-   * @type {string}
-   */
-  public toastType: string = 'success';
-  /**
-   * toast 提示消息
-   * @type {string}
-   */
-  public toastMessage: string = '';
-  /**
-   * 打开|关闭 toast
-   * @type {boolean}
-   */
-  public showAlert: boolean = false;
   /**
    * 活动操作对象
    * @type {{}}
@@ -116,14 +103,14 @@ export class HngMovieListComponent implements OnInit {
    * prompt取消事件
    */
   cancelPrompt() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   /**
    * prompt 确定事件
    */
   confirm() {
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
     this.delActivity();
   }
 
@@ -141,7 +128,7 @@ export class HngMovieListComponent implements OnInit {
    */
   delClick(data: any) {
     this.operaActiveObj = data;
-    this.notificationOpen = !this.notificationOpen;
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
   }
 
   /**
@@ -183,9 +170,9 @@ export class HngMovieListComponent implements OnInit {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
   /**
