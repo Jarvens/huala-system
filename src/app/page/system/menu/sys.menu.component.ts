@@ -20,11 +20,11 @@ export class SysMenuComponent implements OnInit {
   /**
    * toast封装实体
    */
-  toast:ToastEntity;
+  toast:ToastEntity = new ToastEntity;
   /**
    * prompt封装实体
    */
-  prompt:PromptEntity;
+  prompt:PromptEntity = new PromptEntity('您确定要删除吗?');
   /**
    * 菜单列表
    * @type {Array}

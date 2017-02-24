@@ -12,12 +12,12 @@ export class UserComponent implements OnInit {
    * prompt封装对象
    * @type {Prompt}
    */
-  prompt: PromptEntity;
+  prompt: PromptEntity = new PromptEntity('测试信息');
   /**
    * toast封装对象
    * @type {ToastEntity}
    */
-  toast: ToastEntity;
+  toast: ToastEntity = new ToastEntity;
   /**
    * 搜索条件
    * @type {string}

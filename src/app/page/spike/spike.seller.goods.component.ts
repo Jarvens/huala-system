@@ -1,5 +1,6 @@
 import {Component, Input, SimpleChanges} from '@angular/core';
 import {SpikeService} from '../../service/spike.service';
+import {ToastEntity} from '../../domain/toast';
 @Component({
   selector: 'spike-seller-goods-component',
   templateUrl: './spike.seller.goods.component.html'
@@ -52,22 +53,10 @@ export class SpikeSellerGoodsComponent {
   operaObj: any = {};
 
   /**
-   * toast类型
-   * @type {string}
+   * toast封装实体
+   * @type {ToastEntity}
    */
-  toastType: string = 'success';
-
-  /**
-   * toast提示消息
-   * @type {string}
-   */
-  toastMessage: string = '';
-
-  /**
-   * 打开|关闭  toast
-   * @type {boolean}
-   */
-  showAlert: boolean = false;
+  toast:ToastEntity = new ToastEntity;
 
   constructor(private spikeService: SpikeService) {
   }
@@ -118,7 +107,6 @@ export class SpikeSellerGoodsComponent {
   edit(data: any) {
     this.spikeOpen = !this.spikeOpen;
     this.currentGoods = data;
-    console.log("当前商品 ->", data);
   }
 
   /**
@@ -151,7 +139,7 @@ export class SpikeSellerGoodsComponent {
    * @param data
    */
   notifyParamFunction(data: boolean) {
-    this.showAlert = data;
+    this.toast.showAlert = data;
   }
 
   /**
@@ -160,8 +148,8 @@ export class SpikeSellerGoodsComponent {
    * @param toastType
    */
   toastFunction(message: string, toastType: string) {
-    this.showAlert = !this.showAlert;
-    this.toastMessage = message;
-    this.toastType = toastType;
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 }

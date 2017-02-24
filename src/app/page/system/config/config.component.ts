@@ -8,13 +8,6 @@ import {PromptEntity} from '../../../domain/prompt';
 })
 
 export class ConfigComponent implements OnInit {
-  constructor(private configService: ConfigService) {
-  }
-
-  ngOnInit(): void {
-    this.queryConfig(this.pageOpts, this.key);
-  }
-
   /**
    * 配置对象列表
    * @type {{}}
@@ -62,6 +55,13 @@ export class ConfigComponent implements OnInit {
    * @type {boolean}
    */
   required: boolean = false;
+
+  constructor(private configService: ConfigService) {
+  }
+
+  ngOnInit(): void {
+    this.queryConfig(this.pageOpts, this.key);
+  }
 
 
   /**

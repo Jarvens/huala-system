@@ -5,11 +5,11 @@ export class ToastEntity {
   /**
    * toast类型
    */
-  private _toastType: string;
+  private _toastType: string ='success';
   /**
    * toast提示信息
    */
-  private _toastMessage: string;
+  private _toastMessage: string ='';
 
   /**
    * 打开|关闭 toast
