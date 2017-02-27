@@ -6,15 +6,12 @@ export class BasicReportService {
   }
 
   /**
-   * 查询报表
+   * 查询基础统计信息
    * @returns {Observable<Response>}
    */
-  // getReportList(page: any) {
-  //   if (!page) {
-  //     page = {page: 1, perPage: 10};
-  //   }
-  //   return this.http.get("");
-  // }
+  getSqlDataList() {
+    return this.http.get('/tongji/sql');
+  }
 
 
 }
