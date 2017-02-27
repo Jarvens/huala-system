@@ -72,7 +72,6 @@ const routes: Routes = [
       {path: 'seller-auth', component: SellerAuditComponent},
       {path: 'system-sysconfig', component: ConfigComponent},
       {path: 'system-menu', component: SysMenuComponent},
-      {path: 'order-log', component: SellerMainEnterComponent},
       {path: 'order-refund', component: RefundOrderComponent},
       {path: 'system-role', component: RoleCOmponent},
       {path: 'report', component: BasicReportComponent},
