@@ -33,7 +33,7 @@
                class="slds-max-medium-table--stacked-horizontal">
             <ngl-datatable-column heading="影片海报" key="url">
                 <template nglDatatableCell let-value>
-                    <b>{{value}}</b>
+                    <img src="{{commonImgUrl}}{{value}}" style="height: 60px;width: 80px;">
                 </template>
             </ngl-datatable-column>
             <ngl-datatable-column heading="影片名称" key="name"></ngl-datatable-column>

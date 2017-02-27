@@ -24,6 +24,7 @@ export class BannerListComponent implements OnInit {
   prompt: PromptEntity = new PromptEntity('您确定要删除吗?');
   createOpened: boolean = false;
   required: boolean = true;
+  _date_formate: string = 'yyyy-mm-dd';
   /**
    * 图片上传返回地址
    * @type {string}
@@ -34,6 +35,14 @@ export class BannerListComponent implements OnInit {
    * @type {{}}
    */
   operaObj: any = {};
+
+  /**
+   * 店铺集合
+   * @type {Array}
+   */
+  sellerList: Array<any> = [];
+
+  uploadFolder: string = 'banner';
 
   constructor(private bannerService: BannerService) {
   }
@@ -118,6 +127,18 @@ export class BannerListComponent implements OnInit {
    * 保存banner
    */
   saveBanner() {
-    console.log(this.operaObj);
+    this.operaObj.imgUrl = this.picUrl;
+    if (this.operaObj.scopeSeller == 'part') {
+      if (this.sellerList.length == 0) {
+        this.toast.showAlert = !this.toast.showAlert;
+        return;
+      } else {
+        let array: Array<any> = [];
+        this.sellerList.forEach(function (value: any) {
+          array.push(value.id);
+        });
+        this.operaObj.sellerIdList = array;
+      }
+    }
   }
 }

@@ -2,6 +2,7 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {HngService} from '../../../service/hng.service';
 import {ToastEntity} from '../../../domain/toast';
 import {PromptEntity} from '../../../domain/prompt';
+import {isNullOrUndefined} from "util";
 @Component({
   selector: 'hng-movie-list-component',
   templateUrl: './hng.movie.list.component.html'
@@ -12,12 +13,12 @@ export class HngMovieListComponent implements OnInit {
    * toast封装实体
    * @type {ToastEntity}
    */
-  toast:ToastEntity = new ToastEntity;
+  toast: ToastEntity = new ToastEntity;
   /**
    *
    * @type {PromptEntity}
    */
-  prompt:PromptEntity = new PromptEntity('您确定要删除吗?');
+  prompt: PromptEntity = new PromptEntity('您确定要删除吗?');
   /**
    * 活动对象
    * @type {{}}
@@ -73,6 +74,8 @@ export class HngMovieListComponent implements OnInit {
    * @type {EventEmitter<any>}
    */
   @Output() outPutCurrentActive = new EventEmitter<any>();
+
+  commonImgUrl = process.env.ImgUrl;
 
   constructor(private hngService: HngService) {
   }
@@ -216,14 +219,23 @@ export class HngMovieListComponent implements OnInit {
   /**
    * 导出
    */
-  exportDataReport(){
+  exportDataReport() {
+    if (isNullOrUndefined(this.activity.id)) {
+      this.toastFunction('请选择一条活动进行数据导出', 'error');
+      return;
+    }
+    this.hngService.exportActivity(this.activity.id);
 
   }
 
   /**
    * 导入
    */
-  importDataReport(){
+  importDataReport() {
+    if (isNullOrUndefined(this.activity.id)) {
+      this.toastFunction('请选择一条活动进行数据导入', 'info');
+      return;
+    }
 
   }
 }

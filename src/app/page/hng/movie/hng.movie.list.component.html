@@ -68,9 +68,9 @@
         <div class="slds-scrollable">
             <table ngl-datatable [data]="movieDataList" trackByKey="rank"
                    class="slds-max-medium-table--stacked-horizontal">
-                <ngl-datatable-column heading="海报" key="sellerId">
+                <ngl-datatable-column heading="海报" key="url">
                     <template nglDatatableCell let-value>
-                        <ngl-avatar src="assets/images/avatar1.jpg" alt="avatar 1"></ngl-avatar>
+                        <img src="{{commonImgUrl}}{{value}}" style="height: 60px;width: 80px;">
                     </template>
                 </ngl-datatable-column>
                 <ngl-datatable-column heading="名称" key="name"></ngl-datatable-column>
@@ -91,10 +91,12 @@
 </div>
 
 <!--prompt-->
-<confirm-prompt-component [promptMessage]="prompt.promptMessage" [isOpen]="prompt.notificationOpen" (cancelFunction)="cancelPrompt()"
+<confirm-prompt-component [promptMessage]="prompt.promptMessage" [isOpen]="prompt.notificationOpen"
+                          (cancelFunction)="cancelPrompt()"
                           (confirmFunction)="confirm()"></confirm-prompt-component>
 <!--Toast-->
-<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toast.toastType" [toastMessage]="toast.toastMessage"
+<toast-component (notifyParam)="notifyParamFunction($event)" [toastType]="toast.toastType"
+                 [toastMessage]="toast.toastMessage"
                  [showAlert]="toast.showAlert"></toast-component>
 
 
@@ -161,3 +163,5 @@
         </div>
     </div>
 </ngl-modal>
+
+<!--上传触发Input-->

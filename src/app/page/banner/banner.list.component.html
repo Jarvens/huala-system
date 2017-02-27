@@ -71,7 +71,7 @@
                     </select>
                 </ngl-form-element>
                 <ngl-form-element label="商家范围" class="slds-m-top--small">
-                    <select nglFormControl class="slds-select" [required]="required" [(ngModel)]="operaObj.sellerScope">
+                    <select nglFormControl class="slds-select" [required]="required" [(ngModel)]="operaObj.scopeSeller">
                         <option [value]="'all'">全部商家</option>
                         <option [value]="'part'">部分商家</option>
                     </select>
@@ -99,12 +99,12 @@
                     <input nglFormControl type="number" [required]="required" [(ngModel)]="operaObj.sort">
                 </ngl-form-element>
                 <div class="slds-size--1-of-1">
-                    <img-upload-component [uploadFolder]="banner" (uploadAddr)="picUrl=$event"></img-upload-component>
+                    <img-upload-component [uploadFolder]="uploadFolder" (uploadAddr)="picUrl=$event"></img-upload-component>
                 </div>
             </div>
             <div class="slds-size--1-of-12"></div>
             <div class="slds-size--7-of-12">
-                <seller-list-component></seller-list-component>
+                <seller-list-component (refSource)="sellerList=$event"></seller-list-component>
             </div>
         </div>
     </div>

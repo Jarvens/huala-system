@@ -185,6 +185,12 @@ export class HngService {
     return this.http.post("/preferential/check-statistic", data);
   }
 
+  /**
+   * 统计
+   * @param condition
+   * @param page
+   * @returns {Observable<Response>}
+   */
   getStatics(condition: any, page: any) {
     if (!page) {
       page = {page: 1, perPage: 10};
@@ -215,6 +221,14 @@ export class HngService {
       + condition.applyStartTime + "&applyEndTime="
       + condition.applyEndTime + "&key="
       + condition.key;
+  }
+
+  /**
+   * 导出活动报表
+   * @param id
+   */
+  exportActivity(id: string) {
+    location.href = process.env.ApiUrl + '/preferential/export?activityId=' + id;
   }
 
 }

@@ -21,7 +21,6 @@ import {ActivityComponent} from './page/activtity/activity.component';
 import {ChartComponent} from './page/chart/chart.component';
 import {MapComponent} from './page/map/map.component';
 import {BannerListComponent} from './page/banner/banner.list.component';
-import {BannerEntryComponent} from './page/banner/banner.entry.component';
 import {CardComponent} from './page/card/card.component';
 import {SellerMainComponent} from './page/seller/seller.main.component';
 import {SellerListComponent} from './page/seller/seller.list.component';
@@ -147,7 +146,6 @@ import {SqlConfigService} from './service/sql.config.service';
     MapComponent,
     BaiduMap,
     BannerListComponent,
-    BannerEntryComponent,
     CardComponent,
     SellerMainComponent,
     SellerListComponent,

@@ -46,6 +46,8 @@ export class HngMovieEntryComponent implements OnChanges {
    */
   prompt:PromptEntity = new PromptEntity('您确定要删除吗?');
 
+  commonImgUrl = process.env.ImgUrl;
+
   ngOnChanges(changes: SimpleChanges): void {
     let _obj: any = changes['currentActiveObj'];
     if (!isNullOrUndefined(_obj.currentValue.id) && _obj.currentValue != _obj.previousValue) {
