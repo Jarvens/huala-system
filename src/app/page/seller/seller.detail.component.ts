@@ -83,6 +83,13 @@ export class SellerDetailComponent implements OnChanges {
   }
 
   /**
+   * 修改店铺信息
+   */
+  updateSellerInfo(){
+
+  }
+
+  /**
    * toast函数
    * @param message
    * @param toastType

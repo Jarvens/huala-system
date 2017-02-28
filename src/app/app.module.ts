@@ -94,6 +94,7 @@ import {SellerCombinationComponent} from './page/sellercomponent/seller.combinat
 import {SellerBalanceComponent} from './page/sellercomponent/seller.balance.component';
 import {SellerTransferAccountComponent} from './page/sellercomponent/seller.transfer.account.component';
 import {SellerBankComponent} from './page/sellercomponent/seller.bank.component';
+import {ProvinceCityComponent} from './page/component/area/province.city.component';
 //Directive
 
 /**
@@ -215,7 +216,8 @@ import {SqlConfigService} from './service/sql.config.service';
     SellerBalanceComponent,
     SellerTransferAccountComponent,
     SellerBankComponent,
-    CardInfoComponent
+    CardInfoComponent,
+    ProvinceCityComponent
   ],
   imports: [
     BrowserModule,
