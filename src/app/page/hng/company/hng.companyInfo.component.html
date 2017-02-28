@@ -1,16 +1,16 @@
 <div class="slds-size--1-of-2 slds-align--absolute-center">
   <div class="slds-size--1-of-1">
     <ngl-form-element label="公司名称" class="slds-m-top--small">
-      <input type="text" nglFormControl placeholder="公司名称" required [(ngModel)]="companyInfo.companyName">
+      <input type="text" nglFormControl required [(ngModel)]="companyInfo.companyName">
     </ngl-form-element>
     <ngl-form-element label="联系人" clsss="slds-m-top--small">
-      <input type="text" nglFormControl placeholder="联系人" required [(ngModel)]="companyInfo.contacts">
+      <input type="text" nglFormControl required [(ngModel)]="companyInfo.contacts">
     </ngl-form-element>
     <ngl-form-element label="联系电话" class="slds-m-top--small">
-      <input type="tel" nglFormControl placeholder="联系电话" required [(ngModel)]="companyInfo.contactsPhone">
+      <input type="tel" nglFormControl required [(ngModel)]="companyInfo.contactsPhone">
     </ngl-form-element>
     <ngl-form-element label="营业执照" class="slds-m-top--small">
-      <input type="text" nglFormControl placeholder="营业执照" required style="display:none">
+      <input type="text" nglFormControl required style="display:none">
       <div class="slds-size--1-of-2">
         <img-upload-component></img-upload-component>
       </div>

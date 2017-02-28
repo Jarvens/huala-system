@@ -34,12 +34,6 @@ export class SpikeSellerGoodsComponent {
    * @type {boolean}
    */
   spikeOpen: boolean = false;
-
-  /**
-   * 当前选中商品
-   * @type {{}}
-   */
-  currentGoods: any = {};
   /**
    * 显示 |隐藏 *
    * @type {boolean}
@@ -106,7 +100,7 @@ export class SpikeSellerGoodsComponent {
    */
   edit(data: any) {
     this.spikeOpen = !this.spikeOpen;
-    this.currentGoods = data;
+    this.operaObj = data;
   }
 
   /**
