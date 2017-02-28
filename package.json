@@ -28,6 +28,7 @@
     "server": "npm run server:dev",
     "start:hmr": "npm run server:dev:hmr",
     "start": "npm run server:dev",
+    "rimraf": "rimraf",
     "version": "npm run build",
     "watch:dev:hmr": "npm run watch:dev -- --hot",
     "watch:dev": "npm run build:dev -- --watch",

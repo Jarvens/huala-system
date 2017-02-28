@@ -81,7 +81,6 @@ import {SpikeSellerGoodsComponent} from './page/spike/spike.seller.goods.compone
  */
 import {SearchComponent} from './page/component/searchinput/search.component';
 import {ImgUploadComponent} from './page/component/imgupload/img.upload.component';
-import {BreadCrumbsComponent} from './page/component/breadcrumbs/bread.crumbs.component';
 import {ToastComponent} from './page/component/toast/toast.component';
 import {ConfirmPromptComponent} from './page/component/prompt/confirm.prompt.component';
 import {StartTimeComponent} from './page/component/dateutil/start.time.component';
@@ -126,11 +125,8 @@ import {EveryDateReportService} from './service/every.date.report.service';
 import {FinanceService} from './service/finance.service';
 import {SellerSubsidyService} from './service/seller.subsidy.service';
 import {SpikeService} from './service/spike.service';
-import {SellerAuditService} from './service/seller.audit.service';
 import {ConfigService} from './service/config.service';
 import {SysMenuService} from './service/sys.menu.service';
-import {OrderLogService} from './service/order.log.service';
-import {RefundOrderService} from './service/refund.order.service';
 import {RoleService} from './service/role.service';
 import {BasicReportService} from './service/basic.report.service';
 import {SqlConfigService} from './service/sql.config.service';
@@ -156,7 +152,6 @@ import {SqlConfigService} from './service/sql.config.service';
     ImgUploadComponent,
     PictureComponent,
     AppVersionComponent,
-    BreadCrumbsComponent,
     PictureComponent,
     OrderComponent,
     OrderBasicComponent,
@@ -251,11 +246,8 @@ import {SqlConfigService} from './service/sql.config.service';
     FinanceService,
     SellerSubsidyService,
     SpikeService,
-    SellerAuditService,
     ConfigService,
     SysMenuService,
-    OrderLogService,
-    RefundOrderService,
     RoleService,
     BasicReportService,
     SqlConfigService
