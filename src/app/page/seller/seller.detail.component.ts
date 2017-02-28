@@ -49,8 +49,6 @@ export class SellerDetailComponent implements OnChanges {
       return;
     }
     if (change.currentValue.id != change.previousValue.id) {
-      console.log('发生改变了 ... ->');
-      console.log(this.sellerObj);
     }
   }
 
