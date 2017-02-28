@@ -39,12 +39,12 @@ export class HngMovieEntryComponent implements OnChanges {
    * toast封装实体
    * @type {ToastEntity}
    */
-  toast:ToastEntity = new ToastEntity;
+  toast: ToastEntity = new ToastEntity;
   /**
    * prompt封装实体
    * @type {PromptEntity}
    */
-  prompt:PromptEntity = new PromptEntity('您确定要删除吗?');
+  prompt: PromptEntity = new PromptEntity('您确定要删除吗?');
 
   commonImgUrl = process.env.ImgUrl;
 
@@ -107,7 +107,7 @@ export class HngMovieEntryComponent implements OnChanges {
    * @param event
    */
   notifyParamFunction(event: boolean) {
-
+    this.toast.showAlert = !this.toast.showAlert;
   }
 
   /**
@@ -143,6 +143,33 @@ export class HngMovieEntryComponent implements OnChanges {
     this.toast.showAlert = !this.toast.showAlert;
     this.toast.toastMessage = message;
     this.toast.toastType = toastType;
+  }
+
+  openEntryModal() {
+    this.opened = !this.opened;
+    this.operaMovieObj = {};
+    this.operaMovieObj.sellerId = this.currentActiveObj.sellerId;
+    this.operaMovieObj.sellerName = this.currentActiveObj.sellerName;
+  }
+
+  /**
+   * 保存影片活动
+   */
+  saveActivity() {
+    //this.operaMovieObj.movies = this.convertSetToList(this.movieList);
+    console.log(this.operaMovieObj);
+  }
+
+  /**
+   * 将Set集合转换为List
+   * @param source
+   */
+  convertSetToList(source: Set<any>) {
+    let array: Array<any> = [];
+    source.forEach(function (value: any) {
+      array.push(value);
+    });
+    return array;
   }
 
 }
