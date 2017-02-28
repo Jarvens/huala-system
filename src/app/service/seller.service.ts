@@ -213,5 +213,13 @@ export class SellerService {
     return this.http.post('/seller/reg-update-xyl-user', data);
   }
 
+  /**
+   * 修改店铺基本信息
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  updateSellerInfo(data:any){
+    return this.http.post('/seller/update-seller-basic',data);
+  }
 
 }

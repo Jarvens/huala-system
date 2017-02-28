@@ -11,7 +11,7 @@ export class SellerDetailComponent implements OnChanges {
   /**
    * toast封装实体
    */
-  toast:ToastEntity = new ToastEntity;
+  toast: ToastEntity = new ToastEntity;
   /**
    * seller-main页面传递过来的seller对象
    * @type {{}}
@@ -85,8 +85,16 @@ export class SellerDetailComponent implements OnChanges {
   /**
    * 修改店铺信息
    */
-  updateSellerInfo(){
-
+  updateSellerInfo() {
+    this.sellerInfoOpened = !this.sellerInfoOpened;
+    this.sellerService.updateSellerInfo(this.sellerObj).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('修改成功', 'success');
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
   }
 
   /**
@@ -104,7 +112,7 @@ export class SellerDetailComponent implements OnChanges {
    * toast传播事件
    * @param data
    */
-  notifyParamFunction(data:boolean){
+  notifyParamFunction(data: boolean) {
     this.toast.showAlert = data;
   }
 
