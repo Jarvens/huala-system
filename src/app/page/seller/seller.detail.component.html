@@ -86,26 +86,26 @@
         <div class="slds-wrap slds-grid">
             <div class="slds-size--5-of-12">
                 <ngl-form-element label="开店时间"  class="slds-m-top--small">
-                    <input nglFormControl type="text"  [required]="required" [(ngModel)]="sellerObj">
+                    <input nglFormControl type="text"  [required]="required" [(ngModel)]="sellerObj.openTime">
                 </ngl-form-element>
             </div>
             <div class="slds-size--2-of-12"></div>
             <div class="slds-size--5-of-12">
                 <ngl-form-element label="关店时间"  class="slds-m-top--small">
-                    <input nglFormControl type="text"  [required]="required">
+                    <input nglFormControl type="text"  [required]="required" [(ngModel)]="sellerObj.endTime">
                 </ngl-form-element>
             </div>
         </div>
         <div class="slds-wrap slds-grid">
             <div class="slds-size--5-of-12">
                 <ngl-form-element label="店铺经度"  class="slds-m-top--small">
-                    <input nglFormControl type="text"  [required]="required">
+                    <input nglFormControl type="text"  [required]="required" [(ngModel)]="sellerObj.lng">
                 </ngl-form-element>
             </div>
             <div class="slds-size--2-of-12"></div>
             <div class="slds-size--5-of-12">
                 <ngl-form-element label="店铺纬度"  class="slds-m-top--small">
-                    <input nglFormControl type="text"  [required]="required">
+                    <input nglFormControl type="text"  [required]="required" [(ngModel)]="sellerObj.lat">
                 </ngl-form-element>
             </div>
         </div>
