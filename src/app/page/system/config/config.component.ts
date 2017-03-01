@@ -43,13 +43,13 @@ export class ConfigComponent implements OnInit {
    * prompt封装实体
    * @type {PromptEntity}
    */
-  prompt: PromptEntity;
+  prompt: PromptEntity = new PromptEntity('您确定要修改吗?');
 
   /**
    * toast封装实体
    * @type {ToastEntity}
    */
-  toast: ToastEntity;
+  toast: ToastEntity = new ToastEntity;
   /**
    * 显示|隐藏  *
    * @type {boolean}
