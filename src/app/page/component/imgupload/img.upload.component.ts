@@ -68,7 +68,6 @@ export class ImgUploadComponent implements OnChanges {
 
     if (chg && chg.currentValue && chg.currentValue != chg.previousValue) {
       this.prevFile = this.imgUrl + chg.currentValue;
-      console.log(chg.currentValue)
     }
 
     let address = changes['uploadFolder'];
@@ -116,7 +115,6 @@ export class ImgUploadComponent implements OnChanges {
         this.uploadAddr.emit(result);
       } else {
         this.toastFunction('上传失败', 'error');
-        console.log('错误信息返回 --->', response);
       }
     }
   }
