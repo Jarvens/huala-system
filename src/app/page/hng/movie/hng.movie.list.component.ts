@@ -3,12 +3,17 @@ import {HngService} from '../../../service/hng.service';
 import {ToastEntity} from '../../../domain/toast';
 import {PromptEntity} from '../../../domain/prompt';
 import {isNullOrUndefined} from "util";
+import {FileUploader} from '../../../utils/file-upload/file-uploader.class';
 @Component({
   selector: 'hng-movie-list-component',
   templateUrl: './hng.movie.list.component.html'
 })
 
 export class HngMovieListComponent implements OnInit {
+  /**
+   * api地址
+   */
+  apiUrl: string = process.env.ApiUrl;
   /**
    * toast封装实体
    * @type {ToastEntity}
@@ -24,6 +29,11 @@ export class HngMovieListComponent implements OnInit {
    * @type {{}}
    */
   public activity: any = {};
+  /**
+   * 文件上传
+   * @type {FileUploader}
+   */
+  uploader: FileUploader = new FileUploader({url: this.apiUrl + '/preferential/importExcel?activityId=' + this.activity.id});
   /**
    * 影片列表
    * @type {Array}
@@ -231,11 +241,30 @@ export class HngMovieListComponent implements OnInit {
   /**
    * 导入
    */
-  importDataReport() {
+  importDataReport(dom: any) {
     if (isNullOrUndefined(this.activity.id)) {
       this.toastFunction('请选择一条活动进行数据导入', 'info');
       return;
     }
+    dom.click();
+  }
 
+  /**
+   * 文件改变时触发 此动作
+   * @param data
+   */
+  addQueue(data: any) {
+    this.uploader.setOptions({url:this.apiUrl+'/preferential/importExcel?activityId='+this.activity.id});
+    this.uploader.addToQueue(data.files);
+    this.uploader.uploadAll();
+    let that = this;
+    this.uploader.onSuccessItem =(item:any,response:any,status:any,headers:any)=>{
+      let result = response.body;
+      if(result.success){
+        that.toastFunction('导入成功','success');
+      }else{
+        that.toastFunction(result.message,'error');
+      }
+    }
   }
 }
