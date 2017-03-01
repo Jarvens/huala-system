@@ -16,8 +16,8 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 /**
  * Webpack Constants
  */
-const ApiUrlTest = '//apitest.huala.com';
-const ApiUrl = 'http://localhost:8111/xiaopai';
+const ApiUrl = '//apitest.huala.com';
+// const ApiUrl = 'http://localhost:8111/xiaopai';
 const ImgUrl = '//wxtest.huala.com/hlman-pic';
 //正式环境
 // const ApiUrl ='//api.huala.com';
@@ -42,20 +42,7 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
  */
 module.exports = function (options) {
     return webpackMerge(commonConfig({env: ENV}), {
-        
-        /**
-         * Developer tool to enhance debugging
-         *
-         * See: http://webpack.github.io/docs/configuration.html#devtool
-         * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
-         */
         devtool: 'cheap-module-source-map',
-        
-        /**
-         * Options affecting the output of the compilation.
-         *
-         * See: http://webpack.github.io/docs/configuration.html#output
-         */
         output: {
             
             path: helpers.root('dist'),
@@ -102,16 +89,6 @@ module.exports = function (options) {
         },
         
         plugins: [
-            
-            /**
-             * Plugin: DefinePlugin
-             * Description: Define free variables.
-             * Useful for having development builds with debug logging or adding global constants.
-             *
-             * Environment helpers
-             *
-             * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
-             */
             // NOTE: when adding more properties, make sure you include them in custom-typings.d.ts
             new DefinePlugin({
                 'ENV': JSON.stringify(METADATA.ENV),
@@ -124,35 +101,12 @@ module.exports = function (options) {
                     'ImgUrl': JSON.stringify(METADATA.ImgUrl)
                 }
             }),
-            
-            /**
-             * Plugin: NamedModulesPlugin (experimental)
-             * Description: Uses file names as module name.
-             *
-             * See: https://github.com/webpack/webpack/commit/a04ffb928365b19feb75087c63f13cadfc08e1eb
-             */
-            // new NamedModulesPlugin(),
-            
-            /**
-             * Plugin LoaderOptionsPlugin (experimental)
-             *
-             * See: https://gist.github.com/sokra/27b24881210b56bbaff7
-             */
             new LoaderOptionsPlugin({
                 debug: false,
                 options: {}
             }),
         
         ],
-        
-        /**
-         * Webpack Development Server configuration
-         * Description: The webpack-dev-server is a little node.js Express server.
-         * The server emits information about the compilation state to the client,
-         * which reacts to those events.
-         *
-         * See: https://webpack.github.io/docs/webpack-dev-server.html
-         */
         devServer: {
             port: METADATA.port,
             host: METADATA.host,
@@ -162,13 +116,6 @@ module.exports = function (options) {
                 poll: 1000
             }
         },
-        
-        /*
-         * Include polyfills or mocks for various node stuff
-         * Description: Node configuration
-         *
-         * See: https://webpack.github.io/docs/configuration.html#node
-         */
         node: {
             global: true,
             crypto: 'empty',

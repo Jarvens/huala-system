@@ -35,7 +35,6 @@ import {RelativeSellerComponent} from '../page/hng/recruit/hng.recruit.relative.
 import {RecruitChooseTimeComponent} from '../page/hng/recruit/hng.recruit.choosetime.component';
 import {BasicReportComponent} from '../page/basicreport/basic.report.component';
 import {SqlConfigComponent} from '../page/system/sqlconfig/sql.config.component';
-import {SellerGoodsComponent} from '../page/sellercomponent/seller.goods.component';
 import {SellerMainEnterComponent} from '../page/sellercomponent/seller.main.enter.component';
 import {BannerListComponent} from "../page/banner/banner.list.component";
 const routes: Routes = [
