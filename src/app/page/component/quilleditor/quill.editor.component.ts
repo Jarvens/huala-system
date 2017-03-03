@@ -22,8 +22,6 @@ export class QuillEditorComponent {
    */
   @Output() emitContent = new EventEmitter<string>();
 
-  @Output() emitRich = new EventEmitter<any>();
-
   constructor() {
   }
 
