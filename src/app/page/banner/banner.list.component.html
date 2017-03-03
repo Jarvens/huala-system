@@ -7,7 +7,7 @@
     </div>
 </div>
 <div class="slds-scrollable">
-    <table ngl-datatable [data]="bannerList.rows" trackByKey="rank"
+    <table ngl-datatable [data]="bannerList.rows" trackByKey="id"
            class="slds-max-medium-table--stacked-horizontal">
         <ngl-datatable-column heading="名称" key="bannerName" sortable></ngl-datatable-column>
         <ngl-datatable-column heading="图片" key="imgUrl">
@@ -99,7 +99,8 @@
                     <input nglFormControl type="number" [required]="required" [(ngModel)]="operaObj.sort">
                 </ngl-form-element>
                 <div class="slds-size--1-of-1">
-                    <img-upload-component [uploadFolder]="uploadFolder" (uploadAddr)="picUrl=$event"></img-upload-component>
+                    <img-upload-component [uploadFolder]="uploadFolder"
+                                          (uploadAddr)="picUrl=$event"></img-upload-component>
                 </div>
             </div>
             <div class="slds-size--1-of-12"></div>

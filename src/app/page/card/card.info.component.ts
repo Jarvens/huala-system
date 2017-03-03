@@ -30,10 +30,6 @@ export class CardInfoComponent {
   constructor(private cardService: CardService) {
   }
 
-  showData(data: any) {
-
-  }
-
   /**
    * 保存卡券列表
    */

@@ -1,7 +1,7 @@
 <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
     结算管理
 </div>
-<table ngl-datatable [data]="balanceList.rows" class="slds-max-medium-table--stacked-horizontal">
+<table ngl-datatable [data]="balanceList.rows" class="slds-max-medium-table--stacked-horizontal" trackByKey="date">
     <ngl-datatable-column heading="日期" key="date">
         <template nglDatatableCell let-row="row">
             <b>{{row.date}}</b>
