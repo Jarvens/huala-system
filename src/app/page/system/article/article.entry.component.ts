@@ -13,7 +13,7 @@ export class ArticleEntryComponent {
   /**
    * toast封装实体
    */
-  toast:ToastEntity;
+  toast:ToastEntity = new ToastEntity;
   /**
    * 文章对象
    * @type {{}}

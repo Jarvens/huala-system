@@ -1,22 +1,18 @@
 import {Component, OnInit} from "@angular/core";
-import {MyHttp} from "../../core/http";
-import {
-  BaiduMap,
-  OfflineOptions,
-  ControlAnchor,
-  NavigationControlType
-} from '../../../../node_modules/angular2-baidu-map/src/index';
-
+declare var BMap;
+declare var BMapLib;
+declare var BMAPLIB_TAB_SEARCH
+declare var BMAPLIB_TAB_TO_HERE
+declare var BMAPLIB_TAB_FROM_HERE
 @Component({
   moduleId: "baiduMap",
   selector: 'hl-Map',
   template: `
-        <baidu-map ak="KzRNpmieQlo6olkTGaKXzNCQ&" [options]="opts" [offline]="offlineOpts" (onMapLoaded)="loadMap($event)" (onMarkerClicked)="clickMarker($event)"></baidu-map>
+        <div id="l-map"></div>
     `,
   styles: [`
-        baidu-map{
-            height: 600px;
-            display: block;
+        #l-map{
+        height:600px;
         }
     `]
 })
@@ -25,48 +21,42 @@ export class MapComponent implements OnInit {
 
   constructor() {
   }
-
-  opts: any;
-  offlineOpts: OfflineOptions;
-
   ngOnInit() {
-    this.opts = {
-      center: {
-        longitude: 120.22037542,
-        latitude: 30.25924446
-      },
-      zoom: 12,
-      markers: [{
-        longitude: 120.22037542,
-        latitude: 30.25924446,
-        autoDisplayInfoWindow: true
-      }],
-      geolocationCtrl: {
-        anchor: ControlAnchor.BMAP_ANCHOR_BOTTOM_RIGHT
-      },
-      scaleCtrl: {
-        anchor: ControlAnchor.BMAP_ANCHOR_BOTTOM_LEFT
-      },
-      overviewCtrl: {
-        isOpen: true
-      },
-      navCtrl: {
-        type: NavigationControlType.BMAP_NAVIGATION_CONTROL_LARGE
-      }
-    };
-
-    this.offlineOpts = {
-      retryInterval: 5000,
-      txt: 'NO-NETWORK'
-    };
-  }
-
-  loadMap(e: any) {
-
-  }
-
-  clickMarker(marker: any) {
-
+    var map = new BMap.Map('l-map');
+    var point = new BMap.Point(120.22037542, 30.25924446);
+    map.centerAndZoom(point, 12);
+    map.enableScrollWheelZoom();
+    map.addControl(new BMap.NavigationControl());
+    var customLayer;
+    customLayer = new BMap.CustomLayer({
+      geotableId: 155596,
+      q: '',
+      tags: '',
+      filter: ''
+    });
+    map.addTileLayer(customLayer);
+    customLayer.addEventListener('hotspotclick', callback);
+    function callback(e)//单击热点图层
+    {
+      var customPoi = e.customPoi;
+      var contentPoi = e.content;
+      var content = '<p style="width:280px;margin:0;line-height:20px;">地址：' + customPoi.address + '<br/>';
+      var searchInfoWindow = new BMapLib.SearchInfoWindow(map, content, {
+        title: customPoi.title,
+        width: 290,
+        height: 40,
+        panel: "panel",
+        enableAutoPan: true,
+        enableSendToPhone: true,
+        searchTypes: [
+          BMAPLIB_TAB_SEARCH,
+          BMAPLIB_TAB_TO_HERE,
+          BMAPLIB_TAB_FROM_HERE
+        ]
+      });
+      var point = new BMap.Point(customPoi.point.lng, customPoi.point.lat);
+      searchInfoWindow.open(point);
+    }
   }
 
 }
