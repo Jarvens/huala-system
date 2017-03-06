@@ -31,8 +31,8 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
     port: PORT,
     ENV: ENV,
     HMR: HMR,
-    ApiUrl: ApiUrl,
-    ImgUrl: ImgUrl
+    ImgUrl: ImgUrl,
+    ApiUrl:ApiUrl
 });
 
 /**
