@@ -25,6 +25,7 @@ export class BannerListComponent implements OnInit {
   createOpened: boolean = false;
   required: boolean = true;
   _date_formate: string = 'yyyy-mm-dd';
+  delObj: any = {};
   /**
    * 图片上传返回地址
    * @type {string}
@@ -83,6 +84,7 @@ export class BannerListComponent implements OnInit {
   //删除提示
   delConfirm(event: any) {
     this.prompt.notificationOpen = !this.prompt.notificationOpen;
+    this.delObj = event;
   }
 
   /**
@@ -104,7 +106,16 @@ export class BannerListComponent implements OnInit {
    * prompt确认事件
    */
   confirm() {
-
+    this.prompt.notificationOpen = !this.prompt.notificationOpen;
+    this.bannerService.deleteBanner(this.delObj).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('删除成功', 'success');
+        this.getBannerList(this.pageOpts,this.searchKey);
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
   }
 
   /**
@@ -130,7 +141,7 @@ export class BannerListComponent implements OnInit {
     this.operaObj.imgUrl = this.picUrl;
     if (this.operaObj.scopeSeller == 'part') {
       if (this.sellerList.length == 0) {
-        this.toast.showAlert = !this.toast.showAlert;
+        this.toastFunction('请选择店铺', 'info');
         return;
       } else {
         let array: Array<any> = [];
@@ -139,6 +150,26 @@ export class BannerListComponent implements OnInit {
         });
         this.operaObj.sellerIdList = array;
       }
+      this.bannerService.saveBanner(this.operaObj).subscribe(res=> {
+        let result = res.json();
+        if (result.success) {
+          this.toastFunction('保存成功', 'success');
+        } else {
+          this.toastFunction(result.message, 'error');
+        }
+      });
     }
+  }
+
+
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
+  toastFunction(message: string, toastType: string) {
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 }

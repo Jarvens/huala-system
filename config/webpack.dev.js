@@ -16,8 +16,8 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 /**
  * Webpack Constants
  */
-const ApiUrl = '//apitest.huala.com';
-// const ApiUrl = 'http://localhost:8111/xiaopai';
+// const ApiUrl = '//apitest.huala.com';
+const ApiUrl = 'http://localhost:8111/xiaopai';
 const ImgUrl = '//wxtest.huala.com/hlman-pic';
 //正式环境
 // const ApiUrl ='//api.huala.com';

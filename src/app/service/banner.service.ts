@@ -19,4 +19,22 @@ export class BannerService {
     let url = "/act/banner-list?pageNum=" + page.page + "&pageSize=" + page.perPage + "&searchKey=" + searchKey;
     return this.http.get(url);
   }
+
+  /**
+   * 保存banner
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  saveBanner(data:any){
+    return this.http.post('/act/save-banner',data);
+  }
+
+  /**
+   * 删除banner对象
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  deleteBanner(data:any){
+    return this.http.post('/act/delete-banner',data);
+  }
 }

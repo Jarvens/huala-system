@@ -1,10 +1,10 @@
 <div class="slds-button-group" role="group">
     <button class="slds-button slds-button--neutral" (click)="showCase('showcase')">推荐</button>
-    <button class="slds-button slds-button--neutral" (click)="showCase('cancelShowCase')">取消推荐</button>
+    <button class="slds-button slds-button--neutral" (click)="showCase('cancelShowcase')">取消推荐</button>
     <button class="slds-button slds-button--neutral" (click)="showCase('up')">上架</button>
     <button class="slds-button slds-button--neutral" (click)="showCase('down')">下架</button>
     <button class="slds-button slds-button--neutral" (click)="showCase('credit')">赊销</button>
-    <button class="slds-button slds-button--neutral" (click)="showCase('cancelCredit')">取消赊销</button>
+    <button class="slds-button slds-button--neutral" (click)="showCase('cancelcredit')">取消赊销</button>
 </div>
 <search-component [showIcon]="false" [debounce]="2000" placeHolder="名称..."
                   (searchKey)="searchByCondition($event)"></search-component>
