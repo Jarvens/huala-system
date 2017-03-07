@@ -1,5 +1,6 @@
-import {Component, Input, OnChanges, Output, EventEmitter} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {GoodsGlobalService} from '../../../service/goods.global.service';
+import {ToastEntity} from '../../../domain/toast';
 @Component({
   selector: 'goods-global-component',
   templateUrl: './goods.global.component.html'
@@ -37,7 +38,9 @@ export class GoodsGlobalComponent implements OnChanges {
    */
   goodsArray = new Set<number>();
 
-  @Output() goodsRef = new EventEmitter < Array<number>();
+  goodsResource: Array<number> = [];
+
+  toast: ToastEntity = new ToastEntity;
 
   constructor(private service: GoodsGlobalService) {
   }
@@ -61,7 +64,7 @@ export class GoodsGlobalComponent implements OnChanges {
     } else {
       this.goodsArray.add(data);
     }
-    this.goodsRef(this.convertSetToList(this.goodsArray));
+    this.goodsResource = this.convertSetToList(this.goodsArray);
   }
 
   ngOnChanges(changes: any): void {
@@ -100,6 +103,37 @@ export class GoodsGlobalComponent implements OnChanges {
       array.push(value);
     });
     return array;
+  }
+
+  /**
+   * 上下架  推荐  赊销
+   * @param data
+   */
+  showCase(data: string) {
+    this.service.updateGoodsStatus(this.currentSellerId, data, this.goodsResource).subscribe(res=> {
+       let result = res.json();
+      if(result.success){
+        this.toastFunction('更新成功','success');
+        this.goodsList();
+      }else{
+        this.toastFunction(result.message,'error');
+      }
+    });
+  }
+
+  notifyParamFunction(data: boolean) {
+    this.toast.showAlert = data;
+  }
+
+  /**
+   * toast函数
+   * @param message
+   * @param toastType
+   */
+  toastFunction(message: string, toastType: string) {
+    this.toast.showAlert = !this.toast.showAlert;
+    this.toast.toastMessage = message;
+    this.toast.toastType = toastType;
   }
 
 }
