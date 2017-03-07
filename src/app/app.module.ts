@@ -57,6 +57,7 @@ import {GoodsAddComponent} from './page/goods/goodsAdd.component';
 import {BasicReportComponent} from './page/basicreport/basic.report.component';
 import {SqlConfigComponent} from './page/system/sqlconfig/sql.config.component';
 import {CardInfoComponent} from './page/card/card.info.component';
+import {GoodsGlobalComponent} from './page/component/goods/goods.global.component';
 //店铺组件化入口类
 import {SellerMainEnterComponent} from './page/sellercomponent/seller.main.enter.component';
 import {SellerGoodsComponent} from './page/sellercomponent/seller.goods.component';
@@ -130,6 +131,7 @@ import {SysMenuService} from './service/sys.menu.service';
 import {RoleService} from './service/role.service';
 import {BasicReportService} from './service/basic.report.service';
 import {SqlConfigService} from './service/sql.config.service';
+import {GoodsGlobalService} from './service/goods.global.service';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -212,7 +214,8 @@ import {SqlConfigService} from './service/sql.config.service';
     SellerTransferAccountComponent,
     SellerBankComponent,
     CardInfoComponent,
-    ProvinceCityComponent
+    ProvinceCityComponent,
+    GoodsGlobalComponent
   ],
   imports: [
     BrowserModule,
@@ -250,7 +253,8 @@ import {SqlConfigService} from './service/sql.config.service';
     SysMenuService,
     RoleService,
     BasicReportService,
-    SqlConfigService
+    SqlConfigService,
+    GoodsGlobalService
   ]
 })
 export class AppModule {

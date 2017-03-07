@@ -22,12 +22,31 @@ export class ActivityComponent implements OnInit {
   goodsPageOpts: any = {page: 1, total: 0, limit: 3, perPage: 10};
 
   /**
+   * 打开|关闭  模态
+   * @type {boolean}
+   */
+  opened: boolean = false;
+
+  /**
    * 活动商品列表
    * @type {{}}
    */
   activityGoods: any = {};
 
+  /**
+   * 当前店铺
+   * @type {{}}
+   */
+  currentSeller:any={};
+
+  /**
+   * 商品集合
+   * @type {Array}
+   */
+  goodsArray:Array<number>=[];
+
   constructor(private activityService: ActivityService) {
+
   }
 
 
@@ -49,5 +68,13 @@ export class ActivityComponent implements OnInit {
    */
   pageChange(data: number) {
 
+  }
+
+  openModal() {
+    this.opened = !this.opened;
+  }
+
+  copyValue(data:any){
+    this.currentSeller = data;
   }
 }
