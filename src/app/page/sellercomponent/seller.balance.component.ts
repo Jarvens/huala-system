@@ -122,6 +122,7 @@ export class SellerBalanceComponent implements OnChanges {
    */
   pageChange(data: number) {
     this.pageOpts.page = data;
+    this.getSellerBalanceDataList(this.pageOpts,this.currentSeller.id,this.key);
   }
 
   /**
