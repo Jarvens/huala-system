@@ -115,7 +115,7 @@
       <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
         <span class="slds-form-element__label">所购商品</span>
         <div class="slds-form-element__control">
-          <table ngl-datatable [data]="orderGoods">
+          <table ngl-datatable [data]="orderGoods" striped="false">
             <ngl-datatable-column heading="商品名称" key="goodsName"></ngl-datatable-column>
             <ngl-datatable-column heading="供应商名称" key="supplierName"></ngl-datatable-column>
             <ngl-datatable-column heading="原价" key="recPrice">

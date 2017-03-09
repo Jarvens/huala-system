@@ -5,7 +5,7 @@
                           (searchKey)="searchByCondition($event)"></search-component>
     </div>
 </div>
-<table ngl-datatable [data]="sellerList.rows" trackByKey="rank"
+<table ngl-datatable [data]="sellerList.rows" trackByKey="rank" striped="false"
        (onRowClick)="onRowClick($event)"
        class="slds-max-medium-table--stacked-horizontal">
     <ngl-datatable-column heading="选择" key="" *ngIf="openCheckBox">

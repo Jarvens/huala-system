@@ -13,9 +13,9 @@
                 </ngl-form-checkbox>
             </template>
         </ngl-datatable-column>
-        <ngl-datatable-column heading="名称" key="title"></ngl-datatable-column>
-        <ngl-datatable-column heading="货号" key="goodsSn"></ngl-datatable-column>
-        <ngl-datatable-column heading="所属类目" key="cname"></ngl-datatable-column>
+        <ngl-datatable-column heading="名称" key="title" slds-truncate></ngl-datatable-column>
+        <ngl-datatable-column heading="货号" key="goodsSn" slds-truncate></ngl-datatable-column>
+        <ngl-datatable-column heading="所属类目" key="cname" slds-truncate></ngl-datatable-column>
         <ngl-datatable-column heading="图片" key="picUrl">
             <template nglDatatableCell let-value>
                 <img [src]="commonImgUrl+value" style="width: 60px;height: 60px;">

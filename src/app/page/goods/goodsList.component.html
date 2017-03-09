@@ -3,7 +3,7 @@
                       placeHolder="请输入商品名称 货号..."
                       (searchKey)="searchByCondition($event)"></search-component>
 </div>
-<table ngl-datatable [data]="goodsList" class="slds-max-medium-table--stacked-horizontal">
+<table ngl-datatable [data]="goodsList" class="slds-max-medium-table--stacked-horizontal" striped="false">
     <ngl-datatable-column heading="#" key="rank"></ngl-datatable-column>
     <ngl-datatable-column heading="商品名称" key="title"></ngl-datatable-column>
     <ngl-datatable-column heading="商品货号" key="goodsSn"></ngl-datatable-column>

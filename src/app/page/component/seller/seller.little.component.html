@@ -5,7 +5,7 @@
                           (searchKey)="searchByCondition($event)"></search-component>
     </div>
 </div>
-<table ngl-datatable [data]="sellerDataList.rows"
+<table ngl-datatable [data]="sellerDataList.rows" striped="false"
        class="slds-max-medium-table--stacked-horizontal">
     <ngl-datatable-column heading="ID" key="id" sortable></ngl-datatable-column>
     <ngl-datatable-column heading="名称" key="name" cellClass="slds-truncate">

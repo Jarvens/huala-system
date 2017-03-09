@@ -3,7 +3,7 @@
     <b>App版本管理</b>
 </div>
 <div class="slds-scrollable">
-    <table ngl-datatable [data]="appVersionList.rows" class="slds-max-medium-table--stacked-horizontal">
+    <table ngl-datatable [data]="appVersionList.rows" class="slds-max-medium-table--stacked-horizontal" striped="false">
         <ngl-datatable-column heading="应用版本号" key="version">
             <template nglDatatableCell let-value>
                 <ngl-badge type="inverse" class="slds-m-horizontal--large">{{value}}</ngl-badge>

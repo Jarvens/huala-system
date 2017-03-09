@@ -4,7 +4,7 @@
                       (searchKey)="searchByCondition($event)"></search-component>
 </div>
 <div class="slds-wrap slds-grid">
-    <table ngl-datatable [data]="goodsDataList.rows" trackByKey="rank"
+    <table ngl-datatable [data]="goodsDataList.rows" trackByKey="rank" striped="false"
            class="slds-max-medium-table--stacked-horizontal">
         <ngl-datatable-column heading="id" key="id"></ngl-datatable-column>
         <ngl-datatable-column heading="图片" key="picUrl">

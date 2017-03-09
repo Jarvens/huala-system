@@ -11,7 +11,7 @@
 </div>
 <!--用户列表-->
 <table ngl-datatable [data]="userList.rows" trackByKey="rank"
-       class="slds-max-medium-table--stacked-horizontal">
+       class="slds-max-medium-table--stacked-horizontal" striped="false">
     <ngl-datatable-column heading="ID" key="id" cellClass="slds-truncate"></ngl-datatable-column>
     <ngl-datatable-column heading="姓名" key="name" cellClass="slds-truncate">
         <template nglDatatableCell let-value>

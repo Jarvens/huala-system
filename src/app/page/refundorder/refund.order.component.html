@@ -1,7 +1,7 @@
 <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
     申请商品金额:{{refundGoodsAmount/100|number:'1.2-2'}}
 </div>
-<table ngl-datatable [data]="refundGoodsDataList">
+<table ngl-datatable [data]="refundGoodsDataList" striped="false">
     <ngl-datatable-column heading="商品名称" key="goodsName"></ngl-datatable-column>
     <ngl-datatable-column heading="供应商名称" key="supplierName"></ngl-datatable-column>
     <ngl-datatable-column heading="原价" key="recPrice">

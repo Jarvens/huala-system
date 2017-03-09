@@ -63,7 +63,7 @@
 </div>
 <!--数据列表-->
 <div class="slds-scrollable">
-    <table ngl-datatable [data]="financeList.rows"
+    <table ngl-datatable [data]="financeList.rows" striped="false"
            class="slds-max-medium-table--stacked-horizontal">
         <ngl-datatable-column heading="日期" key="date">
             <template nglDatatableCell let-value>

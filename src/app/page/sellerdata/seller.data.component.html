@@ -33,7 +33,7 @@
 </div>
 <!--店铺列表-->
 <div class="slds-scrollable">
-    <table ngl-datatable [data]="sellerDataList.rows" trackByKey="rank"
+    <table ngl-datatable [data]="sellerDataList.rows" trackByKey="rank" striped="false"
            class="slds-max-medium-table--stacked-horizontal">
         <ngl-datatable-column heading="商户id" key="sellerId"></ngl-datatable-column>
         <ngl-datatable-column heading="商户名" key="sellerName">

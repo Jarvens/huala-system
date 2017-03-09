@@ -4,7 +4,7 @@
                       (searchKey)="searchByCondition($event)"></search-component>
 </div>
 <div class="slds-scrollable">
-    <table ngl-datatable [data]="configList.rows" trackByKey="rank"
+    <table ngl-datatable [data]="configList.rows" trackByKey="rank" striped="false"
            class="slds-max-medium-table--stacked-horizontal">
         <ngl-datatable-column heading="ID" key="id"></ngl-datatable-column>
         <ngl-datatable-column heading="字典名称" key="dirtKey">

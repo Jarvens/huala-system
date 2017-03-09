@@ -5,7 +5,7 @@
 </div>
 <!--短信列表-->
 <div class="slds-scrollable">
-    <table ngl-datatable [data]="messageList.rows" trackByKey="rank"
+    <table ngl-datatable [data]="messageList.rows" trackByKey="rank" striped="false"
            class="slds-max-medium-table--stacked-horizontal">
         <ngl-datatable-column heading="手机号" key="phone">
             <template nglDatatableCell let-value>
