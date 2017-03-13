@@ -1,5 +1,5 @@
-import { Component, Input, OnChanges, Output, EventEmitter } from "@angular/core";
-import { HngService } from "../../../service/hng.service";
+import {Component, Input, OnChanges, Output, EventEmitter} from "@angular/core";
+import {HngService} from "../../../service/hng.service";
 
 @Component({
   moduleId: "companyInfo",
@@ -7,27 +7,31 @@ import { HngService } from "../../../service/hng.service";
   templateUrl: "hng.companyInfo.component.html"
 })
 
-export class HngcompanyInfoComponent implements OnChanges{
-  @Input() public companyInput:any;
-  @Input() public noBtn:boolean = true;
+export class HngcompanyInfoComponent implements OnChanges {
+  @Input() public companyInput: any;
+  @Input() public noBtn: boolean = true;
   @Output() public postCompanyInfo = new EventEmitter<any>();
-
+  /**
+   * 图片上传返回地址
+   */
+  receiveUrl: string;
+  //公司信息;
   public companyInfo = {
     companyName: '',
     contacts: '',
     contactsPhone: '',
     filePath: ''
-  }; //公司信息;
+  };
 
-  constructor(public hngService:HngService){
-    if(this.companyInput){
+  constructor(public hngService: HngService) {
+    if (this.companyInput) {
       this.companyInfo = this.companyInput;
     }
   }
 
-  ngOnChanges(changes){
+  ngOnChanges(changes) {
     let company = changes['companyInput'];
-    if(company && company.currentValue && company.currentValue != company.previousValue){
+    if (company && company.currentValue && company.currentValue != company.previousValue) {
       this.companyInfo = company.currentValue;
     }
   }
@@ -36,10 +40,10 @@ export class HngcompanyInfoComponent implements OnChanges{
    * @Description: Add new company;
    * @Date: 2017-01-17;
    */
-  public addCompany(){
+  public addCompany() {
     let valid = this.checkCompanyInfo();
 
-    if(!valid){
+    if (!valid) {
       return;
     }
 
@@ -52,22 +56,22 @@ export class HngcompanyInfoComponent implements OnChanges{
    * @Description: Check the company info;
    * @Date: 2017-01-17;
    */
-  public checkCompanyInfo():boolean{
+  public checkCompanyInfo(): boolean {
     let info = this.companyInfo;
 
-    if(!info.companyName){
+    if (!info.companyName) {
       alert("请输入公司名称!");
 
       return false;
-    } else if(!info.contacts){
+    } else if (!info.contacts) {
       alert();
 
       return false;
-    } else if(!info.contactsPhone){
+    } else if (!info.contactsPhone) {
       alert();
 
       return false;
-    } else if(!info.filePath){
+    } else if (!info.filePath) {
       alert();
 
       return false;
@@ -80,7 +84,7 @@ export class HngcompanyInfoComponent implements OnChanges{
    * @Description: Post the company info;
    * @Date: 2017-01-17;
    */
-  public postInfo(){
+  public postInfo() {
     this.postCompanyInfo.emit(this.companyInfo);
   }
 }
