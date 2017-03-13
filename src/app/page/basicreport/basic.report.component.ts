@@ -127,4 +127,11 @@ export class BasicReportComponent implements OnInit {
     this.opened = !this.opened;
   }
 
+  /**
+   * 导出
+   */
+  export(){
+    location.href = process.env.ApiUrl+"/tongji/export_report?citys="+localStorage.getItem('hualaCity')+"&key=" + this.currentSqlObj.group_key+'.'+this.currentSqlObj.sql_key + "&param=" + this.currentSqlObj.param;
+  }
+
 }

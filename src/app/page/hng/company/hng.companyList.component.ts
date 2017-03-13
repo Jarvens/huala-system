@@ -31,7 +31,6 @@ export class HngCompanyListComponent implements OnInit {
       size: 10,
       searchKey: this.searchKey
     };
-
     if(pageNum){
       gData.page = pageNum;
     }
@@ -118,14 +117,5 @@ export class HngCompanyListComponent implements OnInit {
         this.getCompanies(this.pageOpts.page);
       }
     });
-  }
-
-  /**
-   * 条件搜索
-   * @param data
-   */
-  searchByCondition(data:string){
-    this.searchKey = data;
-    this.getCompanies(1);
   }
 }

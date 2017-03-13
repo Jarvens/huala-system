@@ -1,11 +1,4 @@
-<!--头部信息-->
-<div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
-    <div class="slds-size--4-of-12">
-        <search-component [showIcon]="false" [debounce]="2000"
-                          [placeHolder]="placeholder"
-                          (searchKey)="searchByCondition($event)"></search-component>
-    </div>
-</div>
+
 <div class="slds-scrollable">
     <table ngl-datatable [data]="companies" class="slds-max-medium-table--stacked-horizontal" striped="false">
         <ngl-datatable-column heading="ID" key="id"></ngl-datatable-column>

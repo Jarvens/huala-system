@@ -67,6 +67,7 @@ export class HngMovieEntryComponent implements OnChanges {
    */
   targetFunction(data: any) {
     this.currentActiveObj.sellerName = data.name;
+    this.currentActiveObj.sellerId = data.id;
     this.operaMovieObj.sellerId = data.id;
   }
 
@@ -129,8 +130,20 @@ export class HngMovieEntryComponent implements OnChanges {
   /**
    * 影片保存
    */
-  saveMovie() {
-    this.movieList.add(this.operaMovieObj);
+  saveMovie(updateOrAdd: boolean) {
+    if (updateOrAdd) {
+      let _m = (<any>Object).assign({}, this.operaMovieObj);
+      let _value = new Set<any>();
+      this.movieList.forEach(function (obj: any) {
+        if (_m.id == obj.id) {
+          _value.add(_m);
+        } else {
+          _value.add(obj);
+        }
+      });
+    } else {
+      this.movieList.add(this.operaMovieObj);
+    }
     this.opened = !this.opened;
   }
 
@@ -156,8 +169,21 @@ export class HngMovieEntryComponent implements OnChanges {
    * 保存影片活动
    */
   saveActivity() {
+    let _array:Array<any>=[];
+    this.movieList.forEach(function(value:any){
+      _array.push(value);
+    });
+    this.currentActiveObj.movies = _array;
+    this.hngService.saveMovieInfo(this.currentActiveObj).subscribe(res=>{
+      let result =res.json();
+      if(result.success){
+        this.toastFunction('保存成功','success');
+      }else{
+        this.toastFunction(result.message,'error');
+      }
+    });
     //this.operaMovieObj.movies = this.convertSetToList(this.movieList);
-    console.log(this.operaMovieObj);
+    console.log("当前活动对象......",this.currentActiveObj);
   }
 
   /**

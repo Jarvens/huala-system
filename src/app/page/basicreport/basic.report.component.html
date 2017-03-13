@@ -31,6 +31,7 @@
         <div class="slds-p-vertical--x-small slds-grid slds-p-horizontal--large slds-shrink-none slds-theme--shade">
             <search-component [showIcon]="false" [debounce]="2000" [placeHolder]="placeholder"
                               (searchKey)="searchByCondition($event)"></search-component>
+            <button class="slds-button slds-button--neutral" (click)="export()">导出</button>
         </div>
         <div class="slds-scrollable">
             <table class="slds-table slds-table--bordered slds-table--cell-buffer">

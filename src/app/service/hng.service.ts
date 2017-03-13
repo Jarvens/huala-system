@@ -231,4 +231,13 @@ export class HngService {
     location.href = process.env.ApiUrl + '/preferential/export?activityId=' + id;
   }
 
+  /**
+   * 影片活动保存
+   * @param data
+   * @returns {Observable<Response>}
+   */
+  saveMovieInfo(data:any){
+    return this.http.post('/preferential/movie-active-save',data);
+  }
+
 }
