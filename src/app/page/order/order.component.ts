@@ -65,7 +65,7 @@ export class OrderComponent implements OnInit {
    * toast封装实体
    * @type {ToastEntity}
    */
-  toast:ToastEntity = new ToastEntity;
+  toast: ToastEntity = new ToastEntity;
 
   constructor(public orderService: OrderService) {
   }
@@ -132,12 +132,9 @@ export class OrderComponent implements OnInit {
     })
   }
 
-  selectScope(event) {
-
-  }
-
-  searchByCondition(event) {
-
+  searchByCondition(data: string) {
+    this.orderReq.searchKey = data;
+    this.getOrderList(null);
   }
 
   /**
