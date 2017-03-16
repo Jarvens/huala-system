@@ -26,7 +26,7 @@ export class OrderComponent implements OnInit {
    * 搜索提示
    * @type {string}
    */
-  public placeholder: string = 'id..手机..联系人..店铺';
+  public placeholder: string = '搜索...';
 
   /**
    * 分页对象

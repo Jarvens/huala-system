@@ -111,7 +111,7 @@ export class BannerListComponent implements OnInit {
       let result = res.json();
       if (result.success) {
         this.toastFunction('删除成功', 'success');
-        this.getBannerList(this.pageOpts,this.searchKey);
+        this.getBannerList(this.pageOpts, this.searchKey);
       } else {
         this.toastFunction(result.message, 'error');
       }
@@ -150,15 +150,15 @@ export class BannerListComponent implements OnInit {
         });
         this.operaObj.sellerIdList = array;
       }
-      this.bannerService.saveBanner(this.operaObj).subscribe(res=> {
-        let result = res.json();
-        if (result.success) {
-          this.toastFunction('保存成功', 'success');
-        } else {
-          this.toastFunction(result.message, 'error');
-        }
-      });
     }
+    this.bannerService.saveBanner(this.operaObj).subscribe(res=> {
+      let result = res.json();
+      if (result.success) {
+        this.toastFunction('保存成功', 'success');
+      } else {
+        this.toastFunction(result.message, 'error');
+      }
+    });
   }
 
 

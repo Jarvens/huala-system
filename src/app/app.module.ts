@@ -23,6 +23,8 @@ import {MapComponent} from './page/map/map.component';
 import {BannerListComponent} from './page/banner/banner.list.component';
 import {CardComponent} from './page/card/card.component';
 import {SellerMainComponent} from './page/seller/seller.main.component';
+import {SellerGoodsEnterComponent} from './page/sellerGoods/sellerGoods.enter.component';
+import {SellerGoodsMainComponent} from './page/sellerGoods/sellerGoods.main.component';
 import {SellerListComponent} from './page/seller/seller.list.component';
 import {SellerDetailComponent} from './page/seller/seller.detail.component';
 import {PictureComponent} from './page/system/picture/picture.component';
@@ -132,6 +134,8 @@ import {RoleService} from './service/role.service';
 import {BasicReportService} from './service/basic.report.service';
 import {SqlConfigService} from './service/sql.config.service';
 import {GoodsGlobalService} from './service/goods.global.service';
+import {SellerGoodsService} from './service/sellerGoods.service';
+
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -207,15 +211,16 @@ import {GoodsGlobalService} from './service/goods.global.service';
     BasicReportComponent,
     SqlConfigComponent,
     SellerMainEnterComponent,
-    SellerGoodsComponent,
     SpikeSellerGoodsComponent,
     SellerCombinationComponent,
     SellerBalanceComponent,
     SellerTransferAccountComponent,
     SellerBankComponent,
+    SellerGoodsEnterComponent,
     CardInfoComponent,
     ProvinceCityComponent,
-    GoodsGlobalComponent
+    GoodsGlobalComponent,
+    SellerGoodsMainComponent
   ],
   imports: [
     BrowserModule,
@@ -254,7 +259,8 @@ import {GoodsGlobalService} from './service/goods.global.service';
     RoleService,
     BasicReportService,
     SqlConfigService,
-    GoodsGlobalService
+    GoodsGlobalService,
+    SellerGoodsService
   ]
 })
 export class AppModule {

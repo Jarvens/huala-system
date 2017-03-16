@@ -10,7 +10,7 @@ export class GoodsInfoComponent implements OnChanges {
   @Input() public cat: any; //外部传入的类目;
   @Input() public goodsInfoIpt: any; //编辑时的商品信息;
   @Output() public selectTab = new EventEmitter<string>();
-  //@Output() public goodsInfoOut = new EventEmitter<any>();
+  @Output() public goodsInfoOut = new EventEmitter<any>();
   public goodsInfo: any = {
     cid: "",
     cname: "",
@@ -54,13 +54,30 @@ export class GoodsInfoComponent implements OnChanges {
     if (chgCat && chgCat.currentValue && chgCat.currentValue != chgCat.previousValue) {
       this.goodsInfo.cid = chgCat.currentValue.id;
       this.goodsInfo.cname = chgCat.currentValue.name;
+      console.log("change: -> ", this.goodsInfo)
     }
   }
 
   public getGoodsInfo() {
-    this.goodsInfo.cid = this.cat.id;
+    if(!this.goodsInfo.cid){
+      alert("请先选择类目!");
+      return;
+    }
     //this.goodsInfoOut.emit(this.goodsInfo);
+    console.log("goodsInfo->",this.goodsInfo)
     return this.goodsInfo;
+  }
+
+  resetGoodsInfo() {
+    this.goodsInfo.cid = "";
+    this.goodsInfo.cname = "";
+    this.goodsInfo.title = "";
+    this.goodsInfo.goodsSn = "";
+    this.goodsInfo.picUrl = "";
+    this.goodsInfo.recPrice = "";
+    this.goodsInfo.salePrice = "";
+    this.goodsInfo.picDescription = ["", ""];
+    console.log("reset->", this.goodsInfo);
   }
 
   printResult(data: any) {

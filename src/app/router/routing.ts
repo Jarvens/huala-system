@@ -37,6 +37,7 @@ import {BasicReportComponent} from '../page/basicreport/basic.report.component';
 import {SqlConfigComponent} from '../page/system/sqlconfig/sql.config.component';
 import {SellerMainEnterComponent} from '../page/sellercomponent/seller.main.enter.component';
 import {BannerListComponent} from "../page/banner/banner.list.component";
+import {SellerGoodsEnterComponent} from "../page/sellerGoods/sellerGoods.enter.component";
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
@@ -76,7 +77,8 @@ const routes: Routes = [
       {path: 'report', component: BasicReportComponent},
       {path: 'hng/recruit-seller/:recruitId', component: RelativeSellerComponent},
       {path: 'hng/recruit-date/:recruitId', component: RecruitChooseTimeComponent},
-      {path: 'sql/sql-index', component: SqlConfigComponent}
+      {path: 'sql/sql-index', component: SqlConfigComponent},
+      {path: 'seller-goods/yhm', component: SellerGoodsEnterComponent}
     ]
   },
 ];

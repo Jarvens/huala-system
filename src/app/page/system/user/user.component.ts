@@ -6,7 +6,6 @@ import {PromptEntity} from '../../../domain/prompt';
   selector: 'user-component',
   templateUrl: './user.component.html'
 })
-
 export class UserComponent implements OnInit {
   /**
    * prompt封装对象

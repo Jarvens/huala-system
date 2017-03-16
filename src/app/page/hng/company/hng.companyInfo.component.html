@@ -12,7 +12,7 @@
     <ngl-form-element label="营业执照" class="slds-m-top--small">
       <input type="text" nglFormControl required style="display:none">
       <div class="slds-size--1-of-2">
-        <img-upload-component (uploadAddr)="receiveUrl=$event"></img-upload-component>
+        <img-upload-component (uploadAddr)="copyPath($event)"></img-upload-component>
       </div>
     </ngl-form-element>
     <div class="slds-card__footer" *ngIf="noBtn">

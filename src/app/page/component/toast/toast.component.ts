@@ -10,7 +10,7 @@ export class ToastComponent {
    * 超时时间
    * @type {number}
    */
-  @Input() timeOut: number = 5000;
+  @Input() timeOut: number = 3000;
 
   /**
    * 提示消息

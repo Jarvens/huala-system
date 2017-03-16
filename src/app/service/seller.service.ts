@@ -48,7 +48,7 @@ export class SellerService {
    * @returns {Observable<Response>}
    */
   updateSellerGoods(array: Array<any>) {
-    return this.http.post('/seller/updae-goods-list', array);
+    return this.http.post('/seller/update-goods-list', array);
   }
 
   /**

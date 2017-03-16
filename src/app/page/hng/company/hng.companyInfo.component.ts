@@ -108,4 +108,12 @@ export class HngcompanyInfoComponent implements OnChanges {
     this.toast.toastMessage = message;
     this.toast.toastType = toastType;
   }
+
+  /**
+   * 接收图片上传返回路径
+   * @param data
+   */
+  copyPath(data:string){
+    this.receiveUrl = data;
+  }
 }

@@ -9,6 +9,7 @@ import {GoodsService} from "../../service/goods.service";
 
 export class GoodsListComponent {
   @Input() public cat:any;//所选类目;
+  @Input() public showCheckBox:boolean = false;
   public goodsList:any = []; //商品列表;
   public imgUrl:string;
   public pageOpts:any = {}; //分页对象
@@ -16,6 +17,7 @@ export class GoodsListComponent {
   public editorOpened:boolean = false; //打开或关闭edit对话框;
   public delGoods:any;
   public editGoodsInfo:any;
+  goodsSelected:any = new Set();
 
   constructor(public goodsService:GoodsService) {
     this.imgUrl = process.env.ImgUrl;
@@ -67,6 +69,11 @@ export class GoodsListComponent {
         item.rank = index + 1;
         item.recPrice = item.recPrice / 100;
         item.salePrice = item.salePrice / 100;
+        if(this.showCheckBox && this.goodsSelected.has(item.id)){
+          item.checked = true;
+        }else {
+          item.checked = false;
+        }
       });
     });
   }
@@ -189,5 +196,17 @@ export class GoodsListComponent {
         this.getGoodsByCatId(this.pageOpts.page);
       }
     });
+  }
+
+  selectGoods(goods){
+    if(this.goodsSelected.has(goods.id)){
+      this.goodsSelected.delete(goods.id);
+    } else {
+      this.goodsSelected.add(goods.id);
+    }
+  }
+
+  getSelectedGoods(){
+    return this.goodsSelected;
   }
 }

@@ -11,7 +11,7 @@
             <div class="slds-form-element" style="padding-top: 20px;">
                 <label class="slds-form-element__label slds-float--left" style="line-height: 2rem;">活动时间</label>
                 <div class="slds-form-element__control slds-float--left">
-                    <input type="text" class="slds-input" [(ngModel)]="currentActiveObj.playTime"/>
+                    <input type="text" class="slds-input" [(ngModel)]="currentActiveObj.time"/>
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@
     <div body>
         <div class="slds-grid slds-wrap">
             <div class="slds-size--5-of-12">
-                <img-upload-component></img-upload-component>
+                <img-upload-component (uploadAddr)="operaMovieObj.url=$event"></img-upload-component>
             </div>
             <div class="slds-size--2-of-12"></div>
             <div class="slds-size--5-of-12">

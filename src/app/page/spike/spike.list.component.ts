@@ -82,6 +82,7 @@ export class SpikeListComponent implements OnInit {
       let result = res.json();
       if (result.success) {
         this.toastFunction('删除成功', 'success');
+        this.getSpikeList();
       } else {
         this.toastFunction(result.message, 'error');
       }
@@ -110,7 +111,7 @@ export class SpikeListComponent implements OnInit {
     this.operaObj.startTime = new Date(this.operaObj.startTime);
     this.operaObj.endTime = new Date(this.operaObj.endTime);
     this.operaObj.priceRole = this.operaObj.priceRole * 100;
-    this.operaObj.salePrice = this.operaObj.salePrice * 100;
+    //this.operaObj.salePrice = this.operaObj.salePrice * 100;
     this.operaObj.defaultCount = this.operaObj.totalCount;
     this.spikeService.saveSpike(this.operaObj).subscribe(res=> {
       let result = res.json();
